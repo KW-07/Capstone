@@ -7,15 +7,20 @@ using UnityEngine.UIElements;
 
 public class PlayerMove : MonoBehaviour
 {
-    float dir;
+    public float dir;
     public float speed = 1f;
     public float jumpPower = 1f;
     bool isjump;
     int jumpcount;
+
     Rigidbody2D rb;
+    private SpriteRenderer sRenderer;
+
+    public bool playerFlipx;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     private void FixedUpdate()
@@ -29,16 +34,30 @@ public class PlayerMove : MonoBehaviour
     }
     void Move()
     {
+        // spriteFlip
+        if (dir < 0)
+        {
+            playerFlipx = true;
+            sRenderer.flipX = true;
+        }
+        else if (dir > 0)
+        {
+            playerFlipx = false;
+            sRenderer.flipX = false;
+        }
+
         rb.velocity = new Vector2(dir * speed, rb.velocity.y);
     }
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (jumpcount < 2)
+        if(context.performed)
         {
-            rb.velocity = Vector2.zero;
-            rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-            jumpcount++;
-            Debug.Log(jumpcount);
+            if (jumpcount < 2)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+                jumpcount++;
+                Debug.Log(jumpcount);
+            }
         }
        /* if (!isjump)
         {

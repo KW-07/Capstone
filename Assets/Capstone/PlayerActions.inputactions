@@ -9,8 +9,8 @@
                     "name": "Move",
                     "type": "Value",
                     "id": "10f44721-5c1e-4c99-ac02-4c60b52135a6",
-                    "expectedControlType": "Axis",
-                    "processors": "Normalize(min=-1,max=1)",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Attack",
+                    "name": "Melee",
                     "type": "Button",
                     "id": "308b4f18-8580-4c36-933a-2060da3fd821",
                     "expectedControlType": "Button",
@@ -42,7 +42,16 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Swap",
+                    "name": "Range",
+                    "type": "Button",
+                    "id": "d12f7a3c-cb82-4e9f-a7ee-ffa9ba04417a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "QuickSlot",
                     "type": "Button",
                     "id": "0c122d29-d035-4e76-a5ee-465499cc170a",
                     "expectedControlType": "Button",
@@ -60,7 +69,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Skill_Q",
+                    "name": "Summon",
                     "type": "Button",
                     "id": "a4a5b8aa-6427-467c-9c74-7f17065cb6e9",
                     "expectedControlType": "Button",
@@ -69,9 +78,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "skill_W",
+                    "name": "Command",
                     "type": "Button",
-                    "id": "d12f7a3c-cb82-4e9f-a7ee-ffa9ba04417a",
+                    "id": "7639a969-be4b-4713-8803-ef0f2631db4d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -86,18 +95,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
-                    "action": "Attack",
+                    "action": "Melee",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "810e8355-19aa-4aa1-b7ef-bfcae181592a",
-                    "path": "<Keyboard>/s",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
-                    "action": "Swap",
+                    "action": "QuickSlot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -115,22 +124,11 @@
                 {
                     "name": "",
                     "id": "f5d7dd9f-c01f-4f41-845f-c7fdf45b4953",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Skill_Q",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8007cb71-7c94-4930-bdd7-3e2a6a4797d9",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
-                    "action": "skill_W",
+                    "action": "Summon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -186,6 +184,28 @@
                     "processors": "",
                     "groups": "PC",
                     "action": "UnderJump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8007cb71-7c94-4930-bdd7-3e2a6a4797d9",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Range",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3de56621-fa4d-446d-9d0a-4a8567450a7b",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Command",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
