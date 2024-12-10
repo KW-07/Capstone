@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class UIManager : MonoBehaviour
 {
-    public bool onUI;
+    private bool onUI;
 
     [SerializeField] private GameObject option;
     [SerializeField] private GameObject information;
@@ -25,7 +25,6 @@ public class UIManager : MonoBehaviour
     // UI 상태 Off
     void OffUI()
     {
-
         option.SetActive(false);
         information.SetActive(false);
     }
@@ -39,18 +38,6 @@ public class UIManager : MonoBehaviour
             uiObject.SetActive(false);
 
             Time.timeScale = 1.0f;
-            //if (uiObject.activeSelf)
-            //{
-            //    onUI = false;
-            //    uiObject.SetActive(false);
-            //}
-            //else
-            //{
-            //    OffUI();
-
-            //    onUI = true;
-            //    uiObject.SetActive(true);
-            //}
         }
         else
         {
@@ -71,7 +58,15 @@ public class UIManager : MonoBehaviour
 
     void OnOption()
     {
-        OffUI();
-        UIOnOff(option);
+        // UI 켜져있으면 전부 끄기
+        if(onUI)
+        {
+            OffUI();
+        }
+        // UI 꺼져있으면 옵션 키기
+        else if(!onUI)
+        {
+            UIOnOff(option);
+        }
     }
 }

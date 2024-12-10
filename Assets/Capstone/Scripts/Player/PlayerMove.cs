@@ -14,13 +14,13 @@ public class PlayerMove : MonoBehaviour
     int jumpcount;
 
     Rigidbody2D rb;
-    private SpriteRenderer sRenderer;
+    Transform playerTransform;
 
-    public bool playerFlipx;
+    bool facingRight = true;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        sRenderer = gameObject.GetComponent<SpriteRenderer>();
+        playerTransform = GetComponent<Transform>();
     }
 
     private void FixedUpdate()
@@ -35,15 +35,13 @@ public class PlayerMove : MonoBehaviour
     void Move()
     {
         // spriteFlip
-        if (dir < 0)
+        if (dir < 0 && facingRight)
         {
-            playerFlipx = true;
-            sRenderer.flipX = true;
+            Flip();
         }
-        else if (dir > 0)
+        else if (dir > 0 && !facingRight)
         {
-            playerFlipx = false;
-            sRenderer.flipX = false;
+            Flip();
         }
 
         rb.velocity = new Vector2(dir * speed, rb.velocity.y);
@@ -70,10 +68,17 @@ public class PlayerMove : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.name == "Ground")
+        if(collision.gameObject.tag == "Ground")
         {
             jumpcount = 0;
             
         }
+    }
+
+    void Flip()
+    {
+        facingRight = !facingRight;
+
+        transform.Rotate(0, 180, 0);
     }
 }
