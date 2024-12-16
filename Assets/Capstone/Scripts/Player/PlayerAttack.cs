@@ -7,9 +7,17 @@ public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private GameObject normalProjectile;
     [SerializeField] private Transform shootPoint;
+
+
+    private void Start()
+    {
+    }
     public void RangeAttack(InputAction.CallbackContext context)
     {
         if (context.performed)
-            Instantiate(normalProjectile, shootPoint.position, shootPoint.rotation);
+            if(PlayerCommand.instance.isCommanding == false)
+            {
+                Instantiate(normalProjectile, shootPoint.position, shootPoint.rotation);
+            }
     }
 }

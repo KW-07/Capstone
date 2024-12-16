@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -9,9 +10,14 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject option;
     [SerializeField] private GameObject information;
-    
+    [SerializeField] private GameObject GO_commandTimeUI;
+    [SerializeField] private Image commandTimeUI;
+
+    private GameObject player;
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
+
         onUI = false;
 
         OffUI();
@@ -19,7 +25,17 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        
+        // Player의 commandingTIme에 따른 commandTimeUI 이미지 변경
+        if(PlayerCommand.instance.isCommanding)
+        {
+            commandTimeUI.fillAmount = PlayerCommand.instance.commandingTime;
+        }
+        else
+        {
+            commandTimeUI.fillAmount = 1;
+        }
+
+        GO_commandTimeUI.transform.position = player.transform.position + new Vector3(0,-1.5f,0);
     }
 
     // UI 상태 Off
