@@ -193,8 +193,6 @@ public class PlayerCommand : MonoBehaviour
                 }
             }
         }
-
-
     }
 
     public void PlayerCommanding(InputAction.CallbackContext context)

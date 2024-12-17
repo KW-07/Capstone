@@ -57,10 +57,6 @@ public class PlayerMove : MonoBehaviour
                 Debug.Log(jumpcount);
             }
         }
-       /* if (!isjump)
-        {
-            isjump = true;
-        }*/
     }
     public void OnDownJump(InputAction.CallbackContext context)
     {
@@ -71,7 +67,6 @@ public class PlayerMove : MonoBehaviour
         if(collision.gameObject.tag == "Ground")
         {
             jumpcount = 0;
-            
         }
     }
 
