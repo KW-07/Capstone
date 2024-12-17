@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "UnderJump",
+                    "name": "DownJump",
                     "type": "Button",
                     "id": "4111f0fb-c58f-4bc4-a6c0-43195b96706d",
                     "expectedControlType": "Button",
@@ -183,7 +183,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
-                    "action": "UnderJump",
+                    "action": "DownJump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
