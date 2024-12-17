@@ -8,18 +8,21 @@ using UnityEngine.UIElements;
 public class PlayerMove : MonoBehaviour
 {
     public float dir;
+    public float teleportdis;
     public float speed = 1f;
     public float jumpPower = 1f;
     bool isjump;
     int jumpcount;
 
     Rigidbody2D rb;
+    CapsuleCollider2D capsule;
     Transform playerTransform;
 
     bool facingRight = true;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        capsule = GetComponent<CapsuleCollider2D>();
         playerTransform = GetComponent<Transform>();
     }
 
@@ -57,21 +60,48 @@ public class PlayerMove : MonoBehaviour
                 Debug.Log(jumpcount);
             }
         }
-       /* if (!isjump)
-        {
-            isjump = true;
-        }*/
     }
     public void OnDownJump(InputAction.CallbackContext context)
     {
-
+        if(context.performed)
+        {
+            StartCoroutine("coDownJump");
+        }
     }
+    IEnumerator coDownJump()
+    {
+        WaitForFixedUpdate wait = new WaitForFixedUpdate();
+        capsule.isTrigger = true;
+        float y = transform.position.y;
+        while (transform.position.y > y - 1.6f && transform.position.y <= y)
+        {
+            yield return wait;
+        }
+        capsule.isTrigger = false;
+       /* while (GameObject.FindWithTag("Platform").GetComponent<Platform>().isPlayer == true)
+        {
+            yield return wait;
+            if(GameObject.FindWithTag("Platform").GetComponent<Platform>().isPlayer == false)
+            {
+                break;
+            }
+        }*/
+    }
+
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            transform.position = new Vector2(dir * teleportdis, rb.position.y);
+            Debug.Log("Dash");
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Ground")
         {
             jumpcount = 0;
-            
         }
     }
 
