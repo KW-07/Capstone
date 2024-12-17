@@ -7,6 +7,8 @@ using UnityEngine.UIElements;
 
 public class PlayerMove : MonoBehaviour
 {
+    public static PlayerMove instance { get; private set; }
+
     public float dir;
     public float teleportdis;
     public float speed = 1f;
@@ -18,12 +20,21 @@ public class PlayerMove : MonoBehaviour
     CapsuleCollider2D capsule;
     Transform playerTransform;
 
-    bool facingRight = true;
-    private void Start()
+    public bool facingRight = true;
+    private void Awake()
     {
+        if (instance != null)
+            Destroy(instance);
+        else instance = this;
+
         rb = GetComponent<Rigidbody2D>();
         capsule = GetComponent<CapsuleCollider2D>();
         playerTransform = GetComponent<Transform>();
+    }
+
+    private void Start()
+    {
+
     }
 
     private void FixedUpdate()
@@ -41,10 +52,12 @@ public class PlayerMove : MonoBehaviour
         if (dir < 0 && facingRight)
         {
             Flip();
+            PlayerCommand.instance.commandTimeUI.GetComponent<Transform>().Rotate(0, 180f, 0);
         }
         else if (dir > 0 && !facingRight)
         {
             Flip();
+            PlayerCommand.instance.commandTimeUI.GetComponent<Transform>().Rotate(0, 180f, 0);
         }
 
         rb.velocity = new Vector2(dir * speed, rb.velocity.y);

@@ -19,7 +19,7 @@ public class PlayerCommand : MonoBehaviour
     public bool isCommanding;
     private bool movePossible; // 합치고 이동관련 스크립트에 넣을 예정
 
-    [SerializeField] private GameObject commandTimeUI;
+    public GameObject commandTimeUI;
 
     private void Awake()
     {
@@ -238,4 +238,5 @@ public class PlayerCommand : MonoBehaviour
             return true;
         }
     }
+
 }
