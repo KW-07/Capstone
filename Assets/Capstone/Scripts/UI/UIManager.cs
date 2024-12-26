@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -9,32 +8,18 @@ public class UIManager : MonoBehaviour
 {
     private bool onUI;
 
-    [Header("Option")]
     [SerializeField] private GameObject option;
-    
-    [Space(10f)]
-    [Header("Information")]
     [SerializeField] private GameObject information;
-    
-    [Space(10f)]
-    [Header("Command")]
     [SerializeField] private GameObject GO_commandTimeUI;
     [SerializeField] private Image commandTimeUI;
 
-    [Space(10f)]
-    [Header("Dialogue")]
-    [SerializeField] private GameObject dialogueTap;
-    [SerializeField] private TMP_Text textLabel;
-    [SerializeField] private DialogueSO textDialogue;
-
     private GameObject player;
-    private TypewriterEffect typewriterEffect;
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        typewriterEffect = GetComponent<TypewriterEffect>();
-        
+
         onUI = false;
+
         OffUI();
     }
 
@@ -58,7 +43,6 @@ public class UIManager : MonoBehaviour
     {
         option.SetActive(false);
         information.SetActive(false);
-        CloseDialogueTap();
     }
 
     // 키에 따른 해당UI 키기/끄기
@@ -100,29 +84,5 @@ public class UIManager : MonoBehaviour
         {
             UIOnOff(option);
         }
-    }
-
-    // Conversation
-    public void ShowDialogue(DialogueSO dialogueSO)
-    {
-        dialogueTap.SetActive(true);
-        StartCoroutine(stepThroughDialogue(dialogueSO));
-    }
-
-    private IEnumerator stepThroughDialogue(DialogueSO dialogueSO)
-    {
-        foreach (string dialogue in dialogueSO.Dialogue)
-        {
-            yield return typewriterEffect.Run(dialogue, textLabel);
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
-        }
-
-        CloseDialogueTap();
-    }
-
-    private void CloseDialogueTap()
-    {
-        dialogueTap.SetActive(false);
-        textLabel.text = string.Empty;
     }
 }
