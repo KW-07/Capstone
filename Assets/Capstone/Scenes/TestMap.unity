@@ -472,7 +472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &428364508
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1420,8 +1420,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f208514f47890340a42f45827d3e2fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalProjectile: {fileID: 262649764427842401, guid: e5570c6dd95bd854eadee69c753436f4, type: 3}
   shootPoint: {fileID: 1179801697}
+  normalProjectile: {fileID: 262649764427842401, guid: e5570c6dd95bd854eadee69c753436f4, type: 3}
+  gDamage: 10
+  sDamage: 30
 --- !u!70 &842622478
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2706,8 +2708,8 @@ MonoBehaviour:
   information: {fileID: 310603389}
   GO_commandTimeUI: {fileID: 1848878098}
   commandTimeUI: {fileID: 1694548786}
-  dialogueTap: {fileID: 0}
-  textLabel: {fileID: 0}
+  dialogueTap: {fileID: 428364507}
+  textLabel: {fileID: 1876791661}
   textDialogue: {fileID: 0}
 --- !u!114 &1247953528
 MonoBehaviour:
