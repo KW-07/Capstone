@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7203882535970309930}
   - component: {fileID: 6534265881767109972}
   - component: {fileID: 2835322532609575620}
-  - component: {fileID: 1323102215352703278}
+  - component: {fileID: -1283792785943531549}
   m_Layer: 10
-  m_Name: Projectile
+  m_Name: ParabolicProjectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,7 +149,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1323102215352703278
+--- !u!114 &-1283792785943531549
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,10 +158,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 262649764427842401}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4e7cad8aed9e844c8eae6d36a7beb06, type: 3}
+  m_Script: {fileID: 11500000, guid: d33eea2d92d4fe04f801c8c46ad80d6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
-  gDamagePer: 1.2
+  bulletspeed: 200
+  gDamagePer: 0
   sDamagePer: 0
   totalDamage: 0
+  destroyTime: 5

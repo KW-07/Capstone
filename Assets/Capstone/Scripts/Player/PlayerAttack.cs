@@ -15,6 +15,12 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float gDamage = 0;
     [SerializeField] private float sDamage = 0;
 
+
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Transform target;
+    [SerializeField] private float projectileMoveSpeed;
+
+
     private void Awake()
     {
         if (instance != null)
@@ -27,10 +33,20 @@ public class PlayerAttack : MonoBehaviour
     public void RangeAttack(InputAction.CallbackContext context)
     {
         if (context.performed)
-            if(PlayerCommand.instance.isCommanding == false)
+        {
+            if (PlayerCommand.instance.isCommanding == false)
             {
-                Instantiate(normalProjectile, shootPoint.position, shootPoint.rotation);
+                // Normal
+                //Instantiate(normalProjectile, shootPoint.position, shootPoint.rotation);
+
+                // Guided
+                //GuidedProjectile projectile = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity).GetComponent<GuidedProjectile>();
+                //projectile.InitializeProjectile(target, projectileMoveSpeed);
+
+                // Parabolic
+
             }
+        }
     }
 
     public float SumDamage(float gDamagePer, float sDamagePer)
