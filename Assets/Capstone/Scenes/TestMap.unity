@@ -1569,10 +1569,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 1179801697}
-  normalProjectile: {fileID: 262649764427842401, guid: e4d6a9665097c5546bbabebc8afe10a3, type: 3}
+  normalProjectile: {fileID: 262649764427842401, guid: e5570c6dd95bd854eadee69c753436f4, type: 3}
   gDamage: 10
   sDamage: 30
-  projectilePrefab: {fileID: 262649764427842401, guid: 05f542bdc383cb4498790405f035b262, type: 3}
+  projectilePrefab: {fileID: 262649764427842401, guid: e4d6a9665097c5546bbabebc8afe10a3, type: 3}
   target: {fileID: 350960989}
   projectileMoveSpeed: 1
 --- !u!70 &842622478

@@ -8,7 +8,7 @@ public class PlayerAttack : MonoBehaviour
 {
     public static PlayerAttack instance { get; private set; }
 
-    [SerializeField] private Transform shootPoint;
+    public Transform shootPoint;
     
     [SerializeField] private GameObject normalProjectile;
 
@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour
 
 
     [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private Transform target;
+    public Transform target;
     [SerializeField] private float projectileMoveSpeed;
 
 
@@ -36,15 +36,7 @@ public class PlayerAttack : MonoBehaviour
         {
             if (PlayerCommand.instance.isCommanding == false)
             {
-                // Normal
-                //Instantiate(normalProjectile, shootPoint.position, shootPoint.rotation);
-
-                // Guided
-                //GuidedProjectile projectile = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity).GetComponent<GuidedProjectile>();
-                //projectile.InitializeProjectile(target, projectileMoveSpeed);
-
-                // Parabolic
-
+                ParabolicProjectileAttack();
             }
         }
     }
@@ -54,5 +46,23 @@ public class PlayerAttack : MonoBehaviour
         float totalDamage = 0;
         totalDamage = (this.gDamage * gDamagePer) + (this.sDamage * sDamagePer);
         return totalDamage;
+    }
+
+
+    // The code at the bottom is related to the attack
+    public void NormalProjectileAttack()
+    {
+        Instantiate(normalProjectile, shootPoint.position, shootPoint.rotation);
+    }
+
+    public void GuidedProjectileAttack()
+    {
+        GuidedProjectile projectile = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity).GetComponent<GuidedProjectile>();
+        projectile.InitializeProjectile(target, projectileMoveSpeed);
+    }
+
+    public void ParabolicProjectileAttack()
+    {
+        Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
     }
 }
