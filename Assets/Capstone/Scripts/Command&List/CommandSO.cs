@@ -11,4 +11,6 @@ public class CommandSO : ScriptableObject
     [Header("A,S,D,W 순서대로 5 ~ 8")]
 
     public int[] command = new int[8];
+
+    public bool isRange;
 }
