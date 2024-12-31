@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Capstone\\Capstone\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|C:\\Capstone\\Capstone\\assets\\capstone\\scripts\\player\\playercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\player\\playercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|c:\\capstone\\capstone\\assets\\capstone\\scripts\\command\u0026list\\commandso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\command\u0026list\\commandso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|c:\\capstone\\capstone\\assets\\capstone\\scripts\\player\\playerattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|C:\\Capstone\\Capstone\\assets\\capstone\\scripts\\player\\playerattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\player\\playerattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|c:\\capstone\\capstone\\assets\\capstone\\scripts\\player\\playercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\player\\playercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|C:\\Capstone\\Capstone\\assets\\capstone\\scripts\\projectile\\parabolicprojectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -46,11 +50,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "CommandSO.cs",
+              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\u0026List\\CommandSO.cs",
+              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Command\u0026List\\CommandSO.cs",
+              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\u0026List\\CommandSO.cs",
+              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Command\u0026List\\CommandSO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvw4AAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-31T11:35:41.649Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "GuidedProjectile.cs",
               "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Projectile\\GuidedProjectile.cs",
               "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Projectile\\GuidedProjectile.cs",
@@ -58,12 +75,11 @@
               "RelativeToolTip": "Assets\\Capstone\\Scripts\\Projectile\\GuidedProjectile.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-26T21:06:41.956Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-26T21:06:41.956Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ParabolicProjectile.cs",
               "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Projectile\\ParabolicProjectile.cs",
               "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Projectile\\ParabolicProjectile.cs",
@@ -71,12 +87,11 @@
               "RelativeToolTip": "Assets\\Capstone\\Scripts\\Projectile\\ParabolicProjectile.cs",
               "ViewState": "AQIAAAsAAAAAAAAAAADwvyYAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-26T22:29:13.492Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-26T22:29:13.492Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "NormalProjectile.cs",
               "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Projectile\\NormalProjectile.cs",
               "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Projectile\\NormalProjectile.cs",
@@ -84,8 +99,7 @@
               "RelativeToolTip": "Assets\\Capstone\\Scripts\\Projectile\\NormalProjectile.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-26T20:53:10.836Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-26T20:53:10.836Z"
             },
             {
               "$type": "Document",
@@ -95,27 +109,27 @@
               "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Player\\PlayerAttack.cs",
               "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Player\\PlayerAttack.cs",
               "RelativeToolTip": "Assets\\Capstone\\Scripts\\Player\\PlayerAttack.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAAwCYAAAAsAAAA",
+              "ViewState": "AQIAACIAAAAAAAAAAAAUwD4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-26T20:54:15.237Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "PlayerCommand.cs",
               "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Player\\PlayerCommand.cs",
               "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Player\\PlayerCommand.cs",
               "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Player\\PlayerCommand.cs",
               "RelativeToolTip": "Assets\\Capstone\\Scripts\\Player\\PlayerCommand.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAAwBwAAAAFAAAA",
+              "ViewState": "AQIAABcAAAAAAAAAAMBbwBwAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-17T11:41:22.329Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "DialogueSO.cs",
               "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\DialogueList\\DialogueSO.cs",
               "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\DialogueList\\DialogueSO.cs",
@@ -127,7 +141,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "TypewriterEffect.cs",
               "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Conversation\\TypewriterEffect.cs",
               "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Conversation\\TypewriterEffect.cs",
@@ -139,7 +153,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "PlayerMove.cs",
               "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Player\\PlayerMove.cs",
               "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Player\\PlayerMove.cs",
@@ -151,7 +165,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "UIManager.cs",
               "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\UI\\UIManager.cs",
               "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\UI\\UIManager.cs",
