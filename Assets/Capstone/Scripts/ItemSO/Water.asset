@@ -19,3 +19,4 @@ MonoBehaviour:
   itemImg: {fileID: 21300000, guid: 1ce1909ffafc0bc488b76d11874b3600, type: 3}
   canStack: 1
   maxStackAmount: 50
+  consumables: []
