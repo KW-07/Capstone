@@ -60,7 +60,7 @@ public class UIManager : MonoBehaviour
 
         GO_commandTimeUI.transform.position = player.transform.position + new Vector3(0,-1.5f,0);
 
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.L) && !isConversaiton)
             showDialogue(testDialogue);
     }
 
@@ -80,6 +80,12 @@ public class UIManager : MonoBehaviour
         foreach(string dialogue in dialogueSO.Dialogue)
         {
             yield return typewriterEffect.Run(dialogue, textLabel);
+
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                CloseConversaiotnBox();
+                isConversaiton = false;
+            }
             // space 입력 후 다음 대화 진행
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
         }
