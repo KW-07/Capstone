@@ -82,7 +82,10 @@ public class PlayerMove : MonoBehaviour
     {
         if(context.performed)
         {
-            StartCoroutine("coDownJump");
+            if(!PlayerCommand.instance.isCommanding)
+            {
+                StartCoroutine("coDownJump");
+            }
         }
     }
     IEnumerator coDownJump()
