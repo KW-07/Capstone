@@ -48,19 +48,23 @@ public class PlayerMove : MonoBehaviour
     }
     void Move()
     {
-        // spriteFlip
-        if (dir < 0 && facingRight)
+        // 대화 중 움직임 제어
+        if(UIManager.instance.isConversaiton != true)
         {
-            Flip();
-            PlayerCommand.instance.commandTimeUI.GetComponent<Transform>().Rotate(0, 180f, 0);
-        }
-        else if (dir > 0 && !facingRight)
-        {
-            Flip();
-            PlayerCommand.instance.commandTimeUI.GetComponent<Transform>().Rotate(0, 180f, 0);
-        }
+            // spriteFlip
+            if (dir < 0 && facingRight)
+            {
+                Flip();
+                PlayerCommand.instance.commandTimeUI.GetComponent<Transform>().Rotate(0, 180f, 0);
+            }
+            else if (dir > 0 && !facingRight)
+            {
+                Flip();
+                PlayerCommand.instance.commandTimeUI.GetComponent<Transform>().Rotate(0, 180f, 0);
+            }
 
-        rb.velocity = new Vector2(dir * speed, rb.velocity.y);
+            rb.velocity = new Vector2(dir * speed, rb.velocity.y);
+        }
     }
     public void OnJump(InputAction.CallbackContext context)
     {

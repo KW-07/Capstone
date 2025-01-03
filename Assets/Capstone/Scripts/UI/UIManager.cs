@@ -3,22 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    private bool onUI;
+    public static UIManager instance { get; private set; }
+
+    private TypewriterEffect typewriterEffect;
+    private GameObject player;
 
     [SerializeField] private GameObject option;
     [SerializeField] private GameObject information;
     [SerializeField] private GameObject GO_commandTimeUI;
     [SerializeField] private Image commandTimeUI;
 
-    private GameObject player;
-    void Start()
+    [Space(10f)]
+    [SerializeField] private GameObject conversationBox;
+    [SerializeField] private GameObject letterBox;
+    [SerializeField] private TMP_Text textLabel;
+    [SerializeField] private DialogueSO testDialogue;
+
+
+    private bool onUI;
+    public bool isConversaiton;
+
+    private void Awake()
+    {
+        if (instance != null)
+            Destroy(instance);
+        else instance = this;
+    }
+
+        void Start()
     {
         player = GameObject.FindWithTag("Player");
+        typewriterEffect = GetComponent<TypewriterEffect>();
 
+        isConversaiton = false;
         onUI = false;
+        CloseConversaiotnBox();
 
         OffUI();
     }
@@ -36,6 +59,40 @@ public class UIManager : MonoBehaviour
         }
 
         GO_commandTimeUI.transform.position = player.transform.position + new Vector3(0,-1.5f,0);
+
+        if (Input.GetKeyDown(KeyCode.L))
+            showDialogue(testDialogue);
+    }
+
+    // 대화 시작
+    public void showDialogue(DialogueSO dialogueSO)
+    {
+        conversationBox.SetActive(true);
+        letterBox.SetActive(true);
+        isConversaiton = true;
+
+        StartCoroutine(StepThroughDialogue(dialogueSO));
+    }
+
+    // 대화SO 길이만큼 실행
+    private IEnumerator StepThroughDialogue(DialogueSO dialogueSO)
+    {
+        foreach(string dialogue in dialogueSO.Dialogue)
+        {
+            yield return typewriterEffect.Run(dialogue, textLabel);
+            // space 입력 후 다음 대화 진행
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+        }
+
+        CloseConversaiotnBox();
+    }
+
+    private void CloseConversaiotnBox()
+    {
+        conversationBox.SetActive(false);
+        letterBox.SetActive(false);
+        textLabel.text = string.Empty;
+        isConversaiton = false;
     }
 
     // UI 상태 Off
