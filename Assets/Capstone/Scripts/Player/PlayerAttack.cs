@@ -12,16 +12,9 @@ public class PlayerAttack : MonoBehaviour
     
     [SerializeField] private GameObject normalProjectile;
 
-    [SerializeField] private float gDamage = 0;
-    [SerializeField] private float sDamage = 0;
-
     public Transform pos;
     public Vector2 boxSize;
-    public float damage;
-
-    private float curTime;
-    private float maxTime;
-
+    public int damage;
 
     [SerializeField] private GameObject projectilePrefab;
     public Transform target;
@@ -37,6 +30,31 @@ public class PlayerAttack : MonoBehaviour
     private void Start()
     {
     }
+
+    // Melee
+    public void OnMeleeAttack(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(pos.position, boxSize, 0);
+            foreach (Collider2D collider in collider2Ds)
+            {
+                if (collider.tag == "Enemy")
+                {
+
+                }
+            }
+            Debug.Log("attack");
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(pos.position, boxSize);
+    }
+
+    // Range
     public void RangeAttack(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -48,14 +66,7 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    public float SumDamage(float gDamagePer, float sDamagePer)
-    {
-        float totalDamage = 0;
-        totalDamage = (this.gDamage * gDamagePer) + (this.sDamage * sDamagePer);
-        return totalDamage;
-    }
-
-
+    
     // The code at the bottom is related to the attack
     public void NormalProjectileAttack()
     {
@@ -73,35 +84,5 @@ public class PlayerAttack : MonoBehaviour
         Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
     }
 
-    public void OnMeleeAttack(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(pos.position, boxSize, 0);
-            foreach (Collider2D collider in collider2Ds)
-            {
-                if (collider.tag == "Enemy")
-                {
-
-                }
-            }    
-            Debug.Log("attack");
-        }
-    }
-    public IEnumerator ComboAttackTimer()
-    {
-        curTime = 0;
-        maxTime = 2;
-        while(curTime > maxTime)
-        {
-            curTime = curTime + Time.deltaTime;
-            yield return null;
-        }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(pos.position, boxSize);
-    }
+    
 }
