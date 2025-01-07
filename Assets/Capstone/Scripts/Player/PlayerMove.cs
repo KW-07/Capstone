@@ -105,13 +105,13 @@ public class PlayerMove : MonoBehaviour
     {
         if(context.performed)
         {
-            if (dir == 0)
+            if (facingRight)
             {
                 transform.position = new Vector2(teleportdis + rb.position.x, rb.position.y);
             }
             else
             {
-                transform.position = new Vector2(dir * teleportdis + rb.position.x, rb.position.y);
+                transform.position = new Vector2((teleportdis * -1) + rb.position.x, rb.position.y);
             }
             Debug.Log("Dash");
         }

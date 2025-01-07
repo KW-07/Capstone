@@ -28,8 +28,6 @@ public class GameManager : MonoBehaviour
 
     [Header("Item")]
     public Item[] item;
-    
-
 
     private void Awake()
     {

@@ -4939,7 +4939,6 @@ GameObject:
   - component: {fileID: 842622478}
   - component: {fileID: 842622474}
   - component: {fileID: 842622477}
-  - component: {fileID: 842622481}
   - component: {fileID: 842622480}
   - component: {fileID: 842622479}
   m_Layer: 6
@@ -5321,18 +5320,6 @@ MonoBehaviour:
   commandingTime: 1
   isCommanding: 0
   commandTimeUI: {fileID: 1848878098}
---- !u!114 &842622481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 842622470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b48cee0c4b53fe44aa0258162feaa731, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &849298292
 GameObject:
   m_ObjectHideFlags: 0
@@ -13174,6 +13161,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreasureChest
       objectReference: {fileID: 0}
+    - target: {fileID: 4501586186516776854, guid: 1f1b86831c660de4fbab65f5722629dc, type: 3}
+      propertyPath: numDropItem
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501586186516776854, guid: 1f1b86831c660de4fbab65f5722629dc, type: 3}
+      propertyPath: item.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501586186516776854, guid: 1f1b86831c660de4fbab65f5722629dc, type: 3}
+      propertyPath: item.Array.data[3]
+      value: 
+      objectReference: {fileID: 7631510594838303999, guid: 219a5cc6239f7404895dc560fb9ce82d, type: 3}
+    - target: {fileID: 4501586186516776854, guid: 1f1b86831c660de4fbab65f5722629dc, type: 3}
+      propertyPath: item.Array.data[4]
+      value: 
+      objectReference: {fileID: 7631510594838303999, guid: 219a5cc6239f7404895dc560fb9ce82d, type: 3}
+    - target: {fileID: 4501586186516776854, guid: 1f1b86831c660de4fbab65f5722629dc, type: 3}
+      propertyPath: item.Array.data[5]
+      value: 
+      objectReference: {fileID: 7631510594838303999, guid: 219a5cc6239f7404895dc560fb9ce82d, type: 3}
+    - target: {fileID: 4501586186516776854, guid: 1f1b86831c660de4fbab65f5722629dc, type: 3}
+      propertyPath: item.Array.data[6]
+      value: 
+      objectReference: {fileID: 7631510594838303999, guid: 219a5cc6239f7404895dc560fb9ce82d, type: 3}
+    - target: {fileID: 4501586186516776854, guid: 1f1b86831c660de4fbab65f5722629dc, type: 3}
+      propertyPath: item.Array.data[7]
+      value: 
+      objectReference: {fileID: 7631510594838303999, guid: 219a5cc6239f7404895dc560fb9ce82d, type: 3}
+    - target: {fileID: 4501586186516776854, guid: 1f1b86831c660de4fbab65f5722629dc, type: 3}
+      propertyPath: item.Array.data[8]
+      value: 
+      objectReference: {fileID: 7631510594838303999, guid: 219a5cc6239f7404895dc560fb9ce82d, type: 3}
+    - target: {fileID: 4501586186516776854, guid: 1f1b86831c660de4fbab65f5722629dc, type: 3}
+      propertyPath: item.Array.data[9]
+      value: 
+      objectReference: {fileID: 7631510594838303999, guid: 219a5cc6239f7404895dc560fb9ce82d, type: 3}
     - target: {fileID: 8028236836999227952, guid: 1f1b86831c660de4fbab65f5722629dc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5
@@ -13275,6 +13298,10 @@ PrefabInstance:
       propertyPath: respawnPoint
       value: 
       objectReference: {fileID: 1969744484}
+    - target: {fileID: 3043664458429676622, guid: 1c8df20b359fefd43b369b62fd90460d, type: 3}
+      propertyPath: item.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5659069760929112067, guid: 1c8df20b359fefd43b369b62fd90460d, type: 3}
       propertyPath: m_Name
       value: GameManager

@@ -160,10 +160,10 @@ public class UIManager : MonoBehaviour
 
     void ShopConfiguration()
     {
-        if(productGrid.transform.childCount != numProducts)
+        if(productGrid.transform.childCount < numProducts)
         {
             GameObject instance = Instantiate(shopItemUIObject);
-            instance.transform.parent = productGrid.transform;
+            instance.transform.SetParent(productGrid.transform);
             instance.name = "Product";
         }
     }

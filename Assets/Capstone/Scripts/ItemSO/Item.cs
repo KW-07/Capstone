@@ -31,7 +31,7 @@ public class ItemConsumable
 public class Item : ScriptableObject
 {
     public ItemType itemType;
-    public Synergy synergy;
+    public Synergy[] synergy;
     public string itemName;
     public string description;  
     public Sprite itemImg;
