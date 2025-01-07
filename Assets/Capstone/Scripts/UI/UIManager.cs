@@ -12,20 +12,27 @@ public class UIManager : MonoBehaviour
     private TypewriterEffect typewriterEffect;
     private GameObject player;
 
+    [Header("Option/Information")]
     [SerializeField] private GameObject option;
     [SerializeField] private GameObject information;
+
+    [Header("Command")]
     [SerializeField] private GameObject GO_commandTimeUI;
     [SerializeField] private Image commandTimeUI;
 
-    [Space(10f)]
+    [Header("Conversation")]
     [SerializeField] private GameObject conversationBox;
     [SerializeField] private GameObject letterBox;
     [SerializeField] private TMP_Text textLabel;
     [SerializeField] private DialogueSO testDialogue;
+    public bool isConversaiton;
 
+    [Header("Shop")]
+    [SerializeField] private int numProducts = 18;
+    [SerializeField] private GameObject productGrid;
+    [SerializeField] private GameObject shopItemUIObject;
 
     private bool onUI;
-    public bool isConversaiton;
 
     private void Awake()
     {
@@ -62,6 +69,8 @@ public class UIManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.L) && !isConversaiton)
             showDialogue(testDialogue);
+
+        ShopConfiguration();
     }
 
     // 대화 시작
@@ -146,6 +155,16 @@ public class UIManager : MonoBehaviour
         else if(!onUI)
         {
             UIOnOff(option);
+        }
+    }
+
+    void ShopConfiguration()
+    {
+        if(productGrid.transform.childCount != numProducts)
+        {
+            GameObject instance = Instantiate(shopItemUIObject);
+            instance.transform.parent = productGrid.transform;
+            instance.name = "Product";
         }
     }
 }

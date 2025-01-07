@@ -135,4 +135,5 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   heightY: 1.5
-  popDuration: 1
+  popDuration: 0.8
+  posX: 0

@@ -16,7 +16,7 @@ public class NormalProjectile : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        totalDamage = PlayerAttack.instance.SumDamage(gDamagePer, sDamagePer);
+        //totalDamage = PlayerAttack.instance.SumDamage(gDamagePer, sDamagePer);
 
         rb.velocity = transform.right * speed;
     }
