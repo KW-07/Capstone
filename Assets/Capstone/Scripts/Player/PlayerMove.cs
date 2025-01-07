@@ -69,6 +69,7 @@ public class PlayerMove : MonoBehaviour
             if (jumpcount < 2)
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+                isjump = true;
                 jumpcount++;
                 Debug.Log(jumpcount);
             }
@@ -76,7 +77,7 @@ public class PlayerMove : MonoBehaviour
     }
     public void OnDownJump(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if(context.performed && GameObject.FindWithTag("Platform").GetComponent<Platform>().isPlayer == true)
         {
             StartCoroutine("coDownJump");
         }
@@ -91,29 +92,29 @@ public class PlayerMove : MonoBehaviour
             yield return wait;
         }
         capsule.isTrigger = false;
-       /* while (GameObject.FindWithTag("Platform").GetComponent<Platform>().isPlayer == true)
-        {
-            yield return wait;
-            if(GameObject.FindWithTag("Platform").GetComponent<Platform>().isPlayer == false)
-            {
-                break;
-            }
-        }*/
     }
 
     public void OnDash(InputAction.CallbackContext context)
     {
         if(context.performed)
         {
-            transform.position = new Vector2(dir * teleportdis, rb.position.y);
+            if (dir == 0)
+            {
+                transform.position = new Vector2(teleportdis + rb.position.x, rb.position.y);
+            }
+            else
+            {
+                transform.position = new Vector2(dir * teleportdis + rb.position.x, rb.position.y);
+            }
             Debug.Log("Dash");
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Ground")
+        if(collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Platform")
         {
+            isjump = false;
             jumpcount = 0;
         }
     }

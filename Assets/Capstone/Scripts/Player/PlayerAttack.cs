@@ -17,7 +17,11 @@ public class PlayerAttack : MonoBehaviour
 
     public Transform pos;
     public Vector2 boxSize;
-    public int damage;
+    public float damage;
+
+    private float curTime;
+    private float maxTime;
+
 
     [SerializeField] private GameObject projectilePrefab;
     public Transform target;
@@ -82,6 +86,16 @@ public class PlayerAttack : MonoBehaviour
                 }
             }    
             Debug.Log("attack");
+        }
+    }
+    public IEnumerator ComboAttackTimer()
+    {
+        curTime = 0;
+        maxTime = 2;
+        while(curTime > maxTime)
+        {
+            curTime = curTime + Time.deltaTime;
+            yield return null;
         }
     }
 

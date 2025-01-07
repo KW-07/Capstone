@@ -787,7 +787,7 @@ Transform:
   m_GameObject: {fileID: 510639221}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.75, y: -0.49, z: 0}
+  m_LocalPosition: {x: -8.47, y: -0.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1572,6 +1572,9 @@ MonoBehaviour:
   normalProjectile: {fileID: 262649764427842401, guid: e5570c6dd95bd854eadee69c753436f4, type: 3}
   gDamage: 10
   sDamage: 30
+  pos: {fileID: 1179801697}
+  boxSize: {x: 2, y: 2}
+  damage: 0
   projectilePrefab: {fileID: 262649764427842401, guid: e4d6a9665097c5546bbabebc8afe10a3, type: 3}
   target: {fileID: 350960989}
   projectileMoveSpeed: 1
@@ -2617,7 +2620,6 @@ GameObject:
   - component: {fileID: 1247953523}
   - component: {fileID: 1247953528}
   - component: {fileID: 1247953527}
-  - component: {fileID: 1247953529}
   m_Layer: 5
   m_Name: UI
   m_TagString: UI
@@ -2759,18 +2761,6 @@ MonoBehaviour:
   m_DefaultActionMap: UI
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1247953529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1247953522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b95fa9c5f1c058428d52e07cf5324ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1254467271
 GameObject:
   m_ObjectHideFlags: 0
