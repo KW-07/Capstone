@@ -20,6 +20,8 @@ public class PlayerAttack : MonoBehaviour
     public Transform target;
     [SerializeField] private float projectileMoveSpeed;
 
+    public GameObject commandObject = null;
+
 
     private void Awake()
     {
@@ -61,11 +63,18 @@ public class PlayerAttack : MonoBehaviour
         {
             if (GameManager.instance.isCommand == false)
             {
-                ParabolicProjectileAttack();
+                NormalProjectileAttack();
             }
         }
     }
 
+    public void CommandAttack()
+    {
+        if(commandObject != null)
+        {
+            Instantiate(commandObject, shootPoint.position, shootPoint.rotation);
+        }
+    }
     
     // The code at the bottom is related to the attack
     public void NormalProjectileAttack()
@@ -83,6 +92,4 @@ public class PlayerAttack : MonoBehaviour
     {
         Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
     }
-
-    
 }

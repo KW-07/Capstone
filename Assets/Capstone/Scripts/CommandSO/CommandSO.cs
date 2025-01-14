@@ -12,5 +12,5 @@ public class CommandSO : ScriptableObject
 
     public int[] command = new int[8];
 
-    public bool isRange;
+    public GameObject commandObject;
 }

@@ -140,7 +140,7 @@ public class PlayerCommand : MonoBehaviour
                 }
 
                 // 커맨드 시간 초과 시
-                if (commandingTime < 0)
+                if (commandingTime <= 0)
                 {
                     int sum = 0;
                     bool commandCount = false;
@@ -169,7 +169,10 @@ public class PlayerCommand : MonoBehaviour
                             if (Enumerable.SequenceEqual(pCommand, CommandList.instance.commandList[i].command))
                             {
                                 Debug.Log("커맨드 : " + CommandList.instance.commandList[i].commandName);
+                                PlayerAttack.instance.commandObject = CommandList.instance.commandList[i].commandObject;
                                 commandCount = true;
+
+                                PlayerAttack.instance.CommandAttack();
                                 break;
                             }
                             else

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   commandName: "\uC8FD\uC5B4\uB77C \uB0A8\uAE30\uB355!"
   command: 0100000002000000030000000100000000000000000000000000000000000000
+  commandObject: {fileID: 262649764427842401, guid: e4d6a9665097c5546bbabebc8afe10a3, type: 3}
