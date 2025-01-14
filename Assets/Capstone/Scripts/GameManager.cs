@@ -27,7 +27,10 @@ public class GameManager : MonoBehaviour
     private float respawnTime = 2f;
 
     [Header("Item")]
-    public Item[] item;
+    public Dictionary<ItemType, List<Item>> equipmentInventory;
+    private Dictionary<ItemType, int> maxEquipmentCount;
+
+    private QuickSlot quickSlot;
 
     private void Awake()
     {
@@ -39,11 +42,63 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         isPlayerLive = true;
+        equipmentInventory = new Dictionary<ItemType, List<Item>>
+        { 
+            { ItemType.Gear, new List<Item>() },
+            { ItemType.Talisman, new List<Item>() },
+            { ItemType.Essence, new List<Item>() }         
+        };
+        maxEquipmentCount = new Dictionary<ItemType, int>
+        {
+            { ItemType.Gear , 6 },
+            { ItemType.Talisman , 1 },
+            { ItemType.Essence , 1 }
+        };
+
+        quickSlot = gameObject.AddComponent<QuickSlot>();
     }
 
-    private void Update()
+    public void EquipItem(Item item)
     {
-        
+        ItemType type = item.itemType;
+        if (type == ItemType.Consumable)
+        {
+            for (int i = 1; i < quickSlot.maxQuickSlot; i++) 
+                {
+                    if (quickSlot.Itemslot[i] == null)
+                    {
+                        quickSlot.RegisterItem(item);
+                        return;
+                    }
+                }
+        }
+        else if (equipmentInventory.ContainsKey(type))
+        {
+            if (equipmentInventory[type].Count >= maxEquipmentCount[type])
+            {
+                Debug.Log("inventory is full");
+                return;
+            }
+            equipmentInventory[type].Add(item);
+            Debug.Log($"Equipped {item.itemName} in {type} slot");
+
+        }
+        else
+        {
+            Debug.Log("out of type");
+        }
+    }
+    public void UnEquipItem(ItemType type, Item item)
+    {
+        if (equipmentInventory.ContainsKey(type) && equipmentInventory[type].Contains(item))
+        {
+            equipmentInventory[type].Remove(item);
+            Debug.Log($"Unequipped {item.itemName} from {type} slot");
+        }
+        else
+        {
+            Debug.Log("error"); 
+        }
     }
 
     public void GameOver()

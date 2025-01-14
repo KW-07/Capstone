@@ -103,7 +103,7 @@
                     "name": "",
                     "id": "810e8355-19aa-4aa1-b7ef-bfcae181592a",
                     "path": "<Keyboard>/q",
-                    "interactions": "Hold,Press",
+                    "interactions": "Hold(duration=0.3,pressPoint=0.4),Press(pressPoint=0.4)",
                     "processors": "",
                     "groups": "PC",
                     "action": "QuickSlot",
