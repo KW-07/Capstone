@@ -7,6 +7,7 @@ using UnityEngine;
 public class TreasureChest : MonoBehaviour
 {
     [SerializeField] private bool isLootable = false;
+    [SerializeField] private bool isExist = true;
 
     [SerializeField] private GameObject[] item;
     [SerializeField] private int numDropItem;
@@ -21,6 +22,8 @@ public class TreasureChest : MonoBehaviour
 
     private void Start()
     {
+        isExist = true;
+
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         firstItemPosX = this.gameObject.transform.position.x + 0.6f * (1 - numDropItem);
@@ -42,12 +45,13 @@ public class TreasureChest : MonoBehaviour
             spriteRenderer.color = Color.gray;
         }
 
-        if(isLootable)
+        if(isLootable && isExist)
         {
             // 상자 파밍
             if(Input.GetKeyDown(KeyCode.A))
             {
                 isLootable = false;
+                isExist = false;
                 // Chest Open
                 this.gameObject.GetComponent<SpriteRenderer>().sprite = null;
                 Debug.Log("ChestOpen");

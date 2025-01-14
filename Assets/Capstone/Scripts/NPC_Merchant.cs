@@ -25,7 +25,7 @@ public class NPC_Merchant : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.Escape) && GameManager.instance.isShop)
+        if(Input.GetKeyDown(KeyCode.Escape) && GameManager.instance.isShop && !UIManager.instance.buyTapOnOff)
         {
             GameManager.instance.isShop = false;
             storeUI.SetActive(false);

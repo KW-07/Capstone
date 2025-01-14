@@ -50,8 +50,8 @@ public class UIManager : MonoBehaviour
 
     [Space(10f)]
     // Buy
-    [SerializeField] GameObject buyTap;
-    [SerializeField] bool buyTapOnOff;
+    [SerializeField] private GameObject buyTapGameObject;
+    [SerializeField] public bool buyTapOnOff;
 
     private bool onUI;
 
@@ -62,7 +62,7 @@ public class UIManager : MonoBehaviour
         else instance = this;
     }
 
-        void Start()
+    void Start()
     {
         player = GameObject.FindWithTag("Player");
         typewriterEffect = GetComponent<TypewriterEffect>();
@@ -85,6 +85,11 @@ public class UIManager : MonoBehaviour
         productGrid.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
 
         buyTapOnOff = false;
+
+        for(int i=0;i< items.Length; i++)
+        {
+            productGrid.transform.GetChild(i).Find("BuyTap").gameObject.SetActive(false);
+        }
     }
 
     void Update()
@@ -357,35 +362,35 @@ public class UIManager : MonoBehaviour
 
     void BuyTap()
     {
-        buyTap = selectedGameobject.transform.Find("BuyTap").gameObject;
+        buyTapGameObject = selectedGameobject.transform.Find("BuyTap").gameObject;
+        bool isprocessed = false;
 
-        if(GameManager.instance.isShop && selectedGameobject != null)
+        if(GameManager.instance.isShop)
         {
-            if(Input.GetKeyDown(KeyCode.Return))
+            if(Input.GetKeyDown(KeyCode.Space) && !buyTapGameObject.activeSelf && !isprocessed)
             {
                 buyTapOnOff = true;
+                buyTapGameObject.SetActive(buyTapOnOff);
+
+                isprocessed = true;
             }
-        }
 
-        if(buyTapOnOff)
-        {
-            buyTap.SetActive(true);
+            if(Input.GetKeyUp(KeyCode.Space) && buyTapGameObject.activeSelf && isprocessed)
+            {
+                isprocessed = false;
+            }
 
-            if(Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Space) && buyTapGameObject.activeSelf && !isprocessed)
             {
                 // 해당 아이템의 돈 만큼 빼고 인벤에 넣을 것
                 buyTapOnOff = false;
-                buyTap.SetActive(false);
+                buyTapGameObject.SetActive(buyTapOnOff);
             }
-            else if(Input.GetKeyDown(KeyCode.Escape))
+            else if (Input.GetKeyDown(KeyCode.Escape))
             {
                 buyTapOnOff = false;
-                buyTap.SetActive(false);
+                buyTapGameObject.SetActive(buyTapOnOff);
             }
-        }
-        else
-        {
-            buyTap.SetActive(false);
         }
     }
 }
