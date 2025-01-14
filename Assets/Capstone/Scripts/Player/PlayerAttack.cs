@@ -59,7 +59,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (context.performed)
         {
-            if (PlayerCommand.instance.isCommanding == false)
+            if (GameManager.instance.isCommand == false)
             {
                 ParabolicProjectileAttack();
             }

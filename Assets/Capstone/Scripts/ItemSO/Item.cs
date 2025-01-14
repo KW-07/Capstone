@@ -20,6 +20,7 @@ public enum ConsumableType //진짜 이름 짓는게 최대 난제
     Health,
     Stamina,
 }
+
 [Serializable]
 public class ItemConsumable
 {
@@ -43,4 +44,7 @@ public class Item : ScriptableObject
     [Header("Consumable")]
     public ItemConsumable[] consumables;
 
+    [Header("Store")]
+    public Sprite priceType;
+    public int priceAmount;
 }
