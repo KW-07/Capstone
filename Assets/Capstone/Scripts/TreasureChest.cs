@@ -52,15 +52,6 @@ public class TreasureChest : MonoBehaviour
                 this.gameObject.GetComponent<SpriteRenderer>().sprite = null;
                 Debug.Log("ChestOpen");
 
-                //foreach(GameObject i in item)
-                //{
-                //    GameObject chestItem = Instantiate(i);
-                //    chestItem.transform.SetParent(itemArray.transform);
-                //    chestItem.gameObject.GetComponent<ItemDrop>().posX = firstItemPosX;
-
-                //    firstItemPosX += 1.2f;
-                //}
-
                 for(int i=0;i< numDropItem; i++)
                 {
                     // »ý¼º

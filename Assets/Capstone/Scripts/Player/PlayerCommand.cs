@@ -15,8 +15,6 @@ public class PlayerCommand : MonoBehaviour
     [SerializeField]private float inCommandingTimeScale;
     float initTime = 0;
     public float commandingTime = 0;
-
-    public bool isCommanding;
     private bool movePossible; // 합치고 이동관련 스크립트에 넣을 예정
 
     public GameObject commandTimeUI;
@@ -30,9 +28,8 @@ public class PlayerCommand : MonoBehaviour
     private void Start()
     {
         initTime = 0;
-        isCommanding = false;
+        GameManager.instance.isCommand = false;
         //commandTimeUI.SetActive(false);
-
         CommandInitialization(pCommand);
     }
 
@@ -40,7 +37,7 @@ public class PlayerCommand : MonoBehaviour
     {
         
         // 커맨드 시작 시
-        if (isCommanding)
+        if (GameManager.instance.isCommand)
         {
             if(initTime == 0)
             {
@@ -148,7 +145,7 @@ public class PlayerCommand : MonoBehaviour
                     int sum = 0;
                     bool commandCount = false;
 
-                    isCommanding = BooleanOnOff(isCommanding);
+                    GameManager.instance.isCommand = BooleanOnOff(GameManager.instance.isCommand);
 
                     for (int i=0;i<pCommand.Length;i++)
                     {
@@ -199,22 +196,26 @@ public class PlayerCommand : MonoBehaviour
     {
         if (context.performed)
         {
-            isCommanding = BooleanOnOff(isCommanding);
-
-            isCommanding = true;
-
-            if (isCommanding)
+            // 아무 상황이 아닐 경우에만 커맨드 실행
+            if (GameManager.instance.nothingState())
             {
-                commandTimeUI.SetActive(true);
-                commandingTime = limitCommandTime;
-                Time.timeScale = inCommandingTimeScale;
-            }
-            else
-            {
-                commandingTime = limitCommandTime;
-                Time.timeScale = 1.0f;
-                commandTimeUI.SetActive(false);
+                GameManager.instance.isCommand = BooleanOnOff(GameManager.instance.isCommand);
 
+                GameManager.instance.isCommand = true;
+
+                if (GameManager.instance.isCommand)
+                {
+                    commandTimeUI.SetActive(true);
+                    commandingTime = limitCommandTime;
+                    Time.timeScale = inCommandingTimeScale;
+                }
+                else
+                {
+                    commandingTime = limitCommandTime;
+                    Time.timeScale = 1.0f;
+                    commandTimeUI.SetActive(false);
+
+                }
             }
         }
     }

@@ -7,7 +7,6 @@ public class NPC_Merchant : MonoBehaviour
     [SerializeField] private GameObject storeUI;
 
     private bool isInteractable;
-
     private void Start()
     {
         isInteractable = false;
@@ -18,16 +17,17 @@ public class NPC_Merchant : MonoBehaviour
     {
         if(isInteractable)
         {
-            if(Input.GetKeyDown(KeyCode.A) && !UIManager.instance.isConversaiton)
+            if(Input.GetKeyDown(KeyCode.A) && !GameManager.instance.isShop)
             {
-                UIManager.instance.isConversaiton = true;
+                GameManager.instance.isShop = true;
+                UIManager.instance.selectedIndex = 0;
                 storeUI.SetActive(true);
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.Escape) && UIManager.instance.isConversaiton)
+        if(Input.GetKeyDown(KeyCode.Escape) && GameManager.instance.isShop)
         {
-            UIManager.instance.isConversaiton = false;
+            GameManager.instance.isShop = false;
             storeUI.SetActive(false);
         }
     }

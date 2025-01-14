@@ -37,9 +37,15 @@ public class PlayerMove : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+
+    }
+
     private void FixedUpdate()
     {
         Move();
+
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -49,7 +55,7 @@ public class PlayerMove : MonoBehaviour
     void Move()
     {
         // 대화 중 움직임 제어
-        if(UIManager.instance.isConversaiton != true)
+        if(GameManager.instance.nothingState())
         {
             // spriteFlip
             if (dir < 0 && facingRight)
@@ -70,12 +76,15 @@ public class PlayerMove : MonoBehaviour
     {
         if(context.performed)
         {
-            if (jumpcount < 2)
+            if (GameManager.instance.nothingState())
             {
-                rb.velocity = new Vector2(rb.velocity.x, jumpPower);
-                isjump = true;
-                jumpcount++;
-                Debug.Log(jumpcount);
+                if (jumpcount < 2)
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+                    isjump = true;
+                    jumpcount++;
+                    Debug.Log(jumpcount);
+                }
             }
         }
     }
@@ -83,7 +92,7 @@ public class PlayerMove : MonoBehaviour
     {
         if(context.performed && GameObject.FindWithTag("Platform").GetComponent<Platform>().isPlayer == true)
         {
-            if(!PlayerCommand.instance.isCommanding)
+            if(GameManager.instance.nothingState())
             {
                 StartCoroutine("coDownJump");
             }

@@ -29,6 +29,25 @@ public class GameManager : MonoBehaviour
     [Header("Item")]
     public Item[] item;
 
+    [Header("State")]
+    public bool isConversation;
+    public bool isCommand;
+    public bool isShop;
+
+    [Header("SynergySprite")]
+    public Sprite synergy_Sprite_A;
+    public Sprite synergy_Sprite_B;
+    public Sprite synergy_Sprite_C;
+    public Sprite synergy_Sprite_D;
+    public Sprite synergy_Sprite_E;
+
+    [Header("SpriteEffect")]
+    public string synergy_Effect_A;
+    public string synergy_Effect_B;
+    public string synergy_Effect_C;
+    public string synergy_Effect_D;
+    public string synergy_Effect_E;
+
     private void Awake()
     {
         if (instance != null)
@@ -44,6 +63,14 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         
+    }
+
+    public bool nothingState()
+    {
+        if (!isConversation && !isCommand && !isShop)
+            return true;
+        else
+            return false;
     }
 
     public void GameOver()

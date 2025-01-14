@@ -15,7 +15,7 @@ public class CameraMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (UIManager.instance.isConversaiton)
+        if (GameManager.instance.isConversation)
         {
             c_VCam.m_Lens.OrthographicSize = 8;
         }
@@ -23,5 +23,6 @@ public class CameraMove : MonoBehaviour
         {
             c_VCam.m_Lens.OrthographicSize = 10;
         }
+
     }
 }
