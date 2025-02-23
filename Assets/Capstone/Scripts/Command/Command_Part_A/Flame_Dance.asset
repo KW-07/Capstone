@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 389789b768fb75f42bf9e50caa59139d, type: 3}
-  m_Name: TestCommand2
+  m_Name: Flame_Dance
   m_EditorClassIdentifier: 
-  commandName: "\uD558\uD558 \uC8FD\uC5C8\uAD6C\uB098 \uB0A8\uAE30\uB355!"
-  command: 0100000002000000030000000200000000000000000000000000000000000000
-  commandObject: {fileID: 262649764427842401, guid: 05f542bdc383cb4498790405f035b262, type: 3}
+  commandName: "\uC5FC\uBB34"
+  command: 0100000003000000040000000500000000000000000000000000000000000000
+  commandObject: {fileID: 0}

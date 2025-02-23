@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class TreasureChest : MonoBehaviour
 {
@@ -11,8 +13,7 @@ public class TreasureChest : MonoBehaviour
 
     [SerializeField] private GameObject[] item;
     [SerializeField] private int numDropItem;
-    private int[] randomItem = new int[5];
-    
+    private int[] randomItem;
 
     [SerializeField] private RectTransform itemArray;
     private float arrayLength;
@@ -30,8 +31,6 @@ public class TreasureChest : MonoBehaviour
 
         arrayLength = (numDropItem + 0.2f * (numDropItem - 1));
         setWidth(arrayLength);
-
-        RandomItem();
     }
 
     private void Update()
@@ -50,6 +49,8 @@ public class TreasureChest : MonoBehaviour
             // 상자 파밍
             if(Input.GetKeyDown(KeyCode.A))
             {
+                randomItem = UtilScripts.RandomArray(0, item.Length, numDropItem);
+
                 isLootable = false;
                 isExist = false;
                 // Chest Open
@@ -59,7 +60,9 @@ public class TreasureChest : MonoBehaviour
                 for(int i=0;i< numDropItem; i++)
                 {
                     // 생성
-                    GameObject chestItem = Instantiate(item[i]);
+                    GameObject chestItem = Instantiate(item[randomItem[i]]);
+                    Debug.Log(randomItem[i]);
+
                     // 자식지정 및 위치값 조정
                     chestItem.transform.SetParent(itemArray.transform);
                     chestItem.gameObject.GetComponent<ItemDrop>().posX = firstItemPosX;
@@ -71,17 +74,10 @@ public class TreasureChest : MonoBehaviour
             }
         }
     }
-
+    
     void setWidth(float width)
     {
         itemArray.sizeDelta = new Vector2(width, itemArray.sizeDelta.y);
-    }
-
-    void RandomItem()
-    {
-        int rnd = Random.Range(0, numDropItem);
-
-
     }
 
     private void OnTriggerEnter2D(Collider2D other)

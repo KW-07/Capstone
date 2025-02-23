@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 389789b768fb75f42bf9e50caa59139d, type: 3}
-  m_Name: TestCommand
+  m_Name: Flame_TripleShuriken
   m_EditorClassIdentifier: 
-  commandName: "\uC8FD\uC5B4\uB77C \uB0A8\uAE30\uB355!"
-  command: 0100000002000000030000000100000000000000000000000000000000000000
-  commandObject: {fileID: 262649764427842401, guid: e4d6a9665097c5546bbabebc8afe10a3, type: 3}
+  commandName: "\uC5FC\uD654"
+  command: 0400000002000000060000000000000000000000000000000000000000000000
+  commandObject: {fileID: 0}

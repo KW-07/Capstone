@@ -5157,8 +5157,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   commandList:
-  - {fileID: 11400000, guid: 2c349c7f3689feb4a949a0d7464ffc14, type: 2}
-  - {fileID: 11400000, guid: 78f8350aba11b364b9454c8078103b9d, type: 2}
+  - {fileID: 11400000, guid: e7c35bc489173a640a44a7cde92d3abf, type: 2}
+  - {fileID: 11400000, guid: 43e3d5538abba4644940c7125bfa4ae4, type: 2}
+  - {fileID: 11400000, guid: c20bb461f2a2cda4c9913626c1a4a1b4, type: 2}
+  - {fileID: 11400000, guid: c67653ad55cda1d4eb07a975df5a0404, type: 2}
 --- !u!114 &842622480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12725,7 +12727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4501586186516776854, guid: 1f1b86831c660de4fbab65f5722629dc, type: 3}
       propertyPath: numDropItem
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4501586186516776854, guid: 1f1b86831c660de4fbab65f5722629dc, type: 3}
       propertyPath: item.Array.size
