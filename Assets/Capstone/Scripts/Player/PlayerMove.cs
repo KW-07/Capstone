@@ -34,7 +34,7 @@ public class PlayerMove : MonoBehaviour
 
     private void Start()
     {
-
+        isjump = true;
     }
 
     private void Update()
@@ -83,7 +83,6 @@ public class PlayerMove : MonoBehaviour
                     rb.velocity = new Vector2(rb.velocity.x, jumpPower);
                     isjump = true;
                     jumpcount++;
-                    Debug.Log(jumpcount);
                 }
             }
         }

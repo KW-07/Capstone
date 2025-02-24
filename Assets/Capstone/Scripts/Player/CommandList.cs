@@ -6,7 +6,7 @@ public class CommandList : MonoBehaviour
 {
     public static CommandList instance { get; private set; }
 
-    public CommandSO[] commandList;
+    public Command[] commandList;
 
     private void Awake()
     {

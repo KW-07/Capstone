@@ -29,7 +29,7 @@ public class PlayerCommand : MonoBehaviour
     {
         initTime = 0;
         GameManager.instance.isCommand = false;
-        //commandTimeUI.SetActive(false);
+        commandTimeUI.SetActive(false);
         CommandInitialization(pCommand);
     }
 
@@ -47,7 +47,6 @@ public class PlayerCommand : MonoBehaviour
             else if(initTime > 0)
             {
                 commandingTime -= Time.unscaledDeltaTime;
-                Debug.Log(commandingTime);
                 movePossible = BooleanOnOff(movePossible);
 
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -147,6 +146,8 @@ public class PlayerCommand : MonoBehaviour
 
                     GameManager.instance.isCommand = BooleanOnOff(GameManager.instance.isCommand);
 
+                    commandTimeUI.SetActive(false);
+
                     for (int i=0;i<pCommand.Length;i++)
                     {
                         sum += pCommand[i];
@@ -172,6 +173,7 @@ public class PlayerCommand : MonoBehaviour
                                 PlayerAttack.instance.commandObject = CommandList.instance.commandList[i].commandObject;
                                 commandCount = true;
 
+                                commandTimeUI.SetActive(false);
                                 PlayerAttack.instance.CommandAttack();
                                 break;
                             }

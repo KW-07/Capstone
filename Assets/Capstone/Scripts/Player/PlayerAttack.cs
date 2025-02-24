@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -22,6 +23,13 @@ public class PlayerAttack : MonoBehaviour
 
     public GameObject commandObject = null;
 
+    // 맵에 잡히는 전체 적 수
+    public GameObject[] allEnemyArray;
+    // 플레이어 기준 전방에 존재하는 적 수
+    public List<GameObject> visibleEnemy;
+    [Space(10f)]
+    // 전방에 존재하며 가장 가까운 적
+    public GameObject neareastEnemy;
 
     private void Awake()
     {
@@ -31,6 +39,12 @@ public class PlayerAttack : MonoBehaviour
     }
     private void Start()
     {
+        
+    }
+
+    private void Update()
+    {
+        FindEnemy();
     }
 
     // Melee
@@ -82,14 +96,68 @@ public class PlayerAttack : MonoBehaviour
         Instantiate(normalProjectile, shootPoint.position, shootPoint.rotation);
     }
 
-    public void GuidedProjectileAttack()
-    {
-        GuidedProjectile projectile = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity).GetComponent<GuidedProjectile>();
-        projectile.InitializeProjectile(target, projectileMoveSpeed);
-    }
+    //public void GuidedProjectileAttack()
+    //{
+    //    GuidedProjectile projectile = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity).GetComponent<GuidedProjectile>();
+    //    projectile.InitializeProjectile(target, projectileMoveSpeed);
+    //}
 
-    public void ParabolicProjectileAttack()
+    //public void ParabolicProjectileAttack()
+    //{
+    //    Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
+    //}
+
+    void FindEnemy()
     {
-        Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
+        allEnemyArray = GameObject.FindGameObjectsWithTag("Enemy");
+
+        float distance = 0;
+
+        visibleEnemy.Clear();
+        neareastEnemy = null;
+        foreach (GameObject enemy in allEnemyArray)
+            enemy.GetComponent<SpriteRenderer>().color = Color.white;
+
+        // 우측을 보고있다면 오른쪽 적을 좌측을 보고있다면 왼쪽적을 '볼 수 있는' 적으로 판단
+        if (PlayerMove.instance.facingRight)
+        {
+            foreach (GameObject enemy in allEnemyArray)
+            {
+                if (enemy.transform.position.x > this.gameObject.transform.position.x)
+                {
+                    visibleEnemy.Add(enemy);
+                }
+            }
+        }
+        else
+        {
+            foreach (GameObject enemy in allEnemyArray)
+            {
+                if (enemy.transform.position.x < this.gameObject.transform.position.x)
+                {
+                    visibleEnemy.Add(enemy);
+                }
+            }
+        }
+
+        // '볼 수 있는' 적 중 가장 가까운 적을 판별
+        for(int i = 0; i< visibleEnemy.Count;i++)
+        {
+            if (i == 0)
+            {
+                distance = Vector2.Distance(this.gameObject.transform.position, visibleEnemy[i].transform.position);
+                neareastEnemy = visibleEnemy[i];
+            }
+            else
+            {
+                if(Vector2.Distance(this.gameObject.transform.position, visibleEnemy[i].transform.position) < distance)
+                {
+                    distance = Vector2.Distance(this.gameObject.transform.position, visibleEnemy[i].transform.position);
+                    neareastEnemy = visibleEnemy[i];
+                }
+            }
+        }
+        if(neareastEnemy!=null)
+            neareastEnemy.GetComponent<SpriteRenderer>().color = Color.red;
     }
 }
