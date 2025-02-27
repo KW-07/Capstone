@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389789b768fb75f42bf9e50caa59139d, type: 3}
+  m_Name: F_Kick
+  m_EditorClassIdentifier: 
+  commandName: "\uD654\uACA9"
+  commandType: 0
+  commandEffect: "\uCE90\uB9AD\uD130 \uC804\uBC29 2f * 2f \uB0B4\uC5D0 \uC704\uCE58\uD55C
+    \uBAA8\uB4E0 \uC801\uC5D0\uAC8C 1\uD68C \uD53C\uD574"
+  commandDescription: "\uBC1C\uC5D0 \uBD88\uAF43\uC744 \uAC10\uC544 \uACF5\uACA9"
+  command: 0300000003000000050000000000000000000000000000000000000000000000

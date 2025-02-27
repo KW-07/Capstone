@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389789b768fb75f42bf9e50caa59139d, type: 3}
+  m_Name: F_Dance
+  m_EditorClassIdentifier: 
+  commandName: "\uC5FC\uBB34"
+  commandType: 0
+  commandEffect: "\uCE90\uB9AD\uD130 \uC804\uBC29 0.5f * 2f \uB0B4\uC5D0 \uC704\uCE58\uD55C
+    \uBAA8\uB4E0 \uC801 3\uD68C \uD53C\uD574(\uAC01 \uB370\uBBF8\uC9C0 \uB2E4\uB984)"
+  commandDescription: "\uC190\uC5D0 \uBD88\uAF43\uC744 \uAC10\uC544 \uC138 \uBC88
+    \uACF5\uACA9"
+  command: 0100000004000000030000000500000000000000000000000000000000000000

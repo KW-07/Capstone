@@ -13,7 +13,7 @@ public class PlayerMove : MonoBehaviour
     public float teleportdis;
     public float speed = 1f;
     public float jumpPower = 1f;
-    bool isjump;
+    bool isjump = true;
     int jumpcount;
 
     Rigidbody2D rb;

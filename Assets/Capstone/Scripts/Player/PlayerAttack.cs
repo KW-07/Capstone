@@ -13,15 +13,13 @@ public class PlayerAttack : MonoBehaviour
     
     [SerializeField] private GameObject normalProjectile;
 
-    public Transform pos;
     public Vector2 boxSize;
+    private Vector2 normalAttackBoxSize;
     public int damage;
 
     [SerializeField] private GameObject projectilePrefab;
     public Transform target;
     [SerializeField] private float projectileMoveSpeed;
-
-    public GameObject commandObject = null;
 
     // 맵에 잡히는 전체 적 수
     public GameObject[] allEnemyArray;
@@ -39,7 +37,7 @@ public class PlayerAttack : MonoBehaviour
     }
     private void Start()
     {
-        
+        normalAttackBoxSize = boxSize;
     }
 
     private void Update()
@@ -50,9 +48,11 @@ public class PlayerAttack : MonoBehaviour
     // Melee
     public void OnMeleeAttack(InputAction.CallbackContext context)
     {
+        boxSize = normalAttackBoxSize;
+
         if (context.performed)
         {
-            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(pos.position, boxSize, 0);
+            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(shootPoint.position, boxSize, 0);
             foreach (Collider2D collider in collider2Ds)
             {
                 if (collider.tag == "Enemy")
@@ -67,7 +67,7 @@ public class PlayerAttack : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(pos.position, boxSize);
+        Gizmos.DrawWireCube(shootPoint.position, boxSize);
     }
 
     // Range
@@ -79,14 +79,6 @@ public class PlayerAttack : MonoBehaviour
             {
                 NormalProjectileAttack();
             }
-        }
-    }
-
-    public void CommandAttack()
-    {
-        if(commandObject != null)
-        {
-            Instantiate(commandObject, shootPoint.position, shootPoint.rotation);
         }
     }
     

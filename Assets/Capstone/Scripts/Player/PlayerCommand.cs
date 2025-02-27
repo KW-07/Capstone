@@ -164,17 +164,18 @@ public class PlayerCommand : MonoBehaviour
                         Debug.Log("Entered!");
 
                         // 커맨드 리스트 탐색
-                        for (int i = 0; i < CommandList.instance.commandList.Length; i++)
+                        for (int i = 0; i < CommandManager.instance.commandList.Length; i++)
                         {
                             // 커맨드가 존재한다면
-                            if (Enumerable.SequenceEqual(pCommand, CommandList.instance.commandList[i].command))
+                            if (Enumerable.SequenceEqual(pCommand, CommandManager.instance.commandList[i].command))
                             {
-                                Debug.Log("커맨드 : " + CommandList.instance.commandList[i].commandName);
-                                PlayerAttack.instance.commandObject = CommandList.instance.commandList[i].commandObject;
+                                // 커맨드 이름 저장
+                                Debug.Log("커맨드 : " + CommandManager.instance.commandList[i].commandName);
+                                CommandManager.instance.commandName = CommandManager.instance.commandList[i].commandName;
                                 commandCount = true;
 
+                                // 커맨드 타이머 삭제
                                 commandTimeUI.SetActive(false);
-                                PlayerAttack.instance.CommandAttack();
                                 break;
                             }
                             else
