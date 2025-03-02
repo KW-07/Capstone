@@ -3,48 +3,36 @@
   "WorkspaceRootPath": "C:\\Capstone\\Capstone\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|C:\\Capstone\\Capstone\\assets\\capstone\\scripts\\command\\commandscript\\c_f_fist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\command\\commandscript\\c_f_fist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|C:\\Capstone\\Capstone\\assets\\capstone\\scripts\\command\\commandscript\\basiccommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\command\\commandscript\\basiccommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|c:\\capstone\\capstone\\assets\\capstone\\scripts\\command\\commandmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\command\\commandmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|C:\\Capstone\\Capstone\\assets\\capstone\\scripts\\command\\commandscript\\c_f_kick.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\command\\commandscript\\c_f_kick.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|C:\\Capstone\\Capstone\\assets\\capstone\\scripts\\command\\commandscript\\c_f_triple.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\command\\commandscript\\c_f_triple.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|C:\\Capstone\\Capstone\\assets\\capstone\\scripts\\command\\commandscript\\c_f_chase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\command\\commandscript\\c_f_chase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|C:\\Capstone\\Capstone\\assets\\capstone\\scripts\\command\\commandscript\\c_f_dance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\command\\commandscript\\c_f_dance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|C:\\Capstone\\Capstone\\assets\\capstone\\scripts\\command\\commandscript\\c_f_fierce.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\command\\commandscript\\c_f_fierce.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|C:\\Capstone\\Capstone\\assets\\capstone\\scripts\\command\\commandscript\\c_f_shuriken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\command\\commandscript\\c_f_shuriken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|c:\\capstone\\capstone\\assets\\capstone\\scripts\\command\\normalattackdata\\meleeattackdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\command\\normalattackdata\\meleeattackdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|C:\\Capstone\\Capstone\\assets\\capstone\\scripts\\player\\playerattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\player\\playerattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|c:\\capstone\\capstone\\assets\\capstone\\scripts\\command\\skillsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\command\\skillsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|C:\\Capstone\\Capstone\\assets\\capstone\\scripts\\player\\playercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\player\\playercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|C:\\Capstone\\Capstone\\assets\\capstone\\scripts\\command\\commandmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\command\\commandmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|C:\\Capstone\\Capstone\\assets\\capstone\\scripts\\command\\commanddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\command\\commanddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|C:\\Capstone\\Capstone\\assets\\capstone\\scripts\\player\\playermove.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\player\\playermove.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|C:\\Capstone\\Capstone\\assets\\capstone\\scripts\\attack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\attack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,142 +42,107 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "BasicCommand.cs",
-              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandScript\\BasicCommand.cs",
-              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Command\\CommandScript\\BasicCommand.cs",
-              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandScript\\BasicCommand.cs",
-              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Command\\CommandScript\\BasicCommand.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAFAAAA",
+              "DocumentIndex": 2,
+              "Title": "SkillSystem.cs",
+              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\SkillSystem.cs",
+              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Command\\SkillSystem.cs",
+              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\SkillSystem.cs",
+              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Command\\SkillSystem.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAAwCEAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T15:17:45.246Z",
+              "WhenOpened": "2025-03-02T22:43:08.482Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "C_F_Shuriken.cs",
-              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Shuriken.cs",
-              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Shuriken.cs",
-              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Shuriken.cs",
-              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Shuriken.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvxkAAAAzAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T13:18:46.692Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "C_F_Fist.cs",
-              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Fist.cs",
-              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Fist.cs",
-              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Fist.cs",
-              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Fist.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvxkAAAAzAAAA",
+              "Title": "MeleeAttackData.cs",
+              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\NormalAttackData\\MeleeAttackData.cs",
+              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Command\\NormalAttackData\\MeleeAttackData.cs",
+              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\NormalAttackData\\MeleeAttackData.cs",
+              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Command\\NormalAttackData\\MeleeAttackData.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAACMAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T13:18:46.176Z",
+              "WhenOpened": "2025-03-02T22:17:44.808Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "C_F_Fierce.cs",
-              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Fierce.cs",
-              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Fierce.cs",
-              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Fierce.cs",
-              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Fierce.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvxEAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T13:18:45.831Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "C_F_Dance.cs",
-              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Dance.cs",
-              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Dance.cs",
-              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Dance.cs",
-              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Dance.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvxkAAAAzAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T13:18:45.408Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "C_F_Chase.cs",
-              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Chase.cs",
-              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Chase.cs",
-              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Chase.cs",
-              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Chase.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvxkAAAAzAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T13:18:45.04Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "C_F_Triple.cs",
-              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Triple.cs",
-              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Triple.cs",
-              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Triple.cs",
-              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Triple.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvxkAAAAzAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T13:18:47.046Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "C_F_Kick.cs",
-              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Kick.cs",
-              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Kick.cs",
-              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Kick.cs",
-              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Command\\CommandScript\\C_F_Kick.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvxkAAAAzAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T13:18:46.507Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CommandManager.cs",
-              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Command\\CommandManager.cs",
-              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandManager.cs",
-              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Command\\CommandManager.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAgAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T13:01:25.497Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "PlayerCommand.cs",
-              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Player\\PlayerCommand.cs",
-              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Player\\PlayerCommand.cs",
-              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Player\\PlayerCommand.cs",
-              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Player\\PlayerCommand.cs",
-              "ViewState": "AQIAAJEAAAAAAAAAAAAUwLAAAAAtAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-14T10:25:59.826Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 1,
               "Title": "PlayerAttack.cs",
               "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Player\\PlayerAttack.cs",
               "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Player\\PlayerAttack.cs",
               "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Player\\PlayerAttack.cs",
               "RelativeToolTip": "Assets\\Capstone\\Scripts\\Player\\PlayerAttack.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAAIwDIAAAAmAAAA",
+              "ViewState": "AQIAACsAAAAAAAAAAAA0wEUAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-14T10:27:24.451Z"
+              "WhenOpened": "2025-01-14T10:27:24.451Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Attack.cs",
+              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Attack.cs",
+              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Attack.cs",
+              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Attack.cs",
+              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Attack.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwUAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-02T20:55:50.627Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PlayerMove.cs",
+              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Player\\PlayerMove.cs",
+              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Player\\PlayerMove.cs",
+              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Player\\PlayerMove.cs",
+              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Player\\PlayerMove.cs",
+              "ViewState": "AQIAAG8AAAAAAAAAAADwvxwAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-02T19:51:25.736Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CommandData.cs",
+              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandData.cs",
+              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Command\\CommandData.cs",
+              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandData.cs",
+              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Command\\CommandData.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAABDAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-02T17:26:25.68Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CommandManager.cs",
+              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Command\\CommandManager.cs",
+              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandManager.cs",
+              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Command\\CommandManager.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-27T13:01:25.497Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PlayerCommand.cs",
+              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Player\\PlayerCommand.cs",
+              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Player\\PlayerCommand.cs",
+              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Player\\PlayerCommand.cs",
+              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Player\\PlayerCommand.cs",
+              "ViewState": "AQIAAKYAAAAAAAAAAAAUwBUAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-14T10:25:59.826Z",
+              "EditorCaption": ""
             }
           ]
         }

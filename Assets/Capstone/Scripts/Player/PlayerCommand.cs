@@ -19,6 +19,8 @@ public class PlayerCommand : MonoBehaviour
 
     public GameObject commandTimeUI;
 
+    public SkillSystem skillSystem;
+
     private void Awake()
     {
         if (instance != null)
@@ -169,10 +171,10 @@ public class PlayerCommand : MonoBehaviour
                             // 커맨드가 존재한다면
                             if (Enumerable.SequenceEqual(pCommand, CommandManager.instance.commandList[i].command))
                             {
-                                // 커맨드 이름 저장
                                 Debug.Log("커맨드 : " + CommandManager.instance.commandList[i].commandName);
-                                CommandManager.instance.commandName = CommandManager.instance.commandList[i].commandName;
                                 commandCount = true;
+                                // 스킬 사용
+                                skillSystem.UseSkill(PlayerAttack.instance.shootPoint.gameObject, PlayerAttack.instance.neareastEnemy);
 
                                 // 커맨드 타이머 삭제
                                 commandTimeUI.SetActive(false);

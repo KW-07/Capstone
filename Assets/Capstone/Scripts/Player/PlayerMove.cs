@@ -10,15 +10,51 @@ public class PlayerMove : MonoBehaviour
     public static PlayerMove instance { get; private set; }
 
     public float dir;
+    [SerializeField]
+    private bool _isMoving = false;
+    public bool isMoving
+    {
+        get
+        {
+            return _isMoving;
+        }
+        private set
+        {
+            _isMoving = value;
+            animator.SetBool("isMoving", value);
+        }
+    }
+    [SerializeField]
+    private int _jumpCount = 0;
+    public int jumpCount
+    {
+        get
+        {
+            return _jumpCount;
+        }
+        set
+        {
+            _jumpCount = value;
+            if(value == 1)
+            {
+                animator.SetTrigger("isJump");
+            }
+            else if(value == 2)
+            {
+                animator.SetTrigger("isDoubleJump");
+            }
+        }
+    }
+
     public float teleportdis;
     public float speed = 1f;
     public float jumpPower = 1f;
     bool isjump = true;
-    int jumpcount;
 
     Rigidbody2D rb;
     CapsuleCollider2D capsule;
     Transform playerTransform;
+    Animator animator;
 
     public bool facingRight = true;
     private void Awake()
@@ -30,6 +66,7 @@ public class PlayerMove : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         capsule = GetComponent<CapsuleCollider2D>();
         playerTransform = GetComponent<Transform>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -51,6 +88,8 @@ public class PlayerMove : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         dir = context.ReadValue<float>();
+
+        isMoving = dir != 0;
     }
     void Move()
     {
@@ -78,11 +117,11 @@ public class PlayerMove : MonoBehaviour
         {
             if (GameManager.instance.nothingState())
             {
-                if (jumpcount < 2)
+                if (jumpCount < 2)
                 {
                     rb.velocity = new Vector2(rb.velocity.x, jumpPower);
                     isjump = true;
-                    jumpcount++;
+                    jumpCount++;
                 }
             }
         }
@@ -130,7 +169,9 @@ public class PlayerMove : MonoBehaviour
         if(collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Platform")
         {
             isjump = false;
-            jumpcount = 0;
+            jumpCount = 0;
+
+
         }
     }
 

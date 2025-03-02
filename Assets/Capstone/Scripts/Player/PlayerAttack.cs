@@ -12,14 +12,12 @@ public class PlayerAttack : MonoBehaviour
     public Transform shootPoint;
     
     [SerializeField] private GameObject normalProjectile;
+    [SerializeField] private MeleeAttackData normalAttack;
+    [SerializeField] private float initTimeMultipleAttack;
+    float cooldownTimer;
 
     public Vector2 boxSize;
     private Vector2 normalAttackBoxSize;
-    public int damage;
-
-    [SerializeField] private GameObject projectilePrefab;
-    public Transform target;
-    [SerializeField] private float projectileMoveSpeed;
 
     // 맵에 잡히는 전체 적 수
     public GameObject[] allEnemyArray;
@@ -28,6 +26,8 @@ public class PlayerAttack : MonoBehaviour
     [Space(10f)]
     // 전방에 존재하며 가장 가까운 적
     public GameObject neareastEnemy;
+
+    SkillSystem skillSystem;
 
     private void Awake()
     {
@@ -38,28 +38,39 @@ public class PlayerAttack : MonoBehaviour
     private void Start()
     {
         normalAttackBoxSize = boxSize;
+        skillSystem = gameObject.GetComponent<SkillSystem>();
     }
 
     private void Update()
     {
         FindEnemy();
+
+        cooldownTimer -= Time.deltaTime;
+
+        if (cooldownTimer < 0)
+        {
+            cooldownTimer = initTimeMultipleAttack;
+            normalAttack.multipleAttack = 0;
+        }
     }
 
     // Melee
     public void OnMeleeAttack(InputAction.CallbackContext context)
     {
-        boxSize = normalAttackBoxSize;
 
         if (context.performed)
         {
-            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(shootPoint.position, boxSize, 0);
-            foreach (Collider2D collider in collider2Ds)
-            {
-                if (collider.tag == "Enemy")
-                {
+            boxSize = normalAttackBoxSize;
 
-                }
-            }
+            SkillSystem.instance.command = normalAttack;
+            
+            cooldownTimer = initTimeMultipleAttack;
+            normalAttack.multipleAttack++;
+            if (normalAttack.multipleAttack > 3)
+                normalAttack.multipleAttack = 1;
+
+            skillSystem.UseSkill(shootPoint.gameObject, neareastEnemy);
+
             Debug.Log("attack");
         }
     }
@@ -87,17 +98,6 @@ public class PlayerAttack : MonoBehaviour
     {
         Instantiate(normalProjectile, shootPoint.position, shootPoint.rotation);
     }
-
-    //public void GuidedProjectileAttack()
-    //{
-    //    GuidedProjectile projectile = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity).GetComponent<GuidedProjectile>();
-    //    projectile.InitializeProjectile(target, projectileMoveSpeed);
-    //}
-
-    //public void ParabolicProjectileAttack()
-    //{
-    //    Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
-    //}
 
     void FindEnemy()
     {
