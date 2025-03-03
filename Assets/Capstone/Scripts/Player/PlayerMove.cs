@@ -46,10 +46,17 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    public float teleportdis;
-    public float speed = 1f;
+    // 이동
+    public float moveSpeed = 1f;
+    private float defaultSpeed;
+    [SerializeField]private List<float> activeSpeedMultipliers = new List<float>();
+
+    // 점프
     public float jumpPower = 1f;
     bool isjump = true;
+
+    // 대쉬
+    public float teleportdis;
 
     Rigidbody2D rb;
     CapsuleCollider2D capsule;
@@ -71,6 +78,7 @@ public class PlayerMove : MonoBehaviour
 
     private void Start()
     {
+        defaultSpeed = moveSpeed;
         isjump = true;
     }
 
@@ -108,9 +116,49 @@ public class PlayerMove : MonoBehaviour
                 PlayerCommand.instance.commandTimeUI.GetComponent<Transform>().Rotate(0, 180f, 0);
             }
 
-            rb.velocity = new Vector2(dir * speed, rb.velocity.y);
+            rb.velocity = new Vector2(dir * moveSpeed, rb.velocity.y);
         }
     }
+
+    // 버프 사용
+    public void ApplySpeedBuff(float multiplier, float duration)
+    {
+        if (multiplier <= 0) return;
+
+        // List에 버프 효과 추가
+        activeSpeedMultipliers.Add(multiplier);
+        // 가장 높은 배율의 버프효과 적용
+        UpdateMoveSpeed();
+
+        StartCoroutine(RemoveSpeedBuffAfterDelay(multiplier, duration));
+    }
+
+    private IEnumerator RemoveSpeedBuffAfterDelay(float multiplier, float duration)
+    {
+        // 버프 시간 초과 후 적용중이던 버프 삭제
+        yield return new WaitForSeconds(duration);
+        activeSpeedMultipliers.Remove(multiplier);
+
+        // 기존 버프가 해제되고 다음 순위의 가장 높은 버프 사용
+        UpdateMoveSpeed();
+    }
+
+    // 이동속도 증감
+    private void UpdateMoveSpeed()
+    {
+        if (activeSpeedMultipliers.Count > 0)
+        {
+            float maxMultiplier = Mathf.Max(activeSpeedMultipliers.ToArray());
+            moveSpeed = defaultSpeed * maxMultiplier;
+        }
+        else
+        {
+            moveSpeed = defaultSpeed;
+        }
+
+        Debug.Log($"현재 이동 속도: {moveSpeed}");
+    }
+
     public void OnJump(InputAction.CallbackContext context)
     {
         if(context.performed)

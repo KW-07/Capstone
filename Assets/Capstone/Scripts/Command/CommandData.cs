@@ -19,7 +19,6 @@ public class CommandData : ScriptableObject
     [TextArea(3, 5)][SerializeField] private string commandDescription;
     public float cooldown;
     public int damage;
-    public Vector2 range;
     public GameObject effectPrefab;
     public float destroyTime;
 

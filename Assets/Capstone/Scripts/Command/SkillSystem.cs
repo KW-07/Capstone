@@ -8,7 +8,7 @@ public class SkillSystem : MonoBehaviour
 
     public CommandData command;
 
-    [SerializeField] private float cooldown;
+    private float cooldown;
     float cooldownTimer;
 
     private void Awake()

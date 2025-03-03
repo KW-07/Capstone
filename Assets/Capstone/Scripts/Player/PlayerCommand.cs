@@ -33,6 +33,8 @@ public class PlayerCommand : MonoBehaviour
         GameManager.instance.isCommand = false;
         commandTimeUI.SetActive(false);
         CommandInitialization(pCommand);
+
+        skillSystem = gameObject.GetComponent<SkillSystem>();
     }
 
     private void Update()
@@ -173,8 +175,20 @@ public class PlayerCommand : MonoBehaviour
                             {
                                 Debug.Log("커맨드 : " + CommandManager.instance.commandList[i].commandName);
                                 commandCount = true;
+
+                                SkillSystem.instance.command = CommandManager.instance.commandList[i];
+
                                 // 스킬 사용
-                                skillSystem.UseSkill(PlayerAttack.instance.shootPoint.gameObject, PlayerAttack.instance.neareastEnemy);
+                                // 버프일 경우 플레이어 위치에서 생성
+                                if (CommandManager.instance.commandList[i].commandType == CommandType.Buff)
+                                {
+                                    skillSystem.UseSkill(gameObject, PlayerAttack.instance.neareastEnemy);
+                                }
+                                // 버프가 아닐 경우 플레이어 전방에서 생성
+                                else
+                                {
+                                    skillSystem.UseSkill(PlayerAttack.instance.shootPoint.gameObject, PlayerAttack.instance.neareastEnemy);
+                                }
 
                                 // 커맨드 타이머 삭제
                                 commandTimeUI.SetActive(false);

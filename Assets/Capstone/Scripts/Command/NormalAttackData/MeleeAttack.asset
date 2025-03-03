@@ -23,3 +23,7 @@ MonoBehaviour:
   destroyTime: 2
   command: 0000000000000000000000000000000000000000000000000000000000000000
   attackRange: 3
+  multipleAttack: 0
+  firstCountDamage: 2
+  secondCountDamage: 3
+  thirdCountDamage: 5

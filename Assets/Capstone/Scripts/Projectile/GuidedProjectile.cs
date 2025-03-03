@@ -5,15 +5,8 @@ using UnityEngine;
 public class GuidedProjectile : MonoBehaviour
 {
     [SerializeField] private float speed;
-    private Transform target;
+    public Transform target;
     private float distanceToTargetToDestroyProjectile = 1f;
-
-
-    [SerializeField] private float gDamagePer;
-    [SerializeField] private float sDamagePer;
-    public float totalDamage = 0;
-
-    [SerializeField] private float destroyTime = 5;
 
     private void Update()
     {
@@ -26,10 +19,20 @@ public class GuidedProjectile : MonoBehaviour
         }
     }
 
-    public void InitializeProjectile(Transform target, float speed)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        this.target = target;
-        this.speed = speed;
+        if (collision.gameObject.tag != "Player")
+        {
+            Debug.Log(collision.gameObject.tag);
+            switch (collision.gameObject.tag)
+            {
+                case ("Ground"):
+                case ("Platform"):
+                    Destroy(gameObject);
+                    break;
+                case ("Enemy"):
+                    break;
+            }
+        }
     }
-    
 }

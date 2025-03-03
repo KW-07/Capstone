@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -15,6 +16,20 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private MeleeAttackData normalAttack;
     [SerializeField] private float initTimeMultipleAttack;
     float cooldownTimer;
+
+    [SerializeField]
+    private float _playerDamage;
+    public float playerDamage
+    {
+        get
+        {
+            return _playerDamage;
+        }
+        private set
+        {
+            _playerDamage = value;
+        }
+    }
 
     public Vector2 boxSize;
     private Vector2 normalAttackBoxSize;
@@ -62,16 +77,38 @@ public class PlayerAttack : MonoBehaviour
         {
             boxSize = normalAttackBoxSize;
 
-            SkillSystem.instance.command = normalAttack;
-            
-            cooldownTimer = initTimeMultipleAttack;
-            normalAttack.multipleAttack++;
-            if (normalAttack.multipleAttack > 3)
-                normalAttack.multipleAttack = 1;
+            if(GameManager.instance.nothingState())
+            {
+                SkillSystem.instance.command = normalAttack;
 
-            skillSystem.UseSkill(shootPoint.gameObject, neareastEnemy);
+                cooldownTimer = initTimeMultipleAttack;
+                normalAttack.multipleAttack++;
+                if (normalAttack.multipleAttack > 3)
+                    normalAttack.multipleAttack = 1;
 
-            Debug.Log("attack");
+                skillSystem.UseSkill(shootPoint.gameObject, neareastEnemy);
+
+                Debug.Log("attack");
+            }
+        }
+    }
+
+    public void RepeatAttack(Collider2D enemy, int repeatCount, float repeatDelay, float damage)
+    {
+        if (repeatCount <= 0)
+            return;
+
+        StartCoroutine(RepeatAttackCoroutine(enemy, repeatCount, repeatDelay, damage));
+    }
+
+    // 반복공격 coroutine
+    private IEnumerator RepeatAttackCoroutine(Collider2D enemy, int repeatCount, float repeatDelay, float damage)
+    {
+        for(int i = 0;i < repeatCount;i++)
+        {
+            Debug.Log($"{enemy.name}에게 {PlayerAttack.instance.playerDamage + damage}의 피해를 입힘!");
+
+            yield return new WaitForSeconds(repeatDelay);
         }
     }
 
@@ -88,15 +125,9 @@ public class PlayerAttack : MonoBehaviour
         {
             if (GameManager.instance.isCommand == false)
             {
-                NormalProjectileAttack();
+                Instantiate(normalProjectile, shootPoint.position, shootPoint.rotation);
             }
         }
-    }
-    
-    // The code at the bottom is related to the attack
-    public void NormalProjectileAttack()
-    {
-        Instantiate(normalProjectile, shootPoint.position, shootPoint.rotation);
     }
 
     void FindEnemy()

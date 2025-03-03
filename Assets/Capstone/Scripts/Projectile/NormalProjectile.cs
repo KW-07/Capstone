@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class NormalProjectile : MonoBehaviour
 {
-    [SerializeField] private float speed = 10f;
+    [SerializeField] private float speed;
     private Rigidbody2D rb;
 
-    [SerializeField] private float gDamagePer;
-    [SerializeField] private float sDamagePer;
-    public float totalDamage = 0;
-
-    [SerializeField] private float destroyTime = 5;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -21,16 +16,11 @@ public class NormalProjectile : MonoBehaviour
         rb.velocity = transform.right * speed;
     }
 
-    void Update()
-    {
-        Destroy(gameObject, destroyTime);
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag != "Player")
         {
             Debug.Log(collision.gameObject.tag);
-            Debug.Log(totalDamage);
             switch (collision.gameObject.tag)
             {
                 case ("Ground"):
