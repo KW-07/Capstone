@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34211c3e8bebe2d4cb00b9ac7ec28870, type: 3}
+  m_Name: F_Triple
+  m_EditorClassIdentifier: 
+  commandName: "\uC5FC\uD654"
+  commandType: 1
+  commandEffect: "\uCE90\uB9AD\uD130 \uC804\uBC29, 45\uB3C4 \uC0C1\uB2E8, 45\uB3C4
+    \uD558\uB2E8\uC5D0 \uAC01\uAC01 0.3 * 6 \uB0B4\uC5D0 \uC704\uCE58\uD55C \uAC00\uC7A5
+    \uAC00\uAE4C\uC6B4 \uC801 1\uD68C \uD53C\uD574"
+  commandDescription: "\uC218\uB9AC\uAC80\uC744 \uAC01 \uBC29\uD5A5\uC73C\uB85C \uC138
+    \uAC1C \uB358\uC9D0"
+  cooldown: 1
+  damage: 10
+  effectPrefab: {fileID: 3391275514063326592, guid: 404414300cf757b4f9ec86f8d4967871, type: 3}
+  destroyTime: 5
+  command: 0400000002000000060000000000000000000000000000000000000000000000
+  projectileSpeed: 10
+  projectileAngle: 45

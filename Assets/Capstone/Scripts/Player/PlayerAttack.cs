@@ -11,9 +11,9 @@ public class PlayerAttack : MonoBehaviour
     public static PlayerAttack instance { get; private set; }
 
     public Transform shootPoint;
-    
-    [SerializeField] private GameObject normalProjectile;
+
     [SerializeField] private MeleeAttackData normalAttack;
+    [SerializeField] private RangeAttackData normalProjectile;
     [SerializeField] private float initTimeMultipleAttack;
     float cooldownTimer;
 
@@ -88,12 +88,13 @@ public class PlayerAttack : MonoBehaviour
 
                 skillSystem.UseSkill(shootPoint.gameObject, neareastEnemy);
 
-                Debug.Log("attack");
+                //Debug.Log("attack");
             }
         }
     }
 
-    public void RepeatAttack(Collider2D enemy, int repeatCount, float repeatDelay, float damage)
+    // 반복공격 실행
+    public void RepeatAttack(GameObject enemy, int repeatCount, float repeatDelay, float damage)
     {
         if (repeatCount <= 0)
             return;
@@ -102,7 +103,7 @@ public class PlayerAttack : MonoBehaviour
     }
 
     // 반복공격 coroutine
-    private IEnumerator RepeatAttackCoroutine(Collider2D enemy, int repeatCount, float repeatDelay, float damage)
+    private IEnumerator RepeatAttackCoroutine(GameObject enemy, int repeatCount, float repeatDelay, float damage)
     {
         for(int i = 0;i < repeatCount;i++)
         {
@@ -110,6 +111,21 @@ public class PlayerAttack : MonoBehaviour
 
             yield return new WaitForSeconds(repeatDelay);
         }
+    }
+
+    public void DelayInstantiate(GameObject obj, Vector2 position, float delayTIme)
+    {
+        if (delayTIme <= 0)
+            return;
+
+        StartCoroutine(DelayInstantiateCoroutine(obj, position, delayTIme));
+    }
+
+    // n초 뒤 오브젝트 생성
+    private IEnumerator DelayInstantiateCoroutine(GameObject obj, Vector2 position, float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+        Instantiate(obj, position, Quaternion.identity);
     }
 
     private void OnDrawGizmos()
@@ -123,9 +139,13 @@ public class PlayerAttack : MonoBehaviour
     {
         if (context.performed)
         {
-            if (GameManager.instance.isCommand == false)
+            if(GameManager.instance.nothingState())
             {
-                Instantiate(normalProjectile, shootPoint.position, shootPoint.rotation);
+                SkillSystem.instance.command = normalProjectile ;
+
+                skillSystem.UseSkill(shootPoint.gameObject, neareastEnemy);
+
+                //Debug.Log("Shoot");
             }
         }
     }

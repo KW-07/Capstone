@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5065323053803492924}
   - component: {fileID: 3090397862281205012}
   - component: {fileID: 8112887725149569150}
-  - component: {fileID: 4619227104910965494}
+  - component: {fileID: 5779455369036656366}
   m_Layer: 10
   m_Name: F_Shuriken
   m_TagString: Projectile
@@ -149,7 +149,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &4619227104910965494
+--- !u!114 &5779455369036656366
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,7 +158,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 922656483790474395}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4e7cad8aed9e844c8eae6d36a7beb06, type: 3}
+  m_Script: {fileID: 11500000, guid: a3b319f2780bb454fa13c89951633f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20

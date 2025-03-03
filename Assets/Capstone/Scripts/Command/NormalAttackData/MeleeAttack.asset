@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a5f315568283ea4e870c9d5b03d8e03, type: 3}
   m_Name: MeleeAttack
   m_EditorClassIdentifier: 
-  commandName: "\uC77C\uBC18\uACF5\uACA9"
+  commandName: "\uADFC\uAC70\uB9AC!"
   commandType: 0
-  commandEffect: "\uC77C\uBC18\uACF5\uACA9"
+  commandEffect: "\uADFC\uAC70\uB9AC\uACF5\uACA9!"
   commandDescription: 
   cooldown: 0
   damage: 10
-  range: {x: 0, y: 0}
   effectPrefab: {fileID: 6165903748987304714, guid: b7104954514e62a46a45a7fe5e8219cb, type: 3}
   destroyTime: 2
   command: 0000000000000000000000000000000000000000000000000000000000000000

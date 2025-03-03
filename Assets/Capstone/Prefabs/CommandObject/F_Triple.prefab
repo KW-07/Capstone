@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4550918320581170161}
   - component: {fileID: 6367051767588081680}
   - component: {fileID: 5092247291335580049}
-  - component: {fileID: 5086872264870197068}
+  - component: {fileID: -6588483936006928376}
   m_Layer: 10
   m_Name: F_Triple
   m_TagString: Projectile
@@ -149,7 +149,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &5086872264870197068
+--- !u!114 &-6588483936006928376
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,7 +158,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 3391275514063326592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4e7cad8aed9e844c8eae6d36a7beb06, type: 3}
+  m_Script: {fileID: 11500000, guid: a3b319f2780bb454fa13c89951633f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20

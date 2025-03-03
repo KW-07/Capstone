@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MeleeAttack", menuName = "Player/Commands/Melee")]
+[CreateAssetMenu(fileName = "MeleeAttack", menuName = "Player/Attack/Melee")]
 public class MeleeAttackData : CommandData
 {
     public float attackRange;
@@ -14,7 +14,7 @@ public class MeleeAttackData : CommandData
 
     public override void ActivateSkill(GameObject castPoint, GameObject target)
     {
-        Debug.Log($"{commandName}(MeleeAttack) 사용");
+        //Debug.Log($"{commandName}(MeleeAttack) 사용");
         switch(multipleAttack)
         {
             // 기본공격 1타
@@ -23,7 +23,7 @@ public class MeleeAttackData : CommandData
                 if (effectPrefab != null)
                 {
                     GameObject effect = Instantiate(effectPrefab, castPoint.transform.position, Quaternion.identity);
-                    Debug.Log("firstCount");
+                    //Debug.Log("firstCount");
                     Destroy(effect, destroyTime);
                 }
                 break;
@@ -33,7 +33,7 @@ public class MeleeAttackData : CommandData
                 if (effectPrefab != null)
                 {
                     GameObject effect = Instantiate(effectPrefab, castPoint.transform.position, Quaternion.identity);
-                    Debug.Log("secondCount");
+                    //Debug.Log("secondCount");
                     Destroy(effect, destroyTime);
                 }
                 break;
@@ -43,7 +43,7 @@ public class MeleeAttackData : CommandData
                 if (effectPrefab != null)
                 {
                     GameObject effect = Instantiate(effectPrefab, castPoint.transform.position, Quaternion.identity);
-                    Debug.Log("thirdCount");
+                    //Debug.Log("thirdCount");
                     Destroy(effect, destroyTime);
                 }
                 break;

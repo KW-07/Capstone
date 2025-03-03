@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 227074864409145426}
   - component: {fileID: 3296275084529742310}
   - component: {fileID: 2384363278138840532}
-  - component: {fileID: 1752047604150621806}
+  - component: {fileID: 1334781093344538509}
   m_Layer: 10
   m_Name: F_Chase
   m_TagString: Projectile
@@ -149,7 +149,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1752047604150621806
+--- !u!114 &1334781093344538509
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,5 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 852dcd766a28e4542989c51cd534ca37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
   target: {fileID: 0}
+  damage: 0
+  speed: 0
+  destroyTime: 0

@@ -4150,7 +4150,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4642286539396853349, guid: a44f654010b6e2a4793ab1fcc829b331, type: 3}
       propertyPath: commandList.Array.size
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4642286539396853349, guid: a44f654010b6e2a4793ab1fcc829b331, type: 3}
       propertyPath: commandList.Array.data[0]
@@ -4168,6 +4168,22 @@ PrefabInstance:
       propertyPath: commandList.Array.data[3]
       value: 
       objectReference: {fileID: 11400000, guid: 2a7ab3b633265f04da1f230621c3bcf0, type: 2}
+    - target: {fileID: 4642286539396853349, guid: a44f654010b6e2a4793ab1fcc829b331, type: 3}
+      propertyPath: commandList.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: d44bc56f76b873144a0d0c3c8acf983a, type: 2}
+    - target: {fileID: 4642286539396853349, guid: a44f654010b6e2a4793ab1fcc829b331, type: 3}
+      propertyPath: commandList.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5b4843a42b43a3d4499540338f4fa964, type: 2}
+    - target: {fileID: 4642286539396853349, guid: a44f654010b6e2a4793ab1fcc829b331, type: 3}
+      propertyPath: commandList.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0472f1fc7b240c048a2cbb51efe54664, type: 2}
+    - target: {fileID: 4642286539396853349, guid: a44f654010b6e2a4793ab1fcc829b331, type: 3}
+      propertyPath: commandList.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: c6f40ba899a698647a27e76891fd194a, type: 2}
     - target: {fileID: 6340222803183487291, guid: a44f654010b6e2a4793ab1fcc829b331, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.2532766
@@ -4229,6 +4245,10 @@ PrefabInstance:
       propertyPath: _playerDamage
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1925824239360425300, guid: c1b6a19ccb4820c4cae7ce4c64ce205b, type: 3}
+      propertyPath: normalProjectile
+      value: 
+      objectReference: {fileID: 11400000, guid: 8cd2262e569041c42a0079aa4c532639, type: 2}
     - target: {fileID: 3926330301857238661, guid: c1b6a19ccb4820c4cae7ce4c64ce205b, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

@@ -11,7 +11,7 @@ public class F_DanceCommandData : CommandData
 
     public override void ActivateSkill(GameObject castPoint, GameObject target)
     {
-        Debug.Log($"{commandName}(F_Fist) 사용");
+        Debug.Log($"{commandName}(F_Dance) 사용");
 
         if (effectPrefab != null)
         {
@@ -22,7 +22,7 @@ public class F_DanceCommandData : CommandData
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(castPoint.transform.position, attackRange, LayerMask.GetMask("Enemy"));
         foreach (Collider2D enemy in hitEnemies)
         {
-            PlayerAttack.instance.RepeatAttack(enemy, repeatCount, repeatDelay, damage);
+            PlayerAttack.instance.RepeatAttack(enemy.gameObject, repeatCount, repeatDelay, damage);
         }
     }
 }
