@@ -10,15 +10,58 @@ public class PlayerMove : MonoBehaviour
     public static PlayerMove instance { get; private set; }
 
     public float dir;
-    public float teleportdis;
-    public float speed = 1f;
+    [SerializeField]
+    private bool _isMoving = false;
+    public bool isMoving
+    {
+        get
+        {
+            return _isMoving;
+        }
+        private set
+        {
+            _isMoving = value;
+            animator.SetBool("isMoving", value);
+        }
+    }
+    [SerializeField]
+    private int _jumpCount = 0;
+    public int jumpCount
+    {
+        get
+        {
+            return _jumpCount;
+        }
+        set
+        {
+            _jumpCount = value;
+            if(value == 1)
+            {
+                animator.SetTrigger("isJump");
+            }
+            else if(value == 2)
+            {
+                animator.SetTrigger("isDoubleJump");
+            }
+        }
+    }
+
+    // 이동
+    public float moveSpeed = 1f;
+    private float defaultSpeed;
+    [SerializeField]private List<float> activeSpeedMultipliers = new List<float>();
+
+    // 점프
     public float jumpPower = 1f;
-    bool isjump;
-    int jumpcount;
+    bool isjump = true;
+
+    // 대쉬
+    public float teleportdis;
 
     Rigidbody2D rb;
     CapsuleCollider2D capsule;
     Transform playerTransform;
+    Animator animator;
 
     public bool facingRight = true;
     private void Awake()
@@ -30,11 +73,13 @@ public class PlayerMove : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         capsule = GetComponent<CapsuleCollider2D>();
         playerTransform = GetComponent<Transform>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
     {
-
+        defaultSpeed = moveSpeed;
+        isjump = true;
     }
 
     private void Update()
@@ -51,6 +96,8 @@ public class PlayerMove : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         dir = context.ReadValue<float>();
+
+        isMoving = dir != 0;
     }
     void Move()
     {
@@ -69,21 +116,60 @@ public class PlayerMove : MonoBehaviour
                 PlayerCommand.instance.commandTimeUI.GetComponent<Transform>().Rotate(0, 180f, 0);
             }
 
-            rb.velocity = new Vector2(dir * speed, rb.velocity.y);
+            rb.velocity = new Vector2(dir * moveSpeed, rb.velocity.y);
         }
     }
+
+    // 버프 사용
+    public void ApplySpeedBuff(float multiplier, float duration)
+    {
+        if (multiplier <= 0) return;
+
+        // List에 버프 효과 추가
+        activeSpeedMultipliers.Add(multiplier);
+        // 가장 높은 배율의 버프효과 적용
+        UpdateMoveSpeed();
+
+        StartCoroutine(RemoveSpeedBuffAfterDelay(multiplier, duration));
+    }
+
+    private IEnumerator RemoveSpeedBuffAfterDelay(float multiplier, float duration)
+    {
+        // 버프 시간 초과 후 적용중이던 버프 삭제
+        yield return new WaitForSeconds(duration);
+        activeSpeedMultipliers.Remove(multiplier);
+
+        // 기존 버프가 해제되고 다음 순위의 가장 높은 버프 사용
+        UpdateMoveSpeed();
+    }
+
+    // 이동속도 증감
+    private void UpdateMoveSpeed()
+    {
+        if (activeSpeedMultipliers.Count > 0)
+        {
+            float maxMultiplier = Mathf.Max(activeSpeedMultipliers.ToArray());
+            moveSpeed = defaultSpeed * maxMultiplier;
+        }
+        else
+        {
+            moveSpeed = defaultSpeed;
+        }
+
+        Debug.Log($"현재 이동 속도: {moveSpeed}");
+    }
+
     public void OnJump(InputAction.CallbackContext context)
     {
         if(context.performed)
         {
             if (GameManager.instance.nothingState())
             {
-                if (jumpcount < 2)
+                if (jumpCount < 2)
                 {
                     rb.velocity = new Vector2(rb.velocity.x, jumpPower);
                     isjump = true;
-                    jumpcount++;
-                    Debug.Log(jumpcount);
+                    jumpCount++;
                 }
             }
         }
@@ -131,7 +217,9 @@ public class PlayerMove : MonoBehaviour
         if(collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Platform")
         {
             isjump = false;
-            jumpcount = 0;
+            jumpCount = 0;
+
+
         }
     }
 

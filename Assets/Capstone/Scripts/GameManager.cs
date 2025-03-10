@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     [Header("Status")]
     [SerializeField] private float healthPoint;
     [SerializeField] private float StaminaPoint;
+    public bool isBuff = false;
+    public float increaseDamageBuff;
+    public float increaseSpeedBuff;
 
     [Header("Currency")]
     private float currency1;

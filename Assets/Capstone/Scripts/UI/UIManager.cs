@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject conversationBox;
     [SerializeField] private GameObject letterBox;
     [SerializeField] private TMP_Text textLabel;
-    [SerializeField] private DialogueSO testDialogue;
+    [SerializeField] private Dialogue testDialogue;
 
     [Header("Shop")]
     [SerializeField] private Item[] items;
@@ -115,19 +115,19 @@ public class UIManager : MonoBehaviour
         BuyTap();
     }
     // 대화 시작
-    public void showDialogue(DialogueSO dialogueSO)
+    public void showDialogue(Dialogue dialogue)
     {
         conversationBox.SetActive(true);
         letterBox.SetActive(true);
         GameManager.instance.isConversation = true;
 
-        StartCoroutine(StepThroughDialogue(dialogueSO));
+        StartCoroutine(StepThroughDialogue(dialogue));
     }
 
     // 대화SO 길이만큼 실행
-    private IEnumerator StepThroughDialogue(DialogueSO dialogueSO)
+    private IEnumerator StepThroughDialogue(Dialogue Dialogue)
     {
-        foreach(string dialogue in dialogueSO.Dialogue)
+        foreach(string dialogue in Dialogue.dialogueSO)
         {
             yield return typewriterEffect.Run(dialogue, textLabel);
 

@@ -19,6 +19,8 @@ public class PlayerCommand : MonoBehaviour
 
     public GameObject commandTimeUI;
 
+    public SkillSystem skillSystem;
+
     private void Awake()
     {
         if (instance != null)
@@ -29,8 +31,10 @@ public class PlayerCommand : MonoBehaviour
     {
         initTime = 0;
         GameManager.instance.isCommand = false;
-        //commandTimeUI.SetActive(false);
+        commandTimeUI.SetActive(false);
         CommandInitialization(pCommand);
+
+        skillSystem = gameObject.GetComponent<SkillSystem>();
     }
 
     private void Update()
@@ -47,7 +51,6 @@ public class PlayerCommand : MonoBehaviour
             else if(initTime > 0)
             {
                 commandingTime -= Time.unscaledDeltaTime;
-                Debug.Log(commandingTime);
                 movePossible = BooleanOnOff(movePossible);
 
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -147,6 +150,8 @@ public class PlayerCommand : MonoBehaviour
 
                     GameManager.instance.isCommand = BooleanOnOff(GameManager.instance.isCommand);
 
+                    commandTimeUI.SetActive(false);
+
                     for (int i=0;i<pCommand.Length;i++)
                     {
                         sum += pCommand[i];
@@ -163,16 +168,30 @@ public class PlayerCommand : MonoBehaviour
                         Debug.Log("Entered!");
 
                         // 커맨드 리스트 탐색
-                        for (int i = 0; i < CommandList.instance.commandList.Length; i++)
+                        for (int i = 0; i < CommandManager.instance.commandList.Length; i++)
                         {
                             // 커맨드가 존재한다면
-                            if (Enumerable.SequenceEqual(pCommand, CommandList.instance.commandList[i].command))
+                            if (Enumerable.SequenceEqual(pCommand, CommandManager.instance.commandList[i].command))
                             {
-                                Debug.Log("커맨드 : " + CommandList.instance.commandList[i].commandName);
-                                PlayerAttack.instance.commandObject = CommandList.instance.commandList[i].commandObject;
+                                Debug.Log("커맨드 : " + CommandManager.instance.commandList[i].commandName);
                                 commandCount = true;
 
-                                PlayerAttack.instance.CommandAttack();
+                                SkillSystem.instance.command = CommandManager.instance.commandList[i];
+
+                                // 스킬 사용
+                                // 버프일 경우 플레이어 위치에서 생성
+                                if (CommandManager.instance.commandList[i].commandType == CommandType.Buff)
+                                {
+                                    skillSystem.UseSkill(gameObject, PlayerAttack.instance.neareastEnemy);
+                                }
+                                // 버프가 아닐 경우 플레이어 전방에서 생성
+                                else
+                                {
+                                    skillSystem.UseSkill(PlayerAttack.instance.shootPoint.gameObject, PlayerAttack.instance.neareastEnemy);
+                                }
+
+                                // 커맨드 타이머 삭제
+                                commandTimeUI.SetActive(false);
                                 break;
                             }
                             else
