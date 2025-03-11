@@ -185,6 +185,8 @@ public class BossDaru : MonoBehaviour
         }
 
         transform.position += new Vector3(Mathf.Sin(Time.time), 0, Mathf.Cos(Time.time)) * moveSpeed * Time.deltaTime;
+
+        // ¹ö±× ÀÌ½´
         if (Time.time >= nextJumpTime)
         {
             Jump();
@@ -195,7 +197,7 @@ public class BossDaru : MonoBehaviour
 
     private void Jump()
     {
-        Debug.Log("Monster is Jumping!");
+        //Debug.Log("Monster is Jumping!");
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
     }
 

@@ -45,11 +45,12 @@ public class TreasureChest : MonoBehaviour
             {
                 randomItem = UtilScripts.RandomArray(0, item.Length, numDropItem);
 
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = null;
+
                 isLootable = false;
                 isExist = false;
-                // Chest Open
-                this.gameObject.GetComponent<SpriteRenderer>().sprite = null;
-                Debug.Log("ChestOpen");
+                
+                //Debug.Log("ChestOpen");
 
                 for(int i=0;i< numDropItem; i++)
                 {

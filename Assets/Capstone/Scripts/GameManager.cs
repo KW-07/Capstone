@@ -54,6 +54,9 @@ public class GameManager : MonoBehaviour
     public string synergy_Effect_D;
     public string synergy_Effect_E;
 
+    public bool isBossBattle;
+    [SerializeField] private GameObject fakeWall;
+
     private void Awake()
     {
         if (instance != null)
@@ -64,6 +67,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         isPlayerLive = true;
+        isBossBattle = false;
+
         equipmentInventory = new Dictionary<ItemType, List<Item>>
         { 
             { ItemType.Gear, new List<Item>() },
@@ -78,6 +83,14 @@ public class GameManager : MonoBehaviour
         };
 
         quickSlot = gameObject.AddComponent<QuickSlot>();
+    }
+
+    private void Update()
+    {
+        if(isBossBattle)
+        {
+            fakeWall.SetActive(true);
+        }
     }
 
     public void EquipItem(Item item)
@@ -209,4 +222,6 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
+
+    
 }

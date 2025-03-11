@@ -18,8 +18,9 @@ public class ItemDrop : MonoBehaviour
     private IEnumerator AnimCurveSpawnRoutine()
     {
         Vector2 startPoint = transform.parent.transform.position;
+        
 
-        float posY = transform.position.y;
+        float posY = transform.parent.transform.position.y;
 
         Vector2 endPoint = new Vector2(posX, posY);
 
