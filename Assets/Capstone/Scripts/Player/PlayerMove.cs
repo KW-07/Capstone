@@ -169,6 +169,7 @@ public class PlayerMove : MonoBehaviour
                 {
                     rb.velocity = new Vector2(rb.velocity.x, jumpPower);
                     isjump = true;
+                    animator.SetBool("jumping", true); 
                     jumpCount++;
                 }
             }
@@ -202,11 +203,11 @@ public class PlayerMove : MonoBehaviour
         {
             if (facingRight)
             {
-                transform.position = new Vector2(teleportdis + rb.position.x, rb.position.y);
+                rb.MovePosition(new Vector2((teleportdis) + rb.position.x, rb.position.y));
             }
             else
             {
-                transform.position = new Vector2((teleportdis * -1) + rb.position.x, rb.position.y);
+                rb.MovePosition(new Vector2((teleportdis * -1) + rb.position.x, rb.position.y));
             }
             Debug.Log("Dash");
         }
@@ -217,8 +218,8 @@ public class PlayerMove : MonoBehaviour
         if(collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Platform")
         {
             isjump = false;
+            animator.SetBool("jumping", false);
             jumpCount = 0;
-
 
         }
     }

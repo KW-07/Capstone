@@ -31,6 +31,32 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    private int _attackCount = 0;
+    public int attackCount
+    {
+        get
+        {
+            return _attackCount;
+        }
+        set
+        {
+            _attackCount = value;
+            if(value == 1)
+            {
+                animator.SetInteger("attackCount", 1);
+            }
+            else if(value == 2)
+            {
+                animator.SetInteger("attackCount", 2);
+            }
+            else if(value == 3)
+            {
+                animator.SetInteger("attackCount", 3);
+            }
+        }
+    }
+
     public Vector2 boxSize;
     private Vector2 normalAttackBoxSize;
 
@@ -42,6 +68,7 @@ public class PlayerAttack : MonoBehaviour
     // 전방에 존재하며 가장 가까운 적
     public GameObject neareastEnemy;
 
+    Animator animator;
     SkillSystem skillSystem;
 
     private void Awake()
@@ -49,11 +76,13 @@ public class PlayerAttack : MonoBehaviour
         if (instance != null)
             Destroy(instance);
         else instance = this;
+        animator = GetComponent<Animator>();
     }
     private void Start()
     {
         normalAttackBoxSize = boxSize;
         skillSystem = gameObject.GetComponent<SkillSystem>();
+
     }
 
     private void Update()
@@ -87,8 +116,11 @@ public class PlayerAttack : MonoBehaviour
                     normalAttack.multipleAttack = 1;
 
                 skillSystem.UseSkill(shootPoint.gameObject, neareastEnemy);
+                attackCount = normalAttack.multipleAttack;
 
-                //Debug.Log("attack");
+                Debug.Log("count :" + _attackCount);
+                Debug.Log(normalAttack.multipleAttack);
+               
             }
         }
     }
