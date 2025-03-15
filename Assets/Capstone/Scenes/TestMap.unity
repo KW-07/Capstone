@@ -4605,9 +4605,16 @@ MonoBehaviour:
   jumpInterval: 2
   teleportHeight: 2.5
   attackCooldown: 2
+  attackDelay: 1
+  attack1BoxSize: {x: 8, y: 5}
+  jumpHeight: 7
+  slamSpeed: 30
+  attack2BoxSize: {x: 12, y: 3}
+  groundCheckDistance: 0.5
   teleportCooldown: 5
   maxHealth: 100
   itemDrop: 0
+  nextMoveTime: 3
 --- !u!212 &1437268538
 SpriteRenderer:
   m_ObjectHideFlags: 0
