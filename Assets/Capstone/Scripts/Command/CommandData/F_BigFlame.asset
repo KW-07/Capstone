@@ -20,6 +20,11 @@ MonoBehaviour:
   commandDescription: 
   cooldown: 1
   damage: 15
+  castPlayerPosition: 1
   effectPrefab: {fileID: 5902542488440264033, guid: a13b60a6abf2e0a4984d7f05f2fd05a1, type: 3}
   destroyTime: 1
   command: 0200000002000000010000000300000006000000000000000000000000000000
+  firstEffectDuration: 1
+  secondEffectDuration: 1
+  secondEffectPrefab: {fileID: 5902542488440264033, guid: 6e38a6979b475ff4296aebc9863fea24, type: 3}
+  secondEffectSpawnPoint: {x: 0, y: -2.5, z: 0}
