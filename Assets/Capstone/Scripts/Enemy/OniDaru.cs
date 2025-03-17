@@ -127,7 +127,7 @@ public class OniDaru : MonoBehaviour
             if (enemy.CompareTag("Player"))
             {
                 Debug.Log("Hit Player!");
-                enemy.GetComponent<Player>().TakeDamage(10);
+                //enemy.GetComponent<Player>().TakeDamage(10);
                 // 여기에 플레이어에게 피해를 주는 코드 추가
             }
         }
