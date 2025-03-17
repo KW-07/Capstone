@@ -19,6 +19,9 @@ public class CommandData : ScriptableObject
     [TextArea(3, 5)][SerializeField] private string commandDescription;
     public float cooldown;
     public int damage;
+
+    public bool castPlayerPosition;
+
     public GameObject effectPrefab;
     public float destroyTime;
 

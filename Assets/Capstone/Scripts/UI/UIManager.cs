@@ -187,16 +187,8 @@ public class UIManager : MonoBehaviour
 
     void OnOption()
     {
-        // UI 켜져있으면 전부 끄기
-        if(onUI)
-        {
-            OffUI();
-        }
-        // UI 꺼져있으면 옵션 키기
-        else if(!onUI)
-        {
-            UIOnOff(option);
-        }
+        OffUI();
+        UIOnOff(option);
     }
 
     void ShopConfiguration()
