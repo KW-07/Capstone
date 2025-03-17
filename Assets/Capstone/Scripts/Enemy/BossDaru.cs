@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class BossDaru : MonoBehaviour
+public class BossDaru : LivingEntity
 {
     public Transform playerTransform;
 
@@ -29,9 +29,6 @@ public class BossDaru : MonoBehaviour
     public float teleportCooldown = 5.0f; // 텔레포트 재사용 대기시간
     private float nextTeleportTime = 0f;
 
-    public float maxHealth = 100f;
-    private float currentHealth;
-
     public bool itemDrop;
 
     public int nextMoveTime = 3;
@@ -48,7 +45,6 @@ public class BossDaru : MonoBehaviour
 
     private void Start()
     {
-        currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         Invoke("Think", nextMoveTime);
@@ -122,7 +118,7 @@ public class BossDaru : MonoBehaviour
 
     private bool IsLowHealth()
     {
-        return currentHealth <= maxHealth * 0.4f;
+        return base.currentHealth <= base.maxHealth * 0.4f;
     }
     private bool CanAttack()
     {
@@ -284,27 +280,31 @@ public class BossDaru : MonoBehaviour
 
         Invoke("Think", nextMoveTime);
     }
+    private BTNodeState Die()
+    {
+        OnDie();
+        return BTNodeState.Success;
+    }
 
-    public void TakeDamage(float damage)
+    public override void OnDamage(float damage)
     {
         if (isDead) return;  // 사망 시 피격 무효
-        currentHealth -= damage;
-        Debug.Log("Monster took damage! Current Health: " + currentHealth);
+        base.OnDamage(damage);
+        Debug.Log("Monster took damage! Current Health: " + base.currentHealth);
 
-        if (currentHealth <= 0)
+        if (base.currentHealth <= 0)
         {
             isDead = true;
             Debug.Log("Monster has died!");
         }
     }
 
-    private BTNodeState Die()
+    public override void OnDie()
     {
         Debug.Log("Monster is Dead!");
         rb.velocity = Vector2.zero;  // 움직임 정지
         GetComponent<Collider2D>().enabled = false;  // 충돌 제거
         Destroy(this.gameObject);
-        return BTNodeState.Success;
     }
 
     // --------------- 콜라이더 감지 시스템 ---------------
