@@ -180,7 +180,7 @@ public class PlayerCommand : MonoBehaviour
 
                                 // 스킬 사용
                                 // 버프일 경우 플레이어 위치에서 생성
-                                if (CommandManager.instance.commandList[i].commandType == CommandType.Buff)
+                                if (CommandManager.instance.commandList[i].castPlayerPosition)
                                 {
                                     skillSystem.UseSkill(gameObject, PlayerAttack.instance.neareastEnemy);
                                 }
