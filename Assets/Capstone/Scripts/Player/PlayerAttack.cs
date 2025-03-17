@@ -31,6 +31,8 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+<<<<<<< Updated upstream
+=======
     [SerializeField]
     private int _attackCount = 0;
     public int attackCount
@@ -56,7 +58,9 @@ public class PlayerAttack : MonoBehaviour
             }
         }
     }
+    [SerializeField] private float attackCountInitTime;
 
+>>>>>>> Stashed changes
     public Vector2 boxSize;
     private Vector2 normalAttackBoxSize;
 
@@ -68,7 +72,6 @@ public class PlayerAttack : MonoBehaviour
     // 전방에 존재하며 가장 가까운 적
     public GameObject neareastEnemy;
 
-    Animator animator;
     SkillSystem skillSystem;
 
     private void Awake()
@@ -76,13 +79,11 @@ public class PlayerAttack : MonoBehaviour
         if (instance != null)
             Destroy(instance);
         else instance = this;
-        animator = GetComponent<Animator>();
     }
     private void Start()
     {
         normalAttackBoxSize = boxSize;
         skillSystem = gameObject.GetComponent<SkillSystem>();
-
     }
 
     private void Update()
@@ -93,8 +94,12 @@ public class PlayerAttack : MonoBehaviour
 
         if (cooldownTimer < 0)
         {
+            // Multiple Attack
             cooldownTimer = initTimeMultipleAttack;
             normalAttack.multipleAttack = 0;
+
+            animator.SetInteger("attackCount", 0);
+            animator.SetBool("isAttack", false);
         }
     }
 
@@ -116,14 +121,34 @@ public class PlayerAttack : MonoBehaviour
                     normalAttack.multipleAttack = 1;
 
                 skillSystem.UseSkill(shootPoint.gameObject, neareastEnemy);
-                attackCount = normalAttack.multipleAttack;
+
+<<<<<<< Updated upstream
+                //Debug.Log("attack");
+=======
+                animator.SetBool("isAttack", true);
 
                 Debug.Log("count :" + _attackCount);
                 Debug.Log(normalAttack.multipleAttack);
-               
+
+                switch (_attackCount)
+                {
+                    case 1:
+                        animator.SetTrigger("attack1st");
+                        break;
+                    case 2:
+                        animator.SetTrigger("attack2nd");
+                        break;
+                    case 3:
+                        animator.SetTrigger("attack3rd");
+                        break;
+                    default:
+                        break;
+                }
+>>>>>>> Stashed changes
             }
         }
     }
+
 
     // 반복공격 실행
     public void RepeatAttack(GameObject enemy, int repeatCount, float repeatDelay, float damage)
@@ -173,14 +198,16 @@ public class PlayerAttack : MonoBehaviour
         {
             if(GameManager.instance.nothingState())
             {
+                animator.SetTrigger("isRangeAttack");
+
                 SkillSystem.instance.command = normalProjectile ;
 
                 skillSystem.UseSkill(shootPoint.gameObject, neareastEnemy);
 
-                //Debug.Log("Shoot");
             }
         }
     }
+
 
     void FindEnemy()
     {

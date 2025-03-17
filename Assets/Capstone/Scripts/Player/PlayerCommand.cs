@@ -142,6 +142,8 @@ public class PlayerCommand : MonoBehaviour
                     }
                 }
 
+
+
                 // 커맨드 시간 초과 시
                 if (commandingTime <= 0)
                 {
