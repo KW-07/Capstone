@@ -54,8 +54,11 @@ public class GameManager : MonoBehaviour
     public string synergy_Effect_D;
     public string synergy_Effect_E;
 
+    [Header("BossEvent")]
     public bool isBossBattle;
     [SerializeField] private GameObject fakeWall;
+    [SerializeField] private GameObject bossObject;
+    [SerializeField] private GameObject bossHpUI;
 
     private void Awake()
     {

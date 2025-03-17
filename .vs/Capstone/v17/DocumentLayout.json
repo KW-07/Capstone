@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Capstone\\Capstone\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|C:\\Capstone\\Capstone\\assets\\capstone\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|c:\\capstone\\capstone\\assets\\capstone\\scripts\\command\\commanddata\\scripts\\f_bigflamecommanddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\command\\commanddata\\scripts\\f_bigflamecommanddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -19,11 +23,11 @@
       "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\command\\commandmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|c:\\capstone\\capstone\\assets\\capstone\\scripts\\command\\commanddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|C:\\Capstone\\Capstone\\assets\\capstone\\scripts\\command\\commanddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\command\\commanddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|c:\\capstone\\capstone\\assets\\capstone\\scripts\\projectile\\homingprojectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|C:\\Capstone\\Capstone\\assets\\capstone\\scripts\\projectile\\homingprojectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\projectile\\homingprojectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -59,10 +63,6 @@
       "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\bosstrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|C:\\Capstone\\Capstone\\assets\\capstone\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|C:\\Capstone\\Capstone\\assets\\capstone\\scripts\\projectile\\parabolicprojectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1EE98971-DB57-CCE3-EB35-7D60258BAC4D}|Assembly-CSharp.csproj|solutionrelative:assets\\capstone\\scripts\\projectile\\parabolicprojectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -78,11 +78,156 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UIManager.cs",
+              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\UI\\UIManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\UI\\UIManager.cs",
+              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\UI\\UIManager.cs",
+              "RelativeToolTip": "Assets\\Capstone\\Scripts\\UI\\UIManager.cs",
+              "ViewState": "AQIAAKYAAAAAAAAAAAAUwLoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-12T09:21:23.393Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "HomingProjectile.cs",
+              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Projectile\\HomingProjectile.cs",
+              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Projectile\\HomingProjectile.cs",
+              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Projectile\\HomingProjectile.cs",
+              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Projectile\\HomingProjectile.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAADwvxAAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T14:35:59.676Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PlayerAttack.cs",
+              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Player\\PlayerAttack.cs",
+              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Player\\PlayerAttack.cs",
+              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Player\\PlayerAttack.cs",
+              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Player\\PlayerAttack.cs",
+              "ViewState": "AQIAAJIAAAAAAAAAAAAqwCUAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T14:26:13.374Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ItemDrop.cs",
+              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Object\\ItemDrop.cs",
+              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Object\\ItemDrop.cs",
+              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Object\\ItemDrop.cs",
+              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Object\\ItemDrop.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAABIwBQAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T14:10:11.049Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "TreasureChest.cs",
+              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Object\\TreasureChest.cs",
+              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Object\\TreasureChest.cs",
+              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Object\\TreasureChest.cs",
+              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Object\\TreasureChest.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAmwD8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T11:54:26.079Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "BossTrigger.cs",
+              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\BossTrigger.cs",
+              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\BossTrigger.cs",
+              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\BossTrigger.cs",
+              "RelativeToolTip": "Assets\\Capstone\\Scripts\\BossTrigger.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwsAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T13:46:38.526Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PlayerCommand.cs",
+              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Player\\PlayerCommand.cs",
+              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Player\\PlayerCommand.cs",
+              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Player\\PlayerCommand.cs",
+              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Player\\PlayerCommand.cs",
+              "ViewState": "AQIAAKIAAAAAAAAAAAAmwLkAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T13:37:31.765Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CommandManager.cs",
+              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Command\\CommandManager.cs",
+              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandManager.cs",
+              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Command\\CommandManager.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvxIAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T11:48:42.958Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "F_ChaseCommandData.cs",
+              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandData\\Scripts\\F_ChaseCommandData.cs",
+              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Command\\CommandData\\Scripts\\F_ChaseCommandData.cs",
+              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandData\\Scripts\\F_ChaseCommandData.cs",
+              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Command\\CommandData\\Scripts\\F_ChaseCommandData.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-12T09:36:53.105Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "GameManager.cs",
+              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\GameManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\GameManager.cs",
+              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\GameManager.cs",
+              "RelativeToolTip": "Assets\\Capstone\\Scripts\\GameManager.cs",
+              "ViewState": "AQIAACYAAAAAAAAAAADwvzoAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T13:34:45.479Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CommandData.cs",
+              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandData.cs",
+              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Command\\CommandData.cs",
+              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandData.cs",
+              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Command\\CommandData.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAADwvxcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T15:32:30.856Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "F_FistCommandData.cs",
+              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandData\\Scripts\\F_FistCommandData.cs",
+              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Command\\CommandData\\Scripts\\F_FistCommandData.cs",
+              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandData\\Scripts\\F_FistCommandData.cs",
+              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Command\\CommandData\\Scripts\\F_FistCommandData.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T13:37:46.825Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "F_BigFlameCommandData.cs",
               "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandData\\Scripts\\F_BigFlameCommandData.cs",
               "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Command\\CommandData\\Scripts\\F_BigFlameCommandData.cs",
@@ -95,156 +240,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "F_FistCommandData.cs",
-              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandData\\Scripts\\F_FistCommandData.cs",
-              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Command\\CommandData\\Scripts\\F_FistCommandData.cs",
-              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandData\\Scripts\\F_FistCommandData.cs",
-              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Command\\CommandData\\Scripts\\F_FistCommandData.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T13:37:46.825Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CommandData.cs",
-              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandData.cs",
-              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Command\\CommandData.cs",
-              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandData.cs",
-              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Command\\CommandData.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAADwvxcAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T15:32:30.856Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "UIManager.cs",
-              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\UI\\UIManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\UI\\UIManager.cs",
-              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\UI\\UIManager.cs",
-              "RelativeToolTip": "Assets\\Capstone\\Scripts\\UI\\UIManager.cs",
-              "ViewState": "AQIAAKYAAAAAAAAAAAAUwLoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T09:21:23.393Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "HomingProjectile.cs",
-              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Projectile\\HomingProjectile.cs",
-              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Projectile\\HomingProjectile.cs",
-              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Projectile\\HomingProjectile.cs",
-              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Projectile\\HomingProjectile.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAADwvxAAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T14:35:59.676Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "PlayerAttack.cs",
-              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Player\\PlayerAttack.cs",
-              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Player\\PlayerAttack.cs",
-              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Player\\PlayerAttack.cs",
-              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Player\\PlayerAttack.cs",
-              "ViewState": "AQIAAJIAAAAAAAAAAAAqwCUAAAAlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T14:26:13.374Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ItemDrop.cs",
-              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Object\\ItemDrop.cs",
-              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Object\\ItemDrop.cs",
-              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Object\\ItemDrop.cs",
-              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Object\\ItemDrop.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAABIwBQAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T14:10:11.049Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "TreasureChest.cs",
-              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Object\\TreasureChest.cs",
-              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Object\\TreasureChest.cs",
-              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Object\\TreasureChest.cs",
-              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Object\\TreasureChest.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAmwD8AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T11:54:26.079Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 13,
-              "Title": "BossTrigger.cs",
-              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\BossTrigger.cs",
-              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\BossTrigger.cs",
-              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\BossTrigger.cs",
-              "RelativeToolTip": "Assets\\Capstone\\Scripts\\BossTrigger.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvwsAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T13:46:38.526Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PlayerCommand.cs",
-              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Player\\PlayerCommand.cs",
-              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Player\\PlayerCommand.cs",
-              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Player\\PlayerCommand.cs",
-              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Player\\PlayerCommand.cs",
-              "ViewState": "AQIAAKIAAAAAAAAAAAAmwLkAAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T13:37:31.765Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CommandManager.cs",
-              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Command\\CommandManager.cs",
-              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandManager.cs",
-              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Command\\CommandManager.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvxIAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T11:48:42.958Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "F_ChaseCommandData.cs",
-              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandData\\Scripts\\F_ChaseCommandData.cs",
-              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Command\\CommandData\\Scripts\\F_ChaseCommandData.cs",
-              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Command\\CommandData\\Scripts\\F_ChaseCommandData.cs",
-              "RelativeToolTip": "Assets\\Capstone\\Scripts\\Command\\CommandData\\Scripts\\F_ChaseCommandData.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAA8AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T09:36:53.105Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "GameManager.cs",
-              "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\GameManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\GameManager.cs",
-              "ToolTip": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\GameManager.cs",
-              "RelativeToolTip": "Assets\\Capstone\\Scripts\\GameManager.cs",
-              "ViewState": "AQIAADgAAAAAAAAAAADwv0UAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T13:34:45.479Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
               "Title": "BossDaru.cs",
               "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Enemy\\BossDaru.cs",
               "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Enemy\\BossDaru.cs",
@@ -256,7 +252,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "PlayerMove.cs",
               "DocumentMoniker": "C:\\Capstone\\Capstone\\Assets\\Capstone\\Scripts\\Player\\PlayerMove.cs",
               "RelativeDocumentMoniker": "Assets\\Capstone\\Scripts\\Player\\PlayerMove.cs",
