@@ -23,7 +23,6 @@ public class MeleeAttackData : CommandData
                 if (effectPrefab != null)
                 {
                     GameObject effect = Instantiate(effectPrefab, castPoint.transform.position, Quaternion.identity);
-                    //Debug.Log("firstCount");
                     Destroy(effect, destroyTime);
                 }
                 break;
@@ -33,7 +32,6 @@ public class MeleeAttackData : CommandData
                 if (effectPrefab != null)
                 {
                     GameObject effect = Instantiate(effectPrefab, castPoint.transform.position, Quaternion.identity);
-                    //Debug.Log("secondCount");
                     Destroy(effect, destroyTime);
                 }
                 break;
@@ -43,7 +41,6 @@ public class MeleeAttackData : CommandData
                 if (effectPrefab != null)
                 {
                     GameObject effect = Instantiate(effectPrefab, castPoint.transform.position, Quaternion.identity);
-                    //Debug.Log("thirdCount");
                     Destroy(effect, destroyTime);
                 }
                 break;

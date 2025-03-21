@@ -17,8 +17,10 @@ MonoBehaviour:
   commandEffect: "\uADFC\uAC70\uB9AC\uACF5\uACA9!"
   commandDescription: 
   cooldown: 0
-  damage: 10
+  damage: 2
+  castPlayerPosition: 0
   effectPrefab: {fileID: 6165903748987304714, guid: b7104954514e62a46a45a7fe5e8219cb, type: 3}
+  spawnDelay: 0.5
   destroyTime: 2
   command: 0000000000000000000000000000000000000000000000000000000000000000
   attackRange: 3

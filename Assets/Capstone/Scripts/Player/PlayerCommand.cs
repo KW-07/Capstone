@@ -20,7 +20,7 @@ public class PlayerCommand : MonoBehaviour
     public GameObject commandTimeUI;
     private Vector2 currentPCommandSize = new Vector2(0,0);
     public GameObject pCommandUI;
-    [SerializeField] private GameObject pCommandUIGrid;
+    public GameObject pCommandUIGrid;
     [SerializeField] private Sprite[] commandIcon;
     [SerializeField] private Image[] pCommandIcon;
 
@@ -55,12 +55,12 @@ public class PlayerCommand : MonoBehaviour
                 // 기존 pCommand 값 초기화
                 CommandInitialization(pCommand);
 
+                currentPCommandSize = new Vector2(0, 0);
                 // pCommandUI 사이즈 초기값 설정
                 pCommandUI.GetComponent<RectTransform>().sizeDelta = currentPCommandSize;
 
                 // pCommandGrid 사이즈 초기값 설정
                 pCommandUIGrid.GetComponent<RectTransform>().sizeDelta = pCommandUI.GetComponent<RectTransform>().sizeDelta;
-
 
                 initTime++;
             }
@@ -252,7 +252,7 @@ public class PlayerCommand : MonoBehaviour
         if (context.performed)
         {
             // 아무 상황이 아닐 경우에만 커맨드 실행
-            if (GameManager.instance.nothingState())
+            if (GameManager.instance.nothingUI())
             {
                 GameManager.instance.isCommand = BooleanOnOff(GameManager.instance.isCommand);
 

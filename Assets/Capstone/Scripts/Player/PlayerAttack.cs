@@ -14,8 +14,11 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] private MeleeAttackData normalAttack;
     [SerializeField] private RangeAttackData normalProjectile;
+    private bool canRangeAttack = true;
+    [SerializeField] private float rangeCooldown;
     [SerializeField] private float initTimeMultipleAttack;
     float cooldownTimer;
+    float rangeCooldownTimer;
 
     [SerializeField]
     private float _playerDamage;
@@ -31,31 +34,6 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    [SerializeField]
-    private int _attackCount = 0;
-    public int attackCount
-    {
-        get
-        {
-            return _attackCount;
-        }
-        set
-        {
-            _attackCount = value;
-            if(value == 1)
-            {
-                //animator.SetInteger("attackCount", 1);
-            }
-            else if(value == 2)
-            {
-                //animator.SetInteger("attackCount", 2);
-            }
-            else if(value == 3)
-            {
-                //animator.SetInteger("attackCount", 3);
-            }
-        }
-    }
     [SerializeField] private float attackCountInitTime;
 
     public Vector2 boxSize;
@@ -70,6 +48,7 @@ public class PlayerAttack : MonoBehaviour
     public GameObject neareastEnemy;
 
     SkillSystem skillSystem;
+    Animator animator;
 
     private void Awake()
     {
@@ -81,6 +60,9 @@ public class PlayerAttack : MonoBehaviour
     {
         normalAttackBoxSize = boxSize;
         skillSystem = gameObject.GetComponent<SkillSystem>();
+        animator = gameObject.GetComponent<Animator>();
+
+        animator.SetFloat("attackCount", normalAttack.multipleAttack);
     }
 
     private void Update()
@@ -88,12 +70,19 @@ public class PlayerAttack : MonoBehaviour
         FindEnemy();
 
         cooldownTimer -= Time.deltaTime;
+        rangeCooldownTimer -= Time.deltaTime;
 
         if (cooldownTimer < 0)
         {
             // Multiple Attack
             cooldownTimer = initTimeMultipleAttack;
             normalAttack.multipleAttack = 0;
+            animator.SetFloat("attackCount", normalAttack.multipleAttack);
+        }
+
+        if(rangeCooldownTimer < 0)
+        {
+            canRangeAttack = true;
         }
     }
 
@@ -105,7 +94,7 @@ public class PlayerAttack : MonoBehaviour
         {
             boxSize = normalAttackBoxSize;
 
-            if(GameManager.instance.nothingState())
+            if(GameManager.instance.nothingUI() && GameManager.instance.isGrounded && !GameManager.instance.isCommandAction)
             {
                 SkillSystem.instance.command = normalAttack;
 
@@ -116,25 +105,10 @@ public class PlayerAttack : MonoBehaviour
 
                 skillSystem.UseSkill(shootPoint.gameObject, neareastEnemy);
 
-
-
-                Debug.Log("count :" + _attackCount);
                 Debug.Log(normalAttack.multipleAttack);
 
-                switch (_attackCount)
-                {
-                    case 1:
-                        //animator.SetTrigger("attack1st");
-                        break;
-                    case 2:
-                        //animator.SetTrigger("attack2nd");
-                        break;
-                    case 3:
-                        //animator.SetTrigger("attack3rd");
-                        break;
-                    default:
-                        break;
-                }
+                animator.SetTrigger("isMeleeAttack");
+                animator.SetFloat("attackCount", normalAttack.multipleAttack);
             }
         }
     }
@@ -186,14 +160,16 @@ public class PlayerAttack : MonoBehaviour
     {
         if (context.performed)
         {
-            if(GameManager.instance.nothingState())
+            if(GameManager.instance.nothingUI() && canRangeAttack)
             {
-                //animator.SetTrigger("isRangeAttack");
+                rangeCooldownTimer = rangeCooldown;
+                canRangeAttack = false;
+
+                animator.SetTrigger("isRangeAttack");
 
                 SkillSystem.instance.command = normalProjectile ;
 
                 skillSystem.UseSkill(shootPoint.gameObject, neareastEnemy);
-
             }
         }
     }

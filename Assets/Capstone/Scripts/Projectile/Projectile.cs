@@ -26,7 +26,6 @@ public class Projectile : MonoBehaviour
 
     protected virtual void LaunchMethod()
     {
-        Debug.Log($"메소드 실행 {damage}, {speed}, {destroyTime}");
         rigid.velocity = transform.right * speed;
         Destroy(gameObject, destroyTime);
     }

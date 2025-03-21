@@ -37,9 +37,15 @@ public class GameManager : MonoBehaviour
     private QuickSlot quickSlot;
 
     [Header("State")]
-    public bool isConversation;
-    public bool isCommand;
-    public bool isShop;
+    public bool isGrounded = false;
+    public bool isMeleeAttack = false;
+    public bool isRangeAttack = false;
+    public bool isCommandAction = false;
+
+    [Header("UIState")]
+    public bool isConversation = false;
+    public bool isCommand = false;
+    public bool isShop = false;
 
     [Header("BossEvent")]
     public bool isBossBattle;
@@ -126,7 +132,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public bool nothingState()
+
+    public bool nothingUI()
     {
         if (!isConversation && !isCommand && !isShop)
             return true;

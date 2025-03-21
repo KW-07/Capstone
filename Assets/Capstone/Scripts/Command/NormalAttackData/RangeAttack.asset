@@ -16,9 +16,11 @@ MonoBehaviour:
   commandType: 1
   commandEffect: "\uC6D0\uAC70\uB9AC\uACF5\uACA9!"
   commandDescription: 
-  cooldown: 0
+  cooldown: 0.5
   damage: 4
+  castPlayerPosition: 0
   effectPrefab: {fileID: 922656483790474395, guid: bdff034151e746a408a6bdd6f90b1e94, type: 3}
+  spawnDelay: 0
   destroyTime: 5
   command: 0000000000000000000000000000000000000000000000000000000000000000
   projectileSpeed: 10

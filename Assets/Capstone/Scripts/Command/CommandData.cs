@@ -23,6 +23,7 @@ public class CommandData : ScriptableObject
     public bool castPlayerPosition;
 
     public GameObject effectPrefab;
+    public float spawnDelay;
     public float destroyTime;
 
     [Header("좌하우상 순서대로 1 ~ 4")]
@@ -38,5 +39,12 @@ public class CommandData : ScriptableObject
             GameObject effect = Instantiate(effectPrefab, castPoint.transform.position, Quaternion.identity);
             Destroy(effect, destroyTime);
         }
+    }
+
+    public virtual IEnumerator DelayInstantiate(GameObject castPoint)
+    {
+        yield return new WaitForSeconds(spawnDelay);
+
+        GameObject effect = Instantiate(effectPrefab, castPoint.transform.position, Quaternion.identity);
     }
 }

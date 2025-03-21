@@ -30,7 +30,6 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]private List<float> activeSpeedMultipliers = new List<float>();
 
     // 점프
-    public bool isGrounded = false;
     public float jumpPower = 1f;
 
     // 대쉬
@@ -77,7 +76,7 @@ public class PlayerMove : MonoBehaviour
     void Move()
     {
         // 대화 중 움직임 제어
-        if(GameManager.instance.nothingState())
+        if(GameManager.instance.nothingUI())
         {
             // spriteFlip
             if (dir < 0 && facingRight)
@@ -138,17 +137,17 @@ public class PlayerMove : MonoBehaviour
     {
         if(context.performed)
         {
-            if (GameManager.instance.nothingState())
+            if (GameManager.instance.nothingUI())
             {
                 if (jumpCount < 2)
                 {
                     rb.velocity = new Vector2(rb.velocity.x, jumpPower);
-                    isGrounded = false;
+                    GameManager.instance.isGrounded = false;
 
                     jumpCount += 1;
                     animator.SetFloat("jumpCount", jumpCount);
 
-                    animator.SetBool("isJumping", !isGrounded);
+                    animator.SetBool("isJumping", !GameManager.instance.isGrounded);
                 }
             }
         }
@@ -157,7 +156,7 @@ public class PlayerMove : MonoBehaviour
     {
         if(context.performed && GameObject.FindWithTag("Platform").GetComponent<Platform>().isPlayer == true)
         {
-            if(GameManager.instance.nothingState())
+            if(GameManager.instance.nothingUI())
             {
                 StartCoroutine("coDownJump");
             }
@@ -195,8 +194,8 @@ public class PlayerMove : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Platform")
         {
-            isGrounded = true;
-            animator.SetBool("isJumping", !isGrounded);
+            GameManager.instance.isGrounded = true;
+            animator.SetBool("isJumping", !GameManager.instance.isGrounded);
             
             jumpCount = 0;
             animator.SetFloat("jumpCount", jumpCount);
@@ -209,6 +208,6 @@ public class PlayerMove : MonoBehaviour
         transform.Rotate(0, 180, 0);
 
         PlayerCommand.instance.commandTimeUI.GetComponent<Transform>().Rotate(0, 180, 0);
-        PlayerCommand.instance.pCommandUI.GetComponent<Transform>().Rotate(0, 180, 0);
+        PlayerCommand.instance.pCommandUIGrid.GetComponent<Transform>().Rotate(0, 180, 0);
     }
 }

@@ -32626,6 +32626,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1925824239360425300, guid: c1b6a19ccb4820c4cae7ce4c64ce205b, type: 3}
+      propertyPath: rangeCooldown
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2207710862860010630, guid: c1b6a19ccb4820c4cae7ce4c64ce205b, type: 3}
       propertyPath: pCommandUI
       value: 

@@ -7,6 +7,7 @@ using UnityEngine;
 public class RangeAttackData : CommandData
 {
     public float projectileSpeed;
+
     public override void ActivateSkill(GameObject castPoint, GameObject target)
     {
         Debug.Log($"{commandName} น฿ป็!");
@@ -16,6 +17,7 @@ public class RangeAttackData : CommandData
             GameObject projectile = Instantiate(effectPrefab, castPoint.transform.position, castPoint.transform.rotation);
             Projectile projectileScript = projectile.GetComponent<Projectile>();
             projectileScript.Initialize(target, damage, projectileSpeed, destroyTime);
+
         }
     }
 }
