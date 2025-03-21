@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 2207710862860010630}
   - component: {fileID: 7372711895074517867}
   - component: {fileID: 8237521002116061519}
+  - component: {fileID: 6422994693445623247}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -356,10 +357,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dir: 0
-  _isMoving: 0
   _jumpCount: 0
   moveSpeed: 10
   activeSpeedMultipliers: []
+  isGrounded: 0
   jumpPower: 40
   teleportdis: 3
   facingRight: 1
@@ -381,6 +382,7 @@ MonoBehaviour:
   initTimeMultipleAttack: 3
   _playerDamage: 10
   _attackCount: 0
+  attackCountInitTime: 0
   boxSize: {x: 1.5, y: 2}
   allEnemyArray: []
   visibleEnemy: []
@@ -461,6 +463,41 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8571429, y: 3.329332}
   m_EdgeRadius: 0
+--- !u!70 &6422994693445623247
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5744513895415964633}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -1.67}
+  m_Size: {x: 1.78, y: 0.4}
+  m_Direction: 1
 --- !u!1 &7376274576938273291
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,8 +31,6 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-<<<<<<< Updated upstream
-=======
     [SerializeField]
     private int _attackCount = 0;
     public int attackCount
@@ -46,21 +44,20 @@ public class PlayerAttack : MonoBehaviour
             _attackCount = value;
             if(value == 1)
             {
-                animator.SetInteger("attackCount", 1);
+                //animator.SetInteger("attackCount", 1);
             }
             else if(value == 2)
             {
-                animator.SetInteger("attackCount", 2);
+                //animator.SetInteger("attackCount", 2);
             }
             else if(value == 3)
             {
-                animator.SetInteger("attackCount", 3);
+                //animator.SetInteger("attackCount", 3);
             }
         }
     }
     [SerializeField] private float attackCountInitTime;
 
->>>>>>> Stashed changes
     public Vector2 boxSize;
     private Vector2 normalAttackBoxSize;
 
@@ -97,9 +94,6 @@ public class PlayerAttack : MonoBehaviour
             // Multiple Attack
             cooldownTimer = initTimeMultipleAttack;
             normalAttack.multipleAttack = 0;
-
-            animator.SetInteger("attackCount", 0);
-            animator.SetBool("isAttack", false);
         }
     }
 
@@ -122,10 +116,7 @@ public class PlayerAttack : MonoBehaviour
 
                 skillSystem.UseSkill(shootPoint.gameObject, neareastEnemy);
 
-<<<<<<< Updated upstream
-                //Debug.Log("attack");
-=======
-                animator.SetBool("isAttack", true);
+
 
                 Debug.Log("count :" + _attackCount);
                 Debug.Log(normalAttack.multipleAttack);
@@ -133,18 +124,17 @@ public class PlayerAttack : MonoBehaviour
                 switch (_attackCount)
                 {
                     case 1:
-                        animator.SetTrigger("attack1st");
+                        //animator.SetTrigger("attack1st");
                         break;
                     case 2:
-                        animator.SetTrigger("attack2nd");
+                        //animator.SetTrigger("attack2nd");
                         break;
                     case 3:
-                        animator.SetTrigger("attack3rd");
+                        //animator.SetTrigger("attack3rd");
                         break;
                     default:
                         break;
                 }
->>>>>>> Stashed changes
             }
         }
     }
@@ -198,7 +188,7 @@ public class PlayerAttack : MonoBehaviour
         {
             if(GameManager.instance.nothingState())
             {
-                animator.SetTrigger("isRangeAttack");
+                //animator.SetTrigger("isRangeAttack");
 
                 SkillSystem.instance.command = normalProjectile ;
 

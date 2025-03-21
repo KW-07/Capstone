@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
 
     private TypewriterEffect typewriterEffect;
     private GameObject player;
+    [SerializeField] private Image playerHp;
 
     [Header("Option/Information")]
     [SerializeField] private GameObject option;
@@ -105,6 +106,9 @@ public class UIManager : MonoBehaviour
         }
 
         GO_commandTimeUI.transform.position = player.transform.position + new Vector3(0,-1.5f,0);
+
+        // 플레이어 HP바
+        playerHp.fillAmount = GameManager.instance.currentHealthPoint / GameManager.instance.maxHealthPoint;
 
         if (Input.GetKeyDown(KeyCode.L) && !GameManager.instance.isConversation)
             showDialogue(testDialogue);
@@ -311,45 +315,47 @@ public class UIManager : MonoBehaviour
 
         itemName.text = selectedItem.itemName;
         itemDescription.text = selectedItem.description;
-        if (selectedItem.synergy == null)
-        {
-            switch (selectedItem.synergy[1])
-            {
-                case Synergy.A:
-                    synergySprite_1.sprite = GameManager.instance.synergy_Sprite_A;
-                    synergyKeyword_1.text = GameManager.instance.synergy_Effect_A;
-                    break;
-                case Synergy.B:
-                    synergySprite_1.sprite = GameManager.instance.synergy_Sprite_B;
-                    synergyKeyword_1.text = GameManager.instance.synergy_Effect_B;
-                    break;
-                case Synergy.None:
-                    synergySprite_1.sprite = GameManager.instance.synergy_Sprite_C;
-                    synergyKeyword_1.text = GameManager.instance.synergy_Effect_C;
-                    break;
-                default:
-                    Debug.Log("This Synergy is Nothing");
-                    break;
-            }
-            switch(selectedItem.synergy[2])
-            {
-                case Synergy.A:
-                    synergySprite_2.sprite = GameManager.instance.synergy_Sprite_A;
-                    synergyKeyword_2.text = GameManager.instance.synergy_Effect_A;
-                    break;
-                case Synergy.B:
-                    synergySprite_2.sprite = GameManager.instance.synergy_Sprite_B;
-                    synergyKeyword_2.text = GameManager.instance.synergy_Effect_B;
-                    break;
-                case Synergy.None:
-                    synergySprite_2.sprite = GameManager.instance.synergy_Sprite_C;
-                    synergyKeyword_2.text = GameManager.instance.synergy_Effect_C;
-                    break;
-                default:
-                    Debug.Log("This Synergy is Nothing");
-                    break;
-            }
-        }
+
+        // 삭제 예정
+        //if (selectedItem.synergy == null)
+        //{
+        //    switch (selectedItem.synergy[1])
+        //    {
+        //        case Synergy.A:
+        //            synergySprite_1.sprite = GameManager.instance.synergy_Sprite_A;
+        //            synergyKeyword_1.text = GameManager.instance.synergy_Effect_A;
+        //            break;
+        //        case Synergy.B:
+        //            synergySprite_1.sprite = GameManager.instance.synergy_Sprite_B;
+        //            synergyKeyword_1.text = GameManager.instance.synergy_Effect_B;
+        //            break;
+        //        case Synergy.None:
+        //            synergySprite_1.sprite = GameManager.instance.synergy_Sprite_C;
+        //            synergyKeyword_1.text = GameManager.instance.synergy_Effect_C;
+        //            break;
+        //        default:
+        //            Debug.Log("This Synergy is Nothing");
+        //            break;
+        //    }
+        //    switch(selectedItem.synergy[2])
+        //    {
+        //        case Synergy.A:
+        //            synergySprite_2.sprite = GameManager.instance.synergy_Sprite_A;
+        //            synergyKeyword_2.text = GameManager.instance.synergy_Effect_A;
+        //            break;
+        //        case Synergy.B:
+        //            synergySprite_2.sprite = GameManager.instance.synergy_Sprite_B;
+        //            synergyKeyword_2.text = GameManager.instance.synergy_Effect_B;
+        //            break;
+        //        case Synergy.None:
+        //            synergySprite_2.sprite = GameManager.instance.synergy_Sprite_C;
+        //            synergyKeyword_2.text = GameManager.instance.synergy_Effect_C;
+        //            break;
+        //        default:
+        //            Debug.Log("This Synergy is Nothing");
+        //            break;
+        //    }
+        //}
     }
 
     void BuyTap()

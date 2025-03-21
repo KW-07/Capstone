@@ -1,9 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerCommand : MonoBehaviour
 {
@@ -15,10 +13,18 @@ public class PlayerCommand : MonoBehaviour
     [SerializeField]private float inCommandingTimeScale;
     float initTime = 0;
     public float commandingTime = 0;
+    private int commandCount;
     private bool movePossible; // 합치고 이동관련 스크립트에 넣을 예정
 
+    [Header("UI")]
     public GameObject commandTimeUI;
+    private Vector2 currentPCommandSize = new Vector2(0,0);
+    public GameObject pCommandUI;
+    [SerializeField] private GameObject pCommandUIGrid;
+    [SerializeField] private Sprite[] commandIcon;
+    [SerializeField] private Image[] pCommandIcon;
 
+    [Header("Skill")]
     public SkillSystem skillSystem;
 
     private void Awake()
@@ -30,8 +36,10 @@ public class PlayerCommand : MonoBehaviour
     private void Start()
     {
         initTime = 0;
+        commandCount = 0;
         GameManager.instance.isCommand = false;
         commandTimeUI.SetActive(false);
+        pCommandUI.SetActive(false);
         CommandInitialization(pCommand);
 
         skillSystem = gameObject.GetComponent<SkillSystem>();
@@ -39,13 +47,21 @@ public class PlayerCommand : MonoBehaviour
 
     private void Update()
     {
-        
         // 커맨드 시작 시
         if (GameManager.instance.isCommand)
         {
             if(initTime == 0)
             {
+                // 기존 pCommand 값 초기화
                 CommandInitialization(pCommand);
+
+                // pCommandUI 사이즈 초기값 설정
+                pCommandUI.GetComponent<RectTransform>().sizeDelta = currentPCommandSize;
+
+                // pCommandGrid 사이즈 초기값 설정
+                pCommandUIGrid.GetComponent<RectTransform>().sizeDelta = pCommandUI.GetComponent<RectTransform>().sizeDelta;
+
+
                 initTime++;
             }
             else if(initTime > 0)
@@ -53,6 +69,7 @@ public class PlayerCommand : MonoBehaviour
                 commandingTime -= Time.unscaledDeltaTime;
                 movePossible = BooleanOnOff(movePossible);
 
+                Debug.Log(commandCount);
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
                     for (int i = 0; i < pCommand.Length; i++)
@@ -60,6 +77,8 @@ public class PlayerCommand : MonoBehaviour
                         if (pCommand[i] == 0)
                         {
                             pCommand[i] = 1;
+                            commandCount++;
+                            ShowPCommand(i);
                             break;
                         }
                     }
@@ -71,6 +90,8 @@ public class PlayerCommand : MonoBehaviour
                         if (pCommand[i] == 0)
                         {
                             pCommand[i] = 2;
+                            commandCount++;
+                            ShowPCommand(i);
                             break;
                         }
                     }
@@ -82,6 +103,8 @@ public class PlayerCommand : MonoBehaviour
                         if (pCommand[i] == 0)
                         {
                             pCommand[i] = 3;
+                            commandCount++;
+                            ShowPCommand(i);
                             break;
                         }
                     }
@@ -93,6 +116,8 @@ public class PlayerCommand : MonoBehaviour
                         if (pCommand[i] == 0)
                         {
                             pCommand[i] = 4;
+                            commandCount++;
+                            ShowPCommand(i);
                             break;
                         }
                     }
@@ -104,6 +129,8 @@ public class PlayerCommand : MonoBehaviour
                         if (pCommand[i] == 0)
                         {
                             pCommand[i] = 5;
+                            commandCount++;
+                            ShowPCommand(i);
                             break;
                         }
                     }
@@ -115,6 +142,8 @@ public class PlayerCommand : MonoBehaviour
                         if (pCommand[i] == 0)
                         {
                             pCommand[i] = 6;
+                            commandCount++;
+                            ShowPCommand(i);
                             break;
                         }
                     }
@@ -126,6 +155,8 @@ public class PlayerCommand : MonoBehaviour
                         if (pCommand[i] == 0)
                         {
                             pCommand[i] = 7;
+                            commandCount++;
+                            ShowPCommand(i);
                             break;
                         }
                     }
@@ -137,12 +168,12 @@ public class PlayerCommand : MonoBehaviour
                         if (pCommand[i] == 0)
                         {
                             pCommand[i] = 8;
+                            commandCount++;
+                            ShowPCommand(i);
                             break;
                         }
                     }
                 }
-
-
 
                 // 커맨드 시간 초과 시
                 if (commandingTime <= 0)
@@ -153,6 +184,7 @@ public class PlayerCommand : MonoBehaviour
                     GameManager.instance.isCommand = BooleanOnOff(GameManager.instance.isCommand);
 
                     commandTimeUI.SetActive(false);
+                    pCommandUI.SetActive(false);
 
                     for (int i=0;i<pCommand.Length;i++)
                     {
@@ -194,6 +226,7 @@ public class PlayerCommand : MonoBehaviour
 
                                 // 커맨드 타이머 삭제
                                 commandTimeUI.SetActive(false);
+                                pCommandUI.SetActive(false);
                                 break;
                             }
                             else
@@ -206,8 +239,6 @@ public class PlayerCommand : MonoBehaviour
                             Debug.Log("Nothing Command!");
                         }
                     }
-
-
                     // End
                     initTime = 0;
                     Time.timeScale = 1.0f;
@@ -230,6 +261,7 @@ public class PlayerCommand : MonoBehaviour
                 if (GameManager.instance.isCommand)
                 {
                     commandTimeUI.SetActive(true);
+                    pCommandUI.SetActive(true);
                     commandingTime = limitCommandTime;
                     Time.timeScale = inCommandingTimeScale;
                 }
@@ -238,6 +270,7 @@ public class PlayerCommand : MonoBehaviour
                     commandingTime = limitCommandTime;
                     Time.timeScale = 1.0f;
                     commandTimeUI.SetActive(false);
+                    pCommandUI.SetActive(false);
 
                 }
             }
@@ -246,10 +279,51 @@ public class PlayerCommand : MonoBehaviour
 
     private void CommandInitialization(int[] command)
     {
-        for(int i=0;i<command.Length;i++)
+        for (int i = 0; i < command.Length; i++)
         {
             command[i] = 0;
         }
+        commandCount = 0;
+    }
+
+    // 초기 사이즈 변환
+    private void PCommandInitSize()
+    {
+        currentPCommandSize = new Vector2(
+            pCommandUIGrid.GetComponent<GridLayoutGroup>().cellSize.x + pCommandUIGrid.GetComponent<GridLayoutGroup>().padding.left + pCommandUIGrid.GetComponent<GridLayoutGroup>().padding.right,
+            pCommandUIGrid.GetComponent<GridLayoutGroup>().cellSize.y + pCommandUIGrid.GetComponent<GridLayoutGroup>().padding.top + pCommandUIGrid.GetComponent<GridLayoutGroup>().padding.bottom);
+
+        // pCommand값 초기값 조정
+        pCommandUI.GetComponent<RectTransform>().sizeDelta = currentPCommandSize;
+
+        // pCommandGrid값 초기값 조정
+        pCommandUIGrid.GetComponent<RectTransform>().sizeDelta = new Vector2(
+            pCommandUI.GetComponent<RectTransform>().sizeDelta.x, 
+            pCommandUI.GetComponent<RectTransform>().sizeDelta.y);
+    }
+
+    private void ShowPCommand(int i)
+    {
+        // 첫번째 크기은 기본값으로 설정
+        if(commandCount == 1)
+        {
+            PCommandInitSize();
+        }
+        // 이후 크기는 일정 값에 따른 조정
+        else
+        {
+            // 현재UI 길이값 + 다음 셀의 크기값 + 사이 간격
+            pCommandUI.GetComponent<RectTransform>().sizeDelta = new Vector2(
+                pCommandUI.GetComponent<RectTransform>().sizeDelta.x + pCommandUIGrid.GetComponent<GridLayoutGroup>().cellSize.x + pCommandUIGrid.GetComponent<GridLayoutGroup>().spacing.x,
+                pCommandUI.GetComponent<RectTransform>().sizeDelta.y);
+            // 현재UIGrid 길이값 + 다음 셀의 크기값 + 사이 간격
+            pCommandUIGrid.GetComponent<RectTransform>().sizeDelta = new Vector2(
+                pCommandUI.GetComponent<RectTransform>().sizeDelta.x,
+                pCommandUI.GetComponent<RectTransform>().sizeDelta.y);
+        }
+
+        // 이미지 삽입
+        pCommandIcon[i].sprite = commandIcon[pCommand[i] - 1];
     }
 
     private bool BooleanOnOff(bool boolean)

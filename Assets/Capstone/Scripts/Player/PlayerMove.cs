@@ -11,20 +11,6 @@ public class PlayerMove : MonoBehaviour
 
     public float dir;
     [SerializeField]
-    private bool _isMoving = false;
-    public bool isMoving
-    {
-        get
-        {
-            return _isMoving;
-        }
-        private set
-        {
-            _isMoving = value;
-            animator.SetBool("isMoving", value);
-        }
-    }
-    [SerializeField]
     private int _jumpCount = 0;
     public int jumpCount
     {
@@ -35,14 +21,6 @@ public class PlayerMove : MonoBehaviour
         set
         {
             _jumpCount = value;
-            if(value == 1)
-            {
-                animator.SetTrigger("isJump");
-            }
-            else if(value == 2)
-            {
-                animator.SetTrigger("isDoubleJump");
-            }
         }
     }
 
@@ -52,8 +30,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]private List<float> activeSpeedMultipliers = new List<float>();
 
     // 점프
+    public bool isGrounded = false;
     public float jumpPower = 1f;
-    bool isjump = true;
 
     // 대쉬
     public float teleportdis;
@@ -79,7 +57,6 @@ public class PlayerMove : MonoBehaviour
     private void Start()
     {
         defaultSpeed = moveSpeed;
-        isjump = true;
     }
 
     private void Update()
@@ -90,14 +67,12 @@ public class PlayerMove : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-
+        animator.SetFloat("yVelocity", rb.velocity.y);
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
         dir = context.ReadValue<float>();
-
-        isMoving = dir != 0;
     }
     void Move()
     {
@@ -108,15 +83,15 @@ public class PlayerMove : MonoBehaviour
             if (dir < 0 && facingRight)
             {
                 Flip();
-                PlayerCommand.instance.commandTimeUI.GetComponent<Transform>().Rotate(0, 180f, 0);
             }
             else if (dir > 0 && !facingRight)
             {
                 Flip();
-                PlayerCommand.instance.commandTimeUI.GetComponent<Transform>().Rotate(0, 180f, 0);
             }
 
             rb.velocity = new Vector2(dir * moveSpeed, rb.velocity.y);
+
+            animator.SetFloat("xVelocity", dir);
         }
     }
 
@@ -168,9 +143,12 @@ public class PlayerMove : MonoBehaviour
                 if (jumpCount < 2)
                 {
                     rb.velocity = new Vector2(rb.velocity.x, jumpPower);
-                    isjump = true;
-                    animator.SetBool("jumping", true); 
-                    jumpCount++;
+                    isGrounded = false;
+
+                    jumpCount += 1;
+                    animator.SetFloat("jumpCount", jumpCount);
+
+                    animator.SetBool("isJumping", !isGrounded);
                 }
             }
         }
@@ -213,21 +191,24 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Platform")
+        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Platform")
         {
-            isjump = false;
-            animator.SetBool("jumping", false);
+            isGrounded = true;
+            animator.SetBool("isJumping", !isGrounded);
+            
             jumpCount = 0;
-
+            animator.SetFloat("jumpCount", jumpCount);
         }
     }
 
     void Flip()
     {
         facingRight = !facingRight;
-
         transform.Rotate(0, 180, 0);
+
+        PlayerCommand.instance.commandTimeUI.GetComponent<Transform>().Rotate(0, 180, 0);
+        PlayerCommand.instance.pCommandUI.GetComponent<Transform>().Rotate(0, 180, 0);
     }
 }
