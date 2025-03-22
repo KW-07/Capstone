@@ -178,15 +178,42 @@ public class PlayerMove : MonoBehaviour
     {
         if(context.performed)
         {
-            if (facingRight)
+            //if (facingRight)
+            //{
+            //    rb.MovePosition(new Vector2((teleportdis) + rb.position.x, rb.position.y));
+            //}
+            //else
+            //{
+            //    rb.MovePosition(new Vector2((teleportdis * -1) + rb.position.x, rb.position.y));
+            //}
+            //Debug.Log("Dash");
+
+            // 대쉬의 방향 및 거리
+            Vector2 dashDirection = facingRight ? Vector2.right : Vector2.left;
+            float dashDistance = teleportdis;
+            
+            // 플레이어의 콜라이더 크기 체크
+            Vector2 playerColliderSize = gameObject.GetComponent<BoxCollider2D>().size;
+
+            // 일반 Raycast
+            //RaycastHit2D hit = Physics2D.Raycast(rb.position, dashDirection, dashDistance, LayerMask.GetMask("Ground"));
+
+            // 박스형 Raycast 좀 더 안전할 듯
+            RaycastHit2D hit = Physics2D.BoxCast(rb.position, playerColliderSize, 0f, dashDirection, dashDistance, LayerMask.GetMask("Ground"));
+
+            // Ground의 레이어를 가진 무언가가 잡힌다면 해당 오브젝트 앞까지 대쉬
+            if (hit.collider != null)
             {
-                rb.MovePosition(new Vector2((teleportdis) + rb.position.x, rb.position.y));
+                float safeDistance = hit.distance - 0.1f;
+                rb.MovePosition(rb.position + dashDirection * safeDistance);
+                Debug.Log("Dash - 충돌 감지!");
             }
+            // 없다면 정상적으로 대쉬
             else
             {
-                rb.MovePosition(new Vector2((teleportdis * -1) + rb.position.x, rb.position.y));
+                rb.MovePosition(rb.position + dashDirection * dashDistance);
+                Debug.Log("Dash - 정상");
             }
-            Debug.Log("Dash");
         }
     }
 
