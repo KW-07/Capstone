@@ -1,24 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
-public class Dalma : LivingEntity
+public class OniDaru : MonoBehaviour
 {
     public Transform playerTransform;
-
-    [Header("Range")]
     public float attackRange = 1.5f;
     public float detectionRange = 5.0f; // 플레이어를 감지하는 거리
 
-    [Header("Itemdrop")]
     public bool ItemDrop;
+    public float maxHealth = 100f;
+    private float currentHealth;
 
     public float moveSpeed = 2.0f;
 
-    [Header("Attack")]
-    public Transform attackPoint;
-    public Vector2 attackBoxSize;
+    public Vector2 attack1BoxSize;
     public float attackDelay = 1.0f;  // 공격의 선딜? 아래의 쿨다운과는 다른것
     public float attackCooldown = 2.0f;
     private float nextAttackTime = 0f;
@@ -28,10 +24,13 @@ public class Dalma : LivingEntity
 
     private Rigidbody2D rb;
 
+    private bool isDead = false;
+
     private BTSelector root;
 
     private void Start()
     {
+        currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         Invoke("Think", nextMoveTime);
@@ -50,8 +49,8 @@ public class Dalma : LivingEntity
 
         BTCondition playerInRange = new BTCondition(IsPlayerInRange);
         BTCondition playerDetected = new BTCondition(IsPlayerDetected);
-        BTCondition isdeadCondition = new BTCondition(() => dead);
-        BTCondition canAttack = new BTCondition(CanAttack); ;
+        BTCondition isdeadCondition = new BTCondition(() => isDead);
+        BTCondition canAttack = new BTCondition(CanAttack);;
 
         attackSequence.AddChild(playerInRange);
         attackSequence.AddChild(canAttack);
@@ -102,7 +101,6 @@ public class Dalma : LivingEntity
     #region attack
     private BTNodeState Attack()
     {
-        LookAtPlayer();
         Debug.Log("Preparing Attack...");
         StartCoroutine(DelayedAttack());
         SetNextAttackTime();
@@ -121,13 +119,15 @@ public class Dalma : LivingEntity
     private void PerformForwardAttack()
     {
         // 전방 공격 로직 (예: 히트박스 검사)
-        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attackPoint.position, attackBoxSize, 0);
+        Vector2 attackPosition = transform.position + transform.right * 1.5f; // 캐릭터 앞쪽
+
+        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attackPosition, attack1BoxSize, 0);
         foreach (var enemy in hitEnemies)
         {
             if (enemy.CompareTag("Player"))
             {
                 Debug.Log("Hit Player!");
-                enemy.GetComponent<LivingEntity>().OnDamage(10);
+                //enemy.GetComponent<Player>().TakeDamage(10);
                 // 여기에 플레이어에게 피해를 주는 코드 추가
             }
         }
@@ -141,7 +141,6 @@ public class Dalma : LivingEntity
             //Debug.Log("Player is in attack range, stopping chase.");
             return BTNodeState.Failure;
         }
-        LookAtPlayer();
         transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, moveSpeed * Time.deltaTime);
         return BTNodeState.Running;
     }
@@ -157,48 +156,22 @@ public class Dalma : LivingEntity
     private void Think()
     {
         nextMove = Random.Range(-1, 2);
-        if (nextMove == -1)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
-        else if (nextMove == 1)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
+
         Invoke("Think", nextMoveTime);
     }
     private BTNodeState Die()
     {
-        OnDie();
         return BTNodeState.Success;
     }
-    public override void OnDamage(float damage)
+    public void TakeDamage(float damage)
     {
-        //Debug.Log("Monster took damage! Current Health: " + currentHealth);
-        base.OnDamage(damage);
-    }
-    public override void OnDie()
-    {
-        base.OnDie();
-        rb.velocity = Vector2.zero;  // 움직임 정지
-        GetComponent<Collider2D>().enabled = false;  // 충돌 제거
-        Destroy(this.gameObject);
-    }
-    private void LookAtPlayer()
-    {
-        if (playerTransform == null) return;
-        if (playerTransform.position.x < transform.position.x)
-            transform.localScale = new Vector3(-1, 1, 1);
-        else
-            transform.localScale = new Vector3(1, 1, 1);
-    }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(attackPoint.position, attackBoxSize);
+        currentHealth -= damage;
+        Debug.Log("Monster took damage! Current Health: " + currentHealth);
 
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
-        Gizmos.DrawWireSphere(transform.position, detectionRange);
+        if (currentHealth <= 0)
+        {
+            isDead = true;
+            Debug.Log("Monster has died!");
+        }
     }
 }
