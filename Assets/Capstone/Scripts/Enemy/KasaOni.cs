@@ -86,10 +86,36 @@ public class KasaOni : LivingEntity
             Invoke("Think", nextThinkTime);
         }
     }
+    private float Get2DDistance(Vector3 a, Vector3 b)
+    {
+        a.z = 0;
+        b.z = 0;
+        return Vector3.Distance(a, b);
+    }
 
-    private bool IsPlayerInRange() => Vector3.Distance(transform.position, playerTransform.position) <= attackRange;
-    private bool IsPlayerDetected() => Vector3.Distance(transform.position, playerTransform.position) <= detectionRange;
-    private bool IsPlayerTooClose() => Vector3.Distance(transform.position, playerTransform.position) <= retreatDistance;
+    private bool IsPlayerDetected()
+    {
+        float dist = Get2DDistance(transform.position, playerTransform.position);
+        //Debug.Log($"IsPlayerDetected? Distance: {dist} / DetectionRange: {detectionRange} / Result: {dist <= detectionRange}");
+        return dist <= detectionRange;
+    }
+
+    private bool IsPlayerInRange()
+    {
+        float dist = Get2DDistance(transform.position, playerTransform.position);
+        //Debug.Log($"IsPlayerInRange? Distance: {dist} / AttackRange: {attackRange} / Result: {dist <= attackRange}");
+        return dist <= attackRange;
+    }
+
+    private bool IsPlayerTooClose()
+    {
+        float dist = Get2DDistance(transform.position, playerTransform.position);
+        //Debug.Log($"IsPlayerTooClose? Distance: {dist} / RetreatDistance: {retreatDistance} / Result: {dist <= retreatDistance}");
+        return dist <= retreatDistance;
+    }
+    //private bool IsPlayerInRange() => Vector3.Distance(transform.position, playerTransform.position) <= attackRange;
+    //private bool IsPlayerDetected() => Vector3.Distance(transform.position, playerTransform.position) <= detectionRange;
+    //private bool IsPlayerTooClose() => Vector3.Distance(transform.position, playerTransform.position) <= retreatDistance;
     private bool CanAttack() => Time.time >= nextAttackTime;
     private bool CanRetreat() => Time.time >= nextRetreatTime;
 

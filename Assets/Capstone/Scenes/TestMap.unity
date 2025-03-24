@@ -3906,7 +3906,7 @@ Transform:
   m_GameObject: {fileID: 660859961}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.25, y: -0.9876236, z: -0.1046538}
+  m_LocalPosition: {x: 2.25, y: -0.9876236, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5074,7 +5074,7 @@ Transform:
   m_GameObject: {fileID: 1437268533}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -42.91, y: -30.52, z: 0.1046538}
+  m_LocalPosition: {x: -42.91, y: -30.52, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5414,7 +5414,7 @@ Transform:
   m_GameObject: {fileID: 1672462844}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.28, y: 1.52, z: 0.1046538}
+  m_LocalPosition: {x: 40.08, y: 2.4, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5497,12 +5497,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   playerTransform: {fileID: 842622473}
-  attackRange: 1.5
-  detectionRange: 5
+  attackRange: 3
+  detectionRange: 8
   ItemDrop: 0
   moveSpeed: 2
   attackPoint: {fileID: 93018558}
-  attackBoxSize: {x: 1, y: 2}
+  attackBoxSize: {x: 3, y: 2}
   attackDelay: 1
   attackCooldown: 2
   nextThinkTime: 3
@@ -5691,7 +5691,7 @@ Transform:
   m_GameObject: {fileID: 1912465653}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -37.13, y: -10.39, z: 0.1046538}
+  m_LocalPosition: {x: 14.77, y: -0.87, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5774,16 +5774,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   playerTransform: {fileID: 842622473}
-  attackRange: 4
-  detectionRange: 8
-  retreatDistance: 2
+  attackRange: 4.5
+  detectionRange: 10
+  retreatDistance: 3
   ItemDrop: 0
   moveSpeed: 2
   attackPoint: {fileID: 525064296}
   attackBoxSize: {x: 5, y: 1}
   attackDelay: 1
   attackCooldown: 2
-  jumpForce: 5
+  jumpForce: 8
   retreatCooldown: 3
   nextThinkTime: 3
 --- !u!212 &1912465658
