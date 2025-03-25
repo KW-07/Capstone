@@ -241,7 +241,7 @@ public class PlayerCommand : MonoBehaviour
                     }
                     // End
                     initTime = 0;
-                    Time.timeScale = 1.0f;
+                    //Time.timeScale = 1.0f;
                 }
             }
         }
@@ -263,12 +263,12 @@ public class PlayerCommand : MonoBehaviour
                     commandTimeUI.SetActive(true);
                     pCommandUI.SetActive(true);
                     commandingTime = limitCommandTime;
-                    Time.timeScale = inCommandingTimeScale;
+                    //Time.timeScale = inCommandingTimeScale;
                 }
                 else
                 {
                     commandingTime = limitCommandTime;
-                    Time.timeScale = 1.0f;
+                    //Time.timeScale = 1.0f;
                     commandTimeUI.SetActive(false);
                     pCommandUI.SetActive(false);
 

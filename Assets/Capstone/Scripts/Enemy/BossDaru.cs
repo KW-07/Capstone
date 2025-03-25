@@ -7,15 +7,20 @@ public class BossDaru : LivingEntity
 {
     public Transform playerTransform;
 
+    [Header("Range")]
+    public float attackRange = 1.5f;
+    public float detectionRange = 5.0f; // 플레이어를 감지하는 거리
+
     [Header("Move")]
     public float moveSpeed = 2.0f;
 
     [Header("PatrolJump")]
-    public float jumpForce = 5.0f;
+    public float jumpForce = 5.0f; 
     public float jumpInterval = 2.0f;
     private float nextJumpTime = 0f;
 
     [Header("AttackBase")]
+    public Transform attackPoint;
     public float attackCooldown = 2.0f;
     private float nextAttackTime = 0f;
     private bool isattack = false;
@@ -47,8 +52,6 @@ public class BossDaru : LivingEntity
     private BTSelector root;
 
     private bool isDead = false;
-    private bool isPlayerDetected = false;  // 플레이어 감지 여부
-    private bool isPlayerInRange = false;   // 공격 범위 안에 있는지 여부
 
     private void Start()
     {
@@ -75,8 +78,8 @@ public class BossDaru : LivingEntity
         BTAction patrolAction = new BTAction(Patrol);
         BTAction dieAction = new BTAction(Die);
 
-        BTCondition playerInRange = new BTCondition(() => isPlayerInRange);
-        BTCondition playerDetected = new BTCondition(() => isPlayerDetected);
+        BTCondition playerInRange = new BTCondition(IsPlayerInRange);
+        BTCondition playerDetected = new BTCondition(IsPlayerDetected);
         BTCondition lowHealth = new BTCondition(IsLowHealth);
         BTCondition isdeadCondition = new BTCondition(() => base.dead);
         BTCondition canAttack = new BTCondition(CanAttack);
@@ -120,7 +123,25 @@ public class BossDaru : LivingEntity
     {
         root.Evaluate();
     }
+    private float Get2DDistance(Vector3 a, Vector3 b)
+    {
+        a.z = 0;
+        b.z = 0;
+        return Vector3.Distance(a, b);
+    }
+    private bool IsPlayerDetected()
+    {
+        float dist = Get2DDistance(transform.position, playerTransform.position);
+        //Debug.Log($"IsPlayerDetected? Distance: {dist} / DetectionRange: {detectionRange} / Result: {dist <= detectionRange}");
+        return dist <= detectionRange;
+    }
 
+    private bool IsPlayerInRange()
+    {
+        float dist = Get2DDistance(transform.position, playerTransform.position);
+        //Debug.Log($"IsPlayerInRange? Distance: {dist} / AttackRange: {attackRange} / Result: {dist <= attackRange}");
+        return dist <= attackRange;
+    }
     private bool IsLowHealth() => base.currentHealth <= base.maxHealth * 0.4f; // 람다식
     private bool CanAttack() => Time.time >= nextAttackTime;
     private void SetNextAttackTime() => nextAttackTime = Time.time + attackCooldown;
@@ -139,10 +160,9 @@ public class BossDaru : LivingEntity
     private void PerformForwardAttack()
     {
         isattack = true;
-        Vector2 attackPosition = transform.position + transform.right * 2f; // 캐릭터 앞쪽
 
         Debug.Log("Performing Attack 1 after delay!");
-        Collider2D[] hitPlayer = Physics2D.OverlapBoxAll(attackPosition, attack1BoxSize, 0);
+        Collider2D[] hitPlayer = Physics2D.OverlapBoxAll(attackPoint.position, attack1BoxSize, 0);
         foreach (var player in hitPlayer)
         {
             if (player.CompareTag("Player"))
@@ -239,7 +259,7 @@ public class BossDaru : LivingEntity
 
     private BTNodeState Chase()
     {
-        if (isPlayerInRange)  // 플레이어가 공격 범위 안에 있다면 추격을 멈춤
+        if (IsPlayerInRange())  // 플레이어가 공격 범위 안에 있다면 추격을 멈춤
         {
             //Debug.Log("Player is in attack range, stopping chase.");
             return BTNodeState.Failure;
@@ -253,7 +273,7 @@ public class BossDaru : LivingEntity
 
     private BTNodeState Patrol()
     {
-        if (isPlayerDetected)
+        if (IsPlayerDetected())
         {
             return BTNodeState.Failure;  // 플레이어가 감지되면 순찰을 멈춘다.
         }
@@ -305,33 +325,18 @@ public class BossDaru : LivingEntity
         transform.localScale = new Vector3(playerTransform.position.x < transform.position.x ? -1 : 1, 1, 1);
     }
 
-    public void PlayerDetected(string colliderType, Collider2D player) // 콜라이더 감지
-    {
-        if (colliderType == "attackCollider")
-        {
-            isPlayerInRange = true;
-        }
-        else if (colliderType == "detectionCollider")
-        {
-            isPlayerDetected = true;
-        }
-    }
-    public void PlayerExited(string colliderType, Collider2D player)
-    {
-        if (colliderType == "attackCollider")
-        {
-            isPlayerInRange = false;
-        }
-        else if (colliderType == "detectionCollider")
-        {
-            isPlayerDetected = false;
-        }
-    }
-
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position + transform.right * 2f, attack1BoxSize);
-        Gizmos.DrawWireCube(transform.position + transform.up * -2f, attack2BoxSize);
+        if (attackPoint != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(attackPoint.position, attack1BoxSize);
+            Gizmos.DrawWireCube(transform.position + transform.up * -2f, attack2BoxSize);
+        }
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
     }
 }

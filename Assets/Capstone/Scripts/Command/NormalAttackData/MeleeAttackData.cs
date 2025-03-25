@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [CreateAssetMenu(fileName = "MeleeAttack", menuName = "Player/Attack/Melee")]
 public class MeleeAttackData : CommandData
 {
-    public float attackRange;
+    float attackRange;
     public int multipleAttack = 0;
     public int firstCountDamage;
     public int secondCountDamage;
@@ -49,10 +50,11 @@ public class MeleeAttackData : CommandData
         }
 
         // 생성위치 충돌 체크 및 적이면 데미지
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(castPoint.transform.position, attackRange, LayerMask.GetMask("Enemy"));
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(castPoint.transform.position, effectPrefab.GetComponent<Transform>().localScale.x, LayerMask.GetMask("Enemy"));
         foreach (Collider2D enemy in hitEnemies)
         {
             Debug.Log($"{enemy.name}에게 {PlayerAttack.instance.playerDamage + damage}의 피해를 입힘!");
+            enemy.GetComponent<LivingEntity>().OnDamage(PlayerAttack.instance.playerDamage + damage);
         }
     }
 }

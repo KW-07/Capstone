@@ -146,17 +146,17 @@ public class KasaOni : LivingEntity
         Vector2 smashPoint = (Vector2)transform.position + new Vector2(direction * 2.5f, 0f);
         Vector2 smashBoxSize = new Vector2(3f, 1.5f);
 
-        Debug.Log($"[TongueSmash] Attack area at {smashPoint}, direction: {direction}");
+       // Debug.Log($"[TongueSmash] Attack area at {smashPoint}, direction: {direction}");
 
         Collider2D[] hitTargets = Physics2D.OverlapBoxAll(smashPoint, smashBoxSize, 0f);
-        Debug.Log($"[TongueSmash] Colliders found: {hitTargets.Length}");
+        //Debug.Log($"[TongueSmash] Colliders found: {hitTargets.Length}");
 
         foreach (var target in hitTargets)
         {
-            Debug.Log($"[TongueSmash] Hit check on: {target.name}");
+            //Debug.Log($"[TongueSmash] Hit check on: {target.name}");
             if (target.CompareTag("Player"))
             {
-                Debug.Log("[TongueSmash] Player hit!");
+                //Debug.Log("[TongueSmash] Player hit!");
                 target.GetComponent<LivingEntity>().OnDamage(25);
 
                 Rigidbody2D playerRb = target.GetComponent<Rigidbody2D>();
