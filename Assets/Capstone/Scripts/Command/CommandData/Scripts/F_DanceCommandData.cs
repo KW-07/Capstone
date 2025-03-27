@@ -18,11 +18,5 @@ public class F_DanceCommandData : CommandData
             GameObject effect = Instantiate(effectPrefab, castPoint.transform.position, Quaternion.identity);
             Destroy(effect, destroyTime);
         }
-
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(castPoint.transform.position, attackRange, LayerMask.GetMask("Enemy"));
-        foreach (Collider2D enemy in hitEnemies)
-        {
-            PlayerAttack.instance.RepeatAttack(enemy.gameObject, repeatCount, repeatDelay, damage);
-        }
     }
 }

@@ -40,11 +40,4 @@ public class CommandData : ScriptableObject
             Destroy(effect, destroyTime);
         }
     }
-
-    public virtual IEnumerator DelayInstantiate(GameObject castPoint)
-    {
-        yield return new WaitForSeconds(spawnDelay);
-
-        GameObject effect = Instantiate(effectPrefab, castPoint.transform.position, Quaternion.identity);
-    }
 }

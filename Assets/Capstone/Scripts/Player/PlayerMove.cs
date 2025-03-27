@@ -152,27 +152,27 @@ public class PlayerMove : MonoBehaviour
             }
         }
     }
-    public void OnDownJump(InputAction.CallbackContext context)
-    {
-        if(context.performed && GameObject.FindWithTag("Platform").GetComponent<Platform>().isPlayer == true)
-        {
-            if(GameManager.instance.nothingUI())
-            {
-                StartCoroutine("coDownJump");
-            }
-        }
-    }
-    IEnumerator coDownJump()
-    {
-        WaitForFixedUpdate wait = new WaitForFixedUpdate();
-        capsule.isTrigger = true;
-        float y = transform.position.y;
-        while (transform.position.y > y - 1.6f && transform.position.y <= y)
-        {
-            yield return wait;
-        }
-        capsule.isTrigger = false;
-    }
+    //public void OnDownJump(InputAction.CallbackContext context)
+    //{
+    //    if(context.performed && GameObject.FindWithTag("Platform").GetComponent<Platform>().isPlayer == true)
+    //    {
+    //        if(GameManager.instance.nothingUI())
+    //        {
+    //            StartCoroutine("coDownJump");
+    //        }
+    //    }
+    //}
+    //IEnumerator coDownJump()
+    //{
+    //    WaitForFixedUpdate wait = new WaitForFixedUpdate();
+    //    capsule.isTrigger = true;
+    //    float y = transform.position.y;
+    //    while (transform.position.y > y - 1.6f && transform.position.y <= y)
+    //    {
+    //        yield return wait;
+    //    }
+    //    capsule.isTrigger = false;
+    //}
 
     public void OnDash(InputAction.CallbackContext context)
     {
