@@ -81,7 +81,7 @@ public class UIManager : MonoBehaviour
         numProducts = items.Length;
 
         CloseConversaiotnBox();
-        OffUI();
+        //OffUI();
 
         prevChildCount = productGrid.transform.childCount;
 

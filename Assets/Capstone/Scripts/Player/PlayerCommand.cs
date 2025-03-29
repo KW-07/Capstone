@@ -29,11 +29,14 @@ public class PlayerCommand : MonoBehaviour
     [Header("Skill")]
     public SkillSystem skillSystem;
 
+    private PlayerSkills playerSkills;
     private void Awake()
     {
         if (instance != null)
             Destroy(instance);
         else instance = this;
+
+        playerSkills = new PlayerSkills();
     }
     private void Start()
     {

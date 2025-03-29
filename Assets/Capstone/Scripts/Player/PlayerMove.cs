@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -40,6 +38,10 @@ public class PlayerMove : MonoBehaviour
     Transform playerTransform;
     Animator animator;
 
+    // 스킬트리
+    private PlayerSkills playerSkills;
+
+
     public bool facingRight = true;
     private void Awake()
     {
@@ -51,6 +53,23 @@ public class PlayerMove : MonoBehaviour
         capsule = GetComponent<CapsuleCollider2D>();
         playerTransform = GetComponent<Transform>();
         animator = GetComponent<Animator>();
+
+        // 스킬트리
+        playerSkills = new PlayerSkills();
+        playerSkills.OnSkillUnlocked += PlayerSkills_OnSkillUnlocked;
+    }
+
+    private void PlayerSkills_OnSkillUnlocked(object sender, PlayerSkills.OnSkillUnlockedEventArgs e)
+    {
+        switch(e.skillType)
+        {
+            case PlayerSkills.SkillType.MoveSpeed_1:
+                SetMovementSpeed(1.5f);
+                break;
+            case PlayerSkills.SkillType.MoveSpeed_2:
+                SetMovementSpeed(2.0f);
+                break;
+        }
     }
 
     private void Start()
@@ -69,6 +88,24 @@ public class PlayerMove : MonoBehaviour
         animator.SetFloat("yVelocity", rb.velocity.y);
     }
 
+    // 스킬트리
+
+    public PlayerSkills GetPlayerSkills()
+    {
+        return playerSkills;
+    }
+
+    public bool CanUseDoubleJump()
+    {
+        return playerSkills.IsSkillUnlocked(PlayerSkills.SkillType.DoubleJump);
+    }
+
+    private void SetMovementSpeed(float changeMoveSpeed)
+    {
+        this.moveSpeed = changeMoveSpeed;
+    }
+
+    // 이동
     public void OnMove(InputAction.CallbackContext context)
     {
         dir = context.ReadValue<float>();
@@ -133,47 +170,76 @@ public class PlayerMove : MonoBehaviour
         Debug.Log($"현재 이동 속도: {moveSpeed}");
     }
 
+    // 점프
     public void OnJump(InputAction.CallbackContext context)
     {
         if(context.performed)
         {
             if (GameManager.instance.nothingUI())
             {
-                if (jumpCount < 2)
+                if(CanUseDoubleJump())
                 {
-                    rb.velocity = new Vector2(rb.velocity.x, jumpPower);
-                    GameManager.instance.isGrounded = false;
+                    if (jumpCount < 2)
+                    {
+                        rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+                        GameManager.instance.isGrounded = false;
 
-                    jumpCount += 1;
-                    animator.SetFloat("jumpCount", jumpCount);
+                        jumpCount += 1;
+                        animator.SetFloat("jumpCount", jumpCount);
 
-                    animator.SetBool("isJumping", !GameManager.instance.isGrounded);
+                        animator.SetBool("isJumping", !GameManager.instance.isGrounded);
+                    }
                 }
+                else
+                {
+                    if (jumpCount < 1)
+                    {
+                        rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+                        GameManager.instance.isGrounded = false;
+
+                        jumpCount += 1;
+                        animator.SetBool("isJumping", !GameManager.instance.isGrounded);
+                    }
+                }
+
+                //if (jumpCount < 2)
+                //{
+                //    rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+                //    GameManager.instance.isGrounded = false;
+
+                //    jumpCount += 1;
+                //    animator.SetFloat("jumpCount", jumpCount);
+
+                //    animator.SetBool("isJumping", !GameManager.instance.isGrounded);
+                //}
             }
         }
     }
-    //public void OnDownJump(InputAction.CallbackContext context)
-    //{
-    //    if(context.performed && GameObject.FindWithTag("Platform").GetComponent<Platform>().isPlayer == true)
-    //    {
-    //        if(GameManager.instance.nothingUI())
-    //        {
-    //            StartCoroutine("coDownJump");
-    //        }
-    //    }
-    //}
-    //IEnumerator coDownJump()
-    //{
-    //    WaitForFixedUpdate wait = new WaitForFixedUpdate();
-    //    capsule.isTrigger = true;
-    //    float y = transform.position.y;
-    //    while (transform.position.y > y - 1.6f && transform.position.y <= y)
-    //    {
-    //        yield return wait;
-    //    }
-    //    capsule.isTrigger = false;
-    //}
 
+    // 아랫점프
+    public void OnDownJump(InputAction.CallbackContext context)
+    {
+        if (context.performed && GameObject.FindWithTag("Platform").GetComponent<Platform>().isPlayer == true)
+        {
+            if (GameManager.instance.nothingUI())
+            {
+                StartCoroutine("coDownJump");
+            }
+        }
+    }
+    IEnumerator coDownJump()
+    {
+        WaitForFixedUpdate wait = new WaitForFixedUpdate();
+        capsule.isTrigger = true;
+        float y = transform.position.y;
+        while (transform.position.y > y - 1.6f && transform.position.y <= y)
+        {
+            yield return wait;
+        }
+        capsule.isTrigger = false;
+    }
+
+    // 대쉬
     public void OnDash(InputAction.CallbackContext context)
     {
         if(context.performed)
@@ -217,6 +283,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    // 충돌
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Platform")
@@ -229,6 +296,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    // 방향 뒤집기
     void Flip()
     {
         facingRight = !facingRight;

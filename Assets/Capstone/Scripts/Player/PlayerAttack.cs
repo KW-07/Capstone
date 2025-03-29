@@ -50,11 +50,15 @@ public class PlayerAttack : MonoBehaviour
     SkillSystem skillSystem;
     Animator animator;
 
+    private PlayerSkills playerSkills;
+
     private void Awake()
     {
         if (instance != null)
             Destroy(instance);
         else instance = this;
+
+        playerSkills = new PlayerSkills();
     }
     private void Start()
     {
