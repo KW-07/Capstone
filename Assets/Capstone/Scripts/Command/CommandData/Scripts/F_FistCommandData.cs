@@ -7,11 +7,20 @@ public class F_FistCommandData : CommandData
 {
     public float attackRange;
 
+    GameObject effect;
+
     public override void ActivateSkill(GameObject castPoint, GameObject target)
     {
         Debug.Log($"{commandName}(F_Fist) »ç¿ë");
-
-        GameObject effect = Instantiate(effectPrefab, castPoint.transform.position, Quaternion.identity);
+        if (PlayerMove.instance.facingRight)
+        {
+            effect = Instantiate(effectPrefab, castPoint.transform.position, Quaternion.identity);
+        }
+        else
+        {
+            effect = Instantiate(effectPrefab, castPoint.transform.position, Quaternion.Euler(0,0,180));
+        }
+        
         Destroy(effect, destroyTime);
 
     }

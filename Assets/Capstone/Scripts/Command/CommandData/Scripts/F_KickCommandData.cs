@@ -6,16 +6,22 @@ using UnityEngine;
 public class F_KickCommandData : CommandData
 {
     public float attackRange;
+    GameObject effect;
 
     public override void ActivateSkill(GameObject castPoint, GameObject target)
     {
         Debug.Log($"{commandName}(F_Fist) »ç¿ë");
 
-        if (effectPrefab != null)
+        if (PlayerMove.instance.facingRight)
         {
-            GameObject effect = Instantiate(effectPrefab, castPoint.transform.position, Quaternion.identity);
-            Destroy(effect, destroyTime);
+            effect = Instantiate(effectPrefab, castPoint.transform.position, Quaternion.identity);
         }
+        else
+        {
+            effect = Instantiate(effectPrefab, castPoint.transform.position, Quaternion.Euler(0, 0, 180));
+        }
+
+        Destroy(effect, destroyTime);
 
     }
 }

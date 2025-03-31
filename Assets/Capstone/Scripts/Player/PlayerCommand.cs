@@ -29,6 +29,7 @@ public class PlayerCommand : MonoBehaviour
     [Header("Skill")]
     public SkillSystem skillSystem;
 
+    Animator animator;
     private PlayerSkills playerSkills;
     private void Awake()
     {
@@ -48,6 +49,7 @@ public class PlayerCommand : MonoBehaviour
         CommandInitialization(pCommand);
 
         skillSystem = gameObject.GetComponent<SkillSystem>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -73,6 +75,11 @@ public class PlayerCommand : MonoBehaviour
             }
             else if(initTime > 0)
             {
+
+                animator.SetBool("isCommanding", true);
+                if (!GameManager.instance.isGrounded && GameManager.instance.isCommand)
+                    animator.SetBool("jumpCommanding", true);
+
                 commandingTime -= Time.unscaledDeltaTime;
                 movePossible = BooleanOnOff(movePossible);
 
@@ -205,6 +212,9 @@ public class PlayerCommand : MonoBehaviour
                 {
                     bool bCommandCount = false;
 
+                    animator.SetBool("isCommanding", false);
+
+                    animator.SetBool("jumpCommanding", false);
                     GameManager.instance.isCommand = BooleanOnOff(GameManager.instance.isCommand);
 
                     commandTimeUI.SetActive(false);
@@ -276,8 +286,9 @@ public class PlayerCommand : MonoBehaviour
             if (GameManager.instance.nothingUI())
             {
                 GameManager.instance.isCommand = BooleanOnOff(GameManager.instance.isCommand);
-
                 GameManager.instance.isCommand = true;
+
+                PlayerMove.instance.moveStop();
 
                 if (GameManager.instance.isCommand)
                 {

@@ -378,6 +378,7 @@ public class UIManager : MonoBehaviour
     public void CommandCandidate()
     {
         int j = 0;
+        int commandCount = 0;
 
         // 일부 일치하는 커맨드의 수만큼 생성 및 Grid의 자식으로 부착
         for (int i = candidateGrid.transform.childCount; i < PlayerCommand.instance.usableCommandList.Length; i++)
@@ -404,34 +405,42 @@ public class UIManager : MonoBehaviour
                     case 1:
                         candidateSprite[k] = 
                             PlayerCommand.instance.commandIcon[PlayerCommand.instance.usableCommandList[j].command[k] - 1];
+                        commandCount = PlayerCommand.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
                         break;
                     case 2:
                         candidateSprite[k] =
                             PlayerCommand.instance.commandIcon[PlayerCommand.instance.usableCommandList[j].command[k] - 1];
+                        commandCount = PlayerCommand.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
                         break;
                     case 3:
                         candidateSprite[k] =
                             PlayerCommand.instance.commandIcon[PlayerCommand.instance.usableCommandList[j].command[k] - 1];
+                        commandCount = PlayerCommand.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
                         break;
                     case 4:
                         candidateSprite[k] =
                             PlayerCommand.instance.commandIcon[PlayerCommand.instance.usableCommandList[j].command[k] - 1];
+                        commandCount = PlayerCommand.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
                         break;
                     case 5:
                         candidateSprite[k] =
                             PlayerCommand.instance.commandIcon[PlayerCommand.instance.usableCommandList[j].command[k] - 1];
+                        commandCount = PlayerCommand.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
                         break;
                     case 6:
                         candidateSprite[k] =
                             PlayerCommand.instance.commandIcon[PlayerCommand.instance.usableCommandList[j].command[k] - 1];
+                        commandCount = PlayerCommand.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
                         break;
                     case 7:
                         candidateSprite[k] =
                             PlayerCommand.instance.commandIcon[PlayerCommand.instance.usableCommandList[j].command[k] - 1];
+                        commandCount = PlayerCommand.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
                         break;
                     case 8:
                         candidateSprite[k] =
                             PlayerCommand.instance.commandIcon[PlayerCommand.instance.usableCommandList[j].command[k] - 1];
+                        commandCount = PlayerCommand.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
                         break;
                     default:
                         break;
@@ -441,12 +450,13 @@ public class UIManager : MonoBehaviour
             GameObject candidateImageGrid = candidateObj.transform.Find("CandidateImageGrid").gameObject;
 
             // UI 동기화
-            for (int k = 0; k< candidateUIImage.Length;k++)
+            for (int k = 0; k< commandCount; k++)
             {
-                candidateSprite[k] = 
-                    candidateImageGrid.transform.GetChild(k).GetComponent<Image>().sprite = candidateSprite[k];
+                candidateImageGrid.transform.GetChild(k).GetComponent<Image>().color = new Color(255, 255, 255, 255);
+                candidateImageGrid.transform.GetChild(k).GetComponent<Image>().sprite = candidateSprite[k];
             }
 
+            commandCount = 0;
             j++;
         }
     }

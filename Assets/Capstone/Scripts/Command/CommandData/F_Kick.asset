@@ -19,7 +19,9 @@ MonoBehaviour:
   commandDescription: "\uBC1C\uC5D0 \uBD88\uAF43\uC744 \uAC10\uC544 \uACF5\uACA9\n"
   cooldown: 1
   damage: 5
+  castPlayerPosition: 0
   effectPrefab: {fileID: 1999223977386516401, guid: 43a9b7ab5a6375a41abe8a78ca799e3c, type: 3}
-  destroyTime: 1
+  spawnDelay: 0
+  destroyTime: 0.5
   command: 0300000003000000050000000000000000000000000000000000000000000000
   attackRange: 0

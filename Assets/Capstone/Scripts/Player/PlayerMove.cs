@@ -23,8 +23,9 @@ public class PlayerMove : MonoBehaviour
     }
 
     // 이동
-    public float moveSpeed = 1f;
-    private float defaultSpeed;
+    public float originalMoveSpeed = 1f;
+    private float moveSpeed;
+    private Vector3 stopPosition;
     [SerializeField]private List<float> activeSpeedMultipliers = new List<float>();
 
     // 점프
@@ -74,12 +75,15 @@ public class PlayerMove : MonoBehaviour
 
     private void Start()
     {
-        defaultSpeed = moveSpeed;
+        moveSpeed = originalMoveSpeed;
     }
 
     private void Update()
     {
-
+        if (GameManager.instance.isCommand)
+            playerTransform.position = new Vector3(stopPosition.x, playerTransform.position.y, -5);
+        else
+            playerTransform.position = new Vector3(playerTransform.position.x, playerTransform.position.y, -5);
     }
 
     private void FixedUpdate()
@@ -131,6 +135,11 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    public void moveStop()
+    {
+        stopPosition = new Vector3(transform.position.x, transform.position.y, -5);
+    }
+
     // 버프 사용
     public void ApplySpeedBuff(float multiplier, float duration)
     {
@@ -160,11 +169,11 @@ public class PlayerMove : MonoBehaviour
         if (activeSpeedMultipliers.Count > 0)
         {
             float maxMultiplier = Mathf.Max(activeSpeedMultipliers.ToArray());
-            moveSpeed = defaultSpeed * maxMultiplier;
+            moveSpeed = moveSpeed * maxMultiplier;
         }
         else
         {
-            moveSpeed = defaultSpeed;
+            //moveSpeed = moveSpeed;
         }
 
         Debug.Log($"현재 이동 속도: {moveSpeed}");
@@ -290,6 +299,7 @@ public class PlayerMove : MonoBehaviour
         {
             GameManager.instance.isGrounded = true;
             animator.SetBool("isJumping", !GameManager.instance.isGrounded);
+            animator.SetBool("jumpCommanding", false);
             
             jumpCount = 0;
             animator.SetFloat("jumpCount", jumpCount);

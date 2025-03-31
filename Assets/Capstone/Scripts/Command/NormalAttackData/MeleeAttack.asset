@@ -21,9 +21,8 @@ MonoBehaviour:
   castPlayerPosition: 0
   effectPrefab: {fileID: 6165903748987304714, guid: b7104954514e62a46a45a7fe5e8219cb, type: 3}
   spawnDelay: 0.5
-  destroyTime: 2
+  destroyTime: 0.5
   command: 0000000000000000000000000000000000000000000000000000000000000000
-  attackRange: 3
   multipleAttack: 0
   firstCountDamage: 2
   secondCountDamage: 3

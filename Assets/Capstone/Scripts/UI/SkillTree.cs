@@ -26,9 +26,9 @@ public class SkillTree : MonoBehaviour
         this.playerSkills = playerSkils;
 
         skillButtonList = new List<SkillButton>();
-        skillButtonList.Add(new SkillButton(transform.Find("DoubleJumpBtn"), playerSkills, PlayerSkills.SkillType.DoubleJump, skillLockedMaterial, skillUnlockableMaterial));
-        skillButtonList.Add(new SkillButton(transform.Find("MoveSpeed1Btn"), playerSkills, PlayerSkills.SkillType.MoveSpeed_1, skillLockedMaterial, skillUnlockableMaterial));
-        skillButtonList.Add(new SkillButton(transform.Find("MoveSpeed2Btn"), playerSkills, PlayerSkills.SkillType.MoveSpeed_2, skillLockedMaterial, skillUnlockableMaterial));
+        //skillButtonList.Add(new SkillButton(transform.Find("DoubleJumpBtn"), playerSkills, PlayerSkills.SkillType.DoubleJump, skillLockedMaterial, skillUnlockableMaterial));
+        //skillButtonList.Add(new SkillButton(transform.Find("MoveSpeed1Btn"), playerSkills, PlayerSkills.SkillType.MoveSpeed_1, skillLockedMaterial, skillUnlockableMaterial));
+        //skillButtonList.Add(new SkillButton(transform.Find("MoveSpeed2Btn"), playerSkills, PlayerSkills.SkillType.MoveSpeed_2, skillLockedMaterial, skillUnlockableMaterial));
 
         playerSkills.OnSkillUnlocked += PlayerSkills_OnSkillUnlocked;
         playerSkills.OnSkillPointsChanged += playerSkills_OnSkillPointsChanged;
@@ -52,7 +52,7 @@ public class SkillTree : MonoBehaviour
     // 스킬포인트 업데이트
     private void UpdateSkillPoints()
     {
-        skillPointText.SetText(playerSkills.GetSkillPoints().ToString());
+        //skillPointText.SetText(playerSkills.GetSkillPoints().ToString());
     }
 
     // 비주얼 업데이트
