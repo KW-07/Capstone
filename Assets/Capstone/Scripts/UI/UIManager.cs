@@ -7,6 +7,7 @@ using TMPro;
 using JetBrains.Annotations;
 using System.Data.Common;
 using System.IO.Enumeration;
+using System;
 
 public class UIManager : MonoBehaviour
 {
@@ -54,6 +55,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject buyTapGameObject;
     [SerializeField] public bool buyTapOnOff;
 
+    [Header("CommandCandidate")]
+    [SerializeField] private GameObject candidateGrid;
+    [SerializeField] private GameObject candidatePrefab;
+    private TMP_Text candidateText;
+    [SerializeField]private Sprite[] candidateSprite = new Sprite[8];
+    private Image[] candidateUIImage = new Image[8];
+
     private bool onUI;
 
     private void Awake()
@@ -73,7 +81,7 @@ public class UIManager : MonoBehaviour
         numProducts = items.Length;
 
         CloseConversaiotnBox();
-        OffUI();
+        //OffUI();
 
         prevChildCount = productGrid.transform.childCount;
 
@@ -91,6 +99,8 @@ public class UIManager : MonoBehaviour
         {
             productGrid.transform.GetChild(i).Find("BuyTap").gameObject.SetActive(false);
         }
+
+        candidateGrid.SetActive(false);
     }
 
     void Update()
@@ -117,6 +127,12 @@ public class UIManager : MonoBehaviour
 
         Description();
         BuyTap();
+
+        if (GameManager.instance.isCommand)
+            candidateGrid.SetActive(GameManager.instance.isCommand);
+        else
+            candidateGrid.SetActive(GameManager.instance.isCommand);
+
     }
     // 대화 시작
     public void showDialogue(Dialogue dialogue)
@@ -315,47 +331,6 @@ public class UIManager : MonoBehaviour
 
         itemName.text = selectedItem.itemName;
         itemDescription.text = selectedItem.description;
-
-        // 삭제 예정
-        //if (selectedItem.synergy == null)
-        //{
-        //    switch (selectedItem.synergy[1])
-        //    {
-        //        case Synergy.A:
-        //            synergySprite_1.sprite = GameManager.instance.synergy_Sprite_A;
-        //            synergyKeyword_1.text = GameManager.instance.synergy_Effect_A;
-        //            break;
-        //        case Synergy.B:
-        //            synergySprite_1.sprite = GameManager.instance.synergy_Sprite_B;
-        //            synergyKeyword_1.text = GameManager.instance.synergy_Effect_B;
-        //            break;
-        //        case Synergy.None:
-        //            synergySprite_1.sprite = GameManager.instance.synergy_Sprite_C;
-        //            synergyKeyword_1.text = GameManager.instance.synergy_Effect_C;
-        //            break;
-        //        default:
-        //            Debug.Log("This Synergy is Nothing");
-        //            break;
-        //    }
-        //    switch(selectedItem.synergy[2])
-        //    {
-        //        case Synergy.A:
-        //            synergySprite_2.sprite = GameManager.instance.synergy_Sprite_A;
-        //            synergyKeyword_2.text = GameManager.instance.synergy_Effect_A;
-        //            break;
-        //        case Synergy.B:
-        //            synergySprite_2.sprite = GameManager.instance.synergy_Sprite_B;
-        //            synergyKeyword_2.text = GameManager.instance.synergy_Effect_B;
-        //            break;
-        //        case Synergy.None:
-        //            synergySprite_2.sprite = GameManager.instance.synergy_Sprite_C;
-        //            synergyKeyword_2.text = GameManager.instance.synergy_Effect_C;
-        //            break;
-        //        default:
-        //            Debug.Log("This Synergy is Nothing");
-        //            break;
-        //    }
-        //}
     }
 
     void BuyTap()
@@ -389,6 +364,100 @@ public class UIManager : MonoBehaviour
                 buyTapOnOff = false;
                 buyTapGameObject.SetActive(buyTapOnOff);
             }
+        }
+    }
+
+    public void deleteCommandCandidate()
+    {
+        for(int i = 0; i< candidateGrid.transform.childCount;i++)
+        {
+            Destroy(candidateGrid.transform.GetChild(i).gameObject);
+        }
+    }
+
+    public void CommandCandidate()
+    {
+        int j = 0;
+        int commandCount = 0;
+
+        // 일부 일치하는 커맨드의 수만큼 생성 및 Grid의 자식으로 부착
+        for (int i = candidateGrid.transform.childCount; i < PlayerCommand.instance.usableCommandList.Length; i++)
+        {
+            //Debug.Log("생성!");
+            GameObject candidateObj = Instantiate(candidatePrefab);
+            candidateObj.transform.SetParent(candidateGrid.transform);
+
+            // 텍스트 삽입
+            candidateText = candidateObj.transform.Find("CandidateText").gameObject.GetComponent<TMP_Text>();
+            candidateText.text = PlayerCommand.instance.usableCommandList[j].commandName;
+
+            // 이미지 초기화
+            for (int imgNum = 0; imgNum < candidateSprite.Length; imgNum++)
+            {
+                candidateSprite[imgNum] = null;
+            }
+
+            // 이미지 삽입
+            for (int k =0;k< candidateSprite.Length;k++)
+            {
+                switch (PlayerCommand.instance.usableCommandList[j].command[k])
+                {
+                    case 1:
+                        candidateSprite[k] = 
+                            PlayerCommand.instance.commandIcon[PlayerCommand.instance.usableCommandList[j].command[k] - 1];
+                        commandCount = PlayerCommand.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
+                        break;
+                    case 2:
+                        candidateSprite[k] =
+                            PlayerCommand.instance.commandIcon[PlayerCommand.instance.usableCommandList[j].command[k] - 1];
+                        commandCount = PlayerCommand.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
+                        break;
+                    case 3:
+                        candidateSprite[k] =
+                            PlayerCommand.instance.commandIcon[PlayerCommand.instance.usableCommandList[j].command[k] - 1];
+                        commandCount = PlayerCommand.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
+                        break;
+                    case 4:
+                        candidateSprite[k] =
+                            PlayerCommand.instance.commandIcon[PlayerCommand.instance.usableCommandList[j].command[k] - 1];
+                        commandCount = PlayerCommand.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
+                        break;
+                    case 5:
+                        candidateSprite[k] =
+                            PlayerCommand.instance.commandIcon[PlayerCommand.instance.usableCommandList[j].command[k] - 1];
+                        commandCount = PlayerCommand.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
+                        break;
+                    case 6:
+                        candidateSprite[k] =
+                            PlayerCommand.instance.commandIcon[PlayerCommand.instance.usableCommandList[j].command[k] - 1];
+                        commandCount = PlayerCommand.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
+                        break;
+                    case 7:
+                        candidateSprite[k] =
+                            PlayerCommand.instance.commandIcon[PlayerCommand.instance.usableCommandList[j].command[k] - 1];
+                        commandCount = PlayerCommand.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
+                        break;
+                    case 8:
+                        candidateSprite[k] =
+                            PlayerCommand.instance.commandIcon[PlayerCommand.instance.usableCommandList[j].command[k] - 1];
+                        commandCount = PlayerCommand.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            GameObject candidateImageGrid = candidateObj.transform.Find("CandidateImageGrid").gameObject;
+
+            // UI 동기화
+            for (int k = 0; k< commandCount; k++)
+            {
+                candidateImageGrid.transform.GetChild(k).GetComponent<Image>().color = new Color(255, 255, 255, 255);
+                candidateImageGrid.transform.GetChild(k).GetComponent<Image>().sprite = candidateSprite[k];
+            }
+
+            commandCount = 0;
+            j++;
         }
     }
 }

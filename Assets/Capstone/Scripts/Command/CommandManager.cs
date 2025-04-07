@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,12 +9,19 @@ public class CommandManager : MonoBehaviour
 
     [Header("Command List")]
     public CommandData[] commandList;
-
     private void Awake()
     {
         if(instance != null)
             Destroy(gameObject);
         else
             instance = this;
+    }
+    private void Start()
+    {
+    }
+
+    private void Update()
+    {
+        
     }
 }

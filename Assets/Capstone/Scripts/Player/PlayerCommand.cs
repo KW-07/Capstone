@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,7 +14,7 @@ public class PlayerCommand : MonoBehaviour
     [SerializeField]private float inCommandingTimeScale;
     float initTime = 0;
     public float commandingTime = 0;
-    private int commandCount;
+    [SerializeField]private int commandCount;
     private bool movePossible; // 합치고 이동관련 스크립트에 넣을 예정
 
     [Header("UI")]
@@ -21,17 +22,22 @@ public class PlayerCommand : MonoBehaviour
     private Vector2 currentPCommandSize = new Vector2(0,0);
     public GameObject pCommandUI;
     public GameObject pCommandUIGrid;
-    [SerializeField] private Sprite[] commandIcon;
+    public Sprite[] commandIcon;
     [SerializeField] private Image[] pCommandIcon;
+    public CommandData[] usableCommandList;
 
     [Header("Skill")]
     public SkillSystem skillSystem;
 
+    Animator animator;
+    private PlayerSkills playerSkills;
     private void Awake()
     {
         if (instance != null)
             Destroy(instance);
         else instance = this;
+
+        playerSkills = new PlayerSkills();
     }
     private void Start()
     {
@@ -43,6 +49,7 @@ public class PlayerCommand : MonoBehaviour
         CommandInitialization(pCommand);
 
         skillSystem = gameObject.GetComponent<SkillSystem>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -62,14 +69,22 @@ public class PlayerCommand : MonoBehaviour
                 // pCommandGrid 사이즈 초기값 설정
                 pCommandUIGrid.GetComponent<RectTransform>().sizeDelta = pCommandUI.GetComponent<RectTransform>().sizeDelta;
 
+                UIManager.instance.deleteCommandCandidate();
+
                 initTime++;
             }
             else if(initTime > 0)
             {
+
+                animator.SetBool("isCommanding", true);
+                if (!GameManager.instance.isGrounded && GameManager.instance.isCommand)
+                    animator.SetBool("jumpCommanding", true);
+
                 commandingTime -= Time.unscaledDeltaTime;
                 movePossible = BooleanOnOff(movePossible);
 
-                Debug.Log(commandCount);
+                PCommandCandidate();
+
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
                     for (int i = 0; i < pCommand.Length; i++)
@@ -79,6 +94,8 @@ public class PlayerCommand : MonoBehaviour
                             pCommand[i] = 1;
                             commandCount++;
                             ShowPCommand(i);
+
+                            UIManager.instance.deleteCommandCandidate();
                             break;
                         }
                     }
@@ -92,6 +109,8 @@ public class PlayerCommand : MonoBehaviour
                             pCommand[i] = 2;
                             commandCount++;
                             ShowPCommand(i);
+
+                            UIManager.instance.deleteCommandCandidate();
                             break;
                         }
                     }
@@ -105,6 +124,8 @@ public class PlayerCommand : MonoBehaviour
                             pCommand[i] = 3;
                             commandCount++;
                             ShowPCommand(i);
+
+                            UIManager.instance.deleteCommandCandidate();
                             break;
                         }
                     }
@@ -118,6 +139,8 @@ public class PlayerCommand : MonoBehaviour
                             pCommand[i] = 4;
                             commandCount++;
                             ShowPCommand(i);
+
+                            UIManager.instance.deleteCommandCandidate();
                             break;
                         }
                     }
@@ -131,6 +154,8 @@ public class PlayerCommand : MonoBehaviour
                             pCommand[i] = 5;
                             commandCount++;
                             ShowPCommand(i);
+
+                            UIManager.instance.deleteCommandCandidate();
                             break;
                         }
                     }
@@ -144,6 +169,8 @@ public class PlayerCommand : MonoBehaviour
                             pCommand[i] = 6;
                             commandCount++;
                             ShowPCommand(i);
+
+                            UIManager.instance.deleteCommandCandidate();
                             break;
                         }
                     }
@@ -157,6 +184,8 @@ public class PlayerCommand : MonoBehaviour
                             pCommand[i] = 7;
                             commandCount++;
                             ShowPCommand(i);
+
+                            UIManager.instance.deleteCommandCandidate();
                             break;
                         }
                     }
@@ -170,36 +199,34 @@ public class PlayerCommand : MonoBehaviour
                             pCommand[i] = 8;
                             commandCount++;
                             ShowPCommand(i);
+
+                            UIManager.instance.deleteCommandCandidate();
                             break;
                         }
                     }
                 }
+                UIManager.instance.CommandCandidate();
 
                 // 커맨드 시간 초과 시
                 if (commandingTime <= 0)
                 {
-                    int sum = 0;
-                    bool commandCount = false;
+                    bool bCommandCount = false;
 
+                    animator.SetBool("isCommanding", false);
+
+                    animator.SetBool("jumpCommanding", false);
                     GameManager.instance.isCommand = BooleanOnOff(GameManager.instance.isCommand);
 
                     commandTimeUI.SetActive(false);
                     pCommandUI.SetActive(false);
-
-                    for (int i=0;i<pCommand.Length;i++)
+                    
+                    if (commandCount <= 0)
                     {
-                        sum += pCommand[i];
-                    }
-
-                    // 커맨드의 합이 0 이하라면 즉, 아무것도 누르지 않았다면
-                    if (sum <= 0)
-                    {
-                        Debug.Log("Do not enter!");
+                        
                     }
                     // 커맨드의 합이 0 초과하면 즉, 무언가가 눌렸다면
                     else
                     {
-                        Debug.Log("Entered!");
 
                         // 커맨드 리스트 탐색
                         for (int i = 0; i < CommandManager.instance.commandList.Length; i++)
@@ -208,7 +235,7 @@ public class PlayerCommand : MonoBehaviour
                             if (Enumerable.SequenceEqual(pCommand, CommandManager.instance.commandList[i].command))
                             {
                                 Debug.Log("커맨드 : " + CommandManager.instance.commandList[i].commandName);
-                                commandCount = true;
+                                bCommandCount = true;
 
                                 SkillSystem.instance.command = CommandManager.instance.commandList[i];
 
@@ -227,6 +254,8 @@ public class PlayerCommand : MonoBehaviour
                                 // 커맨드 타이머 삭제
                                 commandTimeUI.SetActive(false);
                                 pCommandUI.SetActive(false);
+
+                                CommandInitialization(usableCommandList);
                                 break;
                             }
                             else
@@ -234,9 +263,11 @@ public class PlayerCommand : MonoBehaviour
                                 continue;
                             }
                         }
-                        if (!commandCount)
+                        if (!bCommandCount)
                         {
                             Debug.Log("Nothing Command!");
+
+                            CommandInitialization(usableCommandList);
                         }
                     }
                     // End
@@ -255,8 +286,9 @@ public class PlayerCommand : MonoBehaviour
             if (GameManager.instance.nothingUI())
             {
                 GameManager.instance.isCommand = BooleanOnOff(GameManager.instance.isCommand);
-
                 GameManager.instance.isCommand = true;
+
+                PlayerMove.instance.moveStop();
 
                 if (GameManager.instance.isCommand)
                 {
@@ -282,6 +314,14 @@ public class PlayerCommand : MonoBehaviour
         for (int i = 0; i < command.Length; i++)
         {
             command[i] = 0;
+        }
+        commandCount = 0;
+    }
+    private void CommandInitialization(CommandData[] command)
+    {
+        for (int i = 0; i < command.Length; i++)
+        {
+            command[i] = null;
         }
         commandCount = 0;
     }
@@ -336,5 +376,28 @@ public class PlayerCommand : MonoBehaviour
         {
             return true;
         }
+    }
+
+    // Candidate 탐색
+    private void PCommandCandidate()
+    {
+        // 커맨드리스트의 개수만큼 할당
+        usableCommandList = new CommandData[CommandManager.instance.commandList.Length];
+        int j = 0;
+
+        if(commandCount > 0)
+        {
+            for (int i = 0; i < CommandManager.instance.commandList.Length; i++)
+            {
+                if (pCommand.Take(commandCount).SequenceEqual(CommandManager.instance.commandList[i].command.Take(commandCount)))
+                {
+                    usableCommandList[j] = CommandManager.instance.commandList[i];
+                    j++;
+                }
+            }
+        }
+
+        // 필요없는 부분은 삭제
+        Array.Resize(ref usableCommandList, j);
     }
 }

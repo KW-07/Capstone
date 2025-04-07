@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5092247291335580049}
   - component: {fileID: -6588483936006928376}
   - component: {fileID: -8791950105720124735}
+  - component: {fileID: 7601145367434561924}
   m_Layer: 10
   m_Name: F_Triple
   m_TagString: Projectile
@@ -187,3 +188,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7601145367434561924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3391275514063326592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2a6754cfa7f04047938aa87469a7ff1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

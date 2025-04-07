@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Threading.Tasks;
 
 public class GameManager : MonoBehaviour
 {
@@ -53,6 +54,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject bossObject;
     [SerializeField] private GameObject bossHpUI;
 
+
+    public PlayerMove playerMove { get; set; }
+    public SceneData sceneData { get; set; }
+    public SceneLoader sceneLoader { get; set; }
+
+    private bool _isSaving;
+    private bool _isLoading;
+
     private void Awake()
     {
         if (instance != null)
@@ -87,6 +96,31 @@ public class GameManager : MonoBehaviour
         {
             fakeWall.SetActive(true);
         }
+
+        // 세이브 및 로드
+        // 현시점 사용안되어 주석처리
+        //if(!_isSaving)
+        //{
+        //    SaveAsync();
+        //}
+        //if(!_isLoading)
+        //{
+        //    LoadAsync();
+        //}
+    }
+
+    private async void SaveAsync()
+    {
+        _isSaving = true;
+        await SaveSystem.SaveAsynchronously();
+        _isSaving = false;
+    }
+
+    private async void LoadAsync()
+    {
+        _isLoading = true;
+        await SaveSystem.LoadAsync();
+        _isLoading = false;
     }
 
     public void EquipItem(Item item)

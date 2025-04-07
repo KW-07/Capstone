@@ -20,8 +20,10 @@ MonoBehaviour:
     \uACF5\uACA9"
   cooldown: 1
   damage: 10
+  castPlayerPosition: 0
   effectPrefab: {fileID: 9166486271710090985, guid: bb1cec4fbf9f9964fa531f2a9d47b1db, type: 3}
-  destroyTime: 1
+  spawnDelay: 0
+  destroyTime: 0.5
   command: 0100000004000000030000000500000000000000000000000000000000000000
   attackRange: 0
   repeatCount: 3

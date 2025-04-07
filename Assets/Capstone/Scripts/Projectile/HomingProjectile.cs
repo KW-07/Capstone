@@ -28,21 +28,4 @@ public class HomingProjectile : Projectile
 
         rb.velocity = -transform.right * speed;
     }
-
-    protected override void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag != "Player")
-        {
-            Debug.Log(collision.gameObject.tag);
-            switch (collision.gameObject.tag)
-            {
-                case ("Ground"):
-                case ("Platform"):
-                    break;
-                case ("Enemy"):
-                    Destroy(gameObject);
-                    break;
-            }
-        }
-    }
 }

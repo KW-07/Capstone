@@ -29,21 +29,4 @@ public class Projectile : MonoBehaviour
         rigid.velocity = transform.right * speed;
         Destroy(gameObject, destroyTime);
     }
-    
-    protected virtual void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag != "Player")
-        {
-            Debug.Log(collision.gameObject.tag);
-            switch (collision.gameObject.tag)
-            {
-                case ("Ground"):
-                case ("Platform"):
-                    Destroy(gameObject);
-                    break;
-                case ("Enemy"):
-                    break;
-            }
-        }
-    }
 }
