@@ -15,7 +15,7 @@ public class BossDaru : LivingEntity
     public float moveSpeed = 2.0f;
 
     [Header("PatrolJump")]
-    public float jumpForce = 5.0f; 
+    public float jumpForce = 5.0f;
     public float jumpInterval = 2.0f;
     private float nextJumpTime = 0f;
 
@@ -36,6 +36,15 @@ public class BossDaru : LivingEntity
     public float groundCheckDistance = 0.5f;  // 지면 감지 거리
     private bool isSlamming = false;     // 내려찍기 상태 여부
     private bool isJumping = false;      // 점프 상태 여부
+
+    [Header("Attack3")]
+    public Transform leftHorn;
+    public Transform rightHorn;
+    public GameObject fireballPrefab;
+    public float fireballSpeed = 5.0f;
+    public float fireballAngle = 45.0f;     
+    public int fireballCount = 3;           // 발사할 불꽃 개수
+    public float fireballInterval = 0.2f;
 
     [Header("SpecialPattern")]
     public float teleportHeight = 2.5f;   // 플레이어 머리 위로 어느정도 뜰 것인지
@@ -123,7 +132,7 @@ public class BossDaru : LivingEntity
     {
         root.Evaluate();
     }
-    private float Get2DDistance(Vector3 a, Vector3 b)
+    private float Get2DDistance(Vector3 a, Vector3 b) // 아오 z값 시치...
     {
         a.z = 0;
         b.z = 0;
@@ -147,7 +156,7 @@ public class BossDaru : LivingEntity
     private void SetNextAttackTime() => nextAttackTime = Time.time + attackCooldown;
     private bool CanTeleport() => Time.time >= nextTeleportTime;
 
-    #region Attack1code
+    #region Attack1 Code
     private BTNodeState Attack1()
     {
         LookAtPlayer();
@@ -173,7 +182,7 @@ public class BossDaru : LivingEntity
         }
     }
     #endregion
-
+    #region Attack2 Code
     private BTNodeState Attack2()
     {
         //if (!isJumping && !isSlamming)
@@ -234,14 +243,38 @@ public class BossDaru : LivingEntity
             }
         }
     }
-
+    #endregion
+    #region Attack3 Code
     private BTNodeState Attack3()
     {
         LookAtPlayer();
         Debug.Log("Performing Attack 3");
+        StartCoroutine(FireballBurst());
         SetNextAttackTime();
         return BTNodeState.Success;
     }
+    private IEnumerator FireballBurst()
+    {
+        for (int i = 0; i < fireballCount; i++)
+        {
+            SpawnFireball(leftHorn);
+            SpawnFireball(rightHorn);
+            yield return new WaitForSeconds(fireballInterval);
+        }
+    }
+
+    private void SpawnFireball(Transform spawnPoint)
+    {
+        GameObject fireball = Instantiate(fireballPrefab, spawnPoint.position, Quaternion.identity);
+        Rigidbody2D rb = fireball.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            float angleRad = fireballAngle * Mathf.Deg2Rad;
+            Vector2 force = new Vector2(Mathf.Cos(angleRad) * fireballSpeed, Mathf.Sin(angleRad) * fireballSpeed);
+            rb.velocity = force;
+        }
+    }
+    #endregion
 
     private BTNodeState TeleportAbovePlayer()
     {
