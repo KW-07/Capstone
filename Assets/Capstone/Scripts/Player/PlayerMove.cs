@@ -315,4 +315,20 @@ public class PlayerMove : MonoBehaviour
         PlayerCommand.instance.commandTimeUI.GetComponent<Transform>().Rotate(0, 180, 0);
         PlayerCommand.instance.pCommandUIGrid.GetComponent<Transform>().Rotate(0, 180, 0);
     }
+
+    public void Save(ref PlayerMoveSavaData data)
+    {
+        data.position = transform.position;
+    }
+
+    public void Load(PlayerMoveSavaData data)
+    {
+        transform.position = data.position;
+    }
+}
+
+[System.Serializable]
+public struct PlayerMoveSavaData
+{
+    public Vector3 position;
 }
