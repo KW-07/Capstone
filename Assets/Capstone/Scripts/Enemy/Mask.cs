@@ -191,11 +191,12 @@ public class Mask: LivingEntity
         isDashing = false;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isDashing && collision.collider.CompareTag("Player"))
+        Debug.Log(collision.gameObject.name + "On OnTriggerEnter");
+        if (isDashing && collision.CompareTag("Player"))
         {
-            AttachToPlayer(collision.collider.transform);
+            AttachToPlayer(collision.transform);
         }
     }
 
@@ -206,7 +207,7 @@ public class Mask: LivingEntity
         rb.velocity = Vector2.zero;
 
         transform.SetParent(player);
-        transform.localPosition = new Vector3(0, 0, 0); // ¾ó±¼ À§Ä¡Âë
+        transform.localPosition = new Vector3(0, 4, 0); // ¾ó±¼ À§Ä¡Âë
 
         Debug.Log("MaskMonster ºÎÂøµÊ - ÇÃ·¹ÀÌ¾î¿¡°Ô µð¹öÇÁ ¹× µ¥¹ÌÁö!");
     }

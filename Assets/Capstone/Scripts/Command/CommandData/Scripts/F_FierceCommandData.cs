@@ -12,7 +12,7 @@ public class F_FierceCommandData : CommandData
     {
         Debug.Log($"{commandName} (버프) 사용! 속도 {speedMultiplier}배 증가, 지속시간 {duration}초");
 
-        PlayerMove movement = castPoint.GetComponent<PlayerMove>();
+        Player movement = castPoint.GetComponent<Player>();
         if (movement != null)
         {
             movement.ApplySpeedBuff(speedMultiplier, duration);

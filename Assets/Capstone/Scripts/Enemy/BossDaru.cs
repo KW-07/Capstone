@@ -42,7 +42,7 @@ public class BossDaru : LivingEntity
     public Transform rightHorn;
     public GameObject fireballPrefab;
     public float fireballSpeed = 5.0f;
-    public float fireballAngle = 45.0f;     
+    public float fireballAngle = 45.0f;
     public int fireballCount = 3;           // 발사할 불꽃 개수
     public float fireballInterval = 0.2f;
 
@@ -62,7 +62,7 @@ public class BossDaru : LivingEntity
 
     private bool isDead = false;
 
-    private void Start()
+    private void Start()                                            // tlqkf
     {
         rb = GetComponent<Rigidbody2D>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -71,7 +71,8 @@ public class BossDaru : LivingEntity
         root = new BTSelector();
 
         BTSequence attackSequence = new BTSequence();
-        BTSequence specialPatternLoop = new BTSequence();
+        BTSequence lowHealthattackSequence = new BTSequence();
+        BTSequence specialPatternSequence = new BTSequence();
         BTSequence chaseSequence = new BTSequence();
         BTSequence patrolSequence = new BTSequence();
         BTSequence deathSequence = new BTSequence();
@@ -89,8 +90,12 @@ public class BossDaru : LivingEntity
 
         BTCondition playerInRange = new BTCondition(IsPlayerInRange);
         BTCondition playerDetected = new BTCondition(IsPlayerDetected);
+
         BTCondition lowHealth = new BTCondition(IsLowHealth);
+        BTCondition notLowHealth = new BTCondition(NotLowHealth);
+
         BTCondition isdeadCondition = new BTCondition(() => base.dead);
+
         BTCondition canAttack = new BTCondition(CanAttack);
         BTCondition canTeleport = new BTCondition(CanTeleport);
 
@@ -101,17 +106,20 @@ public class BossDaru : LivingEntity
         lowHealthAttackSelector.AddChild(attack2);
         lowHealthAttackSelector.AddChild(attack3);
 
-        specialPatternLoop.AddChild(lowHealth);
-        specialPatternLoop.AddChild(playerDetected);
-        specialPatternLoop.AddChild(canTeleport);  // 텔레포트 가능할 때만 실행
-        specialPatternLoop.AddChild(teleportAbovePlayer);
-        specialPatternLoop.AddChild(playerInRange);
-        specialPatternLoop.AddChild(canAttack);
-        specialPatternLoop.AddChild(lowHealthAttackSelector);
-
+        attackSequence.AddChild(notLowHealth);
         attackSequence.AddChild(playerInRange);
         attackSequence.AddChild(canAttack);
         attackSequence.AddChild(normalAttackSelector);
+
+        specialPatternSequence.AddChild(lowHealth);
+        specialPatternSequence.AddChild(playerDetected);
+        specialPatternSequence.AddChild(canTeleport);  // 텔레포트 가능할 때만 실행
+        specialPatternSequence.AddChild(teleportAbovePlayer);
+
+        lowHealthattackSequence.AddChild(lowHealth);
+        lowHealthattackSequence.AddChild(playerInRange);
+        lowHealthattackSequence.AddChild(canAttack);
+        lowHealthattackSequence.AddChild(lowHealthAttackSelector);
 
         chaseSequence.AddChild(playerDetected);
         chaseSequence.AddChild(chaseAction);
@@ -121,9 +129,10 @@ public class BossDaru : LivingEntity
         deathSequence.AddChild(isdeadCondition);
         deathSequence.AddChild(dieAction);
 
-        root.AddChild(deathSequence); // 순서 중요함
-        root.AddChild(specialPatternLoop);
+        root.AddChild(deathSequence);
         root.AddChild(attackSequence);
+        root.AddChild(specialPatternSequence);
+        root.AddChild(lowHealthattackSequence);
         root.AddChild(chaseSequence);
         root.AddChild(patrolSequence);
     }
@@ -132,7 +141,7 @@ public class BossDaru : LivingEntity
     {
         root.Evaluate();
     }
-    private float Get2DDistance(Vector3 a, Vector3 b) // 아오 z값 시치...
+    private float Get2DDistance(Vector3 a, Vector3 b) // 아오 z값
     {
         a.z = 0;
         b.z = 0;
@@ -151,7 +160,8 @@ public class BossDaru : LivingEntity
         //Debug.Log($"IsPlayerInRange? Distance: {dist} / AttackRange: {attackRange} / Result: {dist <= attackRange}");
         return dist <= attackRange;
     }
-    private bool IsLowHealth() => base.currentHealth <= base.maxHealth * 0.4f; // 람다식
+    private bool IsLowHealth() => currentHealth <= maxHealth * 0.4f; // 람?다식
+    private bool NotLowHealth() => currentHealth >= maxHealth * 0.4f;
     private bool CanAttack() => Time.time >= nextAttackTime;
     private void SetNextAttackTime() => nextAttackTime = Time.time + attackCooldown;
     private bool CanTeleport() => Time.time >= nextTeleportTime;
@@ -231,7 +241,7 @@ public class BossDaru : LivingEntity
     private void PerformSlamAttack()
     {
         Debug.Log("Performing Ground Slam Attack!");
-        Vector2 attack2Position = transform.position + transform.up * -2f;
+        Vector2 attack2Position = transform.position + transform.up * -1f;
         // 주변 범위 공격
         Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attack2Position, attack2BoxSize, 0);
         foreach (var enemy in hitEnemies)
@@ -308,7 +318,7 @@ public class BossDaru : LivingEntity
     {
         if (IsPlayerDetected())
         {
-            return BTNodeState.Failure;  // 플레이어가 감지되면 순찰을 멈춘다.
+            return BTNodeState.Failure;  // 플레이어가 감지되면 순찰을 멈춤
         }
 
         rb.velocity = new Vector2(nextMove * moveSpeed, rb.velocity.y);
@@ -321,12 +331,12 @@ public class BossDaru : LivingEntity
         return BTNodeState.Running;
     }
 
-    private void Jump()
+    private void Jump() // 패트롤 시 점프하는 함수
     {
         //Debug.Log("Monster is Jumping!");
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
     }
-    private void Think()
+    private void Think() // 패트롤 시 방향전환 관련 함수
     {
         nextMove = Random.Range(-1, 2);
         transform.localScale = new Vector3(nextMove == -1 ? -1 : 1, 1, 1);
@@ -364,7 +374,7 @@ public class BossDaru : LivingEntity
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireCube(attackPoint.position, attack1BoxSize);
-            Gizmos.DrawWireCube(transform.position + transform.up * -2f, attack2BoxSize);
+            Gizmos.DrawWireCube(transform.position + transform.up * -1f, attack2BoxSize);
         }
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, attackRange);

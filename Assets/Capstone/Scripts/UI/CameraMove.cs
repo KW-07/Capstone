@@ -17,11 +17,11 @@ public class CameraMove : MonoBehaviour
     {
         if (GameManager.instance.isConversation)
         {
-            c_VCam.m_Lens.OrthographicSize = 8;
+            c_VCam.m_Lens.OrthographicSize = 10;
         }
         else
         {
-            c_VCam.m_Lens.OrthographicSize = 10;
+            c_VCam.m_Lens.OrthographicSize = 20;
         }
 
     }
