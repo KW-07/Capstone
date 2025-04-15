@@ -42,7 +42,7 @@ public class SaveSystem
 
     private static void HandleSaveData()
     {
-        GameManager.instance.playerMove.Save(ref _saveData.playerMoveData);
+        GameManager.instance.player.Save(ref _saveData.playerMoveData);
 
         GameManager.instance.sceneData.Save(ref _saveData.sceneSaveData);
     }
@@ -65,7 +65,7 @@ public class SaveSystem
         await GameManager.instance.sceneData.WaitForSceneToBeFullyLoaded();
 
         // 추가되는 모든 것
-        GameManager.instance.playerMove.Load(_saveData.playerMoveData);
+        GameManager.instance.player.Load(_saveData.playerMoveData);
     }
     #endregion
 }

@@ -20,8 +20,8 @@ public class ParabolicProjectile : MonoBehaviour
 
     private void Start()
     {
-        target2 = new Vector2(PlayerAttack.instance.neareastEnemy.transform.position.x, PlayerAttack.instance.neareastEnemy.transform.position.y);
-        target3 = new Vector3(PlayerAttack.instance.shootPoint.position.x, PlayerAttack.instance.shootPoint.position.y, PlayerAttack.instance.shootPoint.position.z);
+        target2 = new Vector2(Player.instance.neareastEnemy.transform.position.x, Player.instance.neareastEnemy.transform.position.y);
+        target3 = new Vector3(Player.instance.shootPoint.position.x, Player.instance.shootPoint.position.y, Player.instance.shootPoint.position.z);
         StartCoroutine(Curve(target3, target2));
     }
 

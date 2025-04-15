@@ -108,7 +108,7 @@ public class UIManager : MonoBehaviour
         // Player의 commandingTIme에 따른 commandTimeUI 이미지 변경
         if(GameManager.instance.isCommand)
         {
-            commandTimeUI.fillAmount = PlayerCommand.instance.commandingTime;
+            commandTimeUI.fillAmount = Player.instance.commandingTime;
         }
         else
         {
@@ -381,7 +381,7 @@ public class UIManager : MonoBehaviour
         int commandCount = 0;
 
         // 일부 일치하는 커맨드의 수만큼 생성 및 Grid의 자식으로 부착
-        for (int i = candidateGrid.transform.childCount; i < PlayerCommand.instance.usableCommandList.Length; i++)
+        for (int i = candidateGrid.transform.childCount; i < Player.instance.usableCommandList.Length; i++)
         {
             //Debug.Log("생성!");
             GameObject candidateObj = Instantiate(candidatePrefab);
@@ -389,7 +389,7 @@ public class UIManager : MonoBehaviour
 
             // 텍스트 삽입
             candidateText = candidateObj.transform.Find("CandidateText").gameObject.GetComponent<TMP_Text>();
-            candidateText.text = PlayerCommand.instance.usableCommandList[j].commandName;
+            candidateText.text = Player.instance.usableCommandList[j].commandName;
 
             // 이미지 초기화
             for (int imgNum = 0; imgNum < candidateSprite.Length; imgNum++)
@@ -400,47 +400,47 @@ public class UIManager : MonoBehaviour
             // 이미지 삽입
             for (int k =0;k< candidateSprite.Length;k++)
             {
-                switch (PlayerCommand.instance.usableCommandList[j].command[k])
+                switch (Player.instance.usableCommandList[j].command[k])
                 {
                     case 1:
-                        candidateSprite[k] = 
-                            PlayerCommand.instance.commandIcon[PlayerCommand.instance.usableCommandList[j].command[k] - 1];
-                        commandCount = PlayerCommand.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
+                        candidateSprite[k] =
+                            Player.instance.commandIcon[Player.instance.usableCommandList[j].command[k] - 1];
+                        commandCount = Player.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
                         break;
                     case 2:
                         candidateSprite[k] =
-                            PlayerCommand.instance.commandIcon[PlayerCommand.instance.usableCommandList[j].command[k] - 1];
-                        commandCount = PlayerCommand.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
+                            Player.instance.commandIcon[Player.instance.usableCommandList[j].command[k] - 1];
+                        commandCount = Player.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
                         break;
                     case 3:
                         candidateSprite[k] =
-                            PlayerCommand.instance.commandIcon[PlayerCommand.instance.usableCommandList[j].command[k] - 1];
-                        commandCount = PlayerCommand.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
+                            Player.instance.commandIcon[Player.instance.usableCommandList[j].command[k] - 1];
+                        commandCount = Player.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
                         break;
                     case 4:
                         candidateSprite[k] =
-                            PlayerCommand.instance.commandIcon[PlayerCommand.instance.usableCommandList[j].command[k] - 1];
-                        commandCount = PlayerCommand.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
+                            Player.instance.commandIcon[Player.instance.usableCommandList[j].command[k] - 1];
+                        commandCount = Player.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
                         break;
                     case 5:
                         candidateSprite[k] =
-                            PlayerCommand.instance.commandIcon[PlayerCommand.instance.usableCommandList[j].command[k] - 1];
-                        commandCount = PlayerCommand.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
+                            Player.instance.commandIcon[Player.instance.usableCommandList[j].command[k] - 1];
+                        commandCount = Player.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
                         break;
                     case 6:
                         candidateSprite[k] =
-                            PlayerCommand.instance.commandIcon[PlayerCommand.instance.usableCommandList[j].command[k] - 1];
-                        commandCount = PlayerCommand.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
+                            Player.instance.commandIcon[Player.instance.usableCommandList[j].command[k] - 1];
+                        commandCount = Player.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
                         break;
                     case 7:
                         candidateSprite[k] =
-                            PlayerCommand.instance.commandIcon[PlayerCommand.instance.usableCommandList[j].command[k] - 1];
-                        commandCount = PlayerCommand.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
+                            Player.instance.commandIcon[Player.instance.usableCommandList[j].command[k] - 1];
+                        commandCount = Player.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
                         break;
                     case 8:
                         candidateSprite[k] =
-                            PlayerCommand.instance.commandIcon[PlayerCommand.instance.usableCommandList[j].command[k] - 1];
-                        commandCount = PlayerCommand.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
+                            Player.instance.commandIcon[Player.instance.usableCommandList[j].command[k] - 1];
+                        commandCount = Player.instance.usableCommandList[j].command[k] - 1 > 0 ? commandCount + 1 : commandCount + 0;
                         break;
                     default:
                         break;

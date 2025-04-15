@@ -12,7 +12,7 @@ public class F_FistCommandData : CommandData
     public override void ActivateSkill(GameObject castPoint, GameObject target)
     {
         Debug.Log($"{commandName}(F_Fist) »ç¿ë");
-        if (PlayerMove.instance.facingRight)
+        if (Player.instance.facingRight)
         {
             effect = Instantiate(effectPrefab, castPoint.transform.position, Quaternion.identity);
         }

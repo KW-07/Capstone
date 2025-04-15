@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Testing : MonoBehaviour
 {
-    [SerializeField] private PlayerMove playerMove;
+    [SerializeField] private Player player;
     [SerializeField] private SkillTree skillTree;
 
     private void Start()
     {
-        skillTree.SetPlayerSkills(playerMove.GetPlayerSkills());
+        skillTree.SetPlayerSkills(player.GetPlayerSkills());
     }
 }

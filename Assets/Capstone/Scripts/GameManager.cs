@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance { get; private set; }
 
     [Header("Player")]
-    [SerializeField] private Transform player;
+    [SerializeField] private Transform playerTransform;
     public bool isPlayerLive;
 
     [Header("Status")]
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject bossHpUI;
 
 
-    public PlayerMove playerMove { get; set; }
+    public Player player { get; set; }
     public SceneData sceneData { get; set; }
     public SceneLoader sceneLoader { get; set; }
 
@@ -188,13 +188,13 @@ public class GameManager : MonoBehaviour
         // 현재 맵이 마을일 경우 리스폰포인트에서, 아닐경우 마을 및 리스폰포인트에서 리스폰
         if(SceneManager.GetActiveScene().name == "Village")
         {
-            player.position = respawnPoint.position;
+            playerTransform.position = respawnPoint.position;
             isPlayerLive = true;
         }
         else
         {
             SceneManager.LoadScene("Village");
-            player.position = respawnPoint.position;
+            playerTransform.position = respawnPoint.position;
             isPlayerLive = true;
         }
     }
