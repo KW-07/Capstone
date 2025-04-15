@@ -98,7 +98,7 @@ public class UIManager : MonoBehaviour
         // Player의 commandingTIme에 따른 commandTimeUI 이미지 변경
         if(GameManager.instance.isCommand)
         {
-            commandTimeUI.fillAmount = PlayerCommand.instance.commandingTime;
+            commandTimeUI.fillAmount = Player.instance.commandingTime;
         }
         else
         {

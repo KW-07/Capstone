@@ -21,7 +21,7 @@ public class F_KickCommandData : CommandData
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(castPoint.transform.position, attackRange, LayerMask.GetMask("Enemy"));
         foreach (Collider2D enemy in hitEnemies)
         {
-            Debug.Log($"{enemy.name}에게 {PlayerAttack.instance.playerDamage + damage}의 피해를 입힘!");
+            Debug.Log($"{enemy.name}에게 {Player.instance.playerDamage + damage}의 피해를 입힘!");
         }
     }
 }

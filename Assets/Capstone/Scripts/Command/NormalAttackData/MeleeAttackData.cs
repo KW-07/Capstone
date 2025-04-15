@@ -53,8 +53,8 @@ public class MeleeAttackData : CommandData
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(castPoint.transform.position, effectPrefab.GetComponent<Transform>().localScale.x, LayerMask.GetMask("Enemy"));
         foreach (Collider2D enemy in hitEnemies)
         {
-            Debug.Log($"{enemy.name}에게 {PlayerAttack.instance.playerDamage + damage}의 피해를 입힘!");
-            enemy.GetComponent<LivingEntity>().OnDamage(PlayerAttack.instance.playerDamage + damage);
+            Debug.Log($"{enemy.name}에게 {Player.instance.playerDamage + damage}의 피해를 입힘!");
+            enemy.GetComponent<LivingEntity>().OnDamage(Player.instance.playerDamage + damage);
         }
     }
 }
