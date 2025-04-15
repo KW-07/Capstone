@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 [CreateAssetMenu(fileName = "MeleeAttack", menuName = "Player/Attack/Melee")]
 public class MeleeAttackData : CommandData
 {
+    float attackRange;
     public int multipleAttack = 0;
     public int firstCountDamage;
     public int secondCountDamage;
@@ -23,7 +24,6 @@ public class MeleeAttackData : CommandData
                 if (effectPrefab != null)
                 {
                     GameObject effect = Instantiate(effectPrefab, castPoint.transform.position, Quaternion.identity);
-                    effect.GetComponent<CommandCollider>().damage = damage;
                     Destroy(effect, destroyTime);
                 }
                 break;
@@ -47,6 +47,14 @@ public class MeleeAttackData : CommandData
                 break;
             default:
                 break;
+        }
+
+        // 생성위치 충돌 체크 및 적이면 데미지
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(castPoint.transform.position, effectPrefab.GetComponent<Transform>().localScale.x, LayerMask.GetMask("Enemy"));
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            Debug.Log($"{enemy.name}에게 {Player.instance.playerDamage + damage}의 피해를 입힘!");
+            enemy.GetComponent<LivingEntity>().OnDamage(Player.instance.playerDamage + damage);
         }
     }
 }

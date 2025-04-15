@@ -157,7 +157,7 @@ TextureImporter:
         width: 997
         height: 1989
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -170,7 +170,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uCE74\uB77C\uCE74\uC0AC-\uC774\uB3D9(1900_4000)_1"
+      name: "\uCE74\uB77C\uCE74\uC0AC-\uC774\uB3D9(1900_4000)_2"
       rect:
         serializedVersion: 2
         x: 4270
@@ -178,7 +178,7 @@ TextureImporter:
         width: 988
         height: 1989
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -191,15 +191,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uCE74\uB77C\uCE74\uC0AC-\uC774\uB3D9(1900_4000)_2"
+      name: "\uCE74\uB77C\uCE74\uC0AC-\uC774\uB3D9(1900_4000)_3"
       rect:
         serializedVersion: 2
-        x: 6172
+        x: 6181
         y: 5870
         width: 983
         height: 1989
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -212,7 +212,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uCE74\uB77C\uCE74\uC0AC-\uC774\uB3D9(1900_4000)_3"
+      name: "\uCE74\uB77C\uCE74\uC0AC-\uC774\uB3D9(1900_4000)_4"
       rect:
         serializedVersion: 2
         x: 7679
@@ -220,7 +220,7 @@ TextureImporter:
         width: 1689
         height: 1957
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -233,7 +233,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uCE74\uB77C\uCE74\uC0AC-\uC774\uB3D9(1900_4000)_4"
+      name: "\uCE74\uB77C\uCE74\uC0AC-\uC774\uB3D9(1900_4000)_1"
       rect:
         serializedVersion: 2
         x: 2419
@@ -241,7 +241,7 @@ TextureImporter:
         width: 1034
         height: 1915
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -262,7 +262,7 @@ TextureImporter:
         width: 1693
         height: 1943
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -283,7 +283,7 @@ TextureImporter:
         width: 1651
         height: 1925
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -300,11 +300,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3890
-        y: 448
+        y: 439
         width: 1693
         height: 1956
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -325,7 +325,7 @@ TextureImporter:
         width: 1020
         height: 1944
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -341,12 +341,12 @@ TextureImporter:
       name: "\uCE74\uB77C\uCE74\uC0AC-\uC774\uB3D9(1900_4000)_9"
       rect:
         serializedVersion: 2
-        x: 8064
+        x: 8073
         y: 53
         width: 993
         height: 1990
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -370,10 +370,10 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       "\uCE74\uB77C\uCE74\uC0AC-\uC774\uB3D9(1900_4000)_0": -1300226824
-      "\uCE74\uB77C\uCE74\uC0AC-\uC774\uB3D9(1900_4000)_1": 261268611
-      "\uCE74\uB77C\uCE74\uC0AC-\uC774\uB3D9(1900_4000)_2": -1451710435
-      "\uCE74\uB77C\uCE74\uC0AC-\uC774\uB3D9(1900_4000)_3": -1539138108
-      "\uCE74\uB77C\uCE74\uC0AC-\uC774\uB3D9(1900_4000)_4": 1466911351
+      "\uCE74\uB77C\uCE74\uC0AC-\uC774\uB3D9(1900_4000)_1": 1466911351
+      "\uCE74\uB77C\uCE74\uC0AC-\uC774\uB3D9(1900_4000)_2": 261268611
+      "\uCE74\uB77C\uCE74\uC0AC-\uC774\uB3D9(1900_4000)_3": -1451710435
+      "\uCE74\uB77C\uCE74\uC0AC-\uC774\uB3D9(1900_4000)_4": -1539138108
       "\uCE74\uB77C\uCE74\uC0AC-\uC774\uB3D9(1900_4000)_5": -1740399489
       "\uCE74\uB77C\uCE74\uC0AC-\uC774\uB3D9(1900_4000)_6": -192517420
       "\uCE74\uB77C\uCE74\uC0AC-\uC774\uB3D9(1900_4000)_7": -465740885
