@@ -17,5 +17,9 @@ MonoBehaviour:
   maxPoints: 4
   currentPoints: 0
   prerequisites: []
-  effectDescriptions: []
-  powerByLevel: 
+  statModifiers:
+  - statType: 2
+    valuesPerLevel:
+    - 10
+    - 20
+    - 30

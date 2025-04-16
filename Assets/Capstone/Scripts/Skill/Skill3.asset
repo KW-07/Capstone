@@ -18,5 +18,4 @@ MonoBehaviour:
   currentPoints: 0
   prerequisites:
   - {fileID: 11400000, guid: d5aea41d720ee234bbea1fcdd6ab76cb, type: 2}
-  effectDescriptions: []
-  powerByLevel: 
+  statModifiers: []

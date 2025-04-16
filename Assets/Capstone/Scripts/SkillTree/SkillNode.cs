@@ -32,6 +32,14 @@ public class SkillNode : MonoBehaviour
 
         bool canClick = skillTreeManager.CanUnlock(skill);
         button.interactable = canClick && !skill.IsMaxed;
+
+        //string effectInfo = "";
+        //foreach (var mod in skill.statModifiers)
+        //{
+        //    float val = skill.GetStatValue(mod.statType);
+        //    effectInfo += $"{mod.statType}: +{val}\n";
+        //}
+        //effectText.text = effectInfo;
     }
 
     void OnClick()

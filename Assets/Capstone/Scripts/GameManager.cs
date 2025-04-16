@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Threading.Tasks;
+using UnityEngine.TextCore.LowLevel;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,13 +15,21 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform playerTransform;
     public bool isPlayerLive;
 
-    [Header("Status")]
+    [Header("Stat")]
     public float maxHealthPoint;
     public float currentHealthPoint;
     //[SerializeField] private float StaminaPoint;
     public bool isBuff = false;
     public float increaseDamageBuff;
     public float increaseSpeedBuff;
+
+    public float baseMoveSpeed;
+    public float baseDamage;
+    public float baseDefense;
+
+    public float finalMoveSpeed;
+    public float finalDamage;
+    public float finalDefense;
 
     [Header("Currency")]
     private float currency1;
@@ -48,6 +57,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject bossObject;
     [SerializeField] private GameObject bossHpUI;
 
+    public SkillTreeManager skillTreeManager;
 
     public Player player { get; set; }
     public SceneData sceneData { get; set; }
@@ -67,6 +77,8 @@ public class GameManager : MonoBehaviour
     {
         isPlayerLive = true;
         isBossBattle = false;
+
+        skillTreeManager = SkillTreeManager.instance;
     }
 
     private void Update()
@@ -100,6 +112,35 @@ public class GameManager : MonoBehaviour
         _isLoading = true;
         await SaveSystem.LoadAsync();
         _isLoading = false;
+    }
+
+    public void RecalculateStats()
+    {
+        finalMoveSpeed = baseMoveSpeed;
+        finalDamage = baseDamage;
+        finalDefense = baseDefense;
+
+        if (skillTreeManager == null)
+        {
+            Debug.LogError("[Stat] skillTreeManager가 null입니다! 연결을 확인하세요.");
+            return;
+        }
+
+        var unlockedSkills = skillTreeManager.GetUnlockedSkills();
+        if (unlockedSkills == null)
+        {
+            Debug.LogWarning("[Stat] unlockedSkills가 null입니다.");
+            return;
+        }
+
+        foreach (var skill in unlockedSkills)
+        {
+            finalMoveSpeed += skill.GetStatValue(StatType.MoveSpeed);
+            finalDamage += skill.GetStatValue(StatType.Damage);
+            finalDefense += skill.GetStatValue(StatType.Defense);
+        }
+
+        Debug.Log($"[Stat] 공격력: {finalDamage}, 방어력: {finalDefense}");
     }
 
     public bool nothingUI()

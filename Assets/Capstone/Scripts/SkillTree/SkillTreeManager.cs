@@ -1,20 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SkillTreeManager : MonoBehaviour
 {
+    public static SkillTreeManager instance { get; private set; }
+
     public int availablePoints = 10;
 
     public List<SkillNode> allNodes;
-    private HashSet<Skill> unlockedSkills = new HashSet<Skill>();
-
     public List<SkillConnection> allConnections;
+
+    public List<Skill> AllSkills => allNodes.Select(n => n.skill).ToList();
+
+    private void Awake()
+    {
+        if (instance != null)
+            Destroy(instance);
+        else instance = this;
+    }
 
     void Start()
     {
         foreach (var node in allNodes)
         {
+            Debug.Log($"Node: {node.name}, Skill: {node.skill?.skillName}");
             node.Initialize(this);
         }
     }
@@ -23,14 +34,12 @@ public class SkillTreeManager : MonoBehaviour
     {
         if (skill.currentPoints >= skill.maxPoints)
         {
-            Debug.Log($"{skill.skillName}은 이미 최대치임");
             return false;
         }
 
 
         if (skill.prerequisites == null || skill.prerequisites.Count == 0)
         {
-            Debug.Log($"{skill.skillName}은 선행 조건이 없음 → 찍을 수 있음");
             return true;
         }
 
@@ -38,12 +47,10 @@ public class SkillTreeManager : MonoBehaviour
         {
             if (!pre.IsMaxed)
             {
-                Debug.Log($"{skill.skillName}은 {pre.skillName}이 max 상태가 아니라서 못 찍음");
                 return false;
             }
         }
 
-        Debug.Log($"{skill.skillName}은 선행 조건 충족 → 찍을 수 있음");
         return true;
     }
 
@@ -54,6 +61,8 @@ public class SkillTreeManager : MonoBehaviour
 
         skill.currentPoints++;
         availablePoints--;
+
+        GameManager.instance.RecalculateStats();
         return true;
     }
 
@@ -66,8 +75,19 @@ public class SkillTreeManager : MonoBehaviour
     {
         foreach (var node in allNodes)
             node.Refresh();
+    }
 
-        foreach (var conn in allConnections)
-            conn.UpdateLine();
+    public List<Skill> GetUnlockedSkills()
+    {
+        if (allNodes == null || allNodes.Count == 0)
+        {
+            Debug.LogWarning("[SkillTreeManager] allNodes 비어있음");
+            return new List<Skill>();
+        }
+
+        return allNodes
+            .Where(n => n.skill != null && n.skill.currentPoints > 0)
+            .Select(n => n.skill)
+            .ToList();
     }
 }
