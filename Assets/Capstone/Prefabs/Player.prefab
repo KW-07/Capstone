@@ -653,7 +653,7 @@ GameObject:
   - component: {fileID: 3926330301857238661}
   - component: {fileID: 2252667473527451760}
   - component: {fileID: 1842395798545964997}
-  - component: {fileID: 290543356599317367}
+  - component: {fileID: 5562267292618288105}
   - component: {fileID: 7372711895074517867}
   - component: {fileID: 8237521002116061519}
   - component: {fileID: 6422994693445623247}
@@ -760,7 +760,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 290543356599317367}
+      - m_Target: {fileID: 5562267292618288105}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
@@ -776,7 +776,7 @@ MonoBehaviour:
     m_ActionName: Player/Move[/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 290543356599317367}
+      - m_Target: {fileID: 5562267292618288105}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: OnJump
         m_Mode: 0
@@ -791,24 +791,12 @@ MonoBehaviour:
     m_ActionId: 03b398fc-f069-4ddc-8a46-c8012c203685
     m_ActionName: Player/Jump[/Keyboard/upArrow]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 290543356599317367}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: OnDownJump
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 4111f0fb-c58f-4bc4-a6c0-43195b96706d
     m_ActionName: Player/UnderJump[/Keyboard/downArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 290543356599317367}
+      - m_Target: {fileID: 5562267292618288105}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: OnMeleeAttack
         m_Mode: 0
@@ -823,24 +811,12 @@ MonoBehaviour:
     m_ActionId: 308b4f18-8580-4c36-933a-2060da3fd821
     m_ActionName: Player/Attack[/Keyboard/a]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5744513895415964633}
-        m_TargetAssemblyTypeName: QuickSlot, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 0c122d29-d035-4e76-a5ee-465499cc170a
     m_ActionName: Player/Swap[/Keyboard/s]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 290543356599317367}
+      - m_Target: {fileID: 5562267292618288105}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: OnDash
         m_Mode: 0
@@ -860,7 +836,7 @@ MonoBehaviour:
     m_ActionName: Player/Skill_Q[/Keyboard/q]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 290543356599317367}
+      - m_Target: {fileID: 5562267292618288105}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: RangeAttack
         m_Mode: 0
@@ -884,7 +860,7 @@ MonoBehaviour:
     m_ActionName: UI/Option[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 290543356599317367}
+      - m_Target: {fileID: 5562267292618288105}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: PlayerCommanding
         m_Mode: 0
@@ -951,7 +927,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &290543356599317367
+--- !u!114 &5562267292618288105
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -960,38 +936,53 @@ MonoBehaviour:
   m_GameObject: {fileID: 5744513895415964633}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ab353a922b76c549bb41ef5cdc1f3bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ef59498c7783a34c825dfc74bea9ecb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
   dir: 0
+  originalMoveSpeed: 10
+  facingRight: 1
+  jumpPower: 40
   _jumpCount: 0
-  moveSpeed: 5
-  activeSpeedMultipliers: []
-  jumpPower: 3
   teleportdis: 3
+  activeSpeedMultipliers: []
+  pCommand: 0000000000000000000000000000000000000000000000000000000000000000
+  limitCommandTime: 1
+  inCommandingTimeScale: 0.1
+  commandingTime: 1
+  commandCount: 0
+  commandTimeUI: {fileID: 5576245483601965058}
+  pCommandUI: {fileID: 0}
+  pCommandUIGrid: {fileID: 0}
+  commandIcon:
+  - {fileID: 21300000, guid: 294ce4a863cdab74caa8789fcc15bfc9, type: 3}
+  - {fileID: 21300000, guid: 1a00eace6ccb6dc4f8f0ee1179361476, type: 3}
+  - {fileID: 21300000, guid: c6a0e623ef7c3944ca78d1363c93fb0e, type: 3}
+  - {fileID: 21300000, guid: 0a30743c467c18c43b6032e6ebac635d, type: 3}
+  - {fileID: 21300000, guid: 7d72e8dc770901840908218e1c06f793, type: 3}
+  - {fileID: 21300000, guid: 20cb04eaa68a95142936b6595f39d522, type: 3}
+  - {fileID: 21300000, guid: cdf471adac2110344b10362198a0d6d9, type: 3}
+  pCommandIcon:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  usableCommandList: []
+  skillSystem: {fileID: 0}
+  shootPoint: {fileID: 1125188714944020063}
   normalAttack: {fileID: 11400000, guid: 655d1016260c8184e87e9e15c1934b53, type: 2}
   normalProjectile: {fileID: 11400000, guid: 8cd2262e569041c42a0079aa4c532639, type: 2}
-  rangeCooldown: 1
-  initTimeMultipleAttack: 0
-  _playerDamage: 10
+  rangeCooldown: 0.5
+  initTimeMultipleAttack: 3
   attackCountInitTime: 0
-  boxSize: {x: 0, y: 0}
+  _playerDamage: 10
   allEnemyArray: []
   visibleEnemy: []
   neareastEnemy: {fileID: 0}
-  shootPoint: {fileID: 1125188714944020063}
-  facingRight: 1
-  pCommand: 0000000000000000000000000000000000000000000000000000000000000000
-  limitCommandTime: 1
-  inCommandingTimeScale: 0
-  commandingTime: 0
-  commandTimeUI: {fileID: 0}
-  pCommandUI: {fileID: 0}
-  pCommandUIGrid: {fileID: 0}
-  commandIcon: []
-  pCommandIcon: []
-  skillSystem: {fileID: 0}
 --- !u!114 &7372711895074517867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1442,5 +1433,10 @@ PrefabInstance:
 --- !u!224 &3341545196269949694 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4697896990329234882, guid: 0800eed572945304c83ec1af1ddf8fc8, type: 3}
+  m_PrefabInstance: {fileID: 8029291185458001724}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5576245483601965058 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2454189615530018622, guid: 0800eed572945304c83ec1af1ddf8fc8, type: 3}
   m_PrefabInstance: {fileID: 8029291185458001724}
   m_PrefabAsset: {fileID: 0}
