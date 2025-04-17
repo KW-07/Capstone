@@ -10,7 +10,7 @@ public class SceneData : MonoBehaviour
 
     private void Awake()
     {
-        GameManager.instance.sceneData = this;
+        SaveLoadManager.instance.sceneData = this;
     }
 
     #region Save and Load
@@ -22,12 +22,12 @@ public class SceneData : MonoBehaviour
 
     public void Load(SceneSaveData data)
     {
-        GameManager.instance.sceneLoader.LoadSceneByIndex(data.sceneID);
+        SaveLoadManager.instance.sceneLoader.LoadSceneByIndex(data.sceneID);
     }
 
     public async Task LoadAsync(SceneSaveData data)
     {
-        await GameManager.instance.sceneLoader.LoadSceneByIndexAsync(data.sceneID);
+        await SaveLoadManager.instance.sceneLoader.LoadSceneByIndexAsync(data.sceneID);
     }
 
     public Task WaitForSceneToBeFullyLoaded()

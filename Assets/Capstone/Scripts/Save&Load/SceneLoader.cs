@@ -11,7 +11,7 @@ public class SceneLoader : MonoBehaviour
 
     private void Awake()
     {
-        GameManager.instance.sceneLoader = this;
+        SaveLoadManager.instance.sceneLoader = this;
 
         PopulateSceneMappings();
     }

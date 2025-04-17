@@ -14,6 +14,8 @@ public class SkillTreeManager : MonoBehaviour
 
     public List<Skill> AllSkills => allNodes.Select(n => n.skill).ToList();
 
+    private PlayerStats playerStats;
+
     private void Awake()
     {
         if (instance != null)
@@ -23,6 +25,8 @@ public class SkillTreeManager : MonoBehaviour
 
     void Start()
     {
+        playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
+
         foreach (var node in allNodes)
         {
             Debug.Log($"Node: {node.name}, Skill: {node.skill?.skillName}");
@@ -62,7 +66,7 @@ public class SkillTreeManager : MonoBehaviour
         skill.currentPoints++;
         availablePoints--;
 
-        GameManager.instance.RecalculateStats();
+        playerStats.RecalculateStats();
         return true;
     }
 

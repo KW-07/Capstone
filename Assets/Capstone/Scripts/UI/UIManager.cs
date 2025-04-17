@@ -55,6 +55,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject buyTapGameObject;
     [SerializeField] public bool buyTapOnOff;
 
+    PlayerStats playerStats;
+
     [Header("CommandCandidate")]
     [SerializeField] private GameObject candidateGrid;
     [SerializeField] private GameObject candidatePrefab;
@@ -75,6 +77,7 @@ public class UIManager : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         typewriterEffect = GetComponent<TypewriterEffect>();
+        playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
 
         GameManager.instance.isConversation = false;
         onUI = false;
@@ -118,7 +121,7 @@ public class UIManager : MonoBehaviour
         GO_commandTimeUI.transform.position = player.transform.position + new Vector3(0,-1.5f,0);
 
         // 플레이어 HP바
-        playerHp.fillAmount = GameManager.instance.currentHealthPoint / GameManager.instance.maxHealthPoint;
+        playerHp.fillAmount = playerStats.currentHealth / playerStats.maxHealth;
 
         if (Input.GetKeyDown(KeyCode.L) && !GameManager.instance.isConversation)
             showDialogue(testDialogue);
