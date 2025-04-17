@@ -3,24 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerStats : MonoBehaviour
+public class PlayerStats : CharacterStats
 {
     [SerializeField] private bool isAlive;
-
-    public int maxHealth;
-    public int currentHealth;
-
-    public int maxStamina;
-    public int currentStamina;
-
-    public float baseMoveSpeed;
-    public float finalMoveSpeed;
-
-    public float baseDamage;
-    public float finalDamage;
-
-    public float baseDefense;
-    public float finalDefense;
 
     [SerializeField] private GameObject respawnPoint;
     [SerializeField] private float respawnTime;

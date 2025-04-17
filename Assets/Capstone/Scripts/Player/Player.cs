@@ -91,6 +91,9 @@ public class Player : MonoBehaviour
     // 전방에 존재하며 가장 가까운 적
     public GameObject neareastEnemy;
 
+    [Header("버프(or 디버프)SO")]
+    public Buff PoisonBuff;
+    
     Rigidbody2D rb;
     CapsuleCollider2D capsule;
     Transform playerTransform;

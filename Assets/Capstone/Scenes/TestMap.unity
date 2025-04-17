@@ -34310,6 +34310,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5562267292618288105, guid: c1b6a19ccb4820c4cae7ce4c64ce205b, type: 3}
+      propertyPath: PoisonBuff
+      value: 
+      objectReference: {fileID: 11400000, guid: 75611829363eb1f44a85aac04fa89a43, type: 2}
+    - target: {fileID: 5562267292618288105, guid: c1b6a19ccb4820c4cae7ce4c64ce205b, type: 3}
       propertyPath: pCommandUI
       value: 
       objectReference: {fileID: 954856896}
@@ -34569,8 +34573,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5744513895415964633, guid: c1b6a19ccb4820c4cae7ce4c64ce205b, type: 3}
-      insertIndex: 8
+      insertIndex: 7
       addedObject: {fileID: 3192920419430757587}
+    - targetCorrespondingSourceObject: {fileID: 5744513895415964633, guid: c1b6a19ccb4820c4cae7ce4c64ce205b, type: 3}
+      insertIndex: 8
+      addedObject: {fileID: 3192920419430757588}
   m_SourcePrefab: {fileID: 100100000, guid: c1b6a19ccb4820c4cae7ce4c64ce205b, type: 3}
 --- !u!114 &3192920419430757579 stripped
 MonoBehaviour:
@@ -34595,7 +34602,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b80b61870cc0824e9ba0bedebb02da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAlive: 0
   maxHealth: 100
   currentHealth: 0
   maxStamina: 0
@@ -34606,8 +34612,21 @@ MonoBehaviour:
   finalDamage: 0
   baseDefense: 0
   finalDefense: 0
+  isAlive: 0
   respawnPoint: {fileID: 0}
   respawnTime: 0
+--- !u!114 &3192920419430757588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004828968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2c4e9c333ea55548ab5ba30960fb5a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &3222037150682051034 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3233859908182058720, guid: f8dad87fc3eb21046a3b59562cd5ff2d, type: 3}
