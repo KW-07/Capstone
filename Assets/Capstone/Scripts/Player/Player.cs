@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
 {
     public static Player instance { get; private set; }
 
+    [Header("얼굴위치")]
+    public Transform maskAttachPoint;
+
     [Header("이동")]
     public float dir;
     public float originalMoveSpeed = 1f;
@@ -165,6 +168,11 @@ public class Player : MonoBehaviour
     {
         Move();
         animator.SetFloat("yVelocity", rb.velocity.y);
+    }
+
+    public Transform GetMaskAttachPoint()   //Mask에서 사용할 얼굴위치 넘겨주는 함수
+    {
+        return maskAttachPoint;
     }
 
     #region Move

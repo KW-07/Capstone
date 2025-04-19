@@ -5,6 +5,7 @@ using UnityEngine;
 public class KasaOni : LivingEntity
 {
     public Transform playerTransform;
+    public GameObject healthBar;
 
     [Header("Range")]
     public float attackRange = 1.5f;
@@ -74,6 +75,18 @@ public class KasaOni : LivingEntity
     private void Update()
     {
         root.Evaluate();
+        if (healthBar != null)
+        {
+            healthBar.transform.rotation = Quaternion.identity;
+
+            Transform barVisual = healthBar.transform.Find("BarVisual");
+            if (barVisual != null)
+            {
+                Vector3 scale = barVisual.localScale;
+                scale.x = Mathf.Abs(scale.x); // 항상 양수
+                barVisual.localScale = scale;
+            }
+        }
     }
     private void FixedUpdate()
     {
@@ -195,7 +208,8 @@ public class KasaOni : LivingEntity
     private void Think()
     {
         nextMove = Random.Range(-1, 2);
-        transform.localScale = new Vector3(nextMove == -1 ? -1 : 1, 1, 1);
+        float yRotation = nextMove == -1 ? 180f : 0f;
+        transform.rotation = Quaternion.Euler(0, yRotation, 0);
         Invoke("Think", nextThinkTime);
     }
 
@@ -216,7 +230,9 @@ public class KasaOni : LivingEntity
     private void LookAtPlayer()
     {
         if (playerTransform == null) return;
-        transform.localScale = new Vector3(playerTransform.position.x < transform.position.x ? -1 : 1, 1, 1);
+
+        bool lookLeft = playerTransform.position.x < transform.position.x;
+        transform.rotation = Quaternion.Euler(0, lookLeft ? 180f : 0f, 0);
     }
 
     private void OnDrawGizmos()

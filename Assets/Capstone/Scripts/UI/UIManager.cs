@@ -19,7 +19,6 @@ public class UIManager : MonoBehaviour
 
     [Header("Option/Information")]
     [SerializeField] private GameObject option;
-    [SerializeField] private GameObject information;
 
     [Header("Command")]
     [SerializeField] private GameObject GO_commandTimeUI;
@@ -175,7 +174,6 @@ public class UIManager : MonoBehaviour
     void OffUI()
     {
         option.SetActive(false);
-        information.SetActive(false);
     }
 
     // 키에 따른 해당UI 키기/끄기
@@ -197,12 +195,6 @@ public class UIManager : MonoBehaviour
 
             Time.timeScale = 0f;
         }
-    }
-
-    void OnInformation()
-    {
-        OffUI();
-        UIOnOff(information);
     }
 
     void OnOption()

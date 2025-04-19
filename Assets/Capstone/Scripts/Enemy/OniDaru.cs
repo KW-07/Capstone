@@ -156,7 +156,8 @@ public class OniDaru : LivingEntity
     private void Think()
     {
         nextMove = Random.Range(-1, 2);
-        transform.localScale = new Vector3(nextMove == -1 ? -1 : 1, 1, 1);
+        float yRotation = nextMove == -1 ? 180f : 0f;
+        transform.rotation = Quaternion.Euler(0, yRotation, 0);
         Invoke("Think", nextThinkTime);
     }
     private BTNodeState Die()
@@ -179,7 +180,9 @@ public class OniDaru : LivingEntity
     private void LookAtPlayer()
     {
         if (playerTransform == null) return;
-        transform.localScale = new Vector3(playerTransform.position.x < transform.position.x ? -1 : 1, 1, 1);
+
+        bool lookLeft = playerTransform.position.x < transform.position.x;
+        transform.rotation = Quaternion.Euler(0, lookLeft ? 180f : 0f, 0);
     }
     private void OnDrawGizmos()
     {

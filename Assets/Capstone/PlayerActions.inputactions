@@ -51,15 +51,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "QuickSlot",
-                    "type": "Button",
-                    "id": "0c122d29-d035-4e76-a5ee-465499cc170a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Dash",
                     "type": "Button",
                     "id": "8c4b682c-7b68-4db0-8473-e68a66adcc5c",
@@ -96,17 +87,6 @@
                     "processors": "",
                     "groups": "PC",
                     "action": "Melee",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "810e8355-19aa-4aa1-b7ef-bfcae181592a",
-                    "path": "<Keyboard>/q",
-                    "interactions": "Hold(duration=0.3,pressPoint=0.4),Press(pressPoint=0.4)",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "QuickSlot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -216,7 +196,7 @@
             "id": "1992444e-97fb-4d1a-8c0d-2545f57c62b8",
             "actions": [
                 {
-                    "name": "Information",
+                    "name": "Tap",
                     "type": "Button",
                     "id": "a0d0c0c6-ffa4-4d3f-9e9d-68df7fad6ca7",
                     "expectedControlType": "Button",
@@ -242,7 +222,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
-                    "action": "Information",
+                    "action": "Tap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

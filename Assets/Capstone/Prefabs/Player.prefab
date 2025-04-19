@@ -653,7 +653,7 @@ GameObject:
   - component: {fileID: 3926330301857238661}
   - component: {fileID: 2252667473527451760}
   - component: {fileID: 1842395798545964997}
-  - component: {fileID: 290543356599317367}
+  - component: {fileID: 8365945702411856844}
   - component: {fileID: 7372711895074517867}
   - component: {fileID: 8237521002116061519}
   - component: {fileID: 6422994693445623247}
@@ -678,6 +678,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1125188714944020063}
+  - {fileID: 3797276984785718182}
   - {fileID: 6959987472213895985}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -760,7 +761,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 290543356599317367}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
@@ -776,7 +777,7 @@ MonoBehaviour:
     m_ActionName: Player/Move[/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 290543356599317367}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: OnJump
         m_Mode: 0
@@ -792,7 +793,7 @@ MonoBehaviour:
     m_ActionName: Player/Jump[/Keyboard/upArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 290543356599317367}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: OnDownJump
         m_Mode: 0
@@ -808,7 +809,7 @@ MonoBehaviour:
     m_ActionName: Player/UnderJump[/Keyboard/downArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 290543356599317367}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: OnMeleeAttack
         m_Mode: 0
@@ -840,7 +841,7 @@ MonoBehaviour:
     m_ActionName: Player/Swap[/Keyboard/s]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 290543356599317367}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: OnDash
         m_Mode: 0
@@ -860,7 +861,7 @@ MonoBehaviour:
     m_ActionName: Player/Skill_Q[/Keyboard/q]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 290543356599317367}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: RangeAttack
         m_Mode: 0
@@ -884,7 +885,7 @@ MonoBehaviour:
     m_ActionName: UI/Option[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 290543356599317367}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: PlayerCommanding
         m_Mode: 0
@@ -951,7 +952,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &290543356599317367
+--- !u!114 &8365945702411856844
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -960,38 +961,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 5744513895415964633}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ab353a922b76c549bb41ef5cdc1f3bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ef59498c7783a34c825dfc74bea9ecb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
   dir: 0
-  _jumpCount: 0
-  moveSpeed: 5
-  activeSpeedMultipliers: []
-  jumpPower: 3
-  teleportdis: 3
-  normalAttack: {fileID: 11400000, guid: 655d1016260c8184e87e9e15c1934b53, type: 2}
-  normalProjectile: {fileID: 11400000, guid: 8cd2262e569041c42a0079aa4c532639, type: 2}
-  rangeCooldown: 1
-  initTimeMultipleAttack: 0
-  _playerDamage: 10
-  attackCountInitTime: 0
-  boxSize: {x: 0, y: 0}
-  allEnemyArray: []
-  visibleEnemy: []
-  neareastEnemy: {fileID: 0}
-  shootPoint: {fileID: 1125188714944020063}
+  originalMoveSpeed: 1
   facingRight: 1
+  jumpPower: 1
+  _jumpCount: 0
+  teleportdis: 0
+  activeSpeedMultipliers: []
   pCommand: 0000000000000000000000000000000000000000000000000000000000000000
-  limitCommandTime: 1
+  limitCommandTime: 0
   inCommandingTimeScale: 0
   commandingTime: 0
+  commandCount: 0
   commandTimeUI: {fileID: 0}
   pCommandUI: {fileID: 0}
   pCommandUIGrid: {fileID: 0}
   commandIcon: []
   pCommandIcon: []
+  usableCommandList: []
   skillSystem: {fileID: 0}
+  shootPoint: {fileID: 0}
+  normalAttack: {fileID: 0}
+  normalProjectile: {fileID: 0}
+  rangeCooldown: 0
+  initTimeMultipleAttack: 0
+  attackCountInitTime: 0
+  _playerDamage: 0
+  allEnemyArray: []
+  visibleEnemy: []
+  neareastEnemy: {fileID: 0}
 --- !u!114 &7372711895074517867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1263,6 +1264,37 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &8344407556102885990
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3797276984785718182}
+  m_Layer: 6
+  m_Name: FacePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3797276984785718182
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8344407556102885990}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.172, y: 0.811, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8020438383054122958}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8444989540164872992
 GameObject:
   m_ObjectHideFlags: 0

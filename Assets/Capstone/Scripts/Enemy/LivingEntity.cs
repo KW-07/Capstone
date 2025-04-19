@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class LivingEntity : MonoBehaviour
 {
     [Header("HP")]
+    public Slider HpBarSlider;
     public float maxHealth = 100f; //시작 체력
     public float currentHealth { get; protected set; } //현재 체력
     public bool dead { get; protected set; } //사망 상태
@@ -21,12 +23,18 @@ public class LivingEntity : MonoBehaviour
         //체력을 시작 체력으로 초기화
         currentHealth = maxHealth;
     }
+    public void CheckHp() //*HP 갱신
+    {
+        if (HpBarSlider != null)
+            HpBarSlider.value = currentHealth / maxHealth;
+    }
 
     //피해를 받는 기능
     public virtual void OnDamage(float damage)
     {
         //데미지만큼 체력 감소
         currentHealth -= damage; // health = health - damage;
+        CheckHp();
         Debug.Log(this.gameObject.name + " take Damage.");
 
         //체력이 0 이하 && 아직 죽지 않았다면 사망 처리 실행

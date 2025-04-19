@@ -206,8 +206,20 @@ public class Mask: LivingEntity
         isDashing = false;
         rb.velocity = Vector2.zero;
 
-        transform.SetParent(player);
-        transform.localPosition = new Vector3(0, 4, 0); // 얼굴 위치쯤
+        // 부착 위치 받아오기
+        Transform attachPoint = player.GetComponent<Player>()?.GetMaskAttachPoint();
+
+        if (attachPoint != null)
+        {
+            transform.SetParent(attachPoint);
+            transform.localPosition = Vector3.zero; // 부착 지점에 정확히 고정
+        }
+        else
+        {
+            Debug.LogWarning("부착 위치가 정의되어 있지 않습니다! 기본 위치에 부착됩니다.");
+            transform.SetParent(player);
+            transform.localPosition = new Vector3(0, 0, 0);
+        }
 
         Debug.Log("MaskMonster 부착됨 - 플레이어에게 디버프 및 데미지!");
     }
