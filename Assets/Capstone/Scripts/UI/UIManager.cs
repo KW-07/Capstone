@@ -62,7 +62,7 @@ public class UIManager : MonoBehaviour
     private Image[] candidateUIImage = new Image[8];
 
     private bool onUI;
-
+    PlayerStats playerstats;
     private void Awake()
     {
         if (instance != null)
@@ -74,6 +74,7 @@ public class UIManager : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         typewriterEffect = GetComponent<TypewriterEffect>();
+        playerstats = GameObject.Find("Player").GetComponent<PlayerStats>();
 
         GameManager.instance.isConversation = false;
         onUI = false;
@@ -117,7 +118,7 @@ public class UIManager : MonoBehaviour
         GO_commandTimeUI.transform.position = player.transform.position + new Vector3(0,-1.5f,0);
 
         // 플레이어 HP바
-        playerHp.fillAmount = GameManager.instance.currentHealthPoint / GameManager.instance.maxHealthPoint;
+        playerHp.fillAmount = playerstats.currentHealth / playerstats.maxHealth;
 
         if (Input.GetKeyDown(KeyCode.L) && !GameManager.instance.isConversation)
             showDialogue(testDialogue);
