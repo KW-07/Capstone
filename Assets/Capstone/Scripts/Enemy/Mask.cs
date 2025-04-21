@@ -4,6 +4,7 @@ using UnityEngine;
 public class Mask: LivingEntity
 {
     public Transform playerTransform;
+    public GameObject healthBar; // 몬스터 방향전환시 HP바가 회전하지 않게 하기 위해 받아옴
 
     [Header("Ranges")]
     public float detectRange = 6f;
@@ -64,6 +65,18 @@ public class Mask: LivingEntity
     private void Update()
     {
         root.Evaluate();
+        if (healthBar != null)
+        {
+            healthBar.transform.rotation = Quaternion.identity;
+
+            Transform barVisual = healthBar.transform.Find("BarVisual");
+            if (barVisual != null)
+            {
+                Vector3 scale = barVisual.localScale;
+                scale.x = Mathf.Abs(scale.x); // 항상 양수
+                barVisual.localScale = scale;
+            }
+        }
     }
     private void FixedUpdate()
     {

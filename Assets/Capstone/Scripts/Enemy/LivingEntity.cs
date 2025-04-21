@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class LivingEntity : MonoBehaviour
 {
     [Header("HP")]
-    public Slider HpBarSlider;
+    public Image currentHealthBar;
     public float maxHealth = 100f; //시작 체력
     public float currentHealth { get; protected set; } //현재 체력
     public bool dead { get; protected set; } //사망 상태
@@ -25,8 +25,8 @@ public class LivingEntity : MonoBehaviour
     }
     public void CheckHp() //*HP 갱신
     {
-        if (HpBarSlider != null)
-            HpBarSlider.value = currentHealth / maxHealth;
+        if (currentHealthBar != null)
+            currentHealthBar.fillAmount = currentHealth / maxHealth;
     }
 
     //피해를 받는 기능

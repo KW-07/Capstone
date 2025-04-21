@@ -5,7 +5,7 @@ using UnityEngine;
 public class KasaOni : LivingEntity
 {
     public Transform playerTransform;
-    public GameObject healthBar;
+    public GameObject healthBar; // 몬스터 방향전환시 HP바가 회전하지 않게 하기 위해 받아옴
 
     [Header("Range")]
     public float attackRange = 1.5f;

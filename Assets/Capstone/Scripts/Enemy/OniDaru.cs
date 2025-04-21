@@ -6,6 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 public class OniDaru : LivingEntity
 {
     public Transform playerTransform;
+    public GameObject healthBar; // 몬스터 방향전환시 HP바가 회전하지 않게 하기 위해 받아옴
 
     [Header("Range")]
     public float attackRange = 1.5f;
@@ -63,6 +64,18 @@ public class OniDaru : LivingEntity
     private void Update()
     {
         root.Evaluate();
+        if (healthBar != null)
+        {
+            healthBar.transform.rotation = Quaternion.identity;
+
+            Transform barVisual = healthBar.transform.Find("BarVisual");
+            if (barVisual != null)
+            {
+                Vector3 scale = barVisual.localScale;
+                scale.x = Mathf.Abs(scale.x); // 항상 양수
+                barVisual.localScale = scale;
+            }
+        }
     }
     private void FixedUpdate()
     {
