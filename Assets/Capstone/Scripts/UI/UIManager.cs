@@ -31,14 +31,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Dialogue testDialogue;
 
     [Header("Shop")]
-    [SerializeField] private Item[] items;
-    private int prevChildCount;
-    [SerializeField] private int numProducts = 18;
-    [SerializeField] private GameObject productGrid;
-    [SerializeField] private GameObject shopItemUIObject;
-    [SerializeField] private GameObject selectedGameobject;
-    public int selectedIndex;
-    [SerializeField] private int onePageProductCount = 6;
+    //[SerializeField] private Item[] items;
+    //private int prevChildCount;
+    //[SerializeField] private int numProducts = 18;
+    //[SerializeField] private GameObject productGrid;
+    //[SerializeField] private GameObject shopItemUIObject;
+    //[SerializeField] private GameObject selectedGameobject;
+    //public int selectedIndex;
+    //[SerializeField] private int onePageProductCount = 6;
 
     [Space(10f)]
     // Description
@@ -78,27 +78,27 @@ public class UIManager : MonoBehaviour
 
         GameManager.instance.isConversation = false;
         onUI = false;
-        numProducts = items.Length;
+        //numProducts = items.Length;
 
         CloseConversaiotnBox();
         //OffUI();
 
-        prevChildCount = productGrid.transform.childCount;
+        //prevChildCount = productGrid.transform.childCount;
 
-        ShopConfiguration();
-        InputItem();
+        //ShopConfiguration();
+        //InputItem();
 
-        selectedIndex = 0;
-        selectedGameobject = productGrid.transform.GetChild(selectedIndex).gameObject;
+        //selectedIndex = 0;
+        //selectedGameobject = productGrid.transform.GetChild(selectedIndex).gameObject;
 
-        productGrid.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+        //productGrid.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
 
-        buyTapOnOff = false;
+        //buyTapOnOff = false;
 
-        for(int i=0;i< items.Length; i++)
-        {
-            productGrid.transform.GetChild(i).Find("BuyTap").gameObject.SetActive(false);
-        }
+        //for(int i=0;i< items.Length; i++)
+        //{
+        //    productGrid.transform.GetChild(i).Find("BuyTap").gameObject.SetActive(false);
+        //}
 
         candidateGrid.SetActive(false);
     }
@@ -123,10 +123,10 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.L) && !GameManager.instance.isConversation)
             showDialogue(testDialogue);
 
-        ItemSelect();
+        //ItemSelect();
 
-        Description();
-        BuyTap();
+        //Description();
+        //BuyTap();
 
         if (GameManager.instance.isCommand)
             candidateGrid.SetActive(GameManager.instance.isCommand);
@@ -204,161 +204,162 @@ public class UIManager : MonoBehaviour
         UIOnOff(option);
     }
 
-    void ShopConfiguration()
-    {
-        for(int i = prevChildCount; i < numProducts; i++)
-        {
-            GameObject instance = Instantiate(shopItemUIObject);
-            instance.transform.SetParent(productGrid.transform);
-            instance.name = "Product";
-        }
-    }
+    //void ShopConfiguration()
+    //{
+    //    for(int i = prevChildCount; i < numProducts; i++)
+    //    {
+    //        GameObject instance = Instantiate(shopItemUIObject);
+    //        instance.transform.SetParent(productGrid.transform);
+    //        instance.name = "Product";
+    //    }
+    //}
 
-    void InputItem()
-    {
-        for(int i = 0; i < items.Length; i++)
-        {
-            if(productGrid.transform.GetChild(i).GetComponent<Product>().item == null)
-            {
-                productGrid.transform.GetChild(i).GetComponent<Product>().item = items[i];
-            }
-        }
-    }
+    //void InputItem()
+    //{
+    //    for(int i = 0; i < items.Length; i++)
+    //    {
+    //        if(productGrid.transform.GetChild(i).GetComponent<Product>().item == null)
+    //        {
+    //            productGrid.transform.GetChild(i).GetComponent<Product>().item = items[i];
+    //        }
+    //    }
+    //}
 
-    void ItemSelect()
-    {
-        // 상점일 경우에만 적용
-        if (GameManager.instance.isShop)
-        {
-            if (Input.GetKeyDown(KeyCode.UpArrow) && !buyTapOnOff)
-            {
-                if (selectedIndex > 0)
-                {
-                    selectedIndex--;
-
-
-                    ShopScrollDown('U');
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.DownArrow) && !buyTapOnOff)
-            {
-                if (selectedIndex < numProducts - 1)
-                {
-                    selectedIndex++;
+    //void ItemSelect()
+    //{
+    //    // 상점일 경우에만 적용
+    //    if (GameManager.instance.isShop)
+    //    {
+    //        if (Input.GetKeyDown(KeyCode.UpArrow) && !buyTapOnOff)
+    //        {
+    //            if (selectedIndex > 0)
+    //            {
+    //                selectedIndex--;
 
 
-                    ShopScrollDown('D');
-                }
-            }
-            selectedGameobject = productGrid.transform.GetChild(selectedIndex).gameObject;
+    //                ShopScrollDown('U');
+    //            }
+    //        }
+    //        if (Input.GetKeyDown(KeyCode.DownArrow) && !buyTapOnOff)
+    //        {
+    //            if (selectedIndex < numProducts - 1)
+    //            {
+    //                selectedIndex++;
+
+
+    //                ShopScrollDown('D');
+    //            }
+    //        }
+    //        selectedGameobject = productGrid.transform.GetChild(selectedIndex).gameObject;
             
-            // 색칠
-            for (int i = 0; i < numProducts; i++)
-            {
-                productGrid.transform.GetChild(i).gameObject.GetComponent<Image>().color = Color.gray;
-            }
+    //        // 색칠
+    //        for (int i = 0; i < numProducts; i++)
+    //        {
+    //            productGrid.transform.GetChild(i).gameObject.GetComponent<Image>().color = Color.gray;
+    //        }
 
-            selectedGameobject.GetComponent<Image>().color = Color.white;
+    //        selectedGameobject.GetComponent<Image>().color = Color.white;
 
-        }
-    }
+    //    }
+    //}
 
-    void ShopScrollDown(char a)
-    {
-        RectTransform selectedRectTransform = selectedGameobject.GetComponent<RectTransform>();
-        float buttomLength = productGrid.GetComponent<RectTransform>().sizeDelta.y - productGrid.transform.GetChild(0).gameObject.GetComponent<RectTransform>().anchoredPosition.y;
-        float topLength = productGrid.GetComponent<RectTransform>().sizeDelta.y - productGrid.transform.GetChild(numProducts - 1).gameObject.GetComponent<RectTransform>().anchoredPosition.y;
+    //void ShopScrollDown(char a)
+    //{
+    //    RectTransform selectedRectTransform = selectedGameobject.GetComponent<RectTransform>();
+    //    float buttomLength = productGrid.GetComponent<RectTransform>().sizeDelta.y - productGrid.transform.GetChild(0).gameObject.GetComponent<RectTransform>().anchoredPosition.y;
+    //    float topLength = productGrid.GetComponent<RectTransform>().sizeDelta.y - productGrid.transform.GetChild(numProducts - 1).gameObject.GetComponent<RectTransform>().anchoredPosition.y;
 
-        float selectedRectPosYUp = selectedGameobject.GetComponent<RectTransform>().anchoredPosition.y - 160;
-        float selectedRectPosYAbsoluteUp = selectedRectPosYUp < 0 ? selectedRectPosYUp *= -1 : selectedRectPosYUp *= 1;
+    //    float selectedRectPosYUp = selectedGameobject.GetComponent<RectTransform>().anchoredPosition.y - 160;
+    //    float selectedRectPosYAbsoluteUp = selectedRectPosYUp < 0 ? selectedRectPosYUp *= -1 : selectedRectPosYUp *= 1;
 
-        float selectedRectPosYDown = selectedGameobject.GetComponent<RectTransform>().anchoredPosition.y + 160;
-        float selectedRectPosYAbsoluteDown = selectedRectPosYDown < 0 ? selectedRectPosYDown *= -1 : selectedRectPosYDown *= 1;
+    //    float selectedRectPosYDown = selectedGameobject.GetComponent<RectTransform>().anchoredPosition.y + 160;
+    //    float selectedRectPosYAbsoluteDown = selectedRectPosYDown < 0 ? selectedRectPosYDown *= -1 : selectedRectPosYDown *= 1;
 
-        float increaseFomula = 0;
-        float decreaseFomula = 0;
+    //    float increaseFomula = 0;
+    //    float decreaseFomula = 0;
 
-        Debug.Log("buttomLength : " + buttomLength);
-        Debug.Log("topLength : " + topLength);
+    //    Debug.Log("buttomLength : " + buttomLength);
+    //    Debug.Log("topLength : " + topLength);
 
-        // increase
-        if (selectedRectPosYAbsoluteUp > productGrid.GetComponent<RectTransform>().sizeDelta.y)
-        {
-            increaseFomula = buttomLength - selectedRectPosYAbsoluteUp + productGrid.GetComponent<GridLayoutGroup>().spacing.y + (320 * (selectedIndex - onePageProductCount + 1));
-        }
+    //    // increase
+    //    if (selectedRectPosYAbsoluteUp > productGrid.GetComponent<RectTransform>().sizeDelta.y)
+    //    {
+    //        increaseFomula = buttomLength - selectedRectPosYAbsoluteUp + productGrid.GetComponent<GridLayoutGroup>().spacing.y + (320 * (selectedIndex - onePageProductCount + 1));
+    //    }
 
-        // decrease
-        if (selectedRectPosYAbsoluteDown > productGrid.GetComponent<RectTransform>().sizeDelta.y)
-        {
-            decreaseFomula = topLength - selectedRectPosYAbsoluteDown + productGrid.GetComponent<GridLayoutGroup>().spacing.y - (320 * (onePageProductCount - selectedIndex + 3));
-        }
+    //    // decrease
+    //    if (selectedRectPosYAbsoluteDown > productGrid.GetComponent<RectTransform>().sizeDelta.y)
+    //    {
+    //        decreaseFomula = topLength - selectedRectPosYAbsoluteDown + productGrid.GetComponent<GridLayoutGroup>().spacing.y - (320 * (onePageProductCount - selectedIndex + 3));
+    //    }
 
 
 
-        Debug.Log("selectedIndex : " + selectedIndex + ", increaseFomula : " + increaseFomula + ", decreaseFomula : " + decreaseFomula);
+    //    Debug.Log("selectedIndex : " + selectedIndex + ", increaseFomula : " + increaseFomula + ", decreaseFomula : " + decreaseFomula);
 
-        switch (a)
-        {
-            case 'U':
-                if(selectedIndex < numProducts - (onePageProductCount - 1))
-                {
-                    productGrid.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, decreaseFomula);
-                }
-                break;
-            case 'D':
-                if(selectedIndex > onePageProductCount - 1)
-                {
-                    productGrid.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, increaseFomula);
-                }
-                break;
-            default:
-                Debug.Log("It's Nothing.");
-                break;
-        }
+    //    switch (a)
+    //    {
+    //        case 'U':
+    //            if(selectedIndex < numProducts - (onePageProductCount - 1))
+    //            {
+    //                productGrid.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, decreaseFomula);
+    //            }
+    //            break;
+    //        case 'D':
+    //            if(selectedIndex > onePageProductCount - 1)
+    //            {
+    //                productGrid.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, increaseFomula);
+    //            }
+    //            break;
+    //        default:
+    //            Debug.Log("It's Nothing.");
+    //            break;
+    //    }
 
-    }
+    //}
 
-    void Description()
-    {
-        Item selectedItem = selectedGameobject.GetComponent<Product>().item;
+    // 상점 삭제 예정
+    //void Description()
+    //{
+    //    Item selectedItem = selectedGameobject.GetComponent<Product>().item;
 
-        itemName.text = selectedItem.itemName;
-        itemDescription.text = selectedItem.description;
-    }
+    //    itemName.text = selectedItem.itemName;
+    //    itemDescription.text = selectedItem.description;
+    //}
 
-    void BuyTap()
-    {
-        buyTapGameObject = selectedGameobject.transform.Find("BuyTap").gameObject;
-        bool isprocessed = false;
+    //void BuyTap()
+    //{
+    //    buyTapGameObject = selectedGameobject.transform.Find("BuyTap").gameObject;
+    //    bool isprocessed = false;
 
-        if(GameManager.instance.isShop)
-        {
-            if(Input.GetKeyDown(KeyCode.Space) && !buyTapGameObject.activeSelf && !isprocessed)
-            {
-                buyTapOnOff = true;
-                buyTapGameObject.SetActive(buyTapOnOff);
+    //    if(GameManager.instance.isShop)
+    //    {
+    //        if(Input.GetKeyDown(KeyCode.Space) && !buyTapGameObject.activeSelf && !isprocessed)
+    //        {
+    //            buyTapOnOff = true;
+    //            buyTapGameObject.SetActive(buyTapOnOff);
 
-                isprocessed = true;
-            }
+    //            isprocessed = true;
+    //        }
 
-            if(Input.GetKeyUp(KeyCode.Space) && buyTapGameObject.activeSelf && isprocessed)
-            {
-                isprocessed = false;
-            }
+    //        if(Input.GetKeyUp(KeyCode.Space) && buyTapGameObject.activeSelf && isprocessed)
+    //        {
+    //            isprocessed = false;
+    //        }
 
-            if (Input.GetKeyDown(KeyCode.Space) && buyTapGameObject.activeSelf && !isprocessed)
-            {
-                // 해당 아이템의 돈 만큼 빼고 인벤에 넣을 것
-                buyTapOnOff = false;
-                buyTapGameObject.SetActive(buyTapOnOff);
-            }
-            else if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                buyTapOnOff = false;
-                buyTapGameObject.SetActive(buyTapOnOff);
-            }
-        }
-    }
+    //        if (Input.GetKeyDown(KeyCode.Space) && buyTapGameObject.activeSelf && !isprocessed)
+    //        {
+    //            // 해당 아이템의 돈 만큼 빼고 인벤에 넣을 것
+    //            buyTapOnOff = false;
+    //            buyTapGameObject.SetActive(buyTapOnOff);
+    //        }
+    //        else if (Input.GetKeyDown(KeyCode.Escape))
+    //        {
+    //            buyTapOnOff = false;
+    //            buyTapGameObject.SetActive(buyTapOnOff);
+    //        }
+    //    }
+    //}
 
     public void deleteCommandCandidate()
     {
