@@ -49,6 +49,7 @@ public class Player : LivingEntity
     public float commandingTime = 0;
     [SerializeField] private int commandCount;
     private bool movePossible; // 합치고 이동관련 스크립트에 넣을 예정
+    private SkillSystem skillSystem;
 
     [Header("UI")]
     public GameObject commandTimeUI;
@@ -58,10 +59,6 @@ public class Player : LivingEntity
     public Sprite[] commandIcon;
     [SerializeField] private Image[] pCommandIcon;
     public CommandData[] usableCommandList;
-
-    [Header("스킬트리")]
-    private PlayerSkills playerSkills;
-    public SkillSystem skillSystem;
 
     [Header("공격")]
     public Transform shootPoint;
@@ -97,6 +94,9 @@ public class Player : LivingEntity
     // 전방에 존재하며 가장 가까운 적
     public GameObject neareastEnemy;
 
+    [Header("버프(or 디버프)SO")]
+    public Buff PoisonBuff;
+    
     Rigidbody2D rb;
     CapsuleCollider2D capsule;
     Transform playerTransform;
@@ -114,9 +114,6 @@ public class Player : LivingEntity
         animator = GetComponent<Animator>();
         skillSystem = gameObject.GetComponent<SkillSystem>();
 
-        // 스킬트리
-        playerSkills = new PlayerSkills();
-        playerSkills.OnSkillUnlocked += PlayerSkills_OnSkillUnlocked;
 
         animator.SetFloat("attackCount", normalAttack.multipleAttack);
     }
@@ -266,41 +263,16 @@ public class Player : LivingEntity
         {
             if (GameManager.instance.nothingUI())
             {
-                if (CanUseDoubleJump())
+                if (jumpCount < 2)
                 {
-                    if (jumpCount < 2)
-                    {
-                        rb.velocity = new Vector2(rb.velocity.x, jumpPower);
-                        GameManager.instance.isGrounded = false;
+                    rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+                    GameManager.instance.isGrounded = false;
 
-                        jumpCount += 1;
-                        animator.SetFloat("jumpCount", jumpCount);
+                    jumpCount += 1;
+                    animator.SetFloat("jumpCount", jumpCount);
 
-                        animator.SetBool("isJumping", !GameManager.instance.isGrounded);
-                    }
+                    animator.SetBool("isJumping", !GameManager.instance.isGrounded);
                 }
-                else
-                {
-                    if (jumpCount < 1)
-                    {
-                        rb.velocity = new Vector2(rb.velocity.x, jumpPower);
-                        GameManager.instance.isGrounded = false;
-
-                        jumpCount += 1;
-                        animator.SetBool("isJumping", !GameManager.instance.isGrounded);
-                    }
-                }
-
-                //if (jumpCount < 2)
-                //{
-                //    rb.velocity = new Vector2(rb.velocity.x, jumpPower);
-                //    GameManager.instance.isGrounded = false;
-
-                //    jumpCount += 1;
-                //    animator.SetFloat("jumpCount", jumpCount);
-
-                //    animator.SetBool("isJumping", !GameManager.instance.isGrounded);
-                //}
             }
         }
     }
@@ -359,38 +331,6 @@ public class Player : LivingEntity
             }
         }
     }
-    #endregion
-
-    #region SkillTree
-    // 스킬트리
-    private void PlayerSkills_OnSkillUnlocked(object sender, PlayerSkills.OnSkillUnlockedEventArgs e)
-    {
-        switch (e.skillType)
-        {
-            case PlayerSkills.SkillType.MoveSpeed_1:
-                SetMovementSpeed(1.5f);
-                break;
-            case PlayerSkills.SkillType.MoveSpeed_2:
-                SetMovementSpeed(2.0f);
-                break;
-        }
-    }
-
-    private void SetMovementSpeed(float changeMoveSpeed)
-    {
-        this.moveSpeed = changeMoveSpeed;
-    }
-
-    public PlayerSkills GetPlayerSkills()
-    {
-        return playerSkills;
-    }
-
-    public bool CanUseDoubleJump()
-    {
-        return playerSkills.IsSkillUnlocked(PlayerSkills.SkillType.DoubleJump);
-    }
-
     #endregion
 
     #region Save&Load
