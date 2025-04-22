@@ -190,54 +190,6 @@
                     "isPartOfComposite": false
                 }
             ]
-        },
-        {
-            "name": "UI",
-            "id": "1992444e-97fb-4d1a-8c0d-2545f57c62b8",
-            "actions": [
-                {
-                    "name": "Tap",
-                    "type": "Button",
-                    "id": "a0d0c0c6-ffa4-4d3f-9e9d-68df7fad6ca7",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Option",
-                    "type": "Button",
-                    "id": "b56fe126-33c8-4c18-b4ef-9258077be279",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "55789eec-590a-484d-96dd-693439f7dfa6",
-                    "path": "<Keyboard>/tab",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Tap",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5efd8c15-2288-40dd-baf9-4c55c317bb9d",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Option",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
         }
     ],
     "controlSchemes": [
