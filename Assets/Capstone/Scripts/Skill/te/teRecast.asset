@@ -10,23 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8ce1bf0167ccc44e8174eaf3fe66a23, type: 3}
-  m_Name: teRefine
+  m_Name: teRecast
   m_EditorClassIdentifier: 
-  skillName: "\uC815\uC81C"
-  description: "\uC778\uC220 \uCFE8\uD0C0\uC784 \uAC10\uC18C"
-  maxPoints: 3
+  skillName: "\uB418\uD480\uC774"
+  description: "\uC778\uC220 \uC790\uB3D9 \uC7AC\uBC1C\uB3D9 \uD655\uB960"
+  maxPoints: 2
   currentPoints: 0
-  prerequisites: []
+  prerequisites:
+  - {fileID: 11400000, guid: c4dc4c4bf5613524e85502a905159800, type: 2}
   statModifiers:
   - statType: 0
     valuesPerLevel:
-    - 0
-  - statType: 5
-    valuesPerLevel:
-    - 0
-    - 0
-  - statType: 0
-    valuesPerLevel:
-    - 0
-    - 0
-    - 0
+    - 15
+    - 25

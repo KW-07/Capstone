@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8ce1bf0167ccc44e8174eaf3fe66a23, type: 3}
+  m_Name: taHabit
+  m_EditorClassIdentifier: 
+  skillName: "\uC2B5\uAD00"
+  description: "\uD2B9\uC815 \uC778\uC220\uC774 \uC801 \uB4A4\uB85C \uC774\uB3D9,
+    \uB4A4 \uACF5\uACA9\uC73C\uB85C \uBCC0\uACBD"
+  maxPoints: 4
+  currentPoints: 0
+  prerequisites:
+  - {fileID: 11400000, guid: cb3b361f507da7d4c8b678ab0838533f, type: 2}
+  statModifiers: []

@@ -655,6 +655,8 @@ GameObject:
   - component: {fileID: 1842395798545964997}
   - component: {fileID: 5562267292618288105}
   - component: {fileID: 7372711895074517867}
+  - component: {fileID: 8684957541257081590}
+  - component: {fileID: 4395924879210803697}
   - component: {fileID: 8237521002116061519}
   - component: {fileID: 6422994693445623247}
   m_Layer: 6
@@ -848,14 +850,6 @@ MonoBehaviour:
     m_ActionId: d12f7a3c-cb82-4e9f-a7ee-ffa9ba04417a
     m_ActionName: Player/skill_W[/Keyboard/w]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: a0d0c0c6-ffa4-4d3f-9e9d-68df7fad6ca7
-    m_ActionName: UI/Information[/Keyboard/tab]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: b56fe126-33c8-4c18-b4ef-9258077be279
-    m_ActionName: UI/Option[/Keyboard/escape]
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5562267292618288105}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
@@ -952,25 +946,25 @@ MonoBehaviour:
   commandingTime: 1
   commandCount: 0
   commandTimeUI: {fileID: 5576245483601965058}
-  pCommandUI: {fileID: 0}
-  pCommandUIGrid: {fileID: 0}
+  pCommandUI: {fileID: 5165019757549104050}
+  pCommandUIGrid: {fileID: 2944368479504334238}
   commandIcon:
-  - {fileID: 21300000, guid: 294ce4a863cdab74caa8789fcc15bfc9, type: 3}
-  - {fileID: 21300000, guid: 1a00eace6ccb6dc4f8f0ee1179361476, type: 3}
-  - {fileID: 21300000, guid: c6a0e623ef7c3944ca78d1363c93fb0e, type: 3}
-  - {fileID: 21300000, guid: 0a30743c467c18c43b6032e6ebac635d, type: 3}
-  - {fileID: 21300000, guid: 7d72e8dc770901840908218e1c06f793, type: 3}
-  - {fileID: 21300000, guid: 20cb04eaa68a95142936b6595f39d522, type: 3}
-  - {fileID: 21300000, guid: cdf471adac2110344b10362198a0d6d9, type: 3}
+  - {fileID: 21300000, guid: 6aa8ebaa3df394d428a0b7f2cdfffcad, type: 3}
+  - {fileID: 21300000, guid: 4343b1ed21157954294fa3bdf7134496, type: 3}
+  - {fileID: 21300000, guid: 05730736a56f75a45a5bc1f9af5ed793, type: 3}
+  - {fileID: 21300000, guid: 69332500e3b83504b99c2222ccb6a889, type: 3}
+  - {fileID: 21300000, guid: d19cc8d30d1d1e245a79dfb6f4a451dd, type: 3}
+  - {fileID: 21300000, guid: 96926d4246bba29439510b408d566d42, type: 3}
+  - {fileID: 21300000, guid: 499ab65cb785c5e49b080af4be5b0db1, type: 3}
   pCommandIcon:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 3845217394485772209}
+  - {fileID: 7902537616888080340}
+  - {fileID: 4161453426600635124}
+  - {fileID: 1430950193802231763}
+  - {fileID: 3230866383938834077}
+  - {fileID: 4161933352119288929}
+  - {fileID: 2963259518088757550}
+  - {fileID: 7580373371921527322}
   usableCommandList: []
   shootPoint: {fileID: 1125188714944020063}
   normalAttack: {fileID: 11400000, guid: 655d1016260c8184e87e9e15c1934b53, type: 2}
@@ -982,7 +976,7 @@ MonoBehaviour:
   allEnemyArray: []
   visibleEnemy: []
   neareastEnemy: {fileID: 0}
-  PoisonBuff: {fileID: 0}
+  PoisonBuff: {fileID: 11400000, guid: 75611829363eb1f44a85aac04fa89a43, type: 2}
 --- !u!114 &7372711895074517867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -996,6 +990,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   command: {fileID: 0}
+--- !u!114 &8684957541257081590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5744513895415964633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b80b61870cc0824e9ba0bedebb02da4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  maxStamina: 0
+  currentStamina: 0
+  baseMoveSpeed: 0
+  finalMoveSpeed: 0
+  baseDamage: 0
+  finalDamage: 0
+  baseDefense: 0
+  finalDefense: 0
+  isAlive: 0
+  respawnPoint: {fileID: 0}
+  respawnTime: 0
+--- !u!114 &4395924879210803697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5744513895415964633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2c4e9c333ea55548ab5ba30960fb5a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &8237521002116061519
 BoxCollider2D:
   m_ObjectHideFlags: 0

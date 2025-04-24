@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     [Header("UIState")]
     public bool isConversation = false;
     public bool isCommand = false;
-    public bool isShop = false;
+    public bool isUI = false;
 
     [Header("BossEvent")]
     public bool isBossBattle;
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
 
     public bool nothingUI()
     {
-        if (!isConversation && !isCommand && !isShop)
+        if (!isConversation && !isCommand)
             return true;
         else
             return false;

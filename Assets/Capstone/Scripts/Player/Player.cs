@@ -183,7 +183,7 @@ public class Player : LivingEntity
     void Move()
     {
         // 대화 중 움직임 제어
-        if (GameManager.instance.nothingUI())
+        if (!GameManager.instance.isUI)
         {
             // spriteFlip
             if (dir < 0 && facingRight)
@@ -261,7 +261,7 @@ public class Player : LivingEntity
     {
         if (context.performed)
         {
-            if (GameManager.instance.nothingUI())
+            if (!GameManager.instance.isUI)
             {
                 if (jumpCount < 2)
                 {
@@ -282,7 +282,7 @@ public class Player : LivingEntity
     {
         if (context.performed && GameObject.FindWithTag("Platform").GetComponent<Platform>().isPlayer == true)
         {
-            if (GameManager.instance.nothingUI())
+            if (!GameManager.instance.isUI)
             {
                 StartCoroutine("coDownJump");
             }
@@ -305,29 +305,31 @@ public class Player : LivingEntity
     {
         if (context.performed)
         {
-
-            // 대쉬의 방향 및 거리
-            Vector2 dashDirection = facingRight ? Vector2.right : Vector2.left;
-            float dashDistance = teleportdis;
-
-            // 플레이어의 콜라이더 크기 체크
-            Vector2 playerColliderSize = gameObject.GetComponent<BoxCollider2D>().size;
-
-            // 박스형 Raycast
-            RaycastHit2D hit = Physics2D.BoxCast(rb.position, playerColliderSize, 0f, dashDirection, dashDistance, LayerMask.GetMask("Ground"));
-
-            // Ground의 레이어를 가진 무언가가 잡힌다면 해당 오브젝트 앞까지 대쉬
-            if (hit.collider != null)
+            if(!GameManager.instance.isUI)
             {
-                float safeDistance = hit.distance - 0.1f;
-                rb.MovePosition(rb.position + dashDirection * safeDistance);
-                Debug.Log("Dash - 충돌 감지!");
-            }
-            // 없다면 정상적으로 대쉬
-            else
-            {
-                rb.MovePosition(rb.position + dashDirection * dashDistance);
-                Debug.Log("Dash - 정상");
+                // 대쉬의 방향 및 거리
+                Vector2 dashDirection = facingRight ? Vector2.right : Vector2.left;
+                float dashDistance = teleportdis;
+
+                // 플레이어의 콜라이더 크기 체크
+                Vector2 playerColliderSize = gameObject.GetComponent<BoxCollider2D>().size;
+
+                // 박스형 Raycast
+                RaycastHit2D hit = Physics2D.BoxCast(rb.position, playerColliderSize, 0f, dashDirection, dashDistance, LayerMask.GetMask("Ground"));
+
+                // Ground의 레이어를 가진 무언가가 잡힌다면 해당 오브젝트 앞까지 대쉬
+                if (hit.collider != null)
+                {
+                    float safeDistance = hit.distance - 0.1f;
+                    rb.MovePosition(rb.position + dashDirection * safeDistance);
+                    Debug.Log("Dash - 충돌 감지!");
+                }
+                // 없다면 정상적으로 대쉬
+                else
+                {
+                    rb.MovePosition(rb.position + dashDirection * dashDistance);
+                    Debug.Log("Dash - 정상");
+                }
             }
         }
     }
@@ -369,7 +371,7 @@ public class Player : LivingEntity
         if (context.performed)
         {
 
-            if (GameManager.instance.nothingUI() && GameManager.instance.isGrounded && !GameManager.instance.isCommandAction)
+            if (!GameManager.instance.isUI && GameManager.instance.isGrounded && !GameManager.instance.isCommandAction)
             {
                 SkillSystem.instance.command = normalAttack;
 
@@ -393,7 +395,7 @@ public class Player : LivingEntity
     {
         if (context.performed)
         {
-            if (GameManager.instance.nothingUI() && canRangeAttack)
+            if (!GameManager.instance.isUI && canRangeAttack)
             {
                 rangeCooldownTimer = rangeCooldown;
                 canRangeAttack = false;
@@ -728,7 +730,7 @@ public class Player : LivingEntity
         if (context.performed)
         {
             // 아무 상황이 아닐 경우에만 커맨드 실행
-            if (GameManager.instance.nothingUI())
+            if (!GameManager.instance.isUI)
             {
                 GameManager.instance.isCommand = BooleanOnOff(GameManager.instance.isCommand);
                 GameManager.instance.isCommand = true;

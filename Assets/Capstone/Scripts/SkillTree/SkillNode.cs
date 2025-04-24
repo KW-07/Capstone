@@ -16,6 +16,16 @@ public class SkillNode : MonoBehaviour
 
     private SkillTreeManager skillTreeManager;
 
+    public void SetHighlight(bool isOn)
+    {
+        // 예: 배경 색 바꾸기
+        var image = GetComponent<UnityEngine.UI.Image>();
+        if (image != null)
+        {
+            image.color = isOn ? Color.yellow : Color.white;
+        }
+    }
+
     public void Initialize(SkillTreeManager manager)
     {
         skillTreeManager = manager;
@@ -28,21 +38,12 @@ public class SkillNode : MonoBehaviour
     public void Refresh()
     {
         pointText.text = $"포인트: {skill.currentPoints}/{skill.maxPoints}";
-        //effectText.text = $"효과: {skill.GetCurrentEffect()}";
 
         bool canClick = skillTreeManager.CanUnlock(skill);
         button.interactable = canClick && !skill.IsMaxed;
-
-        //string effectInfo = "";
-        //foreach (var mod in skill.statModifiers)
-        //{
-        //    float val = skill.GetStatValue(mod.statType);
-        //    effectInfo += $"{mod.statType}: +{val}\n";
-        //}
-        //effectText.text = effectInfo;
     }
 
-    void OnClick()
+    public void OnClick()
     {
         if (skillTreeManager.UnlockSkill(skill))
         {

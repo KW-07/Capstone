@@ -10,25 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8ce1bf0167ccc44e8174eaf3fe66a23, type: 3}
-  m_Name: teBoost
+  m_Name: taLink
   m_EditorClassIdentifier: 
-  skillName: "\uC18D\uC131\uAC15\uD654"
-  description: "\uD2B9\uC218\uD6A8\uACFC \uC9C0\uC18D\uC2DC\uAC04 \uC99D\uAC00"
+  skillName: "\uC5F0\uACC4"
+  description: "\uB300\uC2DC \uC9C1\uD6C4 \uCE58\uBA85\uD0C0 \uD655\uB960 \uBC84\uD504"
   maxPoints: 3
   currentPoints: 0
   prerequisites:
-  - {fileID: 11400000, guid: 0bb03bfcd2ddef846bfbb9243ac54b20, type: 2}
+  - {fileID: 11400000, guid: 2023842d8d746de40a520af06ecef967, type: 2}
   statModifiers:
   - statType: 0
     valuesPerLevel:
-    - 0
+    - 1
+    - 2
+    - 3
   - statType: 0
     valuesPerLevel:
-    - 0
-    - 0
-  - statType: 0
-    valuesPerLevel:
-    - 0
-    - 0
-    - 0
-    - 0
+    - 5
+    - 10
+    - 15

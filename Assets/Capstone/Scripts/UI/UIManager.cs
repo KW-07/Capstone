@@ -17,9 +17,18 @@ public class UIManager : MonoBehaviour
     private GameObject player;
     [SerializeField] private Image playerHp;
 
-    [Header("Option/Information")]
+    [Header("Option")]
     [SerializeField] private GameObject option;
+
+    [Header("SkillTree")]
+    SkillTreeManager skillTreeManager;
     [SerializeField] private GameObject skillTree;
+    [SerializeField] private GameObject[] skillTree_Page;
+    [SerializeField] private GameObject[] bookmark;
+    public int skillPageCount;
+    [SerializeField] private TMP_Text skillPointText;
+    [SerializeField] private TMP_Text skillDescription;
+
 
     [Header("Command")]
     [SerializeField] private GameObject GO_commandTimeUI;
@@ -31,20 +40,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text textLabel;
     [SerializeField] private Dialogue testDialogue;
 
-    [Space(10f)]
-    // Description
-    [SerializeField] private TMP_Text itemName;
-    [SerializeField] private TMP_Text itemDescription;
-    [SerializeField] private Image synergySprite_1;
-    [SerializeField] private Image synergySprite_2;
-    [SerializeField] private TMP_Text synergyKeyword_1;
-    [SerializeField] private TMP_Text synergyKeyword_2;
-
-    [Space(10f)]
-    // Buy
-    [SerializeField] private GameObject buyTapGameObject;
-    [SerializeField] public bool buyTapOnOff;
-
     [Header("CommandCandidate")]
     [SerializeField] private GameObject candidateGrid;
     [SerializeField] private GameObject candidatePrefab;
@@ -52,7 +47,6 @@ public class UIManager : MonoBehaviour
     [SerializeField]private Sprite[] candidateSprite = new Sprite[8];
     private Image[] candidateUIImage = new Image[8];
 
-    private bool onUI;
     PlayerStats playerstats;
     private void Awake()
     {
@@ -66,17 +60,31 @@ public class UIManager : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         typewriterEffect = GetComponent<TypewriterEffect>();
         playerstats = GameObject.Find("Player").GetComponent<PlayerStats>();
+        skillTreeManager = GameObject.Find("SkillTreeManager").GetComponent<SkillTreeManager>();
 
         GameManager.instance.isConversation = false;
-        onUI = false;
 
         CloseConversaiotnBox();
 
         candidateGrid.SetActive(false);
+
+        option.SetActive(false);
+        skillTree.SetActive(false);
+
+        skillPageCount = 0;
     }
 
     void Update()
     {
+        if(GameManager.instance.isUI)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+
         // Player의 commandingTIme에 따른 commandTimeUI 이미지 변경
         if(GameManager.instance.isCommand)
         {
@@ -100,36 +108,89 @@ public class UIManager : MonoBehaviour
         else
             candidateGrid.SetActive(GameManager.instance.isCommand);
 
+        // 옵션 OnOff
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            if(option.activeSelf)
-            {
-                option.SetActive(false);
-            }
-            else
-            {
-                option.SetActive(true);
-            }
-        }
-        else if(Input.GetKeyDown(KeyCode.Tab))
-        {
-            if (skillTree.activeSelf)
-            {
-                skillTree.SetActive(false);
-            }
-            else
-            {
-                skillTree.SetActive(true);
-            }
+            uiTapOnOff(option);
         }
 
+        // 스킬트리 OnOff
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            uiTapOnOff(skillTree);
+            skillTreeManager.ChangeNodeList();
+        }
+
+        moveSkillPage();
     }
+
+    // 스킬트리 내부조작
+    void moveSkillPage()
+    {
+        if (GameManager.instance.isUI && skillTree.activeSelf)
+        {
+            skillPointText.text = $"현재 포인트 : {skillTreeManager.availablePoints}";
+
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                if (skillPageCount <= 0)
+                    skillPageCount = skillTree_Page.Length - 1;
+                else
+                    skillPageCount--;
+
+                skillTreeManager.ChangeNodeList();
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                if (skillPageCount >= skillTree_Page.Length - 1)
+                    skillPageCount = 0;
+                else
+                    skillPageCount++;
+
+                skillTreeManager.ChangeNodeList();
+            }
+
+            for (int i = 0; i < skillTree_Page.Length; i++)
+            {
+                if (i == skillPageCount)
+                {
+                    skillTree_Page[i].SetActive(true);
+                    bookmark[i].GetComponent<Image>().color = Color.yellow;
+                }
+                else
+                {
+                    skillTree_Page[i].SetActive(false);
+                    bookmark[i].GetComponent<Image>().color = Color.gray;
+                }
+            }
+        }
+    }
+
+    public void SkillNodeDescription(SkillNode currentNode)
+    {
+        skillDescription.text = currentNode.GetComponent<SkillNode>().skill.description;
+    }
+
+    void uiTapOnOff(GameObject uiTap)
+    {
+        if (uiTap.activeSelf)
+        {
+            uiTap.SetActive(false);
+            GameManager.instance.isUI = false;
+        }
+        else
+        {
+            uiTap.SetActive(true);
+            GameManager.instance.isUI = true;
+        }
+    }
+
     // 대화 시작
     public void showDialogue(Dialogue dialogue)
     {
         conversationBox.SetActive(true);
         letterBox.SetActive(true);
-        GameManager.instance.isConversation = true;
+        GameManager.instance.isUI = true;
 
         StartCoroutine(StepThroughDialogue(dialogue));
     }
@@ -144,7 +205,7 @@ public class UIManager : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.Escape))
             {
                 CloseConversaiotnBox();
-                GameManager.instance.isConversation = false;
+                GameManager.instance.isUI = false;
             }
             // space 입력 후 다음 대화 진행
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
@@ -158,7 +219,7 @@ public class UIManager : MonoBehaviour
         conversationBox.SetActive(false);
         letterBox.SetActive(false);
         textLabel.text = string.Empty;
-        GameManager.instance.isConversation = false;
+        GameManager.instance.isUI = false;
     }
 
     public void deleteCommandCandidate()
