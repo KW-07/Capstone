@@ -89,7 +89,7 @@ public class UIManager : MonoBehaviour
         GO_commandTimeUI.transform.position = player.transform.position + new Vector3(0,-1.5f,0);
 
         // 플레이어 HP바
-        playerHp.fillAmount = playerstats.currentHealth / playerstats.maxHealth;
+        //playerHp.fillAmount = playerstats.currentHealth / playerstats.maxHealth;
 
 
         if (GameManager.instance.isCommand)

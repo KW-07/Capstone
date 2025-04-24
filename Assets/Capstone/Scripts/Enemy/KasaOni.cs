@@ -184,7 +184,9 @@ public class KasaOni : LivingEntity
 
     private BTNodeState RetreatJump()
     {
-        float direction = transform.localScale.x > 0 ? -1 : 1; // 현재 바라보는 반대 방향으로 점프
+        float yRotation = transform.rotation.eulerAngles.y;
+        float direction = (yRotation == 180f) ? 1 : -1; // 180도면 왼쪽 보고 있으니 오른쪽으로 도망
+
         rb.velocity = new Vector2(direction * moveSpeed * 1.5f, jumpForce);
         nextRetreatTime = Time.time + retreatCooldown;
         return BTNodeState.Success;
@@ -200,7 +202,10 @@ public class KasaOni : LivingEntity
 
     private BTNodeState Patrol()
     {
-        if (IsPlayerDetected()) return BTNodeState.Failure;
+        if (IsPlayerDetected())
+        {
+            return BTNodeState.Failure;
+        }
         rb.velocity = new Vector2(nextMove * moveSpeed, rb.velocity.y);
         return BTNodeState.Running;
     }

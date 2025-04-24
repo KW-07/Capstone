@@ -15,14 +15,14 @@ public class Title : MonoBehaviour
 
     void Update()
     {
-        if(time < 0.5f)
+        if(time < 1f)
         {
             GetComponent<TextMeshProUGUI>().color = new Color(1, 1, 1, 1 - time);
         }
         else
         {
             GetComponent<TextMeshProUGUI>().color = new Color(1, 1, 1, time);
-            if(time > 1f)
+            if(time > 2f)
             {
                 time = 0;
             }

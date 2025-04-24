@@ -64,6 +64,13 @@ public class GameManager : MonoBehaviour
         //}
     }
 
+    public bool nothingUI() // safe모드 나가기 위해서 임시로 다시 넣었는데 나중에 수정하기. Player에서 6개 참조중
+    {
+        //if (!isConversation && !isCommand)
+            return true;
+        //else
+          //  return false;
+    }
     public void Save(ref GameManagerSaveData data)
     {
         data.isFirstPlay = this.isFirstPlay;
