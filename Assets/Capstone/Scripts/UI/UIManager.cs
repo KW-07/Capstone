@@ -38,7 +38,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject conversationBox;
     [SerializeField] private GameObject letterBox;
     [SerializeField] private TMP_Text textLabel;
-    [SerializeField] private Dialogue testDialogue;
 
     [Header("CommandCandidate")]
     [SerializeField] private GameObject candidateGrid;
@@ -100,8 +99,6 @@ public class UIManager : MonoBehaviour
         // 플레이어 HP바
         playerHp.fillAmount = playerstats.currentHealth / playerstats.maxHealth;
 
-        if (Input.GetKeyDown(KeyCode.L) && !GameManager.instance.isConversation)
-            showDialogue(testDialogue);
 
         if (GameManager.instance.isCommand)
             candidateGrid.SetActive(GameManager.instance.isCommand);

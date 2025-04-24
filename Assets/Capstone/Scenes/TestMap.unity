@@ -34224,6 +34224,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8628574606927496902, guid: 99bc7b3e57b426e4094ec4eefc0e2cef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -34875,6 +34879,10 @@ PrefabInstance:
       propertyPath: bossObject
       value: 
       objectReference: {fileID: 1437268533}
+    - target: {fileID: 3043664458429676622, guid: 1c8df20b359fefd43b369b62fd90460d, type: 3}
+      propertyPath: testDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 9fca7882cc3c7a949907d24d248660ff, type: 2}
     - target: {fileID: 5659069760929112067, guid: 1c8df20b359fefd43b369b62fd90460d, type: 3}
       propertyPath: m_Name
       value: GameManager
