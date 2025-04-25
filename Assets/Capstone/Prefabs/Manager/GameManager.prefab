@@ -44,6 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f290352b6df6974ea916004d050cbbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnPoint: {fileID: 0}
-  player: {fileID: 0}
-  isPlayerDie: 0
+  isGrounded: 0
+  isMeleeAttack: 0
+  isRangeAttack: 0
+  isCommandAction: 0
+  isConversation: 0
+  isCommand: 0
+  isUI: 0
+  testDialogue: {fileID: 11400000, guid: 9fca7882cc3c7a949907d24d248660ff, type: 2}

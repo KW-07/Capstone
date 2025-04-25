@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Mask: LivingEntity
+public class Mask : LivingEntity
 {
     public Transform playerTransform;
     public GameObject healthBar; // 몬스터 방향전환시 HP바가 회전하지 않게 하기 위해 받아옴
@@ -199,7 +199,7 @@ public class Mask: LivingEntity
         {
             AttachToPlayer(collision.transform);
         }
-        
+
     }
     private void AttachToPlayer(Transform player)
     {
