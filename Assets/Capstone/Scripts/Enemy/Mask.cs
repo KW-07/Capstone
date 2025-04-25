@@ -192,14 +192,22 @@ public class Mask : LivingEntity
 
         isDashing = false;
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    //private void OnColliderEnter2D(Collision2D collision)
+    //{
+    //    Debug.Log(collision.gameObject.name + "On OnTriggerEnter");
+    //    if (isDashing && collision.collider.CompareTag("Player"))
+    //    {
+    //        AttachToPlayer(collision.transform);
+    //    }
+    //}
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log(collision.gameObject.name + "On OnTriggerEnter");
-        if (isDashing && collision.collider.CompareTag("Player"))
+        if (isDashing && collision.CompareTag("Player"))
         {
             AttachToPlayer(collision.transform);
         }
-
     }
     private void AttachToPlayer(Transform player)
     {

@@ -184,7 +184,8 @@ public class KasaOni : LivingEntity
 
     private BTNodeState RetreatJump()
     {
-        float direction = transform.localScale.x > 0 ? -1 : 1; // 현재 바라보는 반대 방향으로 점프
+        float yRotation = transform.rotation.eulerAngles.y;
+        float direction = (yRotation == 180f) ? 1 : -1;
         rb.velocity = new Vector2(direction * moveSpeed * 1.5f, jumpForce);
         nextRetreatTime = Time.time + retreatCooldown;
         return BTNodeState.Success;
