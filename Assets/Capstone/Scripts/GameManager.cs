@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     // ΩÃ±€≈Ê
     public static GameManager instance { get; private set; }
 
-    bool isFirstPlay;
+    public bool isFirstPlay;
 
     [Header("State")]
     public bool isGrounded = false;
@@ -23,12 +23,6 @@ public class GameManager : MonoBehaviour
     public bool isConversation = false;
     public bool isCommand = false;
     public bool isUI = false;
-
-    [Header("BossEvent")]
-    public bool isBossBattle;
-    [SerializeField] private GameObject fakeWall;
-    [SerializeField] private GameObject bossObject;
-    [SerializeField] private GameObject bossHpUI;
 
     [Header("Event")]
     [SerializeField] private Dialogue testDialogue;
@@ -44,24 +38,20 @@ public class GameManager : MonoBehaviour
     {
         isFirstPlay = true;
 
-        isBossBattle = false;
-
-        
-    }
-
-    private void Update()
-    {
-        if (isBossBattle)
-        {
-            fakeWall.SetActive(true);
-        }
-
-        // Scene ≥—æÓø¿∏È Ω√¿€
         //if (isFirstPlay)
         //{
         //    UIManager.instance.showDialogue(testDialogue);
         //    isFirstPlay = false;
         //}
+    }
+
+    private void Update()
+    {
+        if (isFirstPlay)
+        {
+            UIManager.instance.showDialogue(testDialogue);
+            isFirstPlay = false;
+        }
     }
 
     public void Save(ref GameManagerSaveData data)

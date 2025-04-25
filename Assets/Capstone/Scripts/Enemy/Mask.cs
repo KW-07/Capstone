@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class Mask: LivingEntity
+public class Mask : LivingEntity
 {
     public Transform playerTransform;
     public GameObject healthBar; // 몬스터 방향전환시 HP바가 회전하지 않게 하기 위해 받아옴
@@ -15,13 +16,16 @@ public class Mask: LivingEntity
     public float approachSpeed = 2.5f;
     public float dashSpeed = 12f;
 
-    [SerializeField]
-    [Header("Patrol")]
-    private float patrolTime;
-    private float desiredAltitude = 4.0f;       // 지면과 유지하고 싶은 평균 거리
-    private float maxAltitude = 10.0f;           // 이보다 높으면 하강 시작
-    private float groundCheckDistance = 8.0f;   // 지면 찾기 최대 거리
+    [Header("Reattach Time")]
+    public float reattachCooldown = 2f;      // 다시 붙기까지 걸리는 시간
+    private float lastDetachTime = -999f;     // 마지막으로 떨어진 시간 기록
 
+    private int directionSwitchCount = 0;
+    private float directionCheckTime = 2.0f; // 2초 안에 입력해야 함
+    private float directionTimer = 0f;
+    private int lastDirection = 0;
+
+    private PlayerInput playerInput; // Input System 접근
 
     private Rigidbody2D rb;
     private Vector2 dashTarget;
@@ -35,6 +39,7 @@ public class Mask: LivingEntity
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerInput = playerTransform.GetComponent<PlayerInput>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         patrolDirection = Random.insideUnitCircle.normalized;
 
@@ -77,6 +82,10 @@ public class Mask: LivingEntity
                 barVisual.localScale = scale;
             }
         }
+        if (isAttached)
+        {
+            HandleDetachInput();
+        }
     }
     private void FixedUpdate()
     {
@@ -107,57 +116,37 @@ public class Mask: LivingEntity
     {
         if (isDashing || isAttached) return BTNodeState.Failure;
 
-        patrolTime += Time.deltaTime;
+        Vector2 adjustedDir = AvoidObstacles(patrolDirection);
 
-        Vector2 forward = patrolDirection.normalized;
-        Vector2 oscillation = new Vector2(-forward.y, forward.x) * Mathf.Sin(patrolTime * 3f) * 0.5f;
-        Vector2 moveDir = (forward + oscillation).normalized;
+        Vector2 flutter = new Vector2(
+            Mathf.PerlinNoise(Time.time * 1.5f, 0f) - 0.5f,
+            Mathf.PerlinNoise(0f, Time.time * 1.5f) - 0.5f
+        ) * 0.3f;
 
-        // 지면 체크
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, LayerMask.GetMask("Ground"));
+        Vector2 movedir = (adjustedDir + flutter).normalized;
 
-        if (hit.collider != null)
+        rb.velocity = movedir * patrolSpeed;
+
+        // 일정 시간마다 방향 바꿈
+        if (Random.value < 0.01f)
         {
-            float altitude = hit.distance;
-
-            // 너무 낮으면 상승
-            if (altitude < desiredAltitude)
-            {
-                moveDir += Vector2.up * (desiredAltitude - altitude);
-            }
-            // 너무 높으면 하강
-            else if (altitude > maxAltitude)
-            {
-                moveDir += Vector2.down * (altitude - maxAltitude);
-            }
-        }
-
-        rb.velocity = moveDir.normalized * patrolSpeed;
-
-        // 방향 갱신
-        if (patrolTime > 3f)
-        {
-            patrolTime = 0f;
             patrolDirection = Random.insideUnitCircle.normalized;
         }
 
         return BTNodeState.Running;
     }
+    private Vector2 AvoidObstacles(Vector2 dir)
+    {
+        RaycastHit2D hit = Physics2D.CircleCast(transform.position, 1f, dir, 1.5f, LayerMask.GetMask("Ground"));
 
-    /*    private BTNodeState Patrol()
+        if (hit.collider != null)
         {
-            if (isDashing || isAttached) return BTNodeState.Failure;
+            // 장애물이 있으면 방향을 랜덤하게 튕김
+            dir = Vector2.Reflect(dir, hit.normal);
+        }
 
-            rb.velocity = patrolDirection * patrolSpeed;
-
-            // 일정 시간마다 방향 바꿈
-            if (Random.value < 0.01f)
-            {
-                patrolDirection = Random.insideUnitCircle.normalized;
-            }
-
-            return BTNodeState.Running;
-        }*/
+        return dir.normalized;
+    }
 
     private BTNodeState ApproachPlayer()
     {
@@ -203,18 +192,23 @@ public class Mask: LivingEntity
 
         isDashing = false;
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log(collision.gameObject.name + "On OnTriggerEnter");
-        if (isDashing && collision.CompareTag("Player"))
+        if (isDashing && collision.collider.CompareTag("Player"))
         {
             AttachToPlayer(collision.transform);
         }
-    }
 
+    }
     private void AttachToPlayer(Transform player)
     {
+        if (Time.time < lastDetachTime + reattachCooldown)
+        {
+            Debug.Log("아직 부착 쿨타임 중입니다.");
+            return;
+        }
+
         isAttached = true;
         isDashing = false;
         rb.velocity = Vector2.zero;
@@ -236,6 +230,39 @@ public class Mask: LivingEntity
 
         Debug.Log("MaskMonster 부착됨 - 플레이어에게 디버프 및 데미지!");
     }
+    private void HandleDetachInput()
+    {
+        float moveInput = playerInput.actions["Move"].ReadValue<float>();
+        int currentDir = Mathf.RoundToInt(moveInput);  // -1, 0, 1 중 하나
+
+        if (currentDir != 0 && currentDir != lastDirection)
+        {
+            lastDirection = currentDir;
+            directionSwitchCount++;
+            directionTimer = 0f;
+        }
+
+        directionTimer += Time.deltaTime;
+
+        if (directionSwitchCount >= 5)
+        {
+            Detach();
+            ResetDetachInput();
+        }
+
+        if (directionTimer > directionCheckTime)
+        {
+            ResetDetachInput();
+        }
+    }
+
+    private void ResetDetachInput()
+    {
+        directionSwitchCount = 0;
+        directionTimer = 0f;
+        lastDirection = 0;
+    }
+
 
     private void LookAtPlayer()
     {
@@ -259,5 +286,11 @@ public class Mask: LivingEntity
     {
         isAttached = false;
         transform.SetParent(null);
+        GetComponent<Collider2D>().enabled = true;
+
+        lastDetachTime = Time.time; // 떨어진 시간 저장
+
+        // 떨어질 때 약간 튕기는 효과
+        rb.velocity = new Vector2(Random.Range(-1f, 1f), 1f) * 3f;
     }
 }

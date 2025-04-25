@@ -75,14 +75,14 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        if(GameManager.instance.isUI)
-        {
-            Time.timeScale = 0;
-        }
-        else
-        {
-            Time.timeScale = 1;
-        }
+        //if(GameManager.instance.isUI)
+        //{
+        //    Time.timeScale = 0;
+        //}
+        //else
+        //{
+        //    Time.timeScale = 1;
+        //}
 
         // Player의 commandingTIme에 따른 commandTimeUI 이미지 변경
         if(GameManager.instance.isCommand)

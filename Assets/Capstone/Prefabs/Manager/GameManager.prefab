@@ -51,7 +51,4 @@ MonoBehaviour:
   isConversation: 0
   isCommand: 0
   isUI: 0
-  isBossBattle: 0
-  fakeWall: {fileID: 0}
-  bossObject: {fileID: 0}
-  bossHpUI: {fileID: 0}
+  testDialogue: {fileID: 11400000, guid: 9fca7882cc3c7a949907d24d248660ff, type: 2}

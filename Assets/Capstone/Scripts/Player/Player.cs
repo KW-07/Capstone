@@ -183,7 +183,7 @@ public class Player : LivingEntity
     void Move()
     {
         // 대화 중 움직임 제어
-        if (!GameManager.instance.isUI)
+        if (!GameManager.instance.isUI && !GameManager.instance.isCommand)
         {
             // spriteFlip
             if (dir < 0 && facingRight)
@@ -261,7 +261,7 @@ public class Player : LivingEntity
     {
         if (context.performed)
         {
-            if (!GameManager.instance.isUI)
+            if (!GameManager.instance.isUI && !GameManager.instance.isCommand)
             {
                 if (jumpCount < 2)
                 {
@@ -282,7 +282,7 @@ public class Player : LivingEntity
     {
         if (context.performed && GameObject.FindWithTag("Platform").GetComponent<Platform>().isPlayer == true)
         {
-            if (!GameManager.instance.isUI)
+            if (!GameManager.instance.isUI && GameManager.instance.isCommand)
             {
                 StartCoroutine("coDownJump");
             }
@@ -305,7 +305,7 @@ public class Player : LivingEntity
     {
         if (context.performed)
         {
-            if(!GameManager.instance.isUI)
+            if(!GameManager.instance.isUI && !GameManager.instance.isCommand)
             {
                 // 대쉬의 방향 및 거리
                 Vector2 dashDirection = facingRight ? Vector2.right : Vector2.left;
@@ -371,7 +371,7 @@ public class Player : LivingEntity
         if (context.performed)
         {
 
-            if (!GameManager.instance.isUI && GameManager.instance.isGrounded && !GameManager.instance.isCommandAction)
+            if (!GameManager.instance.isUI && GameManager.instance.isGrounded && !GameManager.instance.isCommand)
             {
                 SkillSystem.instance.command = normalAttack;
 
@@ -395,7 +395,7 @@ public class Player : LivingEntity
     {
         if (context.performed)
         {
-            if (!GameManager.instance.isUI && canRangeAttack)
+            if (!GameManager.instance.isUI && canRangeAttack && !GameManager.instance.isCommand)
             {
                 rangeCooldownTimer = rangeCooldown;
                 canRangeAttack = false;
@@ -508,6 +508,8 @@ public class Player : LivingEntity
     {
         if (initTime == 0)
         {
+            GameManager.instance.isCommand = true;
+
             // 기존 pCommand 값 초기화
             CommandInitialization(pCommand);
 
@@ -700,6 +702,7 @@ public class Player : LivingEntity
                                 skillSystem.UseSkill(shootPoint.gameObject, neareastEnemy);
                             }
 
+
                             // 커맨드 타이머 삭제
                             commandTimeUI.SetActive(false);
                             pCommandUI.SetActive(false);
@@ -714,12 +717,14 @@ public class Player : LivingEntity
                     }
                     if (!bCommandCount)
                     {
+
                         Debug.Log("Nothing Command!");
 
                         CommandInitialization(usableCommandList);
                     }
                 }
                 // End
+                GameManager.instance.isCommand = false;
                 initTime = 0;
             }
         }
