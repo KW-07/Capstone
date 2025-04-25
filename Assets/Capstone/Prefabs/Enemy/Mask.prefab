@@ -433,12 +433,12 @@ MonoBehaviour:
   maxHealth: 100
   playerTransform: {fileID: 0}
   healthBar: {fileID: 7291805131275748358}
-  detectRange: 15
-  dashRange: 6
+  detectRange: 7
+  dashRange: 3
   patrolSpeed: 4
   approachSpeed: 6
   dashSpeed: 12
-  reattachCooldown: 1
+  patrolTime: 0
 --- !u!58 &8991657772667911768
 CircleCollider2D:
   m_ObjectHideFlags: 0

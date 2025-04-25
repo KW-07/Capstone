@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8ce1bf0167ccc44e8174eaf3fe66a23, type: 3}
+  m_Name: tpImmunity
+  m_EditorClassIdentifier: 
+  skillName: "\uBA74\uC5ED \uAC10\uC18C"
+  description: "\uBD80\uC2DD\uB3C5\uC0C1\uD0DC \uC801 \uCD94\uAC00\uB370\uBBF8\uC9C0"
+  maxPoints: 2
+  currentPoints: 0
+  prerequisites:
+  - {fileID: 11400000, guid: 55ddfa595479f644fa55528919fee196, type: 2}
+  statModifiers:
+  - statType: 0
+    valuesPerLevel:
+    - 10
+    - 20

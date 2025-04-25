@@ -44,4 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8881be9c7e205540bb835e05a67e998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  commandList: []
+  commandList:
+  - {fileID: 11400000, guid: 1ee20cee53cfdd740bff4051f91907ca, type: 2}
+  - {fileID: 11400000, guid: a59c5a446918ba74fa4d18f4704b32f3, type: 2}
+  - {fileID: 11400000, guid: 723ae2bca86b2aa4e9e9754576ae3a28, type: 2}
+  - {fileID: 11400000, guid: 2a7ab3b633265f04da1f230621c3bcf0, type: 2}
+  - {fileID: 11400000, guid: d44bc56f76b873144a0d0c3c8acf983a, type: 2}
+  - {fileID: 11400000, guid: 5b4843a42b43a3d4499540338f4fa964, type: 2}
+  - {fileID: 11400000, guid: 0472f1fc7b240c048a2cbb51efe54664, type: 2}
+  - {fileID: 11400000, guid: c6f40ba899a698647a27e76891fd194a, type: 2}
