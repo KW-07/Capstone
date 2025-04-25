@@ -18,11 +18,22 @@ public class OniDaru : LivingEntity
     public float moveSpeed = 2.0f;
 
     [Header("Attack")]
+    /*    public Transform attackPoint;
+        public Vector2 attackBoxSize;
+        public float attackDelay = 1.0f;  // 공격의 선딜? 아래의 쿨다운과는 다른것
+        public float attackCooldown = 2.0f;
+        private float nextAttackTime = 0f;*/
+
     public Transform attackPoint;
-    public Vector2 attackBoxSize;
-    public float attackDelay = 1.0f;  // 공격의 선딜? 아래의 쿨다운과는 다른것
     public float attackCooldown = 2.0f;
     private float nextAttackTime = 0f;
+    private bool isattack = false;
+    public Vector2 attack2BoxSize;    // 공격 범위
+    public float jumpHeight = 3.0f;      // 점프 높이
+    public float slamSpeed = 10.0f;      // 내려찍기 속도
+    public float groundCheckDistance = 0.5f;  // 지면 감지 거리
+    private bool isSlamming = false;     // 내려찍기 상태 여부
+    private bool isJumping = false;      // 점프 상태 여부
 
     public int nextThinkTime = 3;
     private int nextMove;
@@ -109,42 +120,102 @@ public class OniDaru : LivingEntity
         return dist <= attackRange;
     }
 
-   // private bool IsPlayerInRange() => Vector3.Distance(transform.position, playerTransform.position) <= attackRange;
-   // private bool IsPlayerDetected() => Vector3.Distance(transform.position, playerTransform.position) <= detectionRange;
+    // private bool IsPlayerInRange() => Vector3.Distance(transform.position, playerTransform.position) <= attackRange;
+    // private bool IsPlayerDetected() => Vector3.Distance(transform.position, playerTransform.position) <= detectionRange;
     private bool CanAttack() => Time.time >= nextAttackTime;
     private void SetNextAttackTime() => nextAttackTime = Time.time + attackCooldown;
 
     #region attack
     private BTNodeState Attack()
     {
+        //if (!isJumping && !isSlamming)
         LookAtPlayer();
-        Debug.Log("Preparing Attack...");
-        StartCoroutine(DelayedAttack());
+        Debug.Log("Jumping for Attack 2...");
+        StartCoroutine(JumpAndSlam());
+        isattack = false;
         SetNextAttackTime();
         return BTNodeState.Success;
     }
-    private IEnumerator DelayedAttack()
+    private IEnumerator JumpAndSlam()
     {
-        yield return new WaitForSeconds(attackDelay);
+        isattack = true;
+        isJumping = true;
 
-        // 실제 공격 실행 (전방 공격)
-        Debug.Log("Performing Attack after delay!");
-        PerformForwardAttack();
+        // 위로 점프
+        rb.velocity = new Vector2(rb.velocity.x, Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics2D.gravity.y * rb.gravityScale)));
+
+        // 점프한 후 일정 높이에 도달할 때까지 대기
+        while (rb.velocity.y > 0)
+        {
+            yield return null;
+        }
+
+        // 내려찍기 시작
+        isJumping = false;
+        isSlamming = true;
+        Debug.Log("Slamming Down!");
+
+        rb.velocity = new Vector2(0, -slamSpeed);  // 빠르게 내려찍기
+
+        // 지면에 도착할 때까지 대기
+        while (!IsGrounded())
+        {
+            yield return null;
+        }
+
+        // 충격파 공격 실행
+        PerformSlamAttack();
+        isSlamming = false;
     }
-    private void PerformForwardAttack()
+    private bool IsGrounded()
     {
-        // 전방 공격 로직 (예: 히트박스 검사)
-        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attackPoint.position, attackBoxSize, 0);
+        return Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, LayerMask.GetMask("Ground"));
+    }
+    private void PerformSlamAttack()
+    {
+        Debug.Log("Performing Ground Slam Attack!");
+        Vector2 attack2Position = transform.position + transform.up * -1f;
+        // 주변 범위 공격
+        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attack2Position, attack2BoxSize, 0);
         foreach (var enemy in hitEnemies)
         {
             if (enemy.CompareTag("Player"))
             {
-                Debug.Log("Hit Player!");
+                Debug.Log("Hit Player with Slam Attack!");
                 enemy.GetComponent<LivingEntity>().OnDamage(10);
             }
         }
     }
-    #endregion 
+    /*    private BTNodeState Attack()
+        {
+            LookAtPlayer();
+            Debug.Log("Preparing Attack...");
+            StartCoroutine(DelayedAttack());
+            SetNextAttackTime();
+            return BTNodeState.Success;
+        }
+        private IEnumerator DelayedAttack()
+        {
+            yield return new WaitForSeconds(attackDelay);
+
+            // 실제 공격 실행 (전방 공격)
+            Debug.Log("Performing Attack after delay!");
+            PerformForwardAttack();
+        }
+        private void PerformForwardAttack()
+        {
+            // 전방 공격 로직 (예: 히트박스 검사)
+            Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attackPoint.position, attackBoxSize, 0);
+            foreach (var enemy in hitEnemies)
+            {
+                if (enemy.CompareTag("Player"))
+                {
+                    Debug.Log("Hit Player!");
+                    enemy.GetComponent<LivingEntity>().OnDamage(10);
+                }
+            }
+        }*/
+    #endregion
 
     private BTNodeState Chase()
     {
@@ -202,7 +273,7 @@ public class OniDaru : LivingEntity
         if (attackPoint != null)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(attackPoint.position, attackBoxSize);
+            Gizmos.DrawWireCube(attackPoint.position, attack2BoxSize);
         }
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, attackRange);
