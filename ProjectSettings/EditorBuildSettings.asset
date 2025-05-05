@@ -8,13 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Capstone/Scenes/Title.unity
     guid: 87fe5b5f2eddc684c903e71a486c5e1c
-  - enabled: 0
+  - enabled: 1
     path: Assets/Capstone/Scenes/TestMap.unity
     guid: f95d0e27a0b193d49b21bee312b93aa0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Capstone/Scenes/Stage_1.unity
     guid: 73cc1a0681153854db1bd302bde63206
-  - enabled: 1
+  - enabled: 0
     path: Assets/Capstone/Scenes/Stage_2.unity
     guid: 4a34fe589d43ffa4dab7b90b4b60dd26
   m_configObjects:
