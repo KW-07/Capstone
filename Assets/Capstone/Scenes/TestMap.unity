@@ -33898,6 +33898,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5562267292618288105, guid: c1b6a19ccb4820c4cae7ce4c64ce205b, type: 3}
+      propertyPath: dieTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5562267292618288105, guid: c1b6a19ccb4820c4cae7ce4c64ce205b, type: 3}
       propertyPath: currentHealthBar
       value: 
       objectReference: {fileID: 1199250239}
@@ -34161,6 +34165,10 @@ PrefabInstance:
     - target: {fileID: 5341635976695917360, guid: 99bc7b3e57b426e4094ec4eefc0e2cef, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524279662456503887, guid: 99bc7b3e57b426e4094ec4eefc0e2cef, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6046765485563021002, guid: 99bc7b3e57b426e4094ec4eefc0e2cef, type: 3}
       propertyPath: m_Pivot.x

@@ -49,7 +49,7 @@ public class SkillTreeManager : MonoBehaviour
 
         foreach (var node in allNodes)
         {
-            Debug.Log($"Node: {node.name}, Skill: {node.skill?.skillName}");
+            //Debug.Log($"Node: {node.name}, Skill: {node.skill?.skillName}");
             node.Initialize(this);
         }
 
