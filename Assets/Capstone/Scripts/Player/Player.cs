@@ -73,6 +73,8 @@ public class Player : LivingEntity
 
     [Header("데미지")]
     [SerializeField]private float _playerDamage;
+
+    [SerializeField] private float dieTime;
     public float playerDamage
     {
         get
@@ -128,6 +130,9 @@ public class Player : LivingEntity
         commandTimeUI.SetActive(false);
         pCommandUI.SetActive(false);
         CommandInitialization(pCommand);
+
+        OnEnable();
+        CheckHp();
     }
 
     private void Update()
@@ -856,6 +861,37 @@ public class Player : LivingEntity
         Array.Resize(ref usableCommandList, j);
     }
     #endregion
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        Debug.Log($"현재 체력 : {currentHealth}");
+    }
+
+    public override void OnDamage(float damage)
+    {
+        currentHealth -= damage; // health = health - damage;
+        CheckHp();
+        Debug.Log(this.gameObject.name + " take Damage.");
+
+        animator.SetTrigger("damaged");
+
+        //체력이 0 이하 && 아직 죽지 않았다면 사망 처리 실행
+        if (currentHealth <= 0 && !dead)
+        {
+            OnDie();
+        }
+    }
+
+    public override void OnDie()
+    {
+        base.OnDie();
+
+        animator.SetTrigger("playerDie");
+
+        Destroy(gameObject, dieTime);
+    }
 }
 
 [System.Serializable]

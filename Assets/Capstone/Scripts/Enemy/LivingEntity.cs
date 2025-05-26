@@ -27,6 +27,8 @@ public class LivingEntity : MonoBehaviour
     {
         if (currentHealthBar != null)
             currentHealthBar.fillAmount = currentHealth / maxHealth;
+
+        Debug.Log($"체력바 갱신 fillAmount : {currentHealthBar.fillAmount}");
     }
 
     //피해를 받는 기능

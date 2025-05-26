@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< Updated upstream:Assets/Capstone/Sprites/Background/HS01.png.meta
-guid: e58404bf428264943b2de8436807530c
-========
 guid: ebddb67800469cb4c985fddb5e691359
->>>>>>>> Stashed changes:Assets/Capstone/Sprites/EnemyAnim/BossDaru/BossDaru-Smoke.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
