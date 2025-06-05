@@ -7,12 +7,11 @@ public class CharacterBase_ShadowGrid : MonoBehaviour
     public float maxHP;
     protected float currentHP;
 
-    protected Animator animator;
+    public Animator animator;
     protected Rigidbody rb;
 
     protected virtual void Awake()
     {
-        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         currentHP = maxHP;
     }
@@ -20,6 +19,7 @@ public class CharacterBase_ShadowGrid : MonoBehaviour
     public virtual void TakeDamage(float amount)
     {
         currentHP -= amount;
+        Debug.Log($"{gameObject.name}에 {amount}의 데미지");
         if(currentHP < 0)
         {
             Die();
