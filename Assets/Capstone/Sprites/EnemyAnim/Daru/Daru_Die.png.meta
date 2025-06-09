@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3107105807db6b844a5b7377160da9f4
+guid: a23486f3883e9dd4d8b3ef205bb209f1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -149,148 +149,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: KaraKasa_Attack_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 6300
-        width: 5300
-        height: 2100
-      alignment: 9
-      pivot: {x: 0.25, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 642206bdb74036040983d2520e1b3e73
-      internalID: -80081267
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: KaraKasa_Attack_1
-      rect:
-        serializedVersion: 2
-        x: 5300
-        y: 6300
-        width: 5300
-        height: 2100
-      alignment: 9
-      pivot: {x: 0.25, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2f75a92bacbccca429830f06bd75cc3b
-      internalID: 1349023025
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: KaraKasa_Attack_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 4200
-        width: 5300
-        height: 2100
-      alignment: 9
-      pivot: {x: 0.25, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 229bb4e0cd022354bb8b2426797a4bc9
-      internalID: 378093958
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: KaraKasa_Attack_3
-      rect:
-        serializedVersion: 2
-        x: 5300
-        y: 4200
-        width: 5300
-        height: 2100
-      alignment: 9
-      pivot: {x: 0.25, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2bceec81ca14ea946971adb653b0a815
-      internalID: 655031981
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: KaraKasa_Attack_4
+      name: Daru_Die_0
       rect:
         serializedVersion: 2
         x: 0
         y: 2100
-        width: 5300
+        width: 2400
         height: 2100
-      alignment: 9
-      pivot: {x: 0.25, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 785284bd8565ef84abc8f79643f9630e
-      internalID: 298528717
+      spriteID: fcfe89e394fecc245b6115bed85c9dca
+      internalID: 1496983046
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KaraKasa_Attack_5
+      name: Daru_Die_1
       rect:
         serializedVersion: 2
-        x: 5300
+        x: 2400
         y: 2100
-        width: 5300
+        width: 2400
         height: 2100
-      alignment: 9
-      pivot: {x: 0.25, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2f8101adf9b3a6489f6c59c0c67d1e8
-      internalID: 410677062
+      spriteID: 2169b42285d0d7d458f49cca752f3f9b
+      internalID: -758932844
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KaraKasa_Attack_6
+      name: Daru_Die_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 5300
+        width: 2400
         height: 2100
-      alignment: 9
-      pivot: {x: 0.25, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 229fdb9d95c29a2459e2a36e0608cd9d
-      internalID: 1717753098
+      spriteID: 398c247e434b5cf4ea10216eeeb76ea9
+      internalID: 1030712411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daru_Die_3
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 0
+        width: 2400
+        height: 2100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02ee089be183dff4ba14070d81691286
+      internalID: 911415857
       vertices: []
       indices: 
       edges: []
@@ -306,13 +243,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      KaraKasa_Attack_0: -80081267
-      KaraKasa_Attack_1: 1349023025
-      KaraKasa_Attack_2: 378093958
-      KaraKasa_Attack_3: 655031981
-      KaraKasa_Attack_4: 298528717
-      KaraKasa_Attack_5: 410677062
-      KaraKasa_Attack_6: 1717753098
+      Daru_Die_0: 1496983046
+      Daru_Die_1: -758932844
+      Daru_Die_2: 1030712411
+      Daru_Die_3: 911415857
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

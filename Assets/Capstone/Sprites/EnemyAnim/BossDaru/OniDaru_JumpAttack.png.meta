@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -119,9 +119,308 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: OniDaru_JumpAttack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3300
+        width: 1800
+        height: 1650
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae59e76d1cef0b9479a44014c98fbf6a
+      internalID: -810278132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OniDaru_JumpAttack_1
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 3300
+        width: 1800
+        height: 1650
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0a2829b37992194b90e097e9b48328c
+      internalID: 429410124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OniDaru_JumpAttack_2
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 3300
+        width: 1800
+        height: 1650
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbb4863da7d5fed458d6a03a124ee5dc
+      internalID: 388319774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OniDaru_JumpAttack_3
+      rect:
+        serializedVersion: 2
+        x: 5400
+        y: 3300
+        width: 1800
+        height: 1650
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3c11a8a48599d74eadd2742cb23684f
+      internalID: -1119900616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OniDaru_JumpAttack_4
+      rect:
+        serializedVersion: 2
+        x: 7200
+        y: 3300
+        width: 1800
+        height: 1650
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97feda77acd60534cb6d15f02503297c
+      internalID: -2048804927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OniDaru_JumpAttack_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1650
+        width: 1800
+        height: 1650
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad4447488860fdd41a0ce6c8c15ecc4a
+      internalID: 38579531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OniDaru_JumpAttack_6
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 1650
+        width: 1800
+        height: 1650
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff5511bba02a1b24a9a09869bd7113ae
+      internalID: 1744865128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OniDaru_JumpAttack_7
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 1650
+        width: 1800
+        height: 1650
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cb4c46953445964da531203cd79b45b
+      internalID: -1180764996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OniDaru_JumpAttack_8
+      rect:
+        serializedVersion: 2
+        x: 5400
+        y: 1650
+        width: 1800
+        height: 1650
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dd59fdde37a68c4f99e08c7850f848c
+      internalID: -1852055238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OniDaru_JumpAttack_9
+      rect:
+        serializedVersion: 2
+        x: 7200
+        y: 1650
+        width: 1800
+        height: 1650
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e48529466004944eb9eef367a113260
+      internalID: 1451729586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OniDaru_JumpAttack_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1800
+        height: 1650
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39c9e7b0a33039b4b884059b3205c044
+      internalID: -1124277031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OniDaru_JumpAttack_11
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 0
+        width: 1800
+        height: 1650
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 796b90dbe985acd4e92b2427219093dd
+      internalID: 175010801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OniDaru_JumpAttack_12
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 0
+        width: 1800
+        height: 1650
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc59c4aae18f5134487ffef3e9984869
+      internalID: -94759331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +431,20 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      OniDaru_JumpAttack_0: -810278132
+      OniDaru_JumpAttack_1: 429410124
+      OniDaru_JumpAttack_10: -1124277031
+      OniDaru_JumpAttack_11: 175010801
+      OniDaru_JumpAttack_12: -94759331
+      OniDaru_JumpAttack_2: 388319774
+      OniDaru_JumpAttack_3: -1119900616
+      OniDaru_JumpAttack_4: -2048804927
+      OniDaru_JumpAttack_5: 38579531
+      OniDaru_JumpAttack_6: 1744865128
+      OniDaru_JumpAttack_7: -1180764996
+      OniDaru_JumpAttack_8: -1852055238
+      OniDaru_JumpAttack_9: 1451729586
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

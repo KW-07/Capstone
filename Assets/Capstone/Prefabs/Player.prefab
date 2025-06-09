@@ -724,7 +724,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 708664427, guid: bf05972663516a54a9a1c5b1859e0c43, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -973,6 +973,7 @@ MonoBehaviour:
   initTimeMultipleAttack: 3
   attackCountInitTime: 0
   _playerDamage: 10
+  dieTime: 0
   allEnemyArray: []
   visibleEnemy: []
   neareastEnemy: {fileID: 0}
