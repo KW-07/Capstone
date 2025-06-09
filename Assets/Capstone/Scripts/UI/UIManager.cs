@@ -25,8 +25,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject skillTree;
     [SerializeField] private GameObject[] skillTree_Page;
     [SerializeField] private GameObject[] bookmark;
+    [SerializeField] private GameObject bookmarkHighlight;
     public int skillPageCount;
     [SerializeField] private TMP_Text skillPointText;
+    [SerializeField] private Image skillImage;
+    [SerializeField] private TMP_Text skillName;
     [SerializeField] private TMP_Text skillDescription;
 
 
@@ -152,12 +155,13 @@ public class UIManager : MonoBehaviour
                 if (i == skillPageCount)
                 {
                     skillTree_Page[i].SetActive(true);
-                    bookmark[i].GetComponent<Image>().color = Color.yellow;
+                    //bookmark[i].GetComponent<RectTransform>().position = new Vector2(-840f, 350f);
+                    bookmarkHighlight.transform.position = bookmark[i].transform.position;
                 }
                 else
                 {
                     skillTree_Page[i].SetActive(false);
-                    bookmark[i].GetComponent<Image>().color = Color.gray;
+                    //bookmark[i].GetComponent<RectTransform>().position = new Vector2(-800f, 350f);
                 }
             }
         }
@@ -165,6 +169,8 @@ public class UIManager : MonoBehaviour
 
     public void SkillNodeDescription(SkillNode currentNode)
     {
+        skillImage.sprite = currentNode.GetComponent<SkillNode>().skill.skillImage;
+        skillName.text = currentNode.GetComponent<SkillNode>().skill.skillName;
         skillDescription.text = currentNode.GetComponent<SkillNode>().skill.description;
     }
 

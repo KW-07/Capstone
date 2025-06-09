@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: "\uACF5\uBA85"
   description: "\uB2E4\uB978 \uC18D\uC131 \uC5F0\uACC4 \uC2DC \uCD94\uAC00 \uB370\uBBF8\uC9C0"
+  skillImage: {fileID: 21300000, guid: 20e30405b28fb43428ef0d5de01e3c12, type: 3}
   maxPoints: 3
   currentPoints: 0
   prerequisites:

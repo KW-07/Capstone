@@ -9,6 +9,8 @@ public class Skill : ScriptableObject
     public string skillName;
     public string description;
 
+    public Sprite skillImage;
+
     public int maxPoints = 4;
     public int currentPoints = 0;
 

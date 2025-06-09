@@ -10,6 +10,7 @@ public class SkillNode : MonoBehaviour
     public List<SkillNode> connectedNodes = new List<SkillNode>();
 
     public Button button;
+    public Image skillImage;
     public TMP_Text nameText;
     public TMP_Text pointText;
     public TMP_Text effectText;
@@ -29,6 +30,10 @@ public class SkillNode : MonoBehaviour
     public void Initialize(SkillTreeManager manager)
     {
         skillTreeManager = manager;
+        if(skill.skillImage!= null)
+        {
+            skillImage.sprite = skill.skillImage;
+        }
         nameText.text = skill.skillName;
 
         button.onClick.AddListener(OnClick);
@@ -37,7 +42,7 @@ public class SkillNode : MonoBehaviour
 
     public void Refresh()
     {
-        pointText.text = $"Æ÷ÀÎÆ®: {skill.currentPoints}/{skill.maxPoints}";
+        pointText.text = $"{skill.currentPoints}/{skill.maxPoints}";
 
         bool canClick = skillTreeManager.CanUnlock(skill);
         button.interactable = canClick && !skill.IsMaxed;
