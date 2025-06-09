@@ -15,7 +15,11 @@ public class WeaponData : ScriptableObject
     public GameObject weaponPrefab;
     public WeaponType weaponType;
     public int damage;
-    public int dotDamage;
-    public float dotDuration;
-    public float dotCoolTime;
+    [Header("Knockback Effect")]
+    public float knockbackForce = 8f;
+    public float knockbackDuration = 0.25f;
+    [Header("Dot Effect")]
+    public float dotDamage = 2f;
+    public float dotDuration = 5f;
+    public float dotCoolTime = 1f;
 }

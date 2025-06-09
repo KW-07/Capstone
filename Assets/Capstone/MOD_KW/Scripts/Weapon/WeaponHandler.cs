@@ -5,12 +5,14 @@ using UnityEngine;
 public class WeaponHandler : MonoBehaviour
 {
     protected WeaponData weaponData;
-    protected Collider weaponCollider;
+    [SerializeField]protected Collider weaponCollider;
 
     protected virtual void Awake()
     {
-        weaponCollider = GetComponent<BoxCollider>();
-        weaponCollider.enabled = false; // 기본 비활성화
+        if (weaponCollider == null)
+            weaponCollider = GetComponent<Collider>();
+
+        weaponCollider.enabled = false;
     }
 
     public void SetWeaponData(WeaponData data)
@@ -34,15 +36,8 @@ public class WeaponHandler : MonoBehaviour
     {
         if (other.TryGetComponent<CharacterBase_ShadowGrid>(out CharacterBase_ShadowGrid target))
         {
-            target.TakeDamage(weaponData.damage);
-
-            if (weaponData.weaponType == WeaponType.Fire)
-            {
-                if (other.TryGetComponent<FireEffectHandler>(out var fireHandler))
-                {
-                    fireHandler.ApplyDotDamage(weaponData.dotDamage, weaponData.dotDuration, weaponData.dotCoolTime);
-                }
-            }
+            //데미지
+            weaponData.weaponPrefab.GetComponent<WeaponBase>().OnHit(target);
         }
     }
 }

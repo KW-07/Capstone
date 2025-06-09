@@ -10,18 +10,12 @@ public class WeaponManager : MonoBehaviour
     private GameObject currentWeaponObject;
     private WeaponHandler currentWeaponHandler;
 
-    [Header("Temporary")]
-    [SerializeField] private GameObject tempcurrentWeaponObject;
-    [SerializeField] private WeaponData tempWeaponData;
+    [Header("Test")]
+    public WeaponData equipWeaponData;
 
     private void Start()
     {
-        //임시
-        currentWeaponHandler = tempcurrentWeaponObject.GetComponent<WeaponHandler>();
-        if (currentWeaponHandler != null)
-        {
-            currentWeaponHandler.SetWeaponData(tempWeaponData);
-        }
+        EquipWeapon(equipWeaponData);
     }
 
     // 장착함수

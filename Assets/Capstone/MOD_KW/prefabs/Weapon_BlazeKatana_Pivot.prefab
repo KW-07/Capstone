@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4022559010114537903}
   - component: {fileID: 3686183088261130191}
-  - component: {fileID: 4794891571345845218}
+  - component: {fileID: 863011830422048725}
   - component: {fileID: 4765320597939893058}
   m_Layer: 0
-  m_Name: Weapon_Katana_Pivot
+  m_Name: Weapon_BlazeKatana_Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,7 +56,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.3, y: 0.5, z: 2}
   m_Center: {x: 0, y: 0, z: 0.8}
---- !u!114 &4794891571345845218
+--- !u!114 &863011830422048725
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,10 +65,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3907431115814588513}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf087945ecdc65b4680ef8bbca2fed25, type: 3}
+  m_Script: {fileID: 11500000, guid: 299a651cb0f1f7b4494c5f13eccccd81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   baseDamage: 10
+  knockbackForce: 0
+  knockbackDuration: 0
+  dotDamage: 2
+  dotDuration: 5
+  dotCoolTime: 1
 --- !u!114 &4765320597939893058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,6 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d6dcacafaa30b64c95e3bef17271b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponDataName: 
 --- !u!1001 &9219163408604794779
 PrefabInstance:
   m_ObjectHideFlags: 0
