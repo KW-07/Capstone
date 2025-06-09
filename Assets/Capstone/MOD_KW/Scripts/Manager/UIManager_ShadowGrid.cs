@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class UIManager_ShadowGrid : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public MouseLook mouseLook;
+
+
+
+    public void OpenMouseMovableUI()
     {
-        
+        mouseLook.SetUIActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CloseMouseMovableUI()
     {
-        
+        mouseLook.SetUIActive(false);
     }
 }
