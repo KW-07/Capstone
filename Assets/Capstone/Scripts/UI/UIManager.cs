@@ -247,7 +247,7 @@ public class UIManager : MonoBehaviour
 
             // 텍스트 삽입
             candidateText = candidateObj.transform.Find("CandidateText").gameObject.GetComponent<TMP_Text>();
-            candidateText.text = Player.instance.usableCommandList[j].commandName;
+            candidateText.text = Player.instance.usableCommandList[j].commandNameKor;
 
             // 이미지 초기화
             for (int imgNum = 0; imgNum < candidateSprite.Length; imgNum++)

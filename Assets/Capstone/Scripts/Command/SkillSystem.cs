@@ -48,7 +48,7 @@ public class SkillSystem : MonoBehaviour
         }
         else
         {
-            Debug.Log($"{command.commandName}은 쿨타임중입니다. ");
+            Debug.Log($"{command.commandNameKor}은 쿨타임중입니다. ");
         }
     }
 }

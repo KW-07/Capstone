@@ -690,7 +690,7 @@ public class Player : LivingEntity
                         // 커맨드가 존재한다면
                         if (Enumerable.SequenceEqual(pCommand, CommandManager.instance.commandList[i].command))
                         {
-                            Debug.Log("커맨드 : " + CommandManager.instance.commandList[i].commandName);
+                            Debug.Log("커맨드 : " + CommandManager.instance.commandList[i].commandNameKor);
                             bCommandCount = true;
 
                             SkillSystem.instance.command = CommandManager.instance.commandList[i];
