@@ -19,13 +19,59 @@ public class CharacterStats : MonoBehaviour
     public float baseDefense;
     public float finalDefense;
 
-    public void ModifyStat(BuffTargetStat stat, float value)
+    private List<BuffInstance> activeBuffs = new List<BuffInstance>();
+
+    private void Start()
     {
-        //if (stat == BuffTargetStat.Damage)
-        //    finalDamage += value;
+        
     }
 
-    //public float GetFinalAttack() => finalDamage + modifiedAttack;
+    public void RecalculateStats()
+    {
+        Debug.Log("RecalculateStats 호출됨");
+
+        currentHealth = maxHealth;
+        currentStamina = maxStamina;
+        finalMoveSpeed = baseMoveSpeed;
+        finalDamage = baseDamage;
+        finalDefense = baseDefense;
+        Debug.Log("Initialize Complete!");
+
+        foreach (var buff in activeBuffs)
+        {
+            switch (buff.Buff.targetStat)
+            {
+                case BuffTargetStat.Health:
+                    currentHealth += buff.ModifierValue;
+                    break;
+                case BuffTargetStat.MoveSpeed:
+                    finalMoveSpeed += buff.ModifierValue;
+                    break;
+                case BuffTargetStat.Damage:
+                    finalDamage += buff.ModifierValue;
+                    break;
+                case BuffTargetStat.Defence:
+                    finalDefense += buff.ModifierValue;
+                    break;
+            }
+        }
+
+        Debug.Log($"최종 데미지: {finalDamage}");
+    }
+
+    public void AddBuffModifier(BuffInstance buff)
+    {
+        Debug.Log($"AddBuffModifier 호출: {buff.Buff.buffName}, ModifierValue: {buff.ModifierValue}");
+        activeBuffs.Add(buff);
+        RecalculateStats();
+    }
+
+    // 버프 해제 시
+    public void RemoveBuffModifier(BuffInstance buff)
+    {
+        activeBuffs.Remove(buff);
+        RecalculateStats();
+    }
 
     public void TakeDamage(float amount)
     {

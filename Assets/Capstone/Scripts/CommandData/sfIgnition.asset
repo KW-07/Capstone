@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 987028a5972c38e4194715884d037a21, type: 3}
+  m_Name: sfIgnition
+  m_EditorClassIdentifier: 
+  commandID: 3314
+  commandNameEng: sfIgnition
+  commandNameKor: "\uBC1C\uD654(\u767C\u706B)"
+  commandType: 0
+  stringCommand: "\u2192\u2192A"
+  command: 0300000003000000050000000000000000000000000000000000000000000000
+  element: "\uD654"
+  skillRatio: 1.13
+  cooldown: 0.6
+  damage: 0
+  effectDescription: "\uC815\uAC15\uC774~\uBC1C\uC774 \uBD88\uC5D0 \uAC10\uAE30\uACE0,
+    \uBC1C\uCC28\uAE30\uD558\uBA70 \uC55E\uC73C\uB85C \uBD88\uAF43\uC774 \uB098\uAC10"
+  description: "\uBC94\uC704: \uBAA8\uB4E0 \uC801\uC5D0\uAC8C 1.5 \uD53C\uD574, \uBC00\uC5B4\uB0C4(\uC0AC\uAC70\uB9AC
+    \uB05D\uAE4C\uC9C0)"
+  animDescription: "\uADFC\uC811\uACF5\uACA9 3\uBC88(\uBC1C\uCC28\uAE30)"
+  castPlayerPosition: 0
+  effectPrefab: {fileID: 0}
+  spawnDelay: 0
+  destroyTime: 0

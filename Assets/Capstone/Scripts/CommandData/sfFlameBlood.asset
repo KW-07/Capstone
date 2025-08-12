@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50926abe922d979499907e54deb9daa2, type: 3}
+  m_Name: sfFlameBlood
+  m_EditorClassIdentifier: 
+  commandID: 3303
+  commandNameEng: sfFlameBlood
+  commandNameKor: "\uC5FC\uD608(\u708E\u8840)"
+  commandType: 0
+  stringCommand: "\u2191\u2193W"
+  command: 0400000002000000080000000000000000000000000000000000000000000000
+  element: "\uD654"
+  skillRatio: 1.09
+  cooldown: 2.3
+  damage: 0
+  effectDescription: "\uCE90\uB9AD\uD130\uB97C \uB36E\uC744 \uC815\uB3C4\uB85C \uBD88\uAF43\uC774
+    \uD55C \uBC88 \uBC14\uB2E5\uC5D0\uC11C\uBD80\uD130 \uB04C\uC5B4\uC62C\uB790\uB2E4\uAC00
+    \uC0AC\uB77C\uC9C0\uACE0, \uC9C0\uC18D\uC2DC\uAC04\uB3D9\uC548 \uCE90\uB9AD\uD130
+    \uC8FC\uBCC0\uC5D0 \uC791\uC740 \uBD88\uAF43\uC774 \uD280\uB294 \uBAA8\uC2B5"
+  description: "\uBC84\uD504: \uCE58\uBA85\uD0C0 \uD655\uB960 15% \uC99D\uAC00"
+  animDescription: "\uC778\uC220\uC790\uC138"
+  castPlayerPosition: 0
+  effectPrefab: {fileID: 0}
+  spawnDelay: 0
+  destroyTime: 0

@@ -10,33 +10,33 @@ public class BuffInstance
 
     public bool IsFinished => timeRemaining <= 0;
 
+    // 이 버프가 변경하는 수치값 (예: +10 데미지)
+    public float ModifierValue { get; private set; }
+
     public BuffInstance(Buff buff, CharacterStats target)
     {
-        this.Buff = buff;
+        Buff = buff;
         this.target = target;
         timeRemaining = buff.duration;
 
-        foreach (var effect in buff.effects)
-            effect.OnApply(target);
+        ModifierValue = buff.GetModifierValue();
+        Debug.Log($"BuffInstance 생성: {Buff.buffName}, ModifierValue: {ModifierValue}");
+
+        target.AddBuffModifier(this); // 등록 및 재계산 호출
     }
 
     public void Update(float deltaTime)
     {
         timeRemaining -= deltaTime;
 
-        foreach (var effect in Buff.effects)
-            effect.OnUpdate(target, deltaTime);
-
         if (IsFinished)
         {
-            foreach (var effect in Buff.effects)
-                effect.OnRemove(target);
+            target.RemoveBuffModifier(this); // 해제 및 재계산 호출
         }
     }
 
     public void Refresh()
     {
         timeRemaining = Buff.duration;
-        Debug.Log($"버프 {Buff.buffName} 지속시간 갱신됨: {timeRemaining}초");
     }
 }

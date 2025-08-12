@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e02b50acb6ab5df48bb9d3b948ff5893, type: 3}
+  m_Name: sfHeatAura
+  m_EditorClassIdentifier: 
+  commandID: 3322
+  commandNameEng: sfHeatAura
+  commandNameKor: "\uD654\uAE30(\u706B\u6C23)"
+  commandType: 0
+  stringCommand: "\u2190\u2191W"
+  command: 0100000004000000080000000000000000000000000000000000000000000000
+  element: "\uD654"
+  skillRatio: 1.08
+  cooldown: 2.3
+  damage: 0
+  effectDescription: "\uCE90\uB9AD\uD130 \uC8FC\uBCC0\uC744 \uB3C4\uB294 \uC120\uACFC
+    \uC791\uC740 \uBD88\uAF43. \uD589\uC131\uACFC \uADF8\uAC83\uC758 \uADA4\uB3C4\uCC98\uB7FC"
+  description: "\uBC84\uD504: \uC785\uD788\uB294 \uD53C\uD574\uC758 10% \uD68C\uBCF5"
+  animDescription: "\uC778\uC220\uC790\uC138"
+  castPlayerPosition: 0
+  effectPrefab: {fileID: 0}
+  spawnDelay: 0
+  destroyTime: 0

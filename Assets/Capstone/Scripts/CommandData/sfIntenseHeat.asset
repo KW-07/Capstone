@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c10373fa7fcb091498b5df5c79b2293a, type: 3}
+  m_Name: sfIntenseHeat
+  m_EditorClassIdentifier: 
+  commandID: 3400
+  commandNameEng: sfIntenseHeat
+  commandNameKor: "\uAC15\uC5F4(\u5F37\u71B1)"
+  commandType: 0
+  stringCommand: "\u2190\u2193\u2192W"
+  command: 0100000002000000030000000800000000000000000000000000000000000000
+  element: "\uD654"
+  skillRatio: 1.42
+  cooldown: 3.1
+  damage: 0
+  effectDescription: "\uC9C0\uC18D\uC2DC\uAC04\uB3D9\uC548 \uB4DC\uB798\uACE4\uBCFC
+    \uC0AC\uC774\uC5B4\uC778 \uC8FC\uBCC0 \uD45C\uD604\uCC98\uB7FC \uBD88\uAF43\uC73C\uB85C
+    \uC624\uB77C \uD45C\uD604"
+  description: "\uBC84\uD504: \uACF5\uACA9\uB825 20%, \uC774\uB3D9 \uC18D\uB3C4 30%
+    \uC99D\uAC00"
+  animDescription: "\uC778\uC220\uC790\uC138"
+  castPlayerPosition: 0
+  effectPrefab: {fileID: 0}
+  spawnDelay: 0
+  destroyTime: 0

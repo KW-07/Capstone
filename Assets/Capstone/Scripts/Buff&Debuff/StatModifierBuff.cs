@@ -6,15 +6,10 @@ using UnityEngine;
 
 public class StatModifierBuff : Buff
 {
-    public float value;
+    public float damageIncreaseAmount;
 
-    public override void Apply(CharacterStats target)
+    public override float GetModifierValue()
     {
-        target.ModifyStat(targetStat, value);
-    }
-
-    public override void Remove(CharacterStats target)
-    {
-        target.ModifyStat(targetStat, -value);
+        return (GameObject.Find("Player").GetComponent<PlayerStats>().finalDamage * damageIncreaseAmount);
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
@@ -245,7 +246,7 @@ public class NinNin_CommandSheetLoader : MonoBehaviour
     {
         foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
         {
-            var type = assembly.GetType(className);
+            var type = assembly.GetTypes().FirstOrDefault(t => t.Name == className);
             if (type != null) return type;
         }
         return null;

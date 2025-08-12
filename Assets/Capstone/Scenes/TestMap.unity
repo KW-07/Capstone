@@ -4003,7 +4003,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &660859962
 Transform:
   m_ObjectHideFlags: 0
@@ -34194,8 +34194,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4642286539396853349, guid: a44f654010b6e2a4793ab1fcc829b331, type: 3}
       propertyPath: commandList.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4642286539396853349, guid: a44f654010b6e2a4793ab1fcc829b331, type: 3}
+      propertyPath: commandList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9ce16d37321c95a43b827220a455fc2f, type: 2}
     - target: {fileID: 6340222803183487291, guid: a44f654010b6e2a4793ab1fcc829b331, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.2532766
@@ -34361,6 +34365,14 @@ PrefabInstance:
       propertyPath: currentHealthBar
       value: 
       objectReference: {fileID: 1199250239}
+    - target: {fileID: 5562267292618288105, guid: c1b6a19ccb4820c4cae7ce4c64ce205b, type: 3}
+      propertyPath: commandIcon.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5562267292618288105, guid: c1b6a19ccb4820c4cae7ce4c64ce205b, type: 3}
+      propertyPath: commandIcon.Array.data[7]
+      value: 
+      objectReference: {fileID: 21300000, guid: 0581eb461ce8eaf449f12161e42c6f5f, type: 3}
     - target: {fileID: 5744513895415964633, guid: c1b6a19ccb4820c4cae7ce4c64ce205b, type: 3}
       propertyPath: m_Name
       value: Player
@@ -34476,6 +34488,22 @@ PrefabInstance:
     - target: {fileID: 8020438383054122958, guid: c1b6a19ccb4820c4cae7ce4c64ce205b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684957541257081590, guid: c1b6a19ccb4820c4cae7ce4c64ce205b, type: 3}
+      propertyPath: baseDamage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684957541257081590, guid: c1b6a19ccb4820c4cae7ce4c64ce205b, type: 3}
+      propertyPath: maxStamina
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684957541257081590, guid: c1b6a19ccb4820c4cae7ce4c64ce205b, type: 3}
+      propertyPath: baseDefense
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684957541257081590, guid: c1b6a19ccb4820c4cae7ce4c64ce205b, type: 3}
+      propertyPath: baseMoveSpeed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8861751819674210214, guid: c1b6a19ccb4820c4cae7ce4c64ce205b, type: 3}
       propertyPath: m_AnchorMax.y

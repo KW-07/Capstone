@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,17 +15,20 @@ public class PlayerStats : CharacterStats
 
     private void Start()
     {
+        base.RecalculateStats();
+
         skillTreeManager = SkillTreeManager.instance;
 
         isAlive = true;
     }
 
-    public void RecalculateStats()
+    new public void RecalculateStats()
     {
-        //finalMoveSpeed = baseMoveSpeed;
-        //finalDamage = baseDamage;
-        //finalDefense = baseDefense;
+        // 커맨드
+        base.RecalculateStats();
+        // + 추가 효과
 
+        // 스킬트리
         if (skillTreeManager == null)
         {
             Debug.LogError("[Stat] skillTreeManager가 null입니다! 연결을 확인하세요.");

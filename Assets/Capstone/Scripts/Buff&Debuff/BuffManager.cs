@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BuffManager : MonoBehaviour
 {
-    private List<BuffInstance> activeBuffs = new List<BuffInstance>();
+    public List<BuffInstance> activeBuffs = new List<BuffInstance>();
     private CharacterStats targetStats;
 
     private void Awake()
@@ -12,9 +12,9 @@ public class BuffManager : MonoBehaviour
         targetStats = GetComponent<CharacterStats>();
     }
 
-
     public void AddBuff(Buff newBuff)
     {
+        Debug.Log($"{newBuff.name} Buff On");
         var existing = activeBuffs.Find(b => b.Buff.buffName == newBuff.buffName);
 
         if (existing != null)

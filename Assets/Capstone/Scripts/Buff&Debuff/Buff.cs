@@ -20,12 +20,7 @@ public abstract class Buff : ScriptableObject
     public string buffName;
     public BuffType type;
     public float duration;
-
-    // 스탯 관련 전용
     public BuffTargetStat targetStat;
-    
-    public List<BuffEffect> effects;
 
-    public abstract void Apply(CharacterStats target);
-    public abstract void Remove(CharacterStats target);
+    public abstract float GetModifierValue();
 }
