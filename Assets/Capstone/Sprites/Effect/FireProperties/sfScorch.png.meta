@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,7 +121,154 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: sfScorch_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1400
+        width: 1650
+        height: 700
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e232a8e7275bb3d4491ea72f17da07ae
+      internalID: 1089463089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sfScorch_1
+      rect:
+        serializedVersion: 2
+        x: 1650
+        y: 1400
+        width: 1650
+        height: 700
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5514b5261e36a14bb60b6f2e36324b6
+      internalID: 902279307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sfScorch_2
+      rect:
+        serializedVersion: 2
+        x: 3300
+        y: 1400
+        width: 1650
+        height: 700
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f88e0e3b84a963e449661d6318b984b5
+      internalID: -1527005602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sfScorch_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 700
+        width: 1650
+        height: 700
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b83fad9b88974a4486bdab9287aea2c
+      internalID: 1856095868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sfScorch_4
+      rect:
+        serializedVersion: 2
+        x: 1650
+        y: 700
+        width: 1650
+        height: 700
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9a1ec9d86d3a634b8b6381999bac724
+      internalID: -1768399776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sfScorch_5
+      rect:
+        serializedVersion: 2
+        x: 3300
+        y: 700
+        width: 1650
+        height: 700
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5636acbc5d1e39b479d47e6304dad084
+      internalID: -2078744809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sfScorch_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1650
+        height: 700
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3915b4b943c47124b9b529a1552467f4
+      internalID: 914940313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +279,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sfScorch_0: 1089463089
+      sfScorch_1: 902279307
+      sfScorch_2: -1527005602
+      sfScorch_3: 1856095868
+      sfScorch_4: -1768399776
+      sfScorch_5: -2078744809
+      sfScorch_6: 914940313
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

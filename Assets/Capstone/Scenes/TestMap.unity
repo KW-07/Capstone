@@ -34194,12 +34194,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4642286539396853349, guid: a44f654010b6e2a4793ab1fcc829b331, type: 3}
       propertyPath: commandList.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4642286539396853349, guid: a44f654010b6e2a4793ab1fcc829b331, type: 3}
       propertyPath: commandList.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 9ce16d37321c95a43b827220a455fc2f, type: 2}
+    - target: {fileID: 4642286539396853349, guid: a44f654010b6e2a4793ab1fcc829b331, type: 3}
+      propertyPath: commandList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 08eff633868cf78409179fd2f46d1e6e, type: 2}
     - target: {fileID: 6340222803183487291, guid: a44f654010b6e2a4793ab1fcc829b331, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.2532766

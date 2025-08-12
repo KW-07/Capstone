@@ -76,10 +76,8 @@ public class CharacterStats : MonoBehaviour
     public void TakeDamage(float amount)
     {
         currentHealth -= amount;
-        currentHealth = Mathf.Max(currentHealth, 0f);
 
-        Debug.Log($"{gameObject.name}이(가) {amount}의 데미지를 입음. 남은 체력: {currentHealth}");
-
+        Debug.Log($"{gameObject.name}이(가) {amount} 데미지를 입음. 남은 체력: {currentHealth}");
         if (currentHealth <= 0)
         {
             Die();

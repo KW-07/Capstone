@@ -27,6 +27,7 @@ MonoBehaviour:
   description: "\uBC94\uC704: \uB0B4 \uBAA8\uB4E0 \uC801 1.2 \uB370\uBBF8\uC9C0"
   animDescription: "\uADFC\uC811\uACF5\uACA9 1\uBC88"
   castPlayerPosition: 0
-  effectPrefab: {fileID: 0}
+  effectPrefab: {fileID: 8970462088695189450, guid: cf0f3307120125e419e2997b538e7db1, type: 3}
   spawnDelay: 0
-  destroyTime: 0
+  destroyTime: 0.5
+  hitCount: 1
