@@ -27,6 +27,7 @@ MonoBehaviour:
     \uACF5\uACA9\uB825*1.5 \uD53C\uD574"
   animDescription: "\uC6D0\uAC70\uB9AC \uACF5\uACA9"
   castPlayerPosition: 0
-  effectPrefab: {fileID: 0}
+  effectPrefab: {fileID: 883838065876798294, guid: caf599d0bae6d3c4ea2abed38ee56f92, type: 3}
   spawnDelay: 0
-  destroyTime: 0
+  destroyTime: 3
+  projectileSpeed: 10

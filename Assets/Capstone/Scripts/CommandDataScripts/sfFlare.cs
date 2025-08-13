@@ -10,5 +10,7 @@ public class sfFlare : CommandData
         //     GameObject effect = Instantiate(effectPrefab, castPoint.transform.position, Quaternion.identity);
         //     Destroy(effect, destroyTime);
         // }
+
+
     }
 }
