@@ -19,6 +19,9 @@ public class CharacterStats : MonoBehaviour
     public float baseDefense;
     public float finalDefense;
 
+    public float baseChriticalChance;
+    public float finalChriticalChance;
+
     private List<BuffInstance> activeBuffs = new List<BuffInstance>();
 
     private void Start()
@@ -52,6 +55,9 @@ public class CharacterStats : MonoBehaviour
                     break;
                 case BuffTargetStat.Defence:
                     finalDefense += buff.ModifierValue;
+                    break;
+                case BuffTargetStat.ChriticalChance:
+                    finalChriticalChance += buff.ModifierValue;
                     break;
             }
         }

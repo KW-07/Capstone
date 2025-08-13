@@ -29,6 +29,8 @@ MonoBehaviour:
   description: "\uBC84\uD504: \uCE58\uBA85\uD0C0 \uD655\uB960 15% \uC99D\uAC00"
   animDescription: "\uC778\uC220\uC790\uC138"
   castPlayerPosition: 0
-  effectPrefab: {fileID: 0}
+  effectPrefab: {fileID: 1480389987218566094, guid: 277bfc135b00c0b4a94e60853c059204, type: 3}
   spawnDelay: 0
   destroyTime: 0
+  buffEffect: {fileID: 0}
+  chriticalChanceBuff: {fileID: 11400000, guid: 7bb3df732202e13428241187985befc6, type: 2}

@@ -13,7 +13,8 @@ public enum BuffTargetStat
     Health,
     MoveSpeed,
     Damage,
-    Defence
+    Defence,
+    ChriticalChance
 }
 public abstract class Buff : ScriptableObject
 {
