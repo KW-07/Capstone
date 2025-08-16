@@ -16,4 +16,4 @@ MonoBehaviour:
   type: 0
   duration: 15
   targetStat: 2
-  damageIncreaseAmount: 0.2
+  increaseAmount: 0.2

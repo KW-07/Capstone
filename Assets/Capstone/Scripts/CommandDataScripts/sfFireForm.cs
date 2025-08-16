@@ -9,14 +9,6 @@ public class sfFireForm : CommandData
     
     public override void ActivateSkill(GameObject castPoint, GameObject target)
     {
-        Debug.Log($"{commandNameKor} 스킬 사용");
-
-        if (castPoint == null)
-        {
-            Debug.LogWarning("CastPoint가 없습니다.");
-            return;
-        }
-
         if(effectPrefab != null)
         {
             GameObject effectInstance = Instantiate(effectPrefab, castPoint.transform.position, Quaternion.identity);
@@ -31,10 +23,6 @@ public class sfFireForm : CommandData
         if(buffManager != null && attackPowerBuff != null)
         {
             buffManager.AddBuff(attackPowerBuff);
-        }
-        else
-        {
-            Debug.LogWarning("BuffManager / attackPowerBuff 없음");
         }
     }
 }
