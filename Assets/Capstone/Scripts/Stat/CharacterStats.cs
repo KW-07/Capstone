@@ -29,6 +29,9 @@ public class CharacterStats : MonoBehaviour
     public float baseEvadeChance;
     public float finalEvadeChance;
 
+    public float baseLiftDrain;
+    public float finalLiftDrain;
+
     private List<BuffInstance> activeBuffs = new List<BuffInstance>();
 
     private void Start()
@@ -52,6 +55,7 @@ public class CharacterStats : MonoBehaviour
         finalDefense = baseDefense;
         finalChriticalChance = baseChriticalChance;
         finalEvadeChance = baseEvadeChance;
+        finalLiftDrain = baseLiftDrain;
 
         Debug.Log("Initialize Complete!");
 
@@ -76,6 +80,9 @@ public class CharacterStats : MonoBehaviour
                     break;
                 case BuffTargetStat.Evade:
                     finalEvadeChance += buff.ModifierValue;
+                    break;
+                case BuffTargetStat.LiftDrain:
+                    finalLiftDrain += buff.ModifierValue;
                     break;
             }
         }

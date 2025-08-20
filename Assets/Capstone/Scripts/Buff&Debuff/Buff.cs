@@ -15,7 +15,8 @@ public enum BuffTargetStat
     Damage,
     Defence,
     ChriticalChance,
-    Evade
+    Evade,
+    LiftDrain
 }
 public abstract class Buff : ScriptableObject
 {

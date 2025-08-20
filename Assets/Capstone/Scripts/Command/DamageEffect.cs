@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScorchHit : MonoBehaviour
+public class DamageEffect : MonoBehaviour
 {
     public float damage;
     public int maxHitCount = 3;
 
     public int hitCount = 0;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (hitCount >= maxHitCount)
             return;

@@ -16,7 +16,7 @@ public class sfBlazeLight : CommandData
             GameObject effect = Instantiate(effectPrefab, castPoint.transform.position, rot);
 
             // АјАн
-            var hitComponent = effect.AddComponent<ScorchHit>();
+            var hitComponent = effect.AddComponent<DamageEffect>();
             hitComponent.damage = damage;
             hitComponent.hitCount = hitCount;
 

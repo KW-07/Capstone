@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3fd8e3d951f7a1459387316f260af23, type: 3}
-  m_Name: ChriticalChance
+  m_Name: ChriticalChanceBuff
   m_EditorClassIdentifier: 
   buffName: IncreaseChriticalChance
   type: 0
