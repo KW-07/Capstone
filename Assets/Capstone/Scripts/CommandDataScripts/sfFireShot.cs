@@ -13,7 +13,7 @@ public class sfFireShot : CommandData
         {
             GameObject projectile = Instantiate(effectPrefab, castPoint.transform.position, castPoint.transform.rotation);
             Projectile projectileScript = projectile.GetComponent<Projectile>();
-            projectileScript.Initialize(target, damage, projectileSpeed, destroyTime);
+            projectileScript.Initialize(target, damage, projectileSpeed, destroyTime, false);
         }
     }
 }

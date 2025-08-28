@@ -14,8 +14,10 @@ public class sfScorch : CommandData
             Quaternion rot = Player.instance.facingRight ? Quaternion.identity : Quaternion.Euler(0, 0, 180);
             GameObject effect = Instantiate(effectPrefab, castPoint.transform.position, rot);
 
+            var playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
+
             var hitComponent = effect.AddComponent<DamageEffect>();
-            hitComponent.damage = damage;
+            hitComponent.damage = playerStats.finalDamage * damage;
             hitComponent.hitCount = hitCount;
 
             Destroy(effect, destroyTime);

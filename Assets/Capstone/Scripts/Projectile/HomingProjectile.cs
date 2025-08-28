@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HomingProjectile : Projectile
 {
-    public float rotateSpeed = 200f;
+    new public float rotateSpeed = 200f;
 
     private Rigidbody2D rb;
 

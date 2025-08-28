@@ -22,6 +22,7 @@ public class CommandData : ScriptableObject
     public string element;
     public float skillRatio;
     public float cooldown;
+    public float baseDamage;
     public float damage;
     [TextArea(3, 5)] public string effectDescription;
     [TextArea(3, 5)] public string description;

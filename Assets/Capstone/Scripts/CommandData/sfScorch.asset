@@ -21,7 +21,8 @@ MonoBehaviour:
   element: "\uD654"
   skillRatio: 0.84
   cooldown: 1
-  damage: 0
+  baseDamage: 1.2
+  damage: 1.2
   effectDescription: "\uC8FC\uBA39\uC744 \uB0B4\uC9C0\uB97C \uB54C, \uD314\uAFC8\uCE58\uBD80\uD130
     \uC8FC\uBA39\uC744 \uB530\uB77C \uC55E\uC73C\uB85C \uCB49 \uB098\uC544\uAC10"
   description: "\uBC94\uC704: \uB0B4 \uBAA8\uB4E0 \uC801 1.2 \uB370\uBBF8\uC9C0"

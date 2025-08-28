@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3fd8e3d951f7a1459387316f260af23, type: 3}
-  m_Name: attackPowerBuff
+  m_Name: MovementBuff
   m_EditorClassIdentifier: 
-  buffName: IncreaseAttackPower
+  buffName: 
   type: 0
-  duration: 12
-  targetStat: 2
-  increaseAmount: 0.2
+  duration: 20
+  targetStat: 1
+  increaseAmount: 0.3

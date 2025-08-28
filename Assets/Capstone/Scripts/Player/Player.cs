@@ -71,6 +71,9 @@ public class Player : LivingEntity
     float rangeCooldownTimer;
     [SerializeField] private float attackCountInitTime;
 
+    public int attackStackCount = 0;
+    public float stackDamage;
+
     [Header("µ¥¹ÌÁö")]
     [SerializeField]private float _playerDamage;
 
@@ -378,19 +381,28 @@ public class Player : LivingEntity
 
             if (!GameManager.instance.isUI && GameManager.instance.isGrounded && !GameManager.instance.isCommand)
             {
-                SkillSystem.instance.command = normalAttack;
+                if (attackStackCount > 0)
+                {
+                    SkillSystem.instance.command.damage = stackDamage;
+                }
+                else
+                {
+                    SkillSystem.instance.command.damage = SkillSystem.instance.command.baseDamage;
 
-                cooldownTimer = initTimeMultipleAttack;
-                normalAttack.multipleAttack++;
-                if (normalAttack.multipleAttack > 3)
-                    normalAttack.multipleAttack = 1;
+                    SkillSystem.instance.command = normalAttack;
 
-                skillSystem.UseSkill(shootPoint.gameObject, neareastEnemy);
+                    cooldownTimer = initTimeMultipleAttack;
+                    normalAttack.multipleAttack++;
+                    if (normalAttack.multipleAttack > 3)
+                        normalAttack.multipleAttack = 1;
 
-                Debug.Log(normalAttack.multipleAttack);
+                    skillSystem.UseSkill(shootPoint.gameObject, neareastEnemy);
 
-                animator.SetTrigger("isMeleeAttack");
-                animator.SetFloat("attackCount", normalAttack.multipleAttack);
+                    Debug.Log(normalAttack.multipleAttack);
+
+                    animator.SetTrigger("isMeleeAttack");
+                    animator.SetFloat("attackCount", normalAttack.multipleAttack);
+                }
             }
         }
     }
