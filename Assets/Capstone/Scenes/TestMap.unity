@@ -3831,8 +3831,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ff160e82ec76d4696000aeda8c03ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testfirstcount: 40
-  testlastCount: 54
+  testfirstcount: 2
+  testlastCount: 21
   allGenerate: 0
 --- !u!4 &577277253
 Transform:

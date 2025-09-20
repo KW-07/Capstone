@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06182a28c0664ea4f87b83334cba618e, type: 3}
+  m_Name: swLead
+  m_EditorClassIdentifier: 
+  commandID: 1212
+  commandNameEng: swLead
+  commandNameKor: "\uBE59\uC7A5(\u6C37\u969C)"
+  commandType: 0
+  stringCommand: "\u2190S"
+  command: 0100000006000000000000000000000000000000000000000000000000000000
+  element: "\uC218"
+  skillRatio: 1.16
+  cooldown: 2.1
+  baseDamage: 0
+  damage: 0
+  effectDescription: "\uBE59\uC7A5\uB294 \uC801 \uBC29\uD5A5\uC73C\uB85C \uCC9C\uCC9C\uD788
+    \uC720\uB3C4\uB418\uB294 \uBC18\uD22C\uBA85 \uBB3C\uBC29\uC6B8. \uB0B4\uBD80\uC5D0\uB294
+    \uC18C\uC6A9\uB3CC\uC774 \uC774\uD399\uD2B8. \uC811\uCD09 \uC2DC \uB454\uD654
+    \uC774\uD399\uD2B8\uAC00 \uBC88\uAC1C\uCC98\uB7FC \uBC18\uC9DD\uC774\uBA70 \uBC1C\uB3D9.
+    (\uACC4\uC218: 1.16\uBC30, \uCEE4\uB9E8\uB4DC: \u2190S)"
+  description: "\uBE59\uC7A5\uAC00 \uC801\uC744 \uCD94\uC801\uD574 \uBA85\uC911 \uC2DC
+    \uB454\uD654 \uC720\uBC1C (1.16\uBC30 \uD53C\uD574)"
+  animDescription: 
+  castPlayerPosition: 0
+  effectPrefab: {fileID: 0}
+  spawnDelay: 0
+  destroyTime: 0
+  initCount: 0
+  projectileSpeed: 0

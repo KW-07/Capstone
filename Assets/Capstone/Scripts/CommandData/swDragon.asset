@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54ceb7771cf034c42b4d7e6389b2c470, type: 3}
+  m_Name: swDragon
+  m_EditorClassIdentifier: 
+  commandID: 1341
+  commandNameEng: swDragon
+  commandNameKor: "\uC218\uB8E1(\u6C34\u9F8D)"
+  commandType: 0
+  stringCommand: "\u2192\u2193W"
+  command: 0300000002000000080000000000000000000000000000000000000000000000
+  element: "\uC218"
+  skillRatio: 1.43
+  cooldown: 3.3
+  baseDamage: 0
+  damage: 0
+  effectDescription: "\uC218\uB8E1\uB294 \uCE90\uB9AD\uD130 \uC911\uC2EC\uC5D0 \uBC18\uD22C\uBA85\uD55C
+    \uBB3C\uB9C9\uC774 3\uACB9\uC73C\uB85C \uC0DD\uC131\uB428. \uBC14\uAE65\uBD80\uD130
+    \uC548\uCABD\uC73C\uB85C \uC21C\uD658\uD558\uBA70 \uBB3C\uACB0\uCE58\uB294 \uD6A8\uACFC.
+    \uC9C0\uC18D \uC2DC\uAC04 \uB0B4\uB0B4 \uD750\uB984\uC774 \uC720\uC9C0\uB428.
+    (\uACC4\uC218: 1.43\uBC30, \uCEE4\uB9E8\uB4DC: \u2192\u2193A)"
+  description: "\uC218\uB8E1\uB85C \uC778\uD574 \uD68C\uD53C\uC728 \uC99D\uAC00 \uB610\uB294
+    \uC801\uC911\uB960 \uAC10\uC18C \uD6A8\uACFC \uBC1C\uC0DD (\uC9C0\uC18D)"
+  animDescription: 
+  castPlayerPosition: 0
+  effectPrefab: {fileID: 0}
+  spawnDelay: 0
+  destroyTime: 0
+  evadeChanceBuff: {fileID: 0}

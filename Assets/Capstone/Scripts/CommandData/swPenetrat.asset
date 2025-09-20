@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de0b736053a43d949a5d30df7944a70e, type: 3}
+  m_Name: swPenetrat
+  m_EditorClassIdentifier: 
+  commandID: 1231
+  commandNameEng: swPenetrat
+  commandNameKor: "\uB0C9\uC218\uCE68\uD22C(\u51B7\u6C34\u6D78\u900F)"
+  commandType: 0
+  stringCommand: "\u2193\u2190S"
+  command: 0200000001000000060000000000000000000000000000000000000000000000
+  element: "\uC218"
+  skillRatio: 1.3
+  cooldown: 3.2
+  baseDamage: 0
+  damage: 0
+  effectDescription: "\uC720\uB3C4\uD615 \uD22C\uC0AC\uCCB4\uAC00 \uBB3C\uB85C \uB9CC\uB4E4\uC5B4\uC9C4
+    \uCC44 \uB9F4\uB3CC\uBA70 \uB0A0\uC544\uAC10. \uC801\uC911 \uC2DC \uD30C\uC5F4\uB418\uBA70
+    \uD37C\uC9C0\uB294 \uB0C9\uC218 \uC548\uAC1C \uD6A8\uACFC\uB85C \uC801 \uB454\uD654
+    \uC5F0\uCD9C."
+  description: "\uCC28\uAC00\uC6B4 \uBB3C\uC904\uAE30\uB97C \uC720\uB3C4\uD0C4\uCC98\uB7FC
+    \uB0A0\uB824 \uC801\uC911 \uC2DC \uAC10\uC18D \uD6A8\uACFC \uBC1C\uC0DD (\uACC4\uC218:
+    1.3\uBC30, \uCEE4\uB9E8\uB4DC: \u2193\u2190A)"
+  animDescription: 
+  castPlayerPosition: 0
+  effectPrefab: {fileID: 0}
+  spawnDelay: 0
+  destroyTime: 0

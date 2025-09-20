@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b254fcc04cc64ac44acdb4be79d8266e, type: 3}
+  m_Name: swPowder
+  m_EditorClassIdentifier: 
+  commandID: 1330
+  commandNameEng: swPowder
+  commandNameKor: "\uBE59\uBD84(\u6C37\u7C89)"
+  commandType: 0
+  stringCommand: "\u2193\u2192A"
+  command: 0200000003000000050000000000000000000000000000000000000000000000
+  element: "\uC218"
+  skillRatio: 1.46
+  cooldown: 3.1
+  baseDamage: 0
+  damage: 0
+  effectDescription: "\uBE59\uBD84 \uC0AC\uC6A9 \uC2DC \uBAB8 \uC8FC\uC704\uC5D0
+    \uBB3C\uAE30\uB465\uC774\uB098 \uD68C\uC804\uD558\uB294 \uBB3C\uBC29\uC6B8\uC774
+    \uD558\uB098\uC529 \uC0DD\uC131\uB428. \uC2A4\uD0DD\uC774 \uC313\uC77C\uC218\uB85D
+    \uBE60\uB974\uAC8C \uB3CC\uB2E4\uAC00 \uCD5C\uC885 \uD3ED\uBC1C \uC2DC \uBC14\uB2E5\uC5D0\uC11C
+    \uBB3C\uC904\uAE30 \uC138 \uBC29\uD5A5\uC73C\uB85C \uD280\uC5B4\uC624\uB984.
+    (\uACC4\uC218: 1.46\uBC30, \uCEE4\uB9E8\uB4DC: \u2193\u2192S)"
+  description: "\uBE59\uBD84 \uC0AC\uC6A9 \uC2DC \uC2A4\uD0DD 1 \uD68D\uB4DD. \uC77C\uC815
+    \uC2A4\uD0DD \uC774\uC0C1 \uC2DC \uC790\uB3D9 \uD3ED\uBC1C (1.46\uBC30 \uD53C\uD574)"
+  animDescription: 
+  castPlayerPosition: 0
+  effectPrefab: {fileID: 0}
+  spawnDelay: 0
+  destroyTime: 0
+  command_sfScorch: {fileID: 0}
+  stackCount: 0
+  stackDamage: 0
