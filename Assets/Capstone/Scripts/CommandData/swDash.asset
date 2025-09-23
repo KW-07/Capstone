@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40a569912dd31f248a9f4d5ed6030943, type: 3}
+  m_Name: swDash
+  m_EditorClassIdentifier: 
+  commandID: 1340
+  commandNameEng: swDash
+  commandNameKor: "\uB958\uC5F0\uD0C0(\u6D41\u7159\u6253)"
+  commandType: 0
+  stringCommand: "\u2192\u2192D"
+  command: 0300000003000000070000000000000000000000000000000000000000000000
+  element: "\uC218"
+  skillRatio: 1.4
+  cooldown: 3.5
+  baseDamage: 0
+  damage: 0
+  effectDescription: "\uCC98\uC74C 2\uD504\uB808\uC784 \uB3D9\uC548 \uCE90\uB9AD\uD130\uB294
+    \uBB3C \uC704\uB97C \uBBF8\uB044\uB7EC\uC9C0\uBA70 \uC804\uC9C4. \uC774\uD6C4
+    \uC774\uB3D9 \uADA4\uC801 \uC704\uB85C \uD30C\uB3D9\uC774 \uD280\uC5B4\uC624\uB974\uACE0,
+    \uCD5C\uC885 \uD504\uB808\uC784\uC5D0\uC11C \uBB3C\uBCF4\uB77C\uAC00 \uC77C\uC5B4\uB0A8."
+  description: "\uBB3C\uACB0 \uC704\uB97C \uBBF8\uB044\uB7EC\uC9C0\uB4EF \uC774\uB3D9\uD558\uBA70
+    \uC2A4\uD0DD \uD68D\uB4DD. \uACBD\uB85C \uC0C1 \uC801\uC5D0\uAC8C \uC9C0\uC18D
+    \uD53C\uD574 (\uACC4\uC218: 1.4\uBC30, \uCEE4\uB9E8\uB4DC: \u2192\u2192D)"
+  animDescription: 
+  castPlayerPosition: 0
+  effectPrefab: {fileID: 0}
+  spawnDelay: 0
+  destroyTime: 0
+  command_sfScorch: {fileID: 0}
+  stackCount: 0
+  stackDamage: 0

@@ -1,11 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Kasa : LivingEntity
+
+public class Kasa : MonoBehaviour, LivingEntity
 {
     public Transform playerTransform;
     public GameObject healthBar; // 몬스터 방향전환시 HP바가 회전하지 않게 하기 위해 받아옴
+
+    [Header("HP")]
+    public Image currentHealthBar;
+    public float maxHealth = 100f; //시작 체력
+    private float currentHealth;//현재 체력
+    private bool isdead;
 
     [Header("Range")]
     public float attackRange = 1.5f;
@@ -37,6 +45,11 @@ public class Kasa : LivingEntity
     private Rigidbody2D rb;
     private BTSelector root;
 
+    private void Awake()
+    {
+        InitialSet();
+    }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -63,15 +76,10 @@ public class Kasa : LivingEntity
         BTSequence patrolSequence = new BTSequence();
         patrolSequence.AddChild(new BTAction(Patrol));
 
-        BTSequence deathSequence = new BTSequence();
-        deathSequence.AddChild(new BTCondition(() => dead));
-        deathSequence.AddChild(new BTAction(Die));
-
-        root.AddChild(deathSequence);
-        root.AddChild(patrolSequence);
         root.AddChild(chaseSequence);
         root.AddChild(retreatSequence); // 먼저 회피 행동 시도
         root.AddChild(attackSequence);
+        root.AddChild(patrolSequence);
     }
 
     private void Update()
@@ -113,21 +121,18 @@ public class Kasa : LivingEntity
     private bool IsPlayerDetected()
     {
         float dist = Get2DDistance(transform.position, playerTransform.position);
-        //Debug.Log($"IsPlayerDetected? Distance: {dist} / DetectionRange: {detectionRange} / Result: {dist <= detectionRange}");
         return dist <= detectionRange;
     }
 
     private bool IsPlayerInRange()
     {
         float dist = Get2DDistance(transform.position, playerTransform.position);
-        //Debug.Log($"IsPlayerInRange? Distance: {dist} / AttackRange: {attackRange} / Result: {dist <= attackRange}");
         return dist <= attackRange;
     }
 
     private bool IsPlayerTooClose()
     {
         float dist = Get2DDistance(transform.position, playerTransform.position);
-        //Debug.Log($"IsPlayerTooClose? Distance: {dist} / RetreatDistance: {retreatDistance} / Result: {dist <= retreatDistance}");
         return dist <= retreatDistance;
     }
     //private bool IsPlayerInRange() => Vector3.Distance(transform.position, playerTransform.position) <= attackRange;
@@ -136,11 +141,26 @@ public class Kasa : LivingEntity
     private bool CanAttack() => Time.time >= nextAttackTime;
     private bool CanRetreat() => Time.time >= nextRetreatTime;
     private void SetNextAttackTime() => nextAttackTime = Time.time + attackCooldown;
+    public void InitialSet()
+    {
+        currentHealth = maxHealth;
+        isdead = false;
+    }
+    public void CheckHp()
+    {
+        if (currentHealthBar != null)
+            currentHealthBar.fillAmount = currentHealth / maxHealth;
 
+        if (currentHealth <= 0)
+        {
+            isdead = true;
+        }
+        Debug.Log($"체력바 갱신 fillAmount : {currentHealthBar.fillAmount}");
+    }
     private BTNodeState Attack()
     {
         LookAtPlayer();
-        animator.SetTrigger("attack");
+        animator.SetTrigger("Attack");
         SetNextAttackTime();
         return BTNodeState.Success;
     }
@@ -153,16 +173,17 @@ public class Kasa : LivingEntity
             if (target.CompareTag("Player"))
             {
                 Debug.Log("Player hit!");
-                target.GetComponent<LivingEntity>().OnDamage(damage);
+                target.GetComponent<Player>().TakeDamage(damage);
             }
         }
     }
-
     private BTNodeState RetreatJump()
     {
-        float yRotation = transform.rotation.eulerAngles.y;
-        float direction = (yRotation == 180f) ? 1 : -1;
+        // 플레이어가 내 왼쪽에 있으면 오른쪽(+1), 오른쪽에 있으면 왼쪽(-1)
+        float direction = (playerTransform.position.x < transform.position.x) ? 1 : -1;
+
         rb.velocity = new Vector2(direction * moveSpeed * 1.5f, jumpForce);
+
         nextRetreatTime = Time.time + retreatCooldown;
         return BTNodeState.Success;
     }
@@ -181,46 +202,71 @@ public class Kasa : LivingEntity
         rb.velocity = new Vector2(nextMove * moveSpeed, rb.velocity.y);
         return BTNodeState.Running;
     }
-
     private void Think()
     {
         nextMove = Random.Range(-1, 2);
-        animator.SetInteger("think", nextMove);
+        animator.SetInteger("Think", nextMove);
         Debug.Log(nextMove);
+
         if (nextMove != 0)
         {
-            float yRotation = nextMove == -1 ? 180f : 0f;
-            transform.rotation = Quaternion.Euler(0, yRotation, 0);
+            Vector3 scale = transform.localScale;
+            scale.x = nextMove == -1 ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
+            transform.localScale = scale;
         }
+
         Invoke("Think", nextThinkTime);
     }
 
-    private BTNodeState Die()
+    /*    private void Think()
+        {
+            nextMove = Random.Range(-1, 2);
+            animator.SetInteger("Think", nextMove);
+            Debug.Log(nextMove);
+            if (nextMove != 0)
+            {
+                float yRotation = nextMove == -1 ? 180f : 0f;
+                transform.rotation = Quaternion.Euler(0, yRotation, 0);
+            }
+            Invoke("Think", nextThinkTime);
+        }*/
+
+    public void OnDamage(float damage)
     {
-        OnDie();
-        return BTNodeState.Success;
-    }
-    public override void OnDamage(float damage)
-    {
-        base.OnDamage(damage);
-        Debug.Log("피격됨");
-        animator.SetTrigger("hit");
-    }
-    public override void OnDie()
-    {
-        base.OnDie();
-        rb.velocity = Vector2.zero;
-        GetComponent<Collider2D>().enabled = false;
-        Destroy(this.gameObject);
+        currentHealth -= damage;
+        CheckHp();
+        Debug.Log(gameObject.name + " took damage! Current Health: " + currentHealth);
+
+        if (currentHealth <= 0 && isdead)
+        {
+            animator.SetTrigger("Die");
+        }
     }
 
+    private void Die()
+    {
+        Debug.Log("Monster is Dead!");
+        rb.velocity = Vector2.zero;  // 움직임 정지
+        GetComponent<Collider2D>().enabled = false;  // 충돌 제거
+        Destroy(this.gameObject);
+    }
     private void LookAtPlayer()
     {
         if (playerTransform == null) return;
 
         bool lookLeft = playerTransform.position.x < transform.position.x;
-        transform.rotation = Quaternion.Euler(0, lookLeft ? 180f : 0f, 0);
+        Vector3 scale = transform.localScale;
+        scale.x = lookLeft ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
+        transform.localScale = scale;
     }
+
+    /*    private void LookAtPlayer()
+        {
+            if (playerTransform == null) return;
+
+            bool lookLeft = playerTransform.position.x < transform.position.x;
+            transform.rotation = Quaternion.Euler(0, lookLeft ? 180f : 0f, 0);
+        }*/
 
     private void OnDrawGizmos()
     {

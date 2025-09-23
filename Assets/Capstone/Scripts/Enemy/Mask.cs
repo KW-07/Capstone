@@ -1,11 +1,18 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
-public class Mask : LivingEntity
+public class Mask : MonoBehaviour, LivingEntity
 {
     public Transform playerTransform;
     public GameObject healthBar; // 몬스터 방향전환시 HP바가 회전하지 않게 하기 위해 받아옴
+
+    [Header("HP")]
+    public Image currentHealthBar;
+    public float maxHealth = 100f; //시작 체력
+    private float currentHealth;//현재 체력
+    private bool isdead; //사망 상태
 
     [Header("Ranges")]
     public float detectRange = 6f;
@@ -103,6 +110,20 @@ public class Mask : LivingEntity
     private bool IsInDashRange()
     {
         return Vector2.Distance(transform.position, playerTransform.position) <= dashRange;
+    }
+    public void InitialSet()
+    {
+        isdead = false;
+        currentHealth = maxHealth;
+    }
+
+    public void CheckHp()
+    {
+        // 데미지 공식 어쩌구... 난 귀찮아 저쩌구...
+        if (currentHealthBar != null)
+            currentHealthBar.fillAmount = currentHealth / maxHealth;
+
+        Debug.Log($"체력바 갱신 fillAmount : {currentHealthBar.fillAmount}");
     }
 
     private BTNodeState Idle()
@@ -271,6 +292,25 @@ public class Mask : LivingEntity
         lastDirection = 0;
     }
 
+    public void OnDamage(float damage)
+    {
+        currentHealth -= damage;
+        CheckHp();
+        Debug.Log(gameObject.name + " took damage! Current Health: " + currentHealth);
+
+        if (currentHealth <= 0 && isdead)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log("Monster is Dead!");
+        rb.velocity = Vector2.zero;  // 움직임 정지
+        GetComponent<Collider2D>().enabled = false;  // 충돌 제거
+        Destroy(this.gameObject);
+    }
 
     private void LookAtPlayer()
     {

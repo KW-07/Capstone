@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 518f260f44964094d80a3909805cf3db, type: 3}
+  m_Name: swPrison
+  m_EditorClassIdentifier: 
+  commandID: 1590
+  commandNameEng: swPrison
+  commandNameKor: "\uC2EC\uD574\uACB0\uACC4(\u6DF1\u6D77\u7D50\u754C)"
+  commandType: 0
+  stringCommand: "\u2191\u2192\u2193\u2190W"
+  command: 0400000003000000020000000100000008000000000000000000000000000000
+  element: "\uC218"
+  skillRatio: 2.08
+  cooldown: 15
+  baseDamage: 0
+  damage: 0
+  effectDescription: "\uC2EC\uD574\uACB0\uACC4\uB294 \uD654\uBA74 \uC804\uCCB4\uB97C
+    \uD478\uB978\uBE5B\uC73C\uB85C \uB36E\uACE0, \uCE90\uB9AD\uD130 \uC911\uC2EC\uC5D0\uC11C
+    3\uC911 \uD30C\uB3D9\uC774 \uD130\uC9D0. \uC678\uACFD\uC73C\uB85C \uD655\uC0B0\uB418\uB294
+    \uACE0\uC18D \uBB3C\uACB0 + \uC218\uBA74\uC774 \uC77C\uB801\uC774\uB294 \uD6A8\uACFC
+    \uD3EC\uD568. \uC794\uBB3C\uACB0\uC740 \uD654\uBA74 \uB05D\uAE4C\uC9C0 \uB2FF\uC74C.
+    (\uACC4\uC218: 2.08\uBC30, \uCEE4\uB9E8\uB4DC: \u2191\u2192\u2193\u2190W)"
+  description: "\uC2EC\uD574\uACB0\uACC4\uB97C \uBC1C\uB3D9\uD574 \uBC94\uC704 \uB0B4
+    \uBAA8\uB4E0 \uC801\uC5D0\uAC8C \uB300\uADDC\uBAA8 \uD53C\uD574 (2.08\uBC30 \uD53C\uD574)"
+  animDescription: 
+  castPlayerPosition: 0
+  effectPrefab: {fileID: 0}
+  spawnDelay: 0
+  destroyTime: 0
+  hitCount: 0
