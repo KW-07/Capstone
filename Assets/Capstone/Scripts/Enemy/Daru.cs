@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEngine.GraphicsBuffer;
 
-public class Daru : LivingEntity
+public class Daru : MonoBehaviour, LivingEntity
 {
     public Transform playerTransform;
     public GameObject healthBar; // 몬스터 방향전환시 HP바가 회전하지 않게 하기 위해 받아옴
+
+    [Header("HP")]
+    public Image currentHealthBar;
+    public float maxHealth = 100f; //시작 체력
+    private float currentHealth;//현재 체력
 
     [Header("Range")]
     public float attackRange = 1.5f;
@@ -37,6 +43,7 @@ public class Daru : LivingEntity
         animator = GetComponent<Animator>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         Invoke("Think", nextThinkTime);
+        InitialSet();
 
         root = new BTSelector();
 
@@ -52,11 +59,6 @@ public class Daru : LivingEntity
         BTSequence patrolSequence = new BTSequence();
         patrolSequence.AddChild(new BTAction(Patrol));
 
-        BTSequence deathSequence = new BTSequence();
-        deathSequence.AddChild(new BTCondition(() => dead));
-        deathSequence.AddChild(new BTAction(Die));
-
-        root.AddChild(deathSequence);
         root.AddChild(attackSequence);
         root.AddChild(chaseSequence);
         root.AddChild(patrolSequence);
@@ -101,14 +103,12 @@ public class Daru : LivingEntity
     private bool IsPlayerDetected()
     {
         float dist = Get2DDistance(transform.position, playerTransform.position);
-        //Debug.Log($"IsPlayerDetected? Distance: {dist} / DetectionRange: {detectionRange} / Result: {dist <= detectionRange}");
         return dist <= detectionRange;
     }
 
     private bool IsPlayerInRange()
     {
         float dist = Get2DDistance(transform.position, playerTransform.position);
-        //Debug.Log($"IsPlayerInRange? Distance: {dist} / AttackRange: {attackRange} / Result: {dist <= attackRange}");
         return dist <= attackRange;
     }
 
@@ -116,12 +116,24 @@ public class Daru : LivingEntity
     // private bool IsPlayerDetected() => Vector3.Distance(transform.position, playerTransform.position) <= detectionRange;
     private bool CanAttack() => Time.time >= nextAttackTime;
     private void SetNextAttackTime() => nextAttackTime = Time.time + attackCooldown;
+    public void InitialSet()
+    {
+        currentHealth = maxHealth;
+    }
 
+    public void CheckHp()
+    {
+        // 데미지 공식 어쩌구... 난 귀찮아 저쩌구...
+        if (currentHealthBar != null)
+            currentHealthBar.fillAmount = currentHealth / maxHealth;
+
+        Debug.Log($"체력바 갱신 fillAmount : {currentHealthBar.fillAmount}");
+    }
     #region attack
     private BTNodeState Attack()
     {
         LookAtPlayer();
-        animator.SetTrigger("attack");
+        animator.SetTrigger("Attack");
         SetNextAttackTime();
         return BTNodeState.Success;
     }
@@ -134,7 +146,7 @@ public class Daru : LivingEntity
             if (target.CompareTag("Player"))
             {
                 Debug.Log("Hit Player!");
-                target.GetComponent<LivingEntity>().OnDamage(damage);
+                target.GetComponent<Player>().TakeDamage(damage);
             }
         }
     }
@@ -162,31 +174,45 @@ public class Daru : LivingEntity
     private void Think()
     {
         nextMove = Random.Range(-1, 2);
-        animator.SetInteger("think", nextMove);
-        //Debug.Log(nextMove);
+        animator.SetInteger("Think", nextMove);
         if (nextMove != 0)
         {
-            float yRotation = nextMove == -1 ? 180f : 0f;
-            transform.rotation = Quaternion.Euler(0, yRotation, 0);
+            Vector3 scale = transform.localScale;
+            scale.x = nextMove == -1 ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
+            transform.localScale = scale;
         }
+
         Invoke("Think", nextThinkTime);
     }
-    private BTNodeState Die()
+    /*    private void Think()
+        {
+            nextMove = Random.Range(-1, 2);
+            animator.SetInteger("Think", nextMove);
+            //Debug.Log(nextMove);
+            if (nextMove != 0)
+            {
+                float yRotation = nextMove == -1 ? 180f : 0f;
+                transform.rotation = Quaternion.Euler(0, yRotation, 0);
+            }
+            Invoke("Think", nextThinkTime);
+        }*/
+    public void OnDamage(float damage)
     {
-        OnDie();
-        return BTNodeState.Success;
+        currentHealth -= damage;
+        CheckHp();
+        Debug.Log(gameObject.name + " took damage! Current Health: " + currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            animator.SetTrigger("Die");
+        }
     }
-    public override void OnDamage(float damage)
+
+    private void Die()
     {
-        base.OnDamage(damage);
-        Debug.Log("피격됨");
-        animator.SetTrigger("hit");
-    }
-    public override void OnDie()
-    {
-        base.OnDie();
-        rb.velocity = Vector2.zero;
-        GetComponent<Collider2D>().enabled = false;
+        Debug.Log("Monster is Dead!");
+        rb.velocity = Vector2.zero;  // 움직임 정지
+        GetComponent<Collider2D>().enabled = false;  // 충돌 제거
         Destroy(this.gameObject);
     }
     private void LookAtPlayer()
@@ -194,8 +220,17 @@ public class Daru : LivingEntity
         if (playerTransform == null) return;
 
         bool lookLeft = playerTransform.position.x < transform.position.x;
-        transform.rotation = Quaternion.Euler(0, lookLeft ? 180f : 0f, 0);
+        Vector3 scale = transform.localScale;
+        scale.x = lookLeft ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
+        transform.localScale = scale;
     }
+    /*    private void LookAtPlayer()
+        {
+            if (playerTransform == null) return;
+
+            bool lookLeft = playerTransform.position.x < transform.position.x;
+            transform.rotation = Quaternion.Euler(0, lookLeft ? 180f : 0f, 0);
+        }*/
     private void OnDrawGizmos()
     {
         if (attackPoint != null)

@@ -1,20 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
-public class BossDaru : LivingEntity
+public class BossDaru : MonoBehaviour, LivingEntity
 {
     public Transform playerTransform;
 
+    [Header("HP")]
+    public Image currentHealthBar;
+    public float maxHealth = 100f; //시작 체력
+    private float currentHealth;//현재 체력
+
     [Header("Range")]
-    public float attackRange = 1.5f;
-    public float detectionRange = 5.0f; // 플레이어를 감지하는 거리
+    public float attackRange = 1.5f;    // 공격 가능 거리
+    public float detectionRange = 5.0f; // 플레이어 감지 거리
 
     [Header("Move")]
-    public float moveSpeed = 2.0f;
+    public float moveSpeed = 2.0f;  // 이동속도
 
-    [Header("PatrolJump")]
+    [Header("PatrolJump")]  // 이동 중 점프 관련 조정
     public float jumpForce = 5.0f;
     public float jumpInterval = 2.0f;
     private float nextJumpTime = 0f;
@@ -27,13 +32,16 @@ public class BossDaru : LivingEntity
 
     [Header("Attack1")]
     public Vector2 attack1BoxSize;
+    public float attack1damage = 10f;
     public float attackDelay = 1.0f;  // 공격 1의 대기 시간
 
     [Header("Attack2")]
+    public Transform SlamPoint;
     public Vector2 attack2BoxSize;    // 공격 범위
+    public float attack2damage = 10f;
     public float jumpHeight = 3.0f;      // 점프 높이
     public float slamSpeed = 10.0f;      // 내려찍기 속도
-    public float groundCheckDistance = 0.5f;  // 지면 감지 거리
+    public float groundCheckDistance = 1f;  // 지면 감지 거리
     private bool isSlamming = false;     // 내려찍기 상태 여부
     private bool isJumping = false;      // 점프 상태 여부
 
@@ -46,55 +54,42 @@ public class BossDaru : LivingEntity
     public int fireballCount = 3;           // 발사할 불꽃 개수
     public float fireballInterval = 0.2f;
 
-    [Header("SpecialPattern")]
-    public float teleportHeight = 2.5f;   // 플레이어 머리 위로 어느정도 뜰 것인지
+    [Header("Teleport")]
+    public float teleportHeight = 10f;   // 플레이어 머리 위로 어느정도 뜰 것인지
     public float teleportCooldown = 5.0f; // 텔레포트 재사용 대기시간
     private float nextTeleportTime = 0f;
-
-    [Header("Item")]
-    public bool itemDrop;
 
     public int nextMoveTime = 3;
     private int nextMove;
 
     private Rigidbody2D rb;
     private BTSelector root;
+    private Animator animator;
 
-    private bool isDead = false;
-
-    private void Start()                                            // tlqkf
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         Invoke("Think", nextMoveTime);
+        InitialSet();
 
         root = new BTSelector();
 
         BTSequence attackSequence = new BTSequence();
-        BTSequence lowHealthattackSequence = new BTSequence();
-        BTSequence specialPatternSequence = new BTSequence();
         BTSequence chaseSequence = new BTSequence();
         BTSequence patrolSequence = new BTSequence();
-        BTSequence deathSequence = new BTSequence();
 
         BTRandomSelector normalAttackSelector = new BTRandomSelector();
-        BTRandomSelector lowHealthAttackSelector = new BTRandomSelector();
 
         BTAction attack1 = new BTAction(Attack1);
         BTAction attack2 = new BTAction(Attack2);
-        BTAction attack3 = new BTAction(Attack3);
-        BTAction teleportAbovePlayer = new BTAction(TeleportAbovePlayer);
+
         BTAction chaseAction = new BTAction(Chase);
         BTAction patrolAction = new BTAction(Patrol);
-        BTAction dieAction = new BTAction(Die);
 
         BTCondition playerInRange = new BTCondition(IsPlayerInRange);
         BTCondition playerDetected = new BTCondition(IsPlayerDetected);
-
-        BTCondition lowHealth = new BTCondition(IsLowHealth);
-        BTCondition notLowHealth = new BTCondition(NotLowHealth);
-
-        BTCondition isdeadCondition = new BTCondition(() => base.dead);
 
         BTCondition canAttack = new BTCondition(CanAttack);
         BTCondition canTeleport = new BTCondition(CanTeleport);
@@ -102,37 +97,16 @@ public class BossDaru : LivingEntity
         normalAttackSelector.AddChild(attack1);
         normalAttackSelector.AddChild(attack2);
 
-        lowHealthAttackSelector.AddChild(attack1);
-        lowHealthAttackSelector.AddChild(attack2);
-        lowHealthAttackSelector.AddChild(attack3);
-
-        attackSequence.AddChild(notLowHealth);
         attackSequence.AddChild(playerInRange);
         attackSequence.AddChild(canAttack);
         attackSequence.AddChild(normalAttackSelector);
-
-        specialPatternSequence.AddChild(lowHealth);
-        specialPatternSequence.AddChild(playerDetected);
-        specialPatternSequence.AddChild(canTeleport);  // 텔레포트 가능할 때만 실행
-        specialPatternSequence.AddChild(teleportAbovePlayer);
-
-        lowHealthattackSequence.AddChild(lowHealth);
-        lowHealthattackSequence.AddChild(playerInRange);
-        lowHealthattackSequence.AddChild(canAttack);
-        lowHealthattackSequence.AddChild(lowHealthAttackSelector);
 
         chaseSequence.AddChild(playerDetected);
         chaseSequence.AddChild(chaseAction);
 
         patrolSequence.AddChild(patrolAction);
 
-        deathSequence.AddChild(isdeadCondition);
-        deathSequence.AddChild(dieAction);
-
-        root.AddChild(deathSequence);
         root.AddChild(attackSequence);
-        root.AddChild(specialPatternSequence);
-        root.AddChild(lowHealthattackSequence);
         root.AddChild(chaseSequence);
         root.AddChild(patrolSequence);
     }
@@ -160,34 +134,49 @@ public class BossDaru : LivingEntity
         //Debug.Log($"IsPlayerInRange? Distance: {dist} / AttackRange: {attackRange} / Result: {dist <= attackRange}");
         return dist <= attackRange;
     }
-    private bool IsLowHealth() => currentHealth <= maxHealth * 0.4f; // 람?다식
-    private bool NotLowHealth() => currentHealth >= maxHealth * 0.4f;
     private bool CanAttack() => Time.time >= nextAttackTime;
     private void SetNextAttackTime() => nextAttackTime = Time.time + attackCooldown;
     private bool CanTeleport() => Time.time >= nextTeleportTime;
+
+    public void InitialSet()
+    {
+        currentHealth = maxHealth;
+        isattack = false;
+        isSlamming = false;
+        isJumping = false;
+    }
+
+    public void CheckHp()
+    {
+        // 데미지 공식 어쩌구... 난 귀찮아 저쩌구...
+        if (currentHealthBar != null)
+            currentHealthBar.fillAmount = currentHealth / maxHealth;
+
+        Debug.Log($"체력바 갱신 fillAmount : {currentHealthBar.fillAmount}");
+    }
 
     #region Attack1 Code
     private BTNodeState Attack1()
     {
         LookAtPlayer();
         Debug.Log("Preparing Attack 1...");
-        Invoke(nameof(PerformForwardAttack), attackDelay);
+        // 공격 애니메이션 트리거 넣고, 공격 애니메이션에서 공격1 함수 호출
+        animator.SetTrigger("Attack");
+        //Invoke(nameof(PerformAttack1), attackDelay);
         isattack = false;
         SetNextAttackTime();
         return BTNodeState.Success;
     }
-    private void PerformForwardAttack()
+    private void PerformAttack1()
     {
         isattack = true;
-
-        Debug.Log("Performing Attack 1 after delay!");
         Collider2D[] hitPlayer = Physics2D.OverlapBoxAll(attackPoint.position, attack1BoxSize, 0);
         foreach (var player in hitPlayer)
         {
             if (player.CompareTag("Player"))
             {
                 Debug.Log("Hit Player!");
-                player.GetComponent<LivingEntity>().OnDamage(10);
+                player.GetComponent<Player>().TakeDamage(attack1damage);
             }
         }
     }
@@ -195,18 +184,37 @@ public class BossDaru : LivingEntity
     #region Attack2 Code
     private BTNodeState Attack2()
     {
-        //if (!isJumping && !isSlamming)
         LookAtPlayer();
-        Debug.Log("Jumping for Attack 2...");
-        StartCoroutine(JumpAndSlam());
-        isattack = false;
+        if (currentHealth <= maxHealth * 0.4f)
+        {
+            if (IsPlayerDetected() && CanTeleport())
+            {
+                Debug.Log("teleporting...");
+                TeleportAbovePlayer();
+                Debug.Log("Slaming Attack!!");
+                isattack = true;                
+                StartCoroutine(AttackSlam(1f));
+            }
+        }
+        else
+        {
+            Debug.Log("Jumping for Attack 2...");
+            StartCoroutine(Attack2Flow());
+        }
+       
         SetNextAttackTime();
         return BTNodeState.Success;
     }
-    private IEnumerator JumpAndSlam()
+    private IEnumerator Attack2Flow()
     {
         isattack = true;
+        yield return StartCoroutine(AttackJump());
+        yield return StartCoroutine(AttackSlam(0));
+    }
+    private IEnumerator AttackJump()
+    {
         isJumping = true;
+        animator.SetTrigger("Jump"); // 애니메이션 트리거
 
         // 위로 점프
         rb.velocity = new Vector2(rb.velocity.x, Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics2D.gravity.y * rb.gravityScale)));
@@ -216,52 +224,61 @@ public class BossDaru : LivingEntity
         {
             yield return null;
         }
-
-        // 내려찍기 시작
         isJumping = false;
-        isSlamming = true;
-        Debug.Log("Slamming Down!");
+    }
+    private IEnumerator AttackSlam(float delay)
+    {
+        yield return new WaitForSeconds(delay);
 
-        rb.velocity = new Vector2(0, -slamSpeed);  // 빠르게 내려찍기
+        isSlamming = true;
+        animator.SetTrigger("Slam"); // 애니메이션 트리거
+
+        Debug.Log("Slamming Down!");
+        rb.velocity = new Vector2(0, -slamSpeed);
 
         // 지면에 도착할 때까지 대기
+        //yield return new WaitForSeconds(0.2f);
         while (!IsGrounded())
         {
             yield return null;
         }
-
         // 충격파 공격 실행
-        PerformSlamAttack();
+        animator.SetTrigger("AfterSlam");
+        Debug.Log("after..");
         isSlamming = false;
+        isattack = false;
     }
     private bool IsGrounded()
     {
-        return Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, LayerMask.GetMask("Ground"));
+        Debug.DrawRay(SlamPoint.position, Vector2.down * groundCheckDistance, Color.blue);
+        return Physics2D.Raycast(SlamPoint.position, Vector2.down, groundCheckDistance, LayerMask.GetMask("Ground"));
     }
     private void PerformSlamAttack()
     {
         Debug.Log("Performing Ground Slam Attack!");
-        Vector2 attack2Position = transform.position + transform.up * -1f;
         // 주변 범위 공격
-        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attack2Position, attack2BoxSize, 0);
+        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(SlamPoint.position, attack2BoxSize, 0);
         foreach (var enemy in hitEnemies)
         {
             if (enemy.CompareTag("Player"))
             {
                 Debug.Log("Hit Player with Slam Attack!");
-                enemy.GetComponent<LivingEntity>().OnDamage(10);
+                enemy.GetComponent<Player>().TakeDamage(attack2damage);
             }
+        }
+        // 체력이 40% 이하라면 Attack3 연계
+        if (currentHealth <= maxHealth * 0.4f)
+        {
+            Attack3();
         }
     }
     #endregion
     #region Attack3 Code
-    private BTNodeState Attack3()
+    private void Attack3()
     {
-        LookAtPlayer();
         Debug.Log("Performing Attack 3");
         StartCoroutine(FireballBurst());
         SetNextAttackTime();
-        return BTNodeState.Success;
     }
     private IEnumerator FireballBurst()
     {
@@ -272,7 +289,6 @@ public class BossDaru : LivingEntity
             yield return new WaitForSeconds(fireballInterval);
         }
     }
-
     private void SpawnFireball(Transform spawnPoint)
     {
         GameObject fireball = Instantiate(fireballPrefab, spawnPoint.position, Quaternion.identity);
@@ -286,18 +302,18 @@ public class BossDaru : LivingEntity
     }
     #endregion
 
-    private BTNodeState TeleportAbovePlayer()
+    private void TeleportAbovePlayer()
     {
         if (Time.time < nextTeleportTime)
         {
-            return BTNodeState.Failure;  // 쿨다운이 끝나지 않으면 실행하지 않음
+            Debug.Log("Not ready to teleport...");
+            return;
         }
         LookAtPlayer();
         Debug.Log("Teleporting above player!");
         transform.position = new Vector3(playerTransform.position.x, playerTransform.position.y + teleportHeight, transform.position.z);
 
         nextTeleportTime = Time.time + teleportCooldown; // 다음 텔레포트 시간 설정
-        return BTNodeState.Success;
     }
 
     private BTNodeState Chase()
@@ -343,20 +359,19 @@ public class BossDaru : LivingEntity
         transform.rotation = Quaternion.Euler(0, yRotation, 0);
         Invoke("Think", nextMoveTime);
     }
-    private BTNodeState Die()
-    {
-        OnDie();
-        return BTNodeState.Success;
-    }
 
-    public override void OnDamage(float damage)
+    public void OnDamage(float damage)
     {
-        if (base.dead) return;  // 사망 시 피격 무효
-        base.OnDamage(damage);
+        currentHealth -= damage;
+        CheckHp();
         Debug.Log(gameObject.name + " took damage! Current Health: " + currentHealth);
-    }
 
-    public override void OnDie()
+        if (currentHealth <= 0)
+        {
+            animator.SetTrigger("Die");
+        }
+    }
+    private void Die()
     {
         Debug.Log("Monster is Dead!");
         rb.velocity = Vector2.zero;  // 움직임 정지
@@ -377,7 +392,7 @@ public class BossDaru : LivingEntity
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireCube(attackPoint.position, attack1BoxSize);
-            Gizmos.DrawWireCube(transform.position + transform.up * -1f, attack2BoxSize);
+            Gizmos.DrawWireCube(SlamPoint.position, attack2BoxSize);
         }
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, attackRange);

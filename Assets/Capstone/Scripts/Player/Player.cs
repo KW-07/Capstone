@@ -6,9 +6,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class Player : LivingEntity
+public class Player : PlayerStats
 {
     public static Player instance { get; private set; }
+
+    [Header("스탯 UI")]
+    public Image currentHealthBar;
+    public Image currentStaminaBar;
 
     [Header("얼굴위치")]
     public Transform maskAttachPoint;
@@ -118,8 +122,7 @@ public class Player : LivingEntity
         playerTransform = GetComponent<Transform>();
         animator = GetComponent<Animator>();
         skillSystem = gameObject.GetComponent<SkillSystem>();
-
-
+        
         animator.SetFloat("attackCount", normalAttack.multipleAttack);
     }
 
@@ -134,8 +137,7 @@ public class Player : LivingEntity
         pCommandUI.SetActive(false);
         CommandInitialization(pCommand);
 
-        OnEnable();
-        CheckHp();
+        //CheckHp();
     }
 
     private void Update()
@@ -874,36 +876,30 @@ public class Player : LivingEntity
     }
     #endregion
 
-    protected override void OnEnable()
+    new public void TakeDamage(float amount)
     {
-        base.OnEnable();
-
-        Debug.Log($"현재 체력 : {currentHealth}");
-    }
-
-    public override void OnDamage(float damage)
-    {
-        currentHealth -= damage; // health = health - damage;
-        CheckHp();
-        Debug.Log(this.gameObject.name + " take Damage.");
-
+        base.TakeDamage(amount);
         animator.SetTrigger("damaged");
-
-        //체력이 0 이하 && 아직 죽지 않았다면 사망 처리 실행
-        if (currentHealth <= 0 && !dead)
-        {
-            OnDie();
-        }
+        CheckStateBar();
     }
-
-    public override void OnDie()
+    public void CheckStateBar() //*HP 갱신
     {
-        base.OnDie();
+        if (currentHealthBar != null)
+            currentHealthBar.fillAmount = currentHealth / maxHealth;
+        /*if (currentStaminaBar != null)
+            currentStaminaBar.fillAmount = currentStamina / maxStamina;*/
 
-        animator.SetTrigger("playerDie");
-
-        Destroy(gameObject, dieTime);
+        Debug.Log($"체력 갱신 fillAmount : {currentHealthBar.fillAmount}");
+        //Debug.Log($"스테미나 갱신 fillAmount : {currentStaminaBar.fillAmount}");
     }
+        new public void Die()
+        {
+            base.Die();
+
+            animator.SetTrigger("playerDie");
+
+            Destroy(gameObject, dieTime);
+        }
 }
 
 [System.Serializable]

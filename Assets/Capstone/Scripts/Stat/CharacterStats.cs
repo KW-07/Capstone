@@ -34,16 +34,6 @@ public class CharacterStats : MonoBehaviour
 
     private List<BuffInstance> activeBuffs = new List<BuffInstance>();
 
-    private void Start()
-    {
-        
-    }
-
-    private void Update()
-    {
-        
-    }
-
     public void RecalculateStats()
     {
         Debug.Log("RecalculateStats »£√‚µ ");
@@ -126,7 +116,7 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void Die()
     {
         gameObject.SetActive(false);
     }
