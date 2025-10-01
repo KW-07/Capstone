@@ -9,12 +9,20 @@ public class CommandManager : MonoBehaviour
 
     [Header("Command List")]
     public CommandData[] commandList;
+
+    public CommandData[] fireCommandList;
+    public CommandData[] waterCommandList;
     private void Awake()
     {
         if(instance != null)
             Destroy(gameObject);
         else
             instance = this;
+    }
+
+    public void initCommandList()
+    {
+        commandList = new CommandData[0];
     }
     private void Start()
     {
